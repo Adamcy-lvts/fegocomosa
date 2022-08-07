@@ -9,6 +9,7 @@ use App\Models\State;
 use App\Models\Gender;
 use Livewire\Component;
 use App\Models\Category;
+use App\Models\EntryYear;
 use App\Models\MaritalStatus;
 use Livewire\WithFileUploads;
 use App\Models\GraduationYears;
@@ -206,7 +207,8 @@ class UpdateProfileInformationForm extends Component
             'roles'   => Role::all(),
             'maritalStatuses' => MaritalStatus::all(),
             'professionCategories' => Category::all(),
-            'gradYears' => GraduationYears::all()
+            'gradYears' => GraduationYears::all(),
+            'entryYears' => EntryYear::all()
         ]);
     }
 }
