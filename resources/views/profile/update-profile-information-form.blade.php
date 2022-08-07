@@ -26,11 +26,6 @@
                                                                                     reader.readAsDataURL($refs.photo.files[0]);
                                                                             " />
 
-
-                                          {{-- <x-jet-label for="photo" value="{{ __('Photo') }}" /> --}}
-
-                                          <!-- Current Profile Photo -->
-
                                           <div class="mx-auto w-32 h-32 mb-5 border rounded-full relative bg-gray-100 mb-4 shadow-inset"
                                               x-show="! photoPreview">
                                               <img src="{{ $this->user->profile_photo_url }}"
@@ -70,19 +65,19 @@
                           <x-card title="Fegocomosa Information">
                               <div class="grid grid-cols-1 md:grid-cols-1 gap-6">
                                   <div class="col-span-1  md:col-span-3 md:grid md:grid-cols-3 md:gap-6">
-                                      <x-datetime-picker label="Year of Entry" placeholder="Year of Entry"
+                                      <x-datetime-picker without-time label="Year of Entry" placeholder="Year of Entry"
                                           wire:model.defer="state.year_of_entry" />
-                                      {{-- <x-datetime-picker label="Year of Gradution" placeholder="Year of Gradution"
-                                          without-time wire:model.defer="state.year_of_graduation" /> --}}
+                                      <x-datetime-picker label="Year of Gradution" placeholder="Year of Gradution"
+                                          without-time wire:model.defer="state.graduation_year" />
 
-                                      <x-native-select label="Year of Gradution" placeholder="Year of Gradution"
+                                      {{-- <x-native-select label="Year of Gradution" placeholder="Year of Gradution"
                                           wire:model.defer="state.graduation_year_id">
                                           @foreach ($gradYears as $gradYear)
                                               <option value="{{ $gradYear->id }}" }>{{ $gradYear->year }}</option>
                                           @endforeach
-                                      </x-native-select>
+                                      </x-native-select> --}}
 
-                                      <x-input label="Admission Number" placeholder="Admission Number" without-time
+                                      <x-input label="Admission Number" placeholder="Admission Number"
                                           wire:model.defer="state.addmission_number" />
                                   </div>
 
