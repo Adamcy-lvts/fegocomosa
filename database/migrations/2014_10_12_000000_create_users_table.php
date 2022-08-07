@@ -32,8 +32,8 @@ class CreateUsersTable extends Migration
             $table->string('jss_class');
             $table->string('sss_class');
             $table->integer('house_id');
-            $table->date('year_of_entry');
-            $table->integer('graduation_year_id');
+            $table->year('year_of_entry');
+            $table->year('graduation_year');
             $table->string('workplace')->nullable();
             $table->string('university')->nullable();
             $table->string('course_of_study')->nullable();
