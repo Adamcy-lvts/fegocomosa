@@ -71,7 +71,7 @@ Route::get('/about-us', AboutUs::class)->name('aboutus');
 Route::get('/campaigns', CampaignIndex::class)->name('campaigns');
 Route::get('/campaign/create', CreateCampaign::class)->name('campaign.create');
 Route::get('/campaign/edit/{slug}', EditCampaign::class)->name('campaign.edit');
-Route::get('/campaign/{slug}', CampaignShow::class)->name('campaign.show');
+Route::get('/campaign/{slug}', CampaignShow::class)->name('campaigns.show');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function ()
 {
