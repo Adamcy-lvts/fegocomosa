@@ -67,7 +67,7 @@ use App\Http\Livewire\Admin\ProfessionalCategoryDataTable;
 Route::get('/', Welcome::class)->name('welcome');
 
 
-Route::get('/aboutus', AboutUs::class)->name('aboutus');
+Route::get('/about-us', AboutUs::class)->name('aboutus');
 Route::get('/campaigns', CampaignIndex::class)->name('campaigns');
 Route::get('/campaign/create', CreateCampaign::class)->name('campaign.create');
 Route::get('/campaign/edit/{slug}', EditCampaign::class)->name('campaign.edit');
