@@ -1,0 +1,110 @@
+/* common styles !!!YOU DON'T NEED THEM  */
+
+
+/* progress bar styles !!!YOU NEED THEM */
+.progress-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.progress-bar {
+  position: relative;
+  box-sizing: border-box;
+}
+.progress-bar:not(:last-child) {
+  margin-bottom: 35px;
+}
+
+.progress-bar--lg-offset:not(:last-child) {
+  margin-bottom: 52.5px;
+}
+
+.progress-bar__bar,
+.progress-bar__bar-inner,
+.progress-bar__value,
+.progress-bar__skill {
+  box-sizing: border-box;
+}
+
+.progress-bar__bar {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.progress-bar__bar--no-overflow {
+  overflow: visible;
+}
+
+.progress-bar__bar-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+.progress-bar__bar-inner.js-animated {
+  transition-property: all;
+  transition-duration: 0.5s;
+  transition-timing-function: cubic-bezier(0.1, 1.14, 0.31, 1.06);
+  transition-delay: 0s;
+  transform: scaleX(1);
+}
+
+.progress-bar__skill,
+.progress-bar__value {
+  letter-spacing: 1px;
+}
+
+.progress-bar__value--aligned-value {
+  transform: translateX(-50%);
+}
+
+/* progress bar #1 styles */
+.progress-bar--1 {
+  height: 10px;
+  padding: 2px;
+  border: 1px solid #dddddd;
+  border-radius: 20px;
+}
+
+.progress-bar__bar-inner--1 {
+  background-image: linear-gradient(to right, #00BFB3 0, #037971 100%);
+  background-size: 200%;
+  background-position: 0 0;
+  border-radius: 20px;
+}
+
+.progress-bar__skill--1 {
+  position: absolute;
+  top: -27px;
+  left: -20px;
+  opacity: 0;
+}
+.progress-bar__skill--1.js-animated {
+  transition-property: all;
+  transition-duration: 0.2s;
+  transition-timing-function: linear;
+  transition-delay: 0s;
+  left: 0;
+  opacity: 1;
+}
+
+.progress-bar__value--1 {
+  position: absolute;
+  top: -27px;
+  right: -20px;
+  opacity: 0;
+}
+.progress-bar__value--1.js-animated {
+  transition-property: all;
+  transition-duration: 0.2s;
+  transition-timing-function: linear;
+  transition-delay: 0s;
+  right: 0;
+  opacity: 1;
+}
+
