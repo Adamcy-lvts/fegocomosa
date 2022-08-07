@@ -5,6 +5,7 @@ namespace App\Actions\Fortify;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Category;
+use App\Models\EntryYear;
 use App\Models\GraduationYears;
 use Laravel\Jetstream\Jetstream;
 use Illuminate\Support\Facades\Hash;
@@ -102,6 +103,9 @@ class CreateNewUser implements CreatesNewUsers
         $gradYear = GraduationYears::create([
             'year' => Carbon::create($input['graduation_year_id'])->format('Y')
         ]);
+        $entryYear = EntryYear::create([
+            'year' => Carbon::create($input['entry_year_id'])->format('Y')
+        ]);
 
         // dd($gradYear->id);
 
@@ -123,7 +127,7 @@ class CreateNewUser implements CreatesNewUsers
             'jss_class'         => $input['jss_class'],
             'sss_class'         => $input['sss_class'],
             'house_id'          => $input['house_id'],
-            'year_of_entry'     => $input['year_of_entry'],
+            'entry_year_id'     => $entryYear->id,
             'graduation_year_id'=> $gradYear->id,
             'workplace'         => $input['workplace'],
             'university'        => $input['university'],
