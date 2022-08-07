@@ -43,7 +43,7 @@ class CreateNewUser implements CreatesNewUsers
             'sss_class'         => ['required', 'string', 'max:255'],
             'house_id'          => ['required'],
             'year_of_entry'     => ['required'],
-            'graduation_year_id'=> ['required'],
+            'graduation_year'   => ['required'],
             'workplace'         => ['required', 'string', 'max:255'],
             'university'        => ['required', 'string', 'max:255'],
             'course_of_study'   => ['required', 'string', 'max:255'],
@@ -99,12 +99,6 @@ class CreateNewUser implements CreatesNewUsers
 
     }
 
-        $gradYear = GraduationYears::create([
-            'year' => Carbon::create($input['graduation_year_id'])->format('Y')
-        ]);
-
-        // dd($gradYear->id);
-
         $user =  User::create([
             'profile_photo_path'=> $imageWithPath,
             'username'          => $input['username'],
@@ -124,7 +118,7 @@ class CreateNewUser implements CreatesNewUsers
             'sss_class'         => $input['sss_class'],
             'house_id'          => $input['house_id'],
             'year_of_entry'     => $input['year_of_entry'],
-            'graduation_year_id'=> $gradYear->id,
+            'graduation_year'   => Carbon::create($input['graduation_year'])->format('Y'),
             'workplace'         => $input['workplace'],
             'university'        => $input['university'],
             'course_of_study'   => $input['course_of_study'],
