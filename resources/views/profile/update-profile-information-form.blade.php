@@ -67,15 +67,15 @@
                                   <div class="col-span-1  md:col-span-3 md:grid md:grid-cols-3 md:gap-6">
                                       <x-datetime-picker without-time label="Year of Entry" placeholder="Year of Entry"
                                           wire:model.defer="state.year_of_entry" />
-                                      <x-datetime-picker label="Year of Gradution" placeholder="Year of Gradution"
-                                          without-time wire:model.defer="state.graduation_year" />
+                                      {{-- <x-datetime-picker label="Year of Gradution" placeholder="Year of Gradution"
+                                          without-time wire:model.defer="state.year_of_graduation" /> --}}
 
-                                      {{-- <x-native-select label="Year of Gradution" placeholder="Year of Gradution"
+                                      <x-native-select label="Year of Gradution" placeholder="Year of Gradution"
                                           wire:model.defer="state.graduation_year_id">
                                           @foreach ($gradYears as $gradYear)
                                               <option value="{{ $gradYear->id }}" }>{{ $gradYear->year }}</option>
                                           @endforeach
-                                      </x-native-select> --}}
+                                      </x-native-select>
 
                                       <x-input label="Admission Number" placeholder="Admission Number"
                                           wire:model.defer="state.addmission_number" />
