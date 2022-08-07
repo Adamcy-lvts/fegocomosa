@@ -28,7 +28,7 @@
                     </div>
 
                     <div class=" space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-jet-nav-link href="{{ route('campaigns') }}" :active="request()->routeIs('campaigns')">
+                        <x-jet-nav-link href="{{ route('campaigns') }}" :active="request()->routeIs('campaigns*')">
                             {{ __('Donate') }}
                         </x-jet-nav-link>
                     </div>
