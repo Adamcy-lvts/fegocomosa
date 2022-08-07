@@ -23,7 +23,7 @@
             <div class="flex flex-wrap -m-4 mb-4">
 
                 @foreach ($campaigns as $campaign)
-                    <a href="{{ route('campaign.show', $campaign->slug) }}">
+                    <a href="{{ route('campaigns.show', $campaign->slug) }}">
                         <div class="xl:w-1/4 md:w-1/2 p-4">
                             <div class="bg-gray-100 p-6 border rounded-lg">
                                 <img class=" rounded w-full object-cover object-center mb-6"
