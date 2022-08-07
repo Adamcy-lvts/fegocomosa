@@ -1,12 +1,8 @@
   <x-jet-form-section submit="updateProfileInformation">
 
-
       <x-slot name="form">
           <div class="grid grid-cols-3 gap-4">
               <div class="col-span-3">
-
-
-                  {{-- <div class="grid grid-rows-1 "> --}}
 
                   <div class="flex flex-row flex-wrap gap-4">
                       <div class="basis-1/3 flex-auto ">
@@ -18,13 +14,13 @@
                                           <!-- Profile Photo File Input -->
                                           <input type="file" class="hidden" wire:model="photo" x-ref="photo"
                                               x-on:change="
-                                                                                    photoName = $refs.photo.files[0].name;
-                                                                                    const reader = new FileReader();
-                                                                                    reader.onload = (e) => {
-                                                                                        photoPreview = e.target.result;
-                                                                                    };
-                                                                                    reader.readAsDataURL($refs.photo.files[0]);
-                                                                            " />
+                                                photoName = $refs.photo.files[0].name;
+                                                const reader = new FileReader();
+                                                reader.onload = (e) => {
+                                                    photoPreview = e.target.result;
+                                                };
+                                                reader.readAsDataURL($refs.photo.files[0]);
+                                        " />
 
                                           <div class="mx-auto w-32 h-32 mb-5 border rounded-full relative bg-gray-100 mb-4 shadow-inset"
                                               x-show="! photoPreview">
@@ -62,18 +58,21 @@
                       </div>
 
                       <div class="flex-grow">
-                          <x-card title="Fegocomosa Information">
+                          <x-card class="uppercase" title="Fegocomosa Information">
                               <div class="grid grid-cols-1 md:grid-cols-1 gap-6">
                                   <div class="col-span-1  md:col-span-3 md:grid md:grid-cols-3 md:gap-6">
-                                      <x-datetime-picker without-time label="Year of Entry" placeholder="Year of Entry"
-                                          wire:model.defer="state.year_of_entry" />
-                                      {{-- <x-datetime-picker label="Year of Gradution" placeholder="Year of Gradution"
-                                          without-time wire:model.defer="state.year_of_graduation" /> --}}
+
+                                      <x-native-select label="Year of Entry" placeholder="Year of Entry"
+                                          wire:model.defer="state.entry_year_id">
+                                          @foreach ($entryYears as $entryYear)
+                                              <option value="{{ $entryYear->id }}">{{ $entryYear->year }}</option>
+                                          @endforeach
+                                      </x-native-select>
 
                                       <x-native-select label="Year of Gradution" placeholder="Year of Gradution"
                                           wire:model.defer="state.graduation_year_id">
                                           @foreach ($gradYears as $gradYear)
-                                              <option value="{{ $gradYear->id }}" }>{{ $gradYear->year }}</option>
+                                              <option value="{{ $gradYear->id }}">{{ $gradYear->year }}</option>
                                           @endforeach
                                       </x-native-select>
 
@@ -97,11 +96,7 @@
                           </x-card>
                       </div>
                   </div>
-                  {{-- </div> --}}
               </div>
-
-
-
 
               <div class="col-span-3">
                   <div class="flex flex-wrap flex-row   gap-4">
@@ -150,7 +145,6 @@
                                       </x-native-select>
                                   </div>
 
-
                                   <div class="col-span-1 md:col-span-2">
                                       <x-input label="Street Address" placeholder="Street Address"
                                           wire:model.defer="state.address" />
@@ -159,7 +153,7 @@
                                   <div class="col-span-1 md:col-span-2 md:grid md:grid-cols-2 md:gap-6">
                                       <x-native-select label="State" placeholder="State"
                                           wire:model="state.selectedState">
-                                          {{-- <input type="hidden" wire:model="selectedState"> --}}
+
                                           @foreach ($states as $statec)
                                               <option value="{{ $statec->id }}">{{ $statec->name }}</option>
                                           @endforeach
@@ -168,25 +162,17 @@
                                       <x-native-select label="City" placeholder="City"
                                           wire:model="state.selectedCity">
                                           @if (!is_null($cities))
-                                              {{-- {{dd($cities)}} --}}
                                               @foreach ($cities as $city)
                                                   <option value="{{ $city->id }}">{{ $city->name }}</option>
                                               @endforeach
                                           @endif
-
                                       </x-native-select>
-
-
                                   </div>
-
-                                  {{-- @livewire('states-city') --}}
-
-
 
                                   <div class="col-span-1 md:col-span-2">
                                       <x-input label="Email" placeholder="Email" wire:model.defer="state.email" />
                                   </div>
-                                  {{-- {{$state['lga_id']}} --}}
+
                               </div>
                           </x-card>
                       </div>
@@ -197,13 +183,9 @@
                               <input class="hidden" id="fileInput" accept="image/*" type="file"
                                   wire:model="potraitImage"
                                   @change="let file = document.getElementById('fileInput').files[0];
-                                                            var reader = new FileReader();
-                                                            reader.onload = (e) => image = e.target.result;
-                                                            reader.readAsDataURL(file);">
-
-
-
-
+                                var reader = new FileReader();
+                                reader.onload = (e) => image = e.target.result;
+                                reader.readAsDataURL(file);">
                               <!-- New Potrait Image Preview -->
                               @if ($potraitImage)
                                   Potrait Image Preview:
@@ -212,13 +194,11 @@
                                   <!-- Current Potrait Image -->
                                   <img id="image" class="w-full"
                                       src="{{ asset('storage/photos/' . auth()->user()->potrait_image) }}" />
-                                  {{-- <img  id="image"  class="w-full" src="{{ auth()->user()->potrait_image }}"  /> --}}
                               @endif
 
                               <span class="block  w-full bg-cover bg-no-repeat bg-center"
                                   x-bind:style="'background-image: url(\'' + image + '\');'">
                               </span>
-
 
                               <x-jet-secondary-button class="mt-2 mr-2" type="button">
 
@@ -232,8 +212,6 @@
                                       {{ __('Remove Photo') }}
                                   </x-jet-secondary-button>
                               @endif
-
-
                           </x-card>
 
                       </div>
@@ -244,7 +222,7 @@
 
               <div class=" col-span-3 ">
 
-                  <x-card title="Professional Information">
+                  <x-card class="uppercase" title="Professional Information">
                       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                           <div class="col-span-1  md:col-span-3 md:grid md:grid-cols-3 md:gap-6">
                               <x-input label="Profession" placeholder="Profession"
@@ -262,7 +240,7 @@
                           <div class="col-span-1  md:col-span-3 md:grid md:grid-cols-2 md:gap-6">
                               <x-input label="University Attended" placeholder="example Univeristy of Maiduguri"
                                   wire:model.defer="state.university" />
-                              <x-input label="Course of Study"
+                              <x-input label="Field of Study"
                                   placeholder="example Electrical and Electronics Engineering"
                                   wire:model.defer="state.course_of_study" />
 
@@ -279,7 +257,7 @@
                               </x-jet-action-message>
                               <x-button label="Cancel" flat />
                               <x-button type="submit" wire:loading.attr="disabled" wire:target="photo"
-                                  label="Save" primary>save</x-button>
+                                  label="Save" green>save</x-button>
                           </div>
                       </x-slot>
                   </x-card>
