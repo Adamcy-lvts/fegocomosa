@@ -2,9 +2,7 @@
     <div>
 
         <x-slot name="header">
-            <h2 class=" text-black font-sans text-3xl leading-tight">
-                {{ __('Update, Edit or Delete Your Resume Details ') }}
-            </h2>
+            {{ __('Edit Resume') }}
         </x-slot>
 
 
