@@ -43,7 +43,7 @@
                             @foreach ($relatedPosts as $relatedPost)
                                 <a href="{{ route('posts.show', $relatedPost->slug) }}">
                                     <div class="relative h-64 w-full flex items-end justify-start text-left bg-cover bg-center"
-                                        style="background-image:url({{ asset('storage/photos/' . $relatedPost->image) }});">
+                                        style="background-image:url({{ asset('storage/blog_images/' . $relatedPost->image) }});">
                                         <div
                                             class="absolute top-0 mt-20 right-0 bottom-0 left-0 bg-gradient-to-b from-transparent to-gray-900">
                                         </div>
@@ -110,8 +110,6 @@
 
                     </div>
 
-
-
                 </div>
 
                 <div class="flex gap-4 w-full flex-wrap md:hidden ">
@@ -119,7 +117,7 @@
                     @foreach ($relatedPosts as $relatedPost)
                         <a class="w-full" href="{{ route('posts.show', $relatedPost->slug) }}">
                             <div class="relative h-64 w-full flex items-end justify-start text-left bg-cover bg-center"
-                                style="background-image:url({{ asset('storage/photos/' . $relatedPost->image) }});">
+                                style="background-image:url({{ asset('storage/blog_images/' . $relatedPost->image) }});">
                                 <div
                                     class="absolute top-0 mt-20 right-0 bottom-0 left-0 bg-gradient-to-b from-transparent to-gray-900">
                                 </div>
