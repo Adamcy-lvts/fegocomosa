@@ -1,7 +1,8 @@
-
- 
- <x-jet-form-section submit="updatePassword">
- <div class="flex flex-wrap">
+<x-slot name="header">
+    {{ __('Password') }}
+</x-slot>
+<x-jet-form-section submit="updatePassword">
+    <div class="flex flex-wrap">
         <div>
             <x-slot name="title">
                 {{ __('Update Password') }}
@@ -15,9 +16,12 @@
         <div>
             <x-slot name="form">
                 <div class="grid grid-cols-1  gap-6">
-                        <x-input type="password" label="Current Password" placeholder="Current Password"  wire:model.defer="state.current_password"  />
-                        <x-input type="password" label="New Password"  placeholder="New Password"  wire:model.defer="state.password" />
-                        <x-input type="password" label="Confirm Password"  placeholder="Confirm Password"  wire:model.defer="state.password_confirmation" />
+                    <x-input type="password" label="Current Password" placeholder="Current Password"
+                        wire:model.defer="state.current_password" />
+                    <x-input type="password" label="New Password" placeholder="New Password"
+                        wire:model.defer="state.password" />
+                    <x-input type="password" label="Confirm Password" placeholder="Confirm Password"
+                        wire:model.defer="state.password_confirmation" />
                 </div>
                 {{-- <div class="col-span-6 sm:col-span-4">
                     <x-jet-label for="current_password" value="{{ __('Current Password') }}" />
@@ -48,7 +52,7 @@
                 </x-jet-button> --}}
                 <x-button type="submit" label="Save" wire:loading.attr="disabled" primary />
             </x-slot>
-    
-       </div>
-    </div>   
+
+        </div>
+    </div>
 </x-jet-form-section>
