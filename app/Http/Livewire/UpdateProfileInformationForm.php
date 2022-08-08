@@ -41,7 +41,7 @@ class UpdateProfileInformationForm extends Component
     public $state = [];
 
     /**
-     * The new avatar for the user.
+     * The new avatar for the member.
      *
      * @var mixed
      */
@@ -57,8 +57,6 @@ class UpdateProfileInformationForm extends Component
         $this->states = State::all();
         $this->cities = collect();
 
-       
-
         $this->state = Auth::user()->withoutRelations()->toArray();
         $this->userId = Auth::user()->id;
 
@@ -73,22 +71,12 @@ class UpdateProfileInformationForm extends Component
             $this->state['selectedState'] = $city->state->id;
         }
 
-        // $this->selectedRole = $user->roles-
-
-        
+        // selected member profession categories
 
         foreach (Auth::user()->Categories as $userCategories) {
-            // dd($userCategories->pivot->category_profession_id);
+
             $this->selectedCategory = $userCategories->pivot->category_id;
         }
-
-        // $gradYear = GraduationYears::find(Auth::user()->year_of_graduation);
-
-        // dd($gradYear->year);
-
-        //  $this->state['year_of_graduation'] = $gradYear->year;
-        
-        
 
     }
 
@@ -99,14 +87,13 @@ class UpdateProfileInformationForm extends Component
     }
 
     /**
-     * Update the user's profile information.
+     * Update the member's profile information.
      *
      * @param  \Laravel\Fortify\Contracts\UpdatesUserProfileInformation  $updater
      * @return void
      */
     public function updateProfileInformation(UpdatesUserProfileInformation $updater)
     {
-        // dd($this->selectedRole);
  
         $this->resetErrorBag();
 
@@ -124,8 +111,6 @@ class UpdateProfileInformationForm extends Component
        // Upload Potrait_image
        $user = User::find($this->userId);
        if ($this->potraitImage) {
-
-            
 
             $potraitImage = $this->potraitImage->getClientOriginalName();
 
@@ -145,16 +130,13 @@ class UpdateProfileInformationForm extends Component
 
        $user->Categories()->sync($procategory);
 
-        
-    //    $user->assignRole($role);
-
         $this->emit('saved');
 
         $this->emit('refresh-navigation-menu');
     }
 
     /**
-     * Delete user's profile photo.
+     * Delete member's profile photo.
      *
      * @return void
      */
@@ -166,7 +148,7 @@ class UpdateProfileInformationForm extends Component
     }
 
        /**
-     * Delete user's profile photo.
+     * Delete member's potrait profile photo.
      *
      * @return void
      */
@@ -184,7 +166,7 @@ class UpdateProfileInformationForm extends Component
 
 
     /**
-     * Get the current user of the application.
+     * Get the current member of the application.
      *
      * @return mixed
      */
