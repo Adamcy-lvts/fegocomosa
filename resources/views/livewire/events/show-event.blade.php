@@ -60,7 +60,7 @@
                     @forelse ($event->images as $image)
                         <div class="carousel-cell">
                             <img alt="content" class="carousel-cell-image block object-cover  w-full"
-                                src="{{ asset('storage/photos/' . $image->images) }}">
+                                src="{{ asset('storage/event_images/' . $image->images) }}">
                             <div class="overlay"></div>
                             <div class="inner">
                                 <h2 class="title">{{ $image->caption }}</h2>
