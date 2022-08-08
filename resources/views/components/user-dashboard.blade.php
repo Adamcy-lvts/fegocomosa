@@ -129,7 +129,10 @@
                         </svg>
                     </div>
                     <div class="w-1/2 md:w-auto text-center text-white text-2xl font-medium">
-                        Dashboard
+                        <!-- Page Heading -->
+                        @if (isset($header))
+                            {{ $header }}
+                        @endif
                     </div>
                     <div class="w-1/4 md:w-auto md:flex text-right">
                         <x-jet-dropdown align="right" width="48">
@@ -331,14 +334,7 @@
         </header>
 
         <div class="w-full overflow-x-hidden border-t flex flex-col">
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
+
             <!-- Page Content -->
             <main class=" bg-gray-100 w-full flex-grow p-6">
 
