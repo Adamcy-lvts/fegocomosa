@@ -1,5 +1,4 @@
   <x-jet-form-section submit="updateProfileInformation">
-
       <x-slot name="form">
           <div class="grid grid-cols-3 gap-4">
               <div class="col-span-3">
@@ -56,7 +55,7 @@
                               </div>
                           </x-card>
                       </div>
-
+                      {{-- FEGOCOMOSA INFORMATON FORM --}}
                       <div class="flex-grow">
                           <x-card class="uppercase" title="Fegocomosa Information">
                               <div class="grid grid-cols-1 md:grid-cols-1 gap-6">
@@ -98,10 +97,9 @@
                   </div>
               </div>
 
+              {{-- PERSONAL INFORMATON FORM --}}
               <div class="col-span-3">
                   <div class="flex flex-wrap flex-row   gap-4">
-
-
                       <div class="flex-grow">
                           <x-card class="uppercase" title="Personal Information">
                               <x-errors class="mb-4" />
@@ -176,8 +174,8 @@
                               </div>
                           </x-card>
                       </div>
+                      {{-- POTRAIT PROFILE IMAGE --}}
                       <div class=" flex-auto basis-1/3">
-
                           <x-card>
 
                               <input class="hidden" id="fileInput" accept="image/*" type="file"
@@ -219,9 +217,8 @@
                   </div>
               </div>
 
-
+              {{-- PROFESSIONAL INFORMATON FORM --}}
               <div class=" col-span-3 ">
-
                   <x-card class="uppercase" title="Professional Information">
                       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                           <div class="col-span-1  md:col-span-3 md:grid md:grid-cols-3 md:gap-6">
