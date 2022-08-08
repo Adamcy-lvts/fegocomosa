@@ -1,6 +1,8 @@
 <x-user-dashboard>
 
-    {{-- <h1 class="text-3xl text-black pb-6">Dashboard</h1> --}}
+    <x-slot name="header">
+        {{ __('Dasboard') }}
+    </x-slot>
 
 
     <div class="flex flex-wrap w-full mt-6">
