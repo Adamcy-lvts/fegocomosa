@@ -1,5 +1,8 @@
 <div>
     <div>
+        <x-slot name="header">
+            {{ __('Resume') }}
+        </x-slot>
         <!-- outer container -->
         <div class="bg-white w-10/12 mx-auto border border-gray-300 rounded-sm shadow-lg py-10 px-10 w-4/5 mt-10 mb-10">
             <!-- header (profile) -->
