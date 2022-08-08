@@ -1,4 +1,7 @@
 <div>
+    <x-slot name="header">
+        {{ __('Create Resume') }}
+    </x-slot>
     <div x-data="app" class="w-full md:w-8/12 mx-auto py-24">
 
         <h1 class="text-xl uppercase pb-12">Build Your Resume</h1>
