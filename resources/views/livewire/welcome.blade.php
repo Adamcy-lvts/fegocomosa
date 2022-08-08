@@ -1,6 +1,5 @@
 <x-guest-menu />
 
-
 <x-guest-slider :textsslider="$textsslider" :membershipinfo="$membershipinfo" />
 
 <x-event :events="$events" />
