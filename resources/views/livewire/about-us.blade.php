@@ -1,5 +1,8 @@
 <div>
-    @livewire('menu.guest-menu')
+    <x-guest-menu />
+    @auth
+        @livewire('navigation-menu')
+    @endauth
     <div class="container mx-auto w-8/12">
         <section class="text-gray-600 body-font">
             <div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
