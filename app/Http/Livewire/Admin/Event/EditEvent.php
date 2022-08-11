@@ -52,9 +52,9 @@ public function mount($slug)
         ]);
 
         if ($this->image) {
-            Storage::delete('public/photos/'. $this->postedEventImage);
+            Storage::delete('public/events_images/'. $this->postedEventImage);
             $this->postedEventImage = $this->image->getClientOriginalName();
-            $this->image->storeAs('public/photos/', $this->postedEventImage);
+            $this->image->storeAs('public/events_images/', $this->postedEventImage);
         }
 
         Event::find($this->eventId)->update([
@@ -72,7 +72,7 @@ public function mount($slug)
             $event = Event::find($this->eventId);
            
             foreach ($event->images as $imagesevent) {
-                Storage::delete('public/photos/'. $imagesevent->images);
+                Storage::delete('public/events_images/'. $imagesevent->images);
                 $imagesevent->delete();
             }
 
@@ -80,7 +80,7 @@ public function mount($slug)
 
                 $image_name = $eventImage->getClientOriginalName();
     
-                $eventImage->storeAs('public/photos', $image_name);
+                $eventImage->storeAs('public/events_images', $image_name);
     
                 $eventImages = new EventImages();
     
