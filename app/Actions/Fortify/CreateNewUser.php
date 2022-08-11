@@ -43,7 +43,7 @@ class CreateNewUser implements CreatesNewUsers
             'jss_class'         => ['required', 'string', 'max:255'],
             'sss_class'         => ['required', 'string', 'max:255'],
             'house_id'          => ['required'],
-            'year_of_entry'     => ['required'],
+            'entry_year_id'     => ['required'],
             'graduation_year_id'=> ['required'],
             'workplace'         => ['required', 'string', 'max:255'],
             'university'        => ['required', 'string', 'max:255'],
@@ -55,7 +55,7 @@ class CreateNewUser implements CreatesNewUsers
             'terms'             => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ])->validate();
 
-        dd($input['city_id']);
+        // dd($input['city_id']);
      
       $request = request();
 
@@ -96,7 +96,7 @@ class CreateNewUser implements CreatesNewUsers
         // Filename to store
         $ImageNameToStore = $ImageName.'_'.time().'.'.$Extentions;
         // Upload Image
-        $paths = $request->file('potrait_image')->storeAs('public/photos/', $ImageNameToStore);
+        $paths = $request->file('potrait_image')->storeAs('public/members_images/', $ImageNameToStore);
 
     }
 
@@ -115,7 +115,7 @@ class CreateNewUser implements CreatesNewUsers
             'first_name'        => $input['first_name'],
             'middle_name'       => $input['middle_name'],
             'last_name'         => $input['last_name'],
-            'date_of_birth'     => $input['date_of_birth'],
+            'date_of_birth'     => Carbon::create($input['date_of_birth']),
             'address'           => $input['address'],
             'gender_id'         => $input['gender_id'],
             'marital_status_id' => $input['marital_status_id'],
