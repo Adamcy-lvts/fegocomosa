@@ -2,9 +2,7 @@
     {{-- <x-app-layout> --}}
     {{-- <div class="main-container"> --}}
     <x-slot name="header">
-
         {{ __('Profile') }}
-
     </x-slot>
 
     <div>
