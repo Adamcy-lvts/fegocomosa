@@ -55,7 +55,7 @@ class CreateEvent extends Component
 
             $image_name = $eventImage->getClientOriginalName();
 
-            $eventImage->storeAs('public/photos', $image_name);
+            $eventImage->storeAs('public/events_images', $image_name);
 
             $eventImages = new EventImages();
 
