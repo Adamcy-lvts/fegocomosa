@@ -20,7 +20,7 @@
                         <div class="h-full shadow-xl  rounded-lg overflow-hidden">
                             <a href="{{ route('posts.show', $post->slug) }}">
                                 <img class=" w-full object-cover object-center"
-                                    src="{{ asset('storage/photos/' . $post->image) }}" alt="blog">
+                                    src="{{ asset('storage/blog_images/' . $post->image) }}" alt="blog">
                                 <div class="p-6 pb-2 border-b  border-coolGray-100">
                                     <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
                                         {{ $post->category->name }}
