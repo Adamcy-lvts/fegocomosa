@@ -6,19 +6,17 @@
     <title></title>
     <link rel="stylesheet" type="text/css" href="{{ url('css/editor.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
-    <link rel="stylesheet" href="{{ asset('fontawesome-pro-5.10.2-web/css/all.css') }}">
-
+    <link rel="stylesheet" href="{{ asset('fontawesome-6/css/all.css') }}">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     @livewireStyles
-    <script src="{{ asset('js/dashboard.js') }}"></script>
+
 
     @wireUiScripts
     <script src="{{ mix('js/app.js') }}" defer></script>
-    {{-- <script src="{{ asset('ckeditor5-build-classic/ckeditor.js') }}"></script> --}}
     <script src="{{ asset('ckeditor5/build/ckeditor.js') }}"></script>
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" charset="utf-8"></script> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    {{-- <script src="https://ckeditor.com/apps/ckfinder/3.5.0/ckfinder.js"></script> --}}
+
 
 
 </head>
