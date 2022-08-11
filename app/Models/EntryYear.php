@@ -7,5 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class EntryYear extends Model
 {
+    protected $fillable =[
+        'year'
+    ];
     use HasFactory;
 }
