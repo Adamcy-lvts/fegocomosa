@@ -27,7 +27,7 @@
                         <div class="xl:w-1/4 md:w-1/2 p-4">
                             <div class="bg-gray-100 p-6 border rounded-lg">
                                 <img class=" rounded w-full object-cover object-center mb-6"
-                                    src="{{ asset('storage/campaign_images/' . $campaign->cover_image) }}"
+                                    src="{{ asset('storage/campaigns_images/' . $campaign->cover_image) }}"
                                     alt="content">
                                 <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">
                                     Organizer: {{ $campaign->organizer->org_name }}</h3>
