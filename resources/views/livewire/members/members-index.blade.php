@@ -74,7 +74,7 @@
 
                     <div class="cards-image waves-effect waves-block static waves-light">
                         <a href="{{ route('member.profile', $member->id) }}">
-                            <img src="{{ asset('storage/photos/' . $member->potrait_image) }}" />
+                            <img src="{{ asset('storage/members_images/' . $member->potrait_image) }}" />
                             <div class="absolute top-0 left-0">
                                 <span class="bg-black text-xs italic md:p-2 lg:p-2 p-1 text-white bg-opacity-25">
                                     Class Of {{ $member->graduationYear->year }}
@@ -243,8 +243,6 @@
                             </svg></a>
                     </div>
 
-                    <!-- Use https://simpleicons.org/ to find the svg for your preferred product -->
-
                 </div>
 
             </div>
@@ -254,7 +252,7 @@
                 <!-- Big profile image for side bar (desktop) -->
                 <img src="{{ asset('storage/photos/' . $potraitImage) }}"
                     class="rounded-none lg:rounded-lg shadow-2xl hidden lg:block">
-                <!-- Image from: http://unsplash.com/photos/MP0IUfwrn0A -->
+
 
             </div>
 
