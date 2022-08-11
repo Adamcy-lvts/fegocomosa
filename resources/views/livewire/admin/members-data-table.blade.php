@@ -15,7 +15,7 @@
 
 
 
-    {{-- <x-jet-button class="">Create</x-jet-button> --}}
+
     <x-button label="Add Member" wire:click="createMemberModal" icon="user-add" />
 
     <div class="my-2 flex sm:flex-row flex-col">
@@ -406,7 +406,7 @@
 
                             @if ($postedPotraitImage)
                                 Event Image:
-                                <img src="{{ asset('storage/photos/' . $postedPotraitImage) }}">
+                                <img src="{{ asset('storage/members_images/' . $postedPotraitImage) }}">
                             @endif
                         </div>
 
@@ -438,14 +438,13 @@
             @if ($memberId)
                 <div class="flex items-center gap-x-3 justify-end">
                     <x-button wire:click="CancelConfirmation" label="Cancel" flat />
-                    <x-button type="submit" wire:click="updateMember" label="Update" wire:loading.attr="disabled"
-                        primary />
+                    <x-button type="submit" wire:click="updateMember" label="Update"
+                        wire:loading.attr="disabled" />
                 </div>
             @else
                 <div class="flex items-center gap-x-3 justify-end">
                     <x-button wire:click="CancelConfirmation" label="Cancel" flat />
-                    <x-button type="submit" wire:click="storeMember" label="Create" wire:loading.attr="disabled"
-                        primary />
+                    <x-button type="submit" wire:click="storeMember" label="Create" wire:loading.attr="disabled" />
                 </div>
             @endif
 
