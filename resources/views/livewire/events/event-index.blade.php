@@ -4,7 +4,7 @@
             @foreach ($upComingEvents as $event)
                 <div class="carousel-cell">
                     <img alt="content" class="carousel-cell-image block md:w-4/4  w-full"
-                        src="{{ asset('storage/event_images/' . $event->image) }}">
+                        src="{{ asset('storage/events_images/' . $event->image) }}">
                     <div class="overlay"></div>
                     <div class="inner">
                         <h2 class="title">Up Coming Event</h2>
@@ -64,7 +64,7 @@
                     <div
                         class="relative overflow-hidden transition duration-200 transform rounded shadow-lg hover:-translate-y-2 hover:shadow-2xl">
                         <img class="object-cover w-full h-56 md:h-64 xl:h-80"
-                            src="{{ asset('storage/event_images/' . $event->image) }}" alt="" />
+                            src="{{ asset('storage/events_images/' . $event->image) }}" alt="" />
                         <div class="absolute inset-x-0 bottom-0 px-6 py-4 bg-black bg-opacity-75">
                             <h1 class="text-sm font-medium tracking-wide text-white">
                                 {{ $event->title }}
