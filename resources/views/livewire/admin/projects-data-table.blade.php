@@ -6,10 +6,9 @@
         </h2>
     </x-slot>
 
-    <x-jet-button class="" wire:click="createProjectModal">Create</x-jet-button>
+    <x-button wire:click="createProjectModal" label="Create Project" icon="pencil" />
 
     <div class="my-2 flex sm:flex-row flex-col">
-
 
         @if ($checkedProjects)
             <x-jet-dropdown align="right" width="48">
@@ -259,7 +258,7 @@
 
                             @if ($postedProjectImage)
                                 Project Image:
-                                <img src="{{ asset('storage/photos/' . $postedProjectImage) }}">
+                                <img src="{{ asset('storage/projects_images/' . $postedProjectImage) }}">
                             @endif
 
                             @if ($postedProjectImages)
@@ -270,7 +269,7 @@
                                         <i class="fas fa-times  text-right text-red-200 hover:text-red-600 cursor-pointer ml-3"
                                             wire:click="removeProjectImage({{ $postedPhotos->id }})"></i>
                                         <img width="30%"
-                                            src="{{ asset('storage/photos/' . $postedPhotos->images) }}">
+                                            src="{{ asset('storage/projects_images/' . $postedPhotos->images) }}">
                                     @endforeach
                                 </div>
                             @endif
@@ -350,14 +349,14 @@
             @if ($projectId)
                 <div class="flex items-center gap-x-3 justify-end">
                     <x-button wire:click="CancelConfirmation" label="Cancel" flat />
-                    <x-button type="submit" wire:click="updateProject" label="Update" wire:loading.attr="disabled"
-                        primary />
+                    <x-button type="submit" wire:click="updateProject" label="Update"
+                        wire:loading.attr="disabled" />
                 </div>
             @else
                 <div class="flex items-center gap-x-3 justify-end">
                     <x-button wire:click="CancelConfirmation" label="Cancel" flat />
-                    <x-button type="submit" wire:click="storeProject" label="Create" wire:loading.attr="disabled"
-                        primary />
+                    <x-button type="submit" wire:click="storeProject" label="Create"
+                        wire:loading.attr="disabled" />
                 </div>
             @endif
 
