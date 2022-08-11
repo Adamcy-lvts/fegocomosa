@@ -14,7 +14,7 @@
                 <div class="mySlides fade">
                     <div class="numbertext">{{ $projectImage->id }}/{{ $projectImages->count() }}</div>
                     <img alt="feature" class="object-cover object-center h-full w-full"
-                        src="{{ asset('storage/photos/' . $projectImage->images) }}">
+                        src="{{ asset('storage/projects_images/' . $projectImage->images) }}">
                     {{-- {{ dd($projectImage) }} --}}
                     <div class="text">{{ $projectImage->caption }}</div>
 
