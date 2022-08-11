@@ -23,7 +23,7 @@
 
                     @if ($postedEventImage)
                         Event Image:
-                        <img src="{{ asset('storage/photos/' . $postedEventImage) }}">
+                        <img src="{{ asset('storage/events_images/' . $postedEventImage) }}">
                     @endif
 
 
@@ -34,7 +34,8 @@
                             @foreach ($postedEventImages as $postedEventPhotos)
                                 <i class="fas fa-times  text-right text-red-200 hover:text-red-600 cursor-pointer ml-3"
                                     wire:click="removeEventImage({{ $postedEventPhotos->id }})"></i>
-                                <img width="30%" src="{{ asset('storage/photos/' . $postedEventPhotos->images) }}">
+                                <img width="30%"
+                                    src="{{ asset('storage/events_images/' . $postedEventPhotos->images) }}">
                             @endforeach
                         </div>
                     @endif
@@ -104,7 +105,7 @@
             <x-slot name="footer">
                 <div class="flex items-center gap-x-3 justify-end">
                     <x-button wire:click="cancel" label="Cancel" flat />
-                    <x-button type="submit" id="submit" label="Update" spinner="save" primary />
+                    <x-button type="submit" id="submit" label="Update" spinner="save" />
                 </div>
             </x-slot>
 
