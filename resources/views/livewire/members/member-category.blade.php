@@ -68,7 +68,7 @@
                 <div class="cards">
 
                     <div class="cards-image waves-effect waves-block waves-light">
-                        <img class="" src="{{ asset('storage/photos/' . $member->potrait_image) }}" />
+                        <img class="" src="{{ asset('storage/members_images/' . $member->potrait_image) }}" />
                     </div>
                     <div class="cards-content">
                         <span class="cards-title activator grey-text text-darken-4">
