@@ -34,7 +34,7 @@
                             <div
                                 class="  overflow-hidden transition-shadow duration-300 bg-white rounded border shadow-lg">
                                 <a href="{{ route('show.project', $project->id) }}">
-                                    <img src="{{ asset('storage/photos/' . $project->cover_image) }}"
+                                    <img src="{{ asset('storage/projects_images/' . $project->cover_image) }}"
                                         class="object-cover w-full h-64" alt="" />
                                     <div class="p-5 ">
                                         <div
@@ -71,7 +71,7 @@
                     @foreach ($completedProjects as $project)
                         <div class="  overflow-hidden transition-shadow duration-300 bg-white rounded shadow-lg">
                             <a href="{{ route('show.project', $project->id) }}">
-                                <img src="{{ asset('storage/photos/' . $project->cover_image) }}"
+                                <img src="{{ asset('storage/projects_images/' . $project->cover_image) }}"
                                     class="object-cover w-full h-64" alt="" />
                                 <div class="p-5 ">
                                     <div class="mb-3 flex flex-col gap-3 text-xs font-semibold tracking-wide uppercase">
@@ -107,7 +107,7 @@
                     @foreach ($inProgressProjects as $project)
                         <div class="  overflow-hidden transition-shadow duration-300 bg-white rounded shadow-lg">
                             <a href="{{ route('show.project', $project->id) }}">
-                                <img src="{{ asset('storage/photos/' . $project->cover_image) }}"
+                                <img src="{{ asset('storage/projects_images/' . $project->cover_image) }}"
                                     class="object-cover w-full h-64" alt="" />
                                 <div class="p-5 ">
                                     <div class="mb-3 flex flex-col gap-3 text-xs font-semibold tracking-wide uppercase">
