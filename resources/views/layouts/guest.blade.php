@@ -38,12 +38,12 @@
         {{ $slot }}
     </div>
     <x-footer />
-    @livewireScripts
+    
     <script src="{{ asset('js/jquery-3.4.1.js') }}"></script>
     @yield('script')
     {{-- <script src="{{ asset('js/welcome.js') }}"></script> --}}
     {{-- <script src="{{ asset('ckeditor5/build/ckeditor.js') }}"></script> --}}
-
+    @livewireScripts
 </body>
 
 </html>
