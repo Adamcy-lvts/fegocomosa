@@ -13,7 +13,7 @@
             <div class=" mx-auto flex flex-row flex-wrap">
                 <div class="lg:w-1/2">
                     <img alt="ecommerce" class="w-full mb-2 lg:h-auto h-128 object-cover object-center rounded"
-                        src="{{ asset('storage/campaign_images/' . $campaigns->cover_image) }}">
+                        src="{{ asset('storage/campaigns_images/' . $campaigns->cover_image) }}">
                     <figcaption class="text-sm font-bold italic">{{ $campaign->caption }}</figcaption>
                 </div>
 
