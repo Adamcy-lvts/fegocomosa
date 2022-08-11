@@ -43,7 +43,7 @@
 <x-slot name="footer">
     <div class="flex items-center gap-x-3 justify-end">
         <x-button wire:click="cancel" label="Cancel" flat />
-        <x-button type="submit" id="submit" label="Update" spinner="save" primary />
+        <x-button type="submit" id="submit" label="Update" spinner="save" />
     </div>
 </x-slot>
 </x-card>
