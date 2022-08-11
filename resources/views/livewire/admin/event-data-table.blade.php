@@ -6,11 +6,9 @@
         </h2>
     </x-slot>
 
-    {{-- <x-jet-button class="" wire:click="createEventModal">Create</x-jet-button> --}}
-    <x-button href="{{ route('event.create') }}" label="Create" spinner="save" primary />
+    <x-button href="{{ route('event.create') }}" label="Add Event" icon="calendar" />
 
     <div class="my-2 flex sm:flex-row flex-col">
-
 
         @if ($checkedEvents)
             <x-jet-dropdown align="right" width="48">
@@ -135,7 +133,7 @@
                                 <div class="flex items-center">
                                     <div class="flex-shrink-0 w-10 h-10">
                                         <img class="h-10 w-10 rounded-full object-cover"
-                                            src="{{ asset('storage/photos/' . $event->image) }}"
+                                            src="{{ asset('storage/events_images/' . $event->image) }}"
                                             alt="{{ Auth::user()->name }}" />
                                     </div>
                                     <div class="ml-3">
