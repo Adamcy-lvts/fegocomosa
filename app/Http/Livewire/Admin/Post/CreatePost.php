@@ -34,7 +34,7 @@ class CreatePost extends Component
 
 // dd($this->status);
         $image_name = $this->image->getClientOriginalName();
-        $this->image->storeAs('public/photos', $image_name);
+        $this->image->storeAs('public/blog_images', $image_name);
         $post = new Post();
         $post->user_id = auth()->user()->id;
         $post->title = $this->title;
