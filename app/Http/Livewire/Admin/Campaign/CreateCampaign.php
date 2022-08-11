@@ -33,7 +33,7 @@ class CreateCampaign extends Component
     {
         // dd('hi');
         $image_name = $this->coverImage->getClientOriginalName();
-        $this->coverImage->storeAs('public/photos', $image_name);
+        $this->coverImage->storeAs('public/campaigns_images', $image_name);
         $campaign = new Campaign();
         $campaign->campaign_title = $this->campaignTitle;
         $campaign->slug           = Str::slug($this->campaignTitle);
