@@ -6,9 +6,7 @@
          </h2>
      </x-slot>
 
-
-     <x-button href="{{ route('campaign.create') }}" label="Create" spinner="save" primary />
-
+     <x-button label="Create Campaign" href="{{ route('campaign.create') }}" />
 
      <div class="my-2 flex sm:flex-row flex-col">
 
