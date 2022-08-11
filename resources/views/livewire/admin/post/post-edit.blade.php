@@ -20,7 +20,7 @@
                 <div class="w-full m-2 p-2">
                     @if ($postedImage)
                         Post Photo:
-                        <img src="{{ asset('storage/photos/' . $postedImage) }}">
+                        <img src="{{ asset('storage/blog_images/' . $postedImage) }}">
                     @endif
                     @if ($image)
                         Photo Preview:
@@ -59,7 +59,7 @@
             <x-slot name="footer">
                 <div class="flex items-center gap-x-3 justify-end">
                     {{-- <x-button wire:click="cancel" label="Cancel" flat /> --}}
-                    <x-button wire:click="updatePost" id="submit" label="Update" spinner="save" primary />
+                    <x-button wire:click="updatePost" id="submit" label="Update" spinner="save" />
                 </div>
             </x-slot>
         </form>
