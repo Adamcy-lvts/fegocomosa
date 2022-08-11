@@ -1,30 +1,34 @@
 <x-guest-layout>
-    {{-- <x-jet-authentication-card> --}}
-    {{-- <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot> --}}
 
-    <x-jet-validation-errors class="mb-4" />
-    <div x-data="app()" x-cloak>
-        <div class="max-w-3xl mx-auto px-4 py-10">
+    <div x-data="app()" x-cloak class="w-full md:w-7/12 mx-auto px-4 sm:px-0 py-24">
+        <h1 class="text-xl ml-2 uppercase pb-12" x-text="`Registeration Step: ${step} of 4`"></h1>
 
-            <!-- Top Navigation -->
-            <div class="border-b-2 py-4">
+
+        <x-card title="Membership Registration" padding="false">
+            <x-slot name="action">
+                <p class="text-sm">
+                    Already Registered? <a class="text-blue-500" href="{{ route('login') }}">Login</a>
+                </p>
+            </x-slot>
+            <!-- Navigation indicator -->
+            <x-errors class="mb-4" />
+
+            <div class="border-b mb-4 p-4">
                 <div class="uppercase tracking-wide text-xs font-bold text-gray-500 mb-1 leading-tight"
                     x-text="`Step: ${step} of 4`"></div>
                 <div class="flex flex-col md:flex-row md:items-center md:justify-between">
 
                     <div class="flex-1">
                         <div x-show="step === 1">
-                            <div class="text-lg font-bold text-gray-700 leading-tight">Your Profile</div>
+                            <div class="text-lg font-bold text-gray-700 leading-tight">Personal Information</div>
                         </div>
 
                         <div x-show="step === 2">
-                            <div class="text-lg font-bold text-gray-700 leading-tight">Your Fegocomosa Infomation</div>
+                            <div class="text-lg font-bold text-gray-700 leading-tight">Fegocomosa Inforamtion</div>
                         </div>
 
                         <div x-show="step === 3">
-                            <div class="text-lg font-bold text-gray-700 leading-tight">Your Professional Information
+                            <div class="text-lg font-bold text-gray-700 leading-tight">Profesional Inforamtion
                             </div>
                         </div>
 
@@ -42,16 +46,13 @@
                     </div>
                 </div>
             </div>
-            <!-- /Top Navigation -->
 
-
-
-            <!-- PROFILE INFO -->
             <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                 @csrf
-                <div x-show.transition.in="step === 1">
+                <div class="p-4" x-show.transition="step === 1">
+
                     <div class="mb-5 text-center">
-                        <div class="mx-auto w-32 h-32 mb-2 border rounded-full relative bg-gray-100 mb-4 shadow-inset">
+                        <div class="mx-auto w-32 h-32 mb-2 border rounded-full relative bg-gray-100  shadow-inset">
                             <img id="image" class="object-cover w-full h-32 rounded-full" :src="image" />
                         </div>
 
@@ -60,7 +61,8 @@
                             <svg xmlns="http://www.w3.org/2000/svg" class="inline-flex flex-shrink-0 w-6 h-6 -mt-1 mr-1"
                                 viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
                                 stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="0" y="0" width="24" height="24" stroke="none"></rect>
+                                <rect x="0" y="0" width="24" height="24" stroke="none">
+                                </rect>
                                 <path
                                     d="M5 7h1a2 2 0 0 0 2 -2a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1a2 2 0 0 0 2 2h1a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
                                 <circle cx="12" cy="13" r="3" />
@@ -68,7 +70,8 @@
                             Browse Photo
                         </label>
 
-                        <div class="mx-auto w-48 text-gray-500 text-xs text-center mt-1">Click to add profile picture
+                        <div class="mx-auto w-48 text-gray-500 text-xs mt-2 text-center mt-1">Click to add profile
+                            picture
                         </div>
 
                         <input name="photo" id="fileInput" accept="image/*" class="hidden" type="file"
@@ -78,304 +81,139 @@
                             reader.readAsDataURL(file);">
                     </div>
 
-                    <div class="flex flex-wrap">
-                        <div class="w-full lg:w-6/12 px-2">
-                            <div class="relative w-full mb-3">
-                                <div>
-                                    <x-jet-label for="first_name" value="{{ __('First Name') }}" />
-                                    <x-jet-input id="firstname" class="block mt-1 w-full" type="text"
-                                        name="first_name" :value="old('firstname')" autofocus autocomplete="name" />
-                                </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+
+                        <x-input name="first_name" :value="old('first_name')" label="First Name" placeholder="First Name" />
+
+                        <x-input name="last_name" :value="old('last_name')" label="Last Name" placeholder="Last Name" />
+
+
+                        <x-input name="middle_name" :value="old('middle_name')" label="Middle Name" placeholder="Middle Name" />
+                        @livewire('component.birthdate-datepicker')
+
+                        <x-native-select name="gender_id" :value="old('gender_id')" label="Gender" placeholder="Gender">
+                            @foreach ($genders as $gender)
+                                <option value="{{ $gender->id }}">{{ $gender->gender }}</option>
+                            @endforeach
+                        </x-native-select>
+
+                        <x-native-select name="marital_status_id" :value="old('marital_status_id')" label="Marital Status"
+                            placeholder="Marital Status">
+                            @foreach ($marital_statuses as $marital_status)
+                                <option value="{{ $marital_status->id }}">{{ $marital_status->marital_status }}</option>
+                            @endforeach
+                        </x-native-select>
+
+                        <div class="col-span-1 sm:col-span-2 sm:grid sm:grid-cols-7 sm:gap-5 ">
+                            <div class="col-span-1 sm:col-span-4 sm:mb-0 mb-5">
+                                <x-input name="address" :value="old('address')" label="Address" placeholder="Address" />
+                            </div>
+
+                            <div class="col-span-1 sm:col-span-3">
+                                @livewire('component.phone-mask')
                             </div>
                         </div>
 
-                        <div class="w-full lg:w-6/12 px-2">
-                            <div class="relative w-full mb-3">
-                                <div>
-                                    <x-jet-label for="middle_name" value="{{ __('Middle Name') }}" />
-                                    <x-jet-input id="middlename" class="block mt-1 w-full" type="text"
-                                        name="middle_name" :value="old('middlename')" autofocus autocomplete="name" />
-                                </div>
-                            </div>
+                        <div class="col-span-1 sm:col-span-2 sm:grid sm:grid-cols-1 ">
+                            @livewire('state-city')
                         </div>
+                        {{-- <x-toggle label="Accept the terms and conditions" wire:model.defer="user.terms" /> --}}
                     </div>
 
-                    <div class="flex flex-wrap">
+                </div><!-- step 1 ending -->
 
-                        <div class="w-full lg:w-6/12 px-2">
-                            <div class="relative w-full mb-3">
-                                <div class="mt-4">
-                                    <x-jet-label for="last_name" value="{{ __('Last Name') }}" />
-                                    <x-jet-input id="lastname" class="block mt-1 w-full" type="text"
-                                        name="last_name" :value="old('lastname')" />
-                                </div>
-                            </div>
+                {{-- STEP 2 FEGOCOMSA INFO --}}
+                <div class="p-4" x-show.transition="step === 2">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="col-span-1 sm:col-span-2 sm:grid sm:grid-cols-1 ">
+                            @livewire('component.datepicker')
                         </div>
 
+                        <x-input label="Jss Class" placeholder="Jss Class" name="jss_class" :value="old('jss_class')" />
 
-                        <div class="w-full lg:w-6/12 px-2">
-                            <div class="relative w-full mb-3">
-                                <div class="mt-4">
-                                    <x-jet-label for="dateofbirth" value="{{ __('Date of Birth') }}" />
-                                    <x-jet-input id="dateofbirth" class="block mt-1 w-full" type="date"
-                                        name="date_of_birth" :value="old('dateofbirth')" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        <x-input label="Sss Class" placeholder="Sss Class" name="sss_class" :value="old('sss_class')" />
 
+                        <x-input label="Admission Number" placeholder="Admission Number" name="admission_number"
+                            :value="old('admission_number')" />
 
-                    <div class="flex flex-wrap">
-
-
-                        <div class="w-full lg:w-6/12 px-2">
-                            <div class="relative w-full mb-3">
-                                <div class="mt-4">
-                                    <x-jet-label for="address" value="{{ __('Address') }}" />
-                                    <x-jet-input id="address" class="block mt-1 w-full" type="text"
-                                        name="address" :value="old('address')" />
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="w-full lg:w-6/12 px-2">
-                            <div class="relative w-full mb-3">
-                                <div class="mt-4">
-                                    <x-jet-label for="phone" value="{{ __('Phone Number') }}" />
-                                    <x-jet-input id="phone" class="block mt-1 w-full" type="text"
-                                        name="phone" :value="old('address')" />
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="flex flex-wrap">
-
-                        <div class="w-full lg:w-6/12 px-2">
-                            <div class="relative w-full mb-3">
-                                <div class="mt-4">
-                                    <x-jet-label for="gender" value="{{ __('Gender') }}" />
-                                    <select id="gender-id" name="gender_id"
-                                        class="border-0 px-3 py-3  rounded text-sm shadow focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-100  w-full ">
-                                        <option value="" disabled selected>--Select Gender--</option>
-                                        @foreach ($genders as $gender)
-                                            <option value="{{ $gender->id }}">{{ $gender->gender }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="w-full lg:w-6/12 px-2">
-                            <div class="relative w-full mb-3">
-                                <div class="mt-4">
-                                    <x-jet-label for="maritalstatus" value="{{ __('Marital Status') }}" />
-                                    <select id="marital-status" name="marital_status_id"
-                                        class="border-0 px-3 py-3  rounded text-sm shadow focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-100  w-full ">
-                                        <option value="" disabled selected>--Select Marital Status--</option>
-                                        @foreach ($marital_statuses as $marital_status)
-                                            <option value="{{ $marital_status->id }}">
-                                                {{ $marital_status->marital_status }}</option>
-                                        @endforeach
-
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    @livewire('state-city')
-
-                </div> <!-- step 1 ending -->
-
-                <!-- FEGOCOMOSA INFO -->
-                <div x-show.transition.in="step === 2">
-
-                    <div>
-                        <x-jet-label for="year_of_entry" value="{{ __('  Year of Entry') }}" />
-                        <x-jet-input id="yearofentry" class="block mt-1 w-full" type="date" name="year_of_entry"
-                            :value="old('year_of_entry')" autofocus autocomplete="name" />
-                    </div>
-
-                    <div>
-                        <x-jet-label for="year_of_graduation" value="{{ __('Year of Graduation') }}" />
-                        <x-jet-input id="yearofgraduation" class="block mt-1 w-full" type="date"
-                            name="graduation_year_id" :value="old('graduation_year_id')" autofocus autocomplete="name" />
-                    </div>
-
-                    <div>
-                        <x-jet-label for="jss_class" value="{{ __('Jss Class') }}" />
-                        <x-jet-input id="jssclass" class="block mt-1 w-full" type="text" name="jss_class"
-                            :value="old('jss_class')" autofocus autocomplete="name" />
-                    </div>
-
-                    <div>
-                        <x-jet-label for="sss_class" value="{{ __(' Sss Class') }}" />
-                        <x-jet-input id="sssclass" class="block mt-1 w-full" type="text" name="sss_class"
-                            :value="old('sss_class')" autofocus autocomplete="name" />
-                    </div>
-
-                    <div>
-                        <x-jet-label for="addmission_number" value="{{ __('Addmission Number') }}" />
-                        <x-jet-input id="addmission-number" class="block mt-1 w-full" type="text"
-                            name="admission_number" :value="old('admission_number')" autofocus autocomplete="name" />
-                    </div>
-
-                    <div>
-                        <x-jet-label for="house" value="{{ __('House') }}" />
-                        <select id="house" name="house_id"
-                            class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
-                            {{-- <option value="" disabled selected>--Select House--</option> --}}
+                        <x-native-select name="house_id" :value="old('house_id')" label="House" placeholder="House">
                             @foreach ($houses as $house)
                                 <option value="{{ $house->id }}">{{ $house->name }}</option>
                             @endforeach
-
-                        </select>
+                        </x-native-select>
                     </div>
+                </div><!-- step 2 ending -->
 
+                {{-- STEP 3 PROFESSION INFO --}}
+                <div class="p-4" x-show.transition="step === 3">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
 
-                </div><!-- END OF STEP 2 -->
+                        <x-input name="profession" label="Profession" placeholder="Profession" :value="old('profession')" />
+                        <x-input name="workplace" label="Workplace" placeholder="Workplace" :value="old('workplace')" />
 
-
-
-                <!-- PROFESIONAL INFO -->
-                <div x-show.transition.in="step === 3">
-
-                    <div class="mb-5">
-
-                        <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2">
-                            Profession
-                        </label>
-                        <input type="text" name="profession"
-                            class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                            value="">
-                    </div>
-
-                    <div class="mb-5">
-                        <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2">
-                            Profession Category
-                        </label>
-
-                        <select name="profession_category" id="profession-category-id"
-                            class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
-                            <option value="" disabled selected>--Select Profession Category--</option>
-                            @foreach ($proCategories as $proCategory)
-                                <option value="{{ $proCategory->id }}">{{ $proCategory->name }}</option>
+                        <x-native-select name="profession_category" label="Profession Category"
+                            placeholder="Profession Category">
+                            @foreach ($proCategories as $categories)
+                                <option value="{{ $categories->id }}">{{ $categories->name }}</option>
                             @endforeach
+                        </x-native-select>
 
-                        </select>
+                        <x-input name="university" :value="old('university')" label="University"
+                            placeholder="University Attended" />
+
+                        <x-input name="course_of_study" :value="old('course_of_study')" label="Field of Study"
+                            placeholder="Field of Study" />
+
+
+                        <x-input type="file" name="potrait_image" label="Potrait Image" :value="old('potrait_image')" />
+
+
+
+                        {{-- </div> --}}
                     </div>
+                </div><!-- step 3 ending -->
 
-                    <div class="mb-5">
-                        <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2">
-                            Work Place
-                        </label>
+                {{-- STEP 4 LOGIN DETAILS --}}
+                <div class="p-4" x-show.transition="step === 4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-                        <input type="text" name="workplace"
-                            class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                            value="">
-                    </div>
-
-                    <div class="mb-5">
-                        <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2">
-                            University Attended
-                        </label>
-
-                        <input type="text" name="university"
-                            class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                            value="">
-                    </div>
-
-                    <div class="mb-5">
-                        <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2">
-                            Course of Study
-                        </label>
-
-                        <input type="text" name="course_of_study"
-                            class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                            value="">
-                    </div>
-
-                    <div class="mb-5">
-                        <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2">
-                            Potriate Image
-                        </label>
-
-                        <input type="file" name="potrait_image"
-                            class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                            value="">
-                    </div>
-                </div><!-- End of Step 3 -->
-
-
-                <!-- LOGIN DETAILS -->
-                <div x-show.transition.in="step === 4">
-                    <div class="mb-5">
-
-
-
-                        <div>
-                            <x-jet-label for="name" value="{{ __('UserName') }}" />
-                            <x-jet-input id="name" class="block mt-1 w-full" type="text" name="username"
-                                :value="old('username')" required autofocus autocomplete="name" />
+                        <div class="col-span-1 sm:col-span-2">
+                            <x-input label="User Name" placeholder="User Name" name="username" :value="old('username')" />
                         </div>
 
-                        <div class="mt-4">
-                            <x-jet-label for="email" value="{{ __('Email') }}" />
-                            <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email"
-                                :value="old('email')" required />
+                        <div class="col-span-1 sm:col-span-2">
+                            <x-input label="Email" placeholder="example@mail.com" name="email"
+                                :value="old('email')" />
                         </div>
 
-                        <div class="mt-4">
-                            <x-jet-label for="password" value="{{ __('Password') }}" />
-                            <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password"
-                                required autocomplete="new-password" />
+                        <div class="col-span-1 sm:col-span-2">
+                            <x-input label="Password" type="password" name="password" />
                         </div>
 
-                        <div class="mt-4">
-                            <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                            <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password"
-                                name="password_confirmation" required autocomplete="new-password" />
+                        <div class="col-span-1 sm:col-span-2">
+                            <x-input label="Confirm Password" type="password" name="password_confirmation" />
                         </div>
 
                     </div>
+                </div><!-- step 4 ending -->
 
-                    <!-- / Step Content -->
+                <!-- bottom navigation -->
+                <div
+                    class="px-4 py-4 sm:px-6 bg-secondary-50 rounded-t-none dark:bg-secondary-800
+                    border-t dark:border-secondary-600 mt-4 rounded">
+
+                    <div class="flex gap-x-3 justify-between">
+                        <x-button type="button" x-show="step === 1" label="Cancel" />
+                        <x-button type="button" x-show="step > 1" label="Previous" @click="step--" />
+                        <x-button green type="button" x-show="step < 4" label="Next" @click="step++" />
+                        <x-button type="submit" x-show="step === 4" green label="Submit" />
+
+                    </div>
+
                 </div>
-
-
-
-                <!-- Bottom Navigation -->
-                <div class="fixed bottom-0 left-0 right-0 py-5 bg-white shadow-md" x-show="step != 'complete'">
-                    <div class="max-w-3xl mx-auto px-4">
-                        <div class="flex justify-between">
-                            <div class="w-1/2">
-                                <button type="button" x-show="step > 1" @click="step--"
-                                    class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 font-medium border">Previous</button>
-                            </div>
-
-                            <div class="w-1/2 text-right">
-                                <button type="button" x-show="step < 4" @click="step++"
-                                    class="w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium">Next</button>
-
-                                <x-jet-button x-show="step === 4"
-                                    class="w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium">
-                                    Complete</x-jet-button>
-
-                                {{-- <x-jet-button class="ml-4">
-                    {{ __('Register') }}
-                         </x-jet-button> --}}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- / Bottom Navigation https://placehold.co/300x300/e2e8f0/cccccc -->
-
             </form>
+        </x-card>
 
-        </div>
     </div>
-    {{-- </x-jet-authentication-card> --}}
+
 </x-guest-layout>
