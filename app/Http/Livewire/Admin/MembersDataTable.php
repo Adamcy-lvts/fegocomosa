@@ -334,9 +334,9 @@ class MembersDataTable extends Component
         ]);
 
         if ($this->potraitImage) {
-            Storage::delete('public/photos/'. $this->postedPotraitImage);
+            Storage::delete('public/members_images/'. $this->postedPotraitImage);
             $this->postedPotraitImage = $this->image->getClientOriginalName();
-            $this->image->storeAs('public/photos/', $this->postedPotraitImage);
+            $this->image->storeAs('public/members_images/', $this->postedPotraitImage);
         }
 
         User::find($this->memberId)->update([
@@ -390,7 +390,7 @@ class MembersDataTable extends Component
         }
        
         $member = User::find($this->memberId);
-        Storage::delete('public/photos', $member->potrait_image);
+        Storage::delete('public/members_images', $member->potrait_image);
         $member->delete();
 
         $this->reset();
