@@ -8,12 +8,7 @@
 
 
 
-
-
-
-
-    {{-- <x-jet-button class="" wire:click="createPostModal">Create</x-jet-button> --}}
-    <x-button href="{{ route('post.create') }}" label="Create" spinner="save" primary />
+    <x-button href="{{ route('post.create') }}" label="Create Post" icon="newspaper" />
 
     <div class="my-2 flex sm:flex-row flex-col">
 
@@ -136,7 +131,7 @@
                                 <div class="flex items-center">
                                     <div class="flex-shrink-0 w-10 h-10">
                                         <img class="h-10 w-10 rounded-full object-cover"
-                                            src="{{ asset('storage/photos/' . $post->image) }}"
+                                            src="{{ asset('storage/blog_images/' . $post->image) }}"
                                             alt="{{ Auth::user()->name }}" />
                                     </div>
                                     <div class="ml-3">
@@ -255,7 +250,7 @@
                         <div class="w-full m-2 p-2">
                             @if ($postedImage)
                                 Post Photo:
-                                <img src="{{ asset('storage/photos/' . $postedImage) }}">
+                                <img src="{{ asset('storage/blog_images/' . $postedImage) }}">
                             @endif
                             @if ($image)
                                 Photo Preview:
@@ -300,14 +295,13 @@
             @if ($postId)
                 <div class="flex items-center gap-x-3 justify-end">
                     <x-button wire:click="CancelConfirmation" label="Cancel" flat />
-                    <x-button type="submit" wire:click="updatePost" label="Update" wire:loading.attr="disabled"
-                        primary />
+                    <x-button type="submit" wire:click="updatePost" label="Update" wire:loading.attr="disabled" />
                 </div>
             @else
                 <div class="flex items-center gap-x-3 justify-end">
                     <x-button wire:click="CancelConfirmation" label="Cancel" flat />
                     <x-button id="submit" type="submit" wire:click="storePost" label="Create"
-                        wire:loading.attr="disabled" primary />
+                        wire:loading.attr="disabled" />
                 </div>
             @endif
 
