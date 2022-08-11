@@ -46,9 +46,9 @@ class PostEdit extends Component
         ]);
 // dd('is it working');
         if ($this->image) {
-            Storage::delete('public/photos/'. $this->postedImage);
+            Storage::delete('public/blog_images/'. $this->postedImage);
             $this->postedImage = $this->image->getClientOriginalName();
-            $this->image->storeAs('public/photos/', $this->postedImage);
+            $this->image->storeAs('public/blog_images/', $this->postedImage);
         }
 
         Post::find($this->postId)->update([
