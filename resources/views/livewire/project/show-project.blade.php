@@ -8,7 +8,7 @@
                         @forelse ($project->images as $image)
                             <div class="carousel-cell">
                                 <img alt="content" class="carousel-cell-image block md:w-4/4  w-full"
-                                    src="{{ asset('storage/photos/' . $image->images) }}">
+                                    src="{{ asset('storage/projects_images/' . $image->images) }}">
                                 <div class="overlay"></div>
                                 <div class="inner">
                                     <h2 class="title">{{ $image->caption }}</h2>
