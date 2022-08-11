@@ -44,7 +44,7 @@ class EditCampaign extends Component
     {
 
         if ($this->coverImage) {
-            Storage::delete('public/photos/'. $this->postedCoverImage);
+            Storage::delete('public/campaigns_images/'. $this->postedCoverImage);
             $this->postedCoverImage = $this->coverImage->getClientOriginalName();
             $this->coverImage->storeAs('public/photos/', $this->postedCoverImage);
         }
