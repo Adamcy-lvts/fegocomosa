@@ -102,9 +102,9 @@ class ProjectsDataTable extends Component
         ]);
 
         if ($this->image) {
-            Storage::delete('public/photos/'. $this->postedProjectImage);
+            Storage::delete('public/projects_images/'. $this->postedProjectImage);
             $this->postedProjectImage = $this->image->getClientOriginalName();
-            $this->image->storeAs('public/photos/', $this->postedProjectImage);
+            $this->image->storeAs('public/projects_images/', $this->postedProjectImage);
         }
 
         Project::find($this->projectId)->update([
@@ -127,7 +127,7 @@ class ProjectsDataTable extends Component
             $project = Project::find($this->projectId);
            
             foreach ($project->images as $projectimage) {
-                Storage::delete('public/photos/'. $projectimage->images);
+                Storage::delete('public/projects_images/'. $projectimage->images);
                 $projectimage->delete();
             }
 
@@ -135,7 +135,7 @@ class ProjectsDataTable extends Component
 
                 $image_name = $projectImage->getClientOriginalName();
     
-                $projectImage->storeAs('public/photos', $image_name);
+                $projectImage->storeAs('public/projects_images', $image_name);
     
                 $projectImages = new ProjectImages();
     
@@ -176,7 +176,7 @@ public function storeProject()
 
 
         $image_name = $this->image->getClientOriginalName();
-        $this->image->storeAs('public/photos', $image_name);
+        $this->image->storeAs('public/projects_images', $image_name);
         $project = new Project();
         $project->user_id = auth()->user()->id;
         $project->title = $this->title;
@@ -195,7 +195,7 @@ public function storeProject()
 
         foreach ($this->projectImages as $key => $value) {
         $image_name = $value->getClientOriginalName();
-        $value->storeAs('public/photos', $image_name);
+        $value->storeAs('public/projects_images', $image_name);
         $projectImages = new ProjectImages();
         $projectImages->project_id = $project->id;
         $projectImages->images = $image_name;
@@ -225,11 +225,11 @@ public function storeProject()
     public function deleteProject()
     {
         $project = Project::find($this->projectId);
-        Storage::delete('public/photos/'.$project->image);
+        Storage::delete('public/projects_images/'.$project->image);
         $project->delete();
 
         foreach ($project->images as $imagesproject) {
-            Storage::delete('public/photos/'. $imagesproject->images);
+            Storage::delete('public/projects_images/'. $imagesproject->images);
             $imagesproject->delete();
         }
 
@@ -245,7 +245,7 @@ public function storeProject()
     {
         $postPicture = ProjectImages::find($postedImageId);
 
-        Storage::delete('public/photos/'.$postPicture->images);
+        Storage::delete('public/projects_images/'.$postPicture->images);
         $postPicture->delete();
         $this->loadProject();
         session()->flash('message', 'Comment deleted successfully');
