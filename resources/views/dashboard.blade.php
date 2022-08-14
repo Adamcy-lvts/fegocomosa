@@ -1,37 +1,14 @@
-{{-- <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <x-jet-welcome />
-            </div>
-        </div>
-    </div>
-</x-app-layout> --}}
-
-
-
-
 <x-dashboard>
     <x-slot name="header">
         <h2 class=" text-white font-sans text-3xl leading-tight">
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
-
-
-
-
     <div class="chart-row three">
         <div class="chart-container-wrapper">
             <div class="chart-container">
                 <div class="chart-info-wrapper">
-                    <h2>Applications</h2>
+                    <h2>Total Members</h2>
                     <span>20.5 K</span>
                 </div>
                 <div class="chart-svg">
@@ -54,8 +31,8 @@
         <div class="chart-container-wrapper">
             <div class="chart-container">
                 <div class="chart-info-wrapper">
-                    <h2>Shortlisted</h2>
-                    <span>5.5 K</span>
+                    <h2>Logins Today</h2>
+                    <span>249</span>
                 </div>
                 <div class="chart-svg">
                     <svg viewBox="0 0 36 36" class="circular-chart blue">
@@ -77,7 +54,30 @@
         <div class="chart-container-wrapper">
             <div class="chart-container">
                 <div class="chart-info-wrapper">
-                    <h2>On-hold</h2>
+                    <h2> Registerd Today</h2>
+                    <span>10.5 K</span>
+                </div>
+                <div class="chart-svg">
+                    <svg viewBox="0 0 36 36" class="circular-chart orange">
+                        <path class="circle-bg"
+                            d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831">
+                        </path>
+                        <path class="circle" stroke-dasharray="90, 100"
+                            d="M18 2.0845
+          a 15.9155 15.9155 0 0 1 0 31.831
+          a 15.9155 15.9155 0 0 1 0 -31.831">
+                        </path>
+                        <text x="18" y="20.35" class="percentage">90%</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div class="chart-container-wrapper">
+            <div class="chart-container">
+                <div class="chart-info-wrapper">
+                    <h2>Total Donations</h2>
                     <span>10.5 K</span>
                 </div>
                 <div class="chart-svg">
@@ -148,7 +148,7 @@
             </div>
             <div class="chart-container applicants">
                 <div class="chart-container-header">
-                    <h2>New Applicants</h2>
+                    <h2>New Members</h2>
                     <span>Today</span>
                 </div>
                 <div class="applicant-line">

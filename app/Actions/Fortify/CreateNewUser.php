@@ -5,10 +5,12 @@ namespace App\Actions\Fortify;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Category;
+use App\Mail\WelcomeMail;
 use App\Models\EntryYear;
 use App\Models\GraduationYears;
 use Laravel\Jetstream\Jetstream;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\Console\Input\Input;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
@@ -16,6 +18,8 @@ use Laravel\Fortify\Contracts\CreatesNewUsers;
 class CreateNewUser implements CreatesNewUsers
 {
     use PasswordValidationRules;
+
+    public $newUser;
    
     /**
      * Validate and create a newly registered user.
@@ -74,8 +78,8 @@ class CreateNewUser implements CreatesNewUsers
         $paths = $request->file('photo')->storeAs('public/profile-photos', $filenameToStore);
        
         $path = 'profile-photos';
-        $user = new User;
-        $user->profile_photo_path =  $path . '/' . $filenameToStore;
+        $this->newUser = new User;
+        $this->newUser->profile_photo_path =  $path . '/' . $filenameToStore;
 
        
 
@@ -83,7 +87,7 @@ class CreateNewUser implements CreatesNewUsers
 
  
 
-       $imageWithPath = $user->profile_photo_path;
+       $imageWithPath = $this->newUser->profile_photo_path;
 
     
       if ($request->hasFile('potrait_image')) {
@@ -94,7 +98,7 @@ class CreateNewUser implements CreatesNewUsers
         // Get just Extention
         $Extentions = $request->file('potrait_image')->getClientOriginalExtension();
         // Filename to store
-        $ImageNameToStore = $ImageName.'_'.time().'.'.$Extentions;
+        $ImageNameToStore = $ImageName.'_'.time().'_'.$input['first_name'].'.'.$Extentions;
         // Upload Image
         $paths = $request->file('potrait_image')->storeAs('public/members_images/', $ImageNameToStore);
 
@@ -146,7 +150,8 @@ class CreateNewUser implements CreatesNewUsers
                 $user->categories()->attach($procategory);
         }
         
-      
+        Mail::to($user)->queue(new WelcomeMail($user));
+
         return $user;
 
         

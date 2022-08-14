@@ -227,7 +227,7 @@ class MembersDataTable extends Component
         $potrait_image = $this->potraitImage->getClientOriginalName();
       
 
-        $this->potraitImage->storeAs('public/photos', $potrait_image);
+        $this->potraitImage->storeAs('public/members_images', $potrait_image);
         $member = new User();
         $member->first_name        =  $this->firstName;
         $member->last_name         =  $this->lastName;
@@ -334,9 +334,18 @@ class MembersDataTable extends Component
         ]);
 
         if ($this->potraitImage) {
+            // Delete image if it exist 
             Storage::delete('public/members_images/'. $this->postedPotraitImage);
-            $this->postedPotraitImage = $this->image->getClientOriginalName();
-            $this->image->storeAs('public/members_images/', $this->postedPotraitImage);
+            // Get filename with extention 
+            $this->postedPotraitImage = $this->potraitImage->getClientOriginalName();
+             // Get just filename
+            $ImageName = pathinfo($this->postedPotraitImage, PATHINFO_FILENAME);
+             // Get just Extention
+            $Extentions = $this->potraitImage->getClientOriginalExtension();
+            // Filename to store
+             $ImageNameToStore = $this->firstName.'_'.$this->lastName.'_'.time().'.'.$Extentions;
+
+            $this->potraitImage->storeAs('public/members_images/', $ImageNameToStore);
         }
 
         User::find($this->memberId)->update([
@@ -345,7 +354,7 @@ class MembersDataTable extends Component
             'middle_name'       => $this->middleName,
             'date_of_birth'     => $this->birthDate,
             'address'           => $this->address,
-            'potrait_image'     => $this->postedPotraitImage,
+            'potrait_image'     => $ImageNameToStore,
             'phone'             => $this->phone,
             'marital_status'    => $this->maritalStatus, 
             'state_id'          => $this->selectedState,

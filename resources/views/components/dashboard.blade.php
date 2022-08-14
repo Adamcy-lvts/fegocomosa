@@ -212,46 +212,10 @@
                 <p class="profile-subtext"> {{ Auth::user()->profession }}</p>
             </div>
             <div class="app-right-content">
+                @livewire('admin.dashboard-components.messages')
                 <div class="app-right-section">
                     <div class="app-right-section-header">
-                        <h2>Messages</h2>
-                        <span class="notification-active">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round"
-                                class="feather feather-message-square">
-                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-                            </svg>
-                        </span>
-                    </div>
-                    <div class="message-line">
-                        <img src="https://images.unsplash.com/photo-1562159278-1253a58da141?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MzB8fHBvcnRyYWl0JTIwbWFufGVufDB8MHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60"
-                            alt="profile">
-                        <div class="message-text-wrapper">
-                            <p class="message-text">Eric Clampton</p>
-                            <p class="message-subtext">Have you planned any deadline for this?</p>
-                        </div>
-                    </div>
-                    <div class="message-line">
-                        <img src="https://images.unsplash.com/photo-1604004555489-723a93d6ce74?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=934&q=80"
-                            alt="profile">
-                        <div class="message-text-wrapper">
-                            <p class="message-text">Jess Flax</p>
-                            <p class="message-subtext">Can we schedule another meeting for next thursday?</p>
-                        </div>
-                    </div>
-                    <div class="message-line">
-                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2250&q=80"
-                            alt="profile">
-                        <div class="message-text-wrapper">
-                            <p class="message-text">Pam Halpert</p>
-                            <p class="message-subtext">The candidate has been shorlisted.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="app-right-section">
-                    <div class="app-right-section-header">
-                        <h2>Activity</h2>
+                        <h2>Site Activity</h2>
                         <span class="notification-active">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"

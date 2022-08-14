@@ -4,7 +4,8 @@
             {{ __('Resume') }}
         </x-slot>
         <!-- outer container -->
-        <div class="bg-white w-10/12 mx-auto border border-gray-300 rounded-sm shadow-lg py-10 px-10 w-4/5 mt-10 mb-10">
+        <div
+            class="bg-white md:w-10/12 mx-auto border border-gray-300 rounded-sm shadow-lg py-10 px-10 w-full mt-10 mb-10">
             <!-- header (profile) -->
             <header class="border-b">
                 <!-- social icons-->

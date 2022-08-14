@@ -114,14 +114,24 @@ class UpdateProfileInformationForm extends Component
 
             $potraitImage = $this->potraitImage->getClientOriginalName();
 
-            $this->potraitImage->storeAs('public/photos', $potraitImage);
+            // Get just filename
+            $ImageName = pathinfo($potraitImage, PATHINFO_FILENAME);
+
+              // Get just Extention
+            $Extentions = $this->potraitImage->getClientOriginalExtension();
+
+            // Filename to store
+             $ImageNameToStore = $this->state['first_name'].'_'.$this->state['last_name'].'_'.time().'.'.$Extentions;
+
+            $this->potraitImage->storeAs('public/members_images', $ImageNameToStore);
 
             $user->update([
-                'potrait_image' =>  $potraitImage
+                'potrait_image' =>  $ImageNameToStore
             ]);
 
             $this->emit('refresh-profile-update-page');
        }
+
 
      // Edit Member Profession Category
        $categoryId =   $this->selectedCategory;
@@ -156,7 +166,7 @@ class UpdateProfileInformationForm extends Component
     {
         $user = User::find($id);
 
-        Storage::delete('public/photos/'.$user->potrait_image);
+        Storage::delete('public/members_images/'.$user->potrait_image);
         
         $user->potrait_image = null;
         $user->save();

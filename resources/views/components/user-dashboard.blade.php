@@ -118,80 +118,159 @@
 
     <div class="w-full flex flex-col h-screen overflow-y-hidden">
         <!-- Dashboard Header -->
-        <div class="bg-green-600">
-            <div class="container mx-auto px-4">
-                <div class="flex items-center md:justify-between py-4">
-                    <div class="w-1/4 md:hidden">
-                        <svg class="fill-current text-white h-8 w-8" xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 20 20">
-                            <path
-                                d="M16.4 9H3.6c-.552 0-.6.447-.6 1 0 .553.048 1 .6 1h12.8c.552 0 .6-.447.6-1 0-.553-.048-1-.6-1zm0 4H3.6c-.552 0-.6.447-.6 1 0 .553.048 1 .6 1h12.8c.552 0 .6-.447.6-1 0-.553-.048-1-.6-1zM3.6 7h12.8c.552 0 .6-.447.6-1 0-.553-.048-1-.6-1H3.6c-.552 0-.6.447-.6 1 0 .553.048 1 .6 1z" />
-                        </svg>
-                    </div>
-                    <div class="w-1/2 md:w-auto text-center text-white text-2xl font-medium">
-                        <!-- Page Heading -->
-                        @if (isset($header))
-                            {{ $header }}
-                        @endif
-                    </div>
-                    <div class="w-1/4 md:w-auto md:flex text-right">
-                        <x-jet-dropdown align="right" width="48">
-                            <x-slot name="trigger">
-                                <div class="flex">
-                                    <button>
-                                        <img class="inline-block h-10 w-10 rounded-full"
-                                            src="{{ asset('storage/' . auth()->user()->profile_photo_path) }}"
-                                            alt="">
-                                    </button>
-                                    <div class="hidden md:block cursor-pointer md:flex md:items-center ml-2">
-                                        <span class="text-white text-sm mr-1">{{ auth()->user()->first_name }}</span>
-                                        <div>
-                                            <svg class="fill-current text-white h-4 w-4 block opacity-50"
-                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                                <path
-                                                    d="M4.516 7.548c.436-.446 1.043-.481 1.576 0L10 11.295l3.908-3.747c.533-.481 1.141-.446 1.574 0 .436.445.408 1.197 0 1.615-.406.418-4.695 4.502-4.695 4.502a1.095 1.095 0 0 1-1.576 0S4.924 9.581 4.516 9.163c-.409-.418-.436-1.17 0-1.615z" />
-                                            </svg>
+        <div x-data="{ open: false }">
+            <div class="bg-green-600">
+                <div class="container mx-auto px-4">
+                    <div class="flex justify-between py-4">
+                        {{-- Mobile Navbar --}}
+
+                        <!-- Hamburger -->
+                        <div class="-mr-2 flex items-center sm:hidden">
+                            <button @click="open = ! open"
+                                class="inline-flex items-center bg-white justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition">
+                                <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                                    <path :class="{ 'hidden': open, 'inline-flex': !open }" class="inline-flex"
+                                        stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4 6h16M4 12h16M4 18h16" />
+                                    <path :class="{ 'hidden': !open, 'inline-flex': open }" class="hidden"
+                                        stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+
+
+                        </div>
+
+                        <div class="w-1/2 md:w-auto text-center text-white text-2xl font-medium">
+                            <!-- Page Heading -->
+                            @if (isset($header))
+                                {{ $header }}
+                            @endif
+                        </div>
+                        <div class="w-1/4 md:w-auto md:flex text-right">
+                            <x-jet-dropdown align="right" width="48">
+                                <x-slot name="trigger">
+                                    <div class="flex justify-between">
+                                        <button>
+                                            <img class="inline-block h-10 w-10 rounded-full"
+                                                src="{{ asset('storage/' . auth()->user()->profile_photo_path) }}"
+                                                alt="">
+                                        </button>
+                                        <div class="hidden md:block cursor-pointer md:flex md:items-center ml-2">
+                                            <span class="text-white text-sm mr-1">Welcome
+                                                {{ auth()->user()->first_name }}</span>
+                                            <div>
+                                                <svg class="fill-current text-white h-4 w-4 block opacity-50"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                                    <path
+                                                        d="M4.516 7.548c.436-.446 1.043-.481 1.576 0L10 11.295l3.908-3.747c.533-.481 1.141-.446 1.574 0 .436.445.408 1.197 0 1.615-.406.418-4.695 4.502-4.695 4.502a1.095 1.095 0 0 1-1.576 0S4.924 9.581 4.516 9.163c-.409-.418-.436-1.17 0-1.615z" />
+                                                </svg>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </x-slot>
-                            <x-slot name="content">
-                                <!-- Account Management -->
-                                <div class="block px-4 py-2 text-xs text-gray-400">
-                                    {{ __('Manage Account') }}
-                                </div>
+                                </x-slot>
+                                <x-slot name="content">
+                                    <!-- Account Management -->
+                                    <div class="block px-4 py-2 text-xs text-gray-400">
+                                        {{ __('Manage Account') }}
+                                    </div>
 
-                                <x-jet-dropdown-link href="{{ route('profile.show') }}">
-                                    {{ __('Profile') }}
-                                </x-jet-dropdown-link>
-
-                                <div class="border-t border-gray-100"></div>
-
-                                <!-- Authentication -->
-                                <form method="POST" action="{{ route('logout') }}">
-                                    @csrf
-
-                                    <x-jet-dropdown-link href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                        {{ __('Log Out') }}
+                                    <x-jet-dropdown-link href="{{ route('profile.show') }}">
+                                        {{ __('Profile') }}
                                     </x-jet-dropdown-link>
-                                </form>
-                            </x-slot>
 
-                        </x-jet-dropdown>
+                                    <div class="border-t border-gray-100"></div>
+
+                                    <!-- Authentication -->
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+
+                                        <x-jet-dropdown-link href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                            {{ __('Log Out') }}
+                                        </x-jet-dropdown-link>
+                                    </form>
+                                </x-slot>
+
+                            </x-jet-dropdown>
+                        </div>
                     </div>
                 </div>
             </div>
+            <!-- Mobile Header & Nav -->
+            <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
+                <div class="pt-2 pb-3 space-y-1">
+                    <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                        {{ __('Dashboard') }}
+                    </x-jet-responsive-nav-link>
+
+                    <x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('all.members')">
+                        {{ __('Profile') }}
+                    </x-jet-responsive-nav-link>
+
+                    <x-jet-responsive-nav-link href="{{ route('update.password') }}" :active="request()->routeIs('posts')">
+                        {{ __('Change password') }}
+                    </x-jet-responsive-nav-link>
+
+                    <div x-data="accordion" class="w-full   space-y-4">
+                        <!-- Accordion 1 -->
+                        <div class="w-full bg-white cursor-pointer hover:bg-gray-100  rounded-md py-2">
+                            <!-- Head -->
+                            <div @click="selected != 1 ? selected = 1 : selected =null"
+                                class="flex justify-between items-center pr-3">
+                                <h1 class="font-medium text-gray-800 py-2 pl-4">Resume</h1>
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    x-bind:class="selected == 1 ? 'transform rotate-180' : ''"
+                                    class="h-5 w-5  transition-all duration-300" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </div>
+                            <!-- Content -->
+                            <div class="max-h-0 overflow-hidden transition-all duration-300 pl-6" x-ref="tab1"
+                                :style="selected == 1 ? 'max-height: ' + $refs.tab1.scrollHeight + 'px;' : ''">
+                                <a href="{{ route('create.resume') }}"
+                                    class="flex items-center text-gray-900 opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+
+                                    Create Resume
+                                </a>
+                                <a href="{{ route('edit.resume') }}"
+                                    class="flex items-center text-gray-900 opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+
+                                    Edit Resume
+                                </a>
+                                <a href="{{ route('view.resume') }}"
+                                    class="flex items-center text-gray-900 opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+
+                                    View Resume
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <x-jet-responsive-nav-link href="{{ route('projects.index') }}" :active="request()->routeIs('projects.index')">
+                        {{ __('Orders') }}
+                    </x-jet-responsive-nav-link>
+
+                    <x-jet-responsive-nav-link href="{{ route('events.index') }}" :active="request()->routeIs('events.index')">
+                        {{ __('Add Links') }}
+                    </x-jet-responsive-nav-link>
+
+                </div>
+            </div>
         </div>
+
+
         <div class="hidden bg-blue-500 md:block md:bg-white md:border-b">
             <div class="container mx-auto px-4">
                 <div class="md:flex">
                     <div class="flex -mb-px mr-8">
                         <a href="#"
-                            class="no-underline text-white md:text-blue-600 flex items-center py-4 border-b border-blue-500">
-                            <svg class="h-6 w-6 fill-gray-500 mr-2" xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24">
+                            class="no-underline text-white md:text-gray-500 flex items-center py-4 md:hover:border-b md:hover:border-gray-500 {{ Request::is('member/dashboard') ? 'border-b border-blue-500 md:text-blue-600' : '' }}">
+                            <svg class="h-6 w-6 fill-gray-500 mr-2 {{ Request::is('member/dashboard') ? 'fill-blue-500' : '' }}"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                 <path fill-rule="evenodd"
                                     d="M3.889 3h6.222a.9.9 0 0 1 .889.91v8.18a.9.9 0 0 1-.889.91H3.89A.9.9 0 0 1 3 12.09V3.91A.9.9 0 0 1 3.889 3zM3.889 15h6.222c.491 0 .889.384.889.857v4.286c0 .473-.398.857-.889.857H3.89C3.398 21 3 20.616 3 20.143v-4.286c0-.473.398-.857.889-.857zM13.889 11h6.222a.9.9 0 0 1 .889.91v8.18a.9.9 0 0 1-.889.91H13.89a.9.9 0 0 1-.889-.91v-8.18a.9.9 0 0 1 .889-.91zM13.889 3h6.222c.491 0 .889.384.889.857v4.286c0 .473-.398.857-.889.857H13.89C13.398 9 13 8.616 13 8.143V3.857c0-.473.398-.857.889-.857z" />
                             </svg> Dashboard
@@ -199,39 +278,39 @@
                     </div>
                     <div class="flex -mb-px mr-8">
                         <a href="#"
-                            class="no-underline text-white opacity-50 md:text-gray-500 md:opacity-100 flex items-center py-4 border-b border-transparent hover:opacity-100 md:hover:border-gray-500">
-                            <svg class="h-6 w-6 fill-gray-500 mr-2" xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24">
+                            class="no-underline text-white opacity-50 md:text-gray-500 md:opacity-100 flex items-center py-4  {{ Request::is('user/profile') ? 'border-b border-blue-500 md:text-blue-600' : '' }} md:hover:border-b md:hover:border-gray-500">
+                            <svg class="h-6 w-6 fill-gray-500 mr-2 {{ Request::is('user/profile') ? 'fill-blue-500' : '' }}"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                 <path d="M8 7h10V5l4 3.5-4 3.5v-2H8V7zm-6 8.5L6 12v2h10v3H6v2l-4-3.5z"
                                     fill-rule="nonzero" />
-                            </svg> Buy/Sell
+                            </svg> Profile
                         </a>
                     </div>
                     <div class="flex -mb-px mr-8">
                         <a href="#"
                             class="no-underline text-white opacity-50 md:text-gray-500 md:opacity-100 flex items-center py-4 border-b border-transparent hover:opacity-100 md:hover:border-gray-500">
-                            <svg class="h-6 w-6 fill-gray-500 mr-2" xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24">
+                            <svg class="h-6 w-6 fill-gray-500 mr-2 {{ Request::is('orders*') ? 'fill-blue-500' : '' }}"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                 <path
                                     d="M18 8H5.5v-.5l11-.88v.88H18V6c0-1.1-.891-1.872-1.979-1.717L5.98 5.717C4.891 5.873 4 6.9 4 8v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2zm-1.5 7.006a1.5 1.5 0 1 1 .001-3.001 1.5 1.5 0 0 1-.001 3.001z"
                                     fill-rule="nonzero" />
-                            </svg> Accounts
+                            </svg> Orders
                         </a>
                     </div>
                     <div class="flex -mb-px mr-8">
                         <a href="#"
-                            class="no-underline text-white opacity-50 md:text-gray-500 md:opacity-100 flex items-center py-4 border-b border-transparent hover:opacity-100 md:hover:border-gray-500">
-                            <svg class="h-6 w-6 fill-gray-500 mr-2" xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24">
+                            class="no-underline text-white opacity-50 md:text-gray-500 md:opacity-100 flex items-center py-4  {{ Request::is('resume*') ? 'border-b border-blue-500 md:text-blue-600' : '' }} md:hover:border-b md:hover:border-gray-500">
+                            <svg class="h-6 w-6 fill-gray-500 mr-2 {{ Request::is('resume*') ? 'fill-blue-500' : '' }}"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                 <path
                                     d="M11 12h2v2h9s-.149-4.459-.2-5.854C21.75 6.82 21.275 6 19.8 6h-3.208l-1.197-2.256C15.064 3.121 14.951 3 14.216 3H9.783c-.735 0-.847.121-1.179.744-.165.311-.7 1.318-1.196 2.256H4.199c-1.476 0-1.945.82-2 2.146C2.145 9.473 2 14 2 14h9v-2zM9.649 4.916c.23-.432.308-.516.817-.516h3.067c.509 0 .588.084.816.516L14.924 6h-5.85l.575-1.084zM13 17h-2v-2H2.5s.124 1.797.199 3.322c.031.633.218 1.678 1.8 1.678H19.5c1.582 0 1.765-1.047 1.8-1.678.087-1.568.2-3.322.2-3.322H13v2z"
                                     fill-rule="nonzero" />
-                            </svg> Tools
+                            </svg> Resume
                         </a>
                     </div>
                     <div class="flex -mb-px">
                         <a href="#"
-                            class="no-underline text-white opacity-50 md:text-gray-500 md:opacity-100 flex items-center py-4 border-b border-transparent hover:opacity-100 md:hover:border-gray-500">
+                            class="no-underline text-white opacity-50 md:text-gray-500 md:opacity-100 flex items-center py-4  md:hover:border-gray-500">
                             <svg class="h-6 w-6 fill-gray-500 mr-2" xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 24 24">
                                 <path
@@ -242,96 +321,11 @@
                     </div>
                 </div>
             </div>
+
         </div>{{-- End of dashboard header --}}
 
 
-        <!-- Mobile Header & Nav -->
-        <header x-data="{ isOpen: false }" class="w-full bg-gr bg-sidebar py-5 px-6 sm:hidden">
-            <div class="flex items-center justify-between">
-                <a href="index.html" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">Admin</a>
-                <button @click="isOpen = !isOpen" class="text-gray-900 text-3xl focus:outline-none">
-                    <i x-show="!isOpen" class="fas fa-bars"></i>
-                    <i x-show="isOpen" class="fas fa-times"></i>
-                </button>
-            </div>
 
-            <!-- Dropdown Nav -->
-            <nav :class="isOpen ? 'flex' : 'hidden'" class="flex flex-col pt-4">
-                <a href="index.html" class="flex items-center active-nav-link text-gray-900 py-2 pl-4 nav-item">
-                    <i class="fas fa-tachometer-alt mr-3"></i>
-                    Dashboard
-                </a>
-                <a href="blank.html"
-                    class="flex items-center text-gray-900 opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-                    <i class="fas fa-sticky-note mr-3"></i>
-                    Profile
-                </a>
-                <a href="tables.html"
-                    class="flex items-center text-gray-900 opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-                    <i class="fas fa-table mr-3"></i>
-                    Change Password
-                </a>
-                <a href="forms.html"
-                    class="flex items-center text-gray-900 opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-                    <i class="fas fa-align-left mr-3"></i>
-                    Orders
-                </a>
-                <div x-data="accordion" class="w-full max-w-lg mx-auto space-y-4">
-                    <!-- Accordion 1 -->
-                    <div class="w-full bg-white shadow-md rounded-md">
-                        <!-- Head -->
-                        <div @click="selected != 1 ? selected = 1 : selected =null"
-                            class="flex justify-between items-center shadow-md px-2">
-                            <h1 class="font-medium text-gray-800 py-2">Accordion 1</h1>
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                x-bind:class="selected == 1 ? 'transform rotate-180' : ''"
-                                class="h-5 w-5 transition-all duration-300" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </div>
-                        <!-- Content -->
-                        <div class="max-h-0 overflow-hidden transition-all duration-300" x-ref="tab1"
-                            :style="selected == 1 ? 'max-height: ' + $refs.tab1.scrollHeight + 'px;' : ''">
-                            <a href="tabs.html"
-                                class="flex items-center text-gray-900 opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-                                <i class="fas fa-tablet-alt mr-3"></i>
-                                Resume
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <a href="calendar.html"
-                    class="flex items-center text-gray-900 opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-                    <i class="fas fa-calendar mr-3"></i>
-                    ID Card
-                </a>
-                <a href="#"
-                    class="flex items-center text-gray-900 opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-                    <i class="fas fa-cogs mr-3"></i>
-                    Support
-                </a>
-                <a href="#"
-                    class="flex items-center text-gray-900 opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-                    <i class="fas fa-user mr-3"></i>
-                    My Account
-                </a>
-                <a href="#"
-                    class="flex items-center text-gray-900 opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-                    <i class="fas fa-sign-out-alt mr-3"></i>
-                    Sign Out
-                </a>
-                <button
-                    class="w-full bg-white cta-btn font-semibold py-2 mt-3 rounded-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
-                    <i class="fas fa-arrow-circle-up mr-3"></i> Upgrade to Pro!
-                </button>
-            </nav>
-            <!-- <button class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
-                <i class="fas fa-plus mr-3"></i> New Report
-            </button> -->
-        </header>
 
         <div class="w-full overflow-x-hidden border-t flex flex-col">
 

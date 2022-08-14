@@ -80,9 +80,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function ()
     Route::view('/member/dashboard', 'user-dashboard/dashboard')->name('user.dashboard');
     Route::get('/password-update', UpdatePassword::class)->name('update.password');
     Route::get('/add-more-info', AdditionalUserInfo::class)->name('more.info');
-    Route::get('/create/resume', CreateResume::class)->name('create.resume');
-    Route::get('/view/resume', ViewResume::class)->name('view.resume');
-    Route::get('/edit/resume', EditResume::class)->name('edit.resume');
+    Route::get('resume/create', CreateResume::class)->name('create.resume');
+    Route::get('resume/view', ViewResume::class)->name('view.resume');
+    Route::get('resume/edit', EditResume::class)->name('edit.resume');
 
     Route::get('members/profession/{slug}', UsersCategory::class)->name('category');
     Route::get('/posts', BlogIndex::class)->name('posts');

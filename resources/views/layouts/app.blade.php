@@ -75,6 +75,7 @@
     <script src="{{ asset('js/slider.js') }}"></script>
     <script src="{{ asset('js/progressbar.js') }}"></script>
     @yield('script')
+    @yield('contactScript')
 
 </body>
 

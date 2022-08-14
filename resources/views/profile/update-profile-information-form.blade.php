@@ -191,7 +191,7 @@
                               @else
                                   <!-- Current Potrait Image -->
                                   <img id="image" class="w-full"
-                                      src="{{ asset('storage/photos/' . auth()->user()->potrait_image) }}" />
+                                      src="{{ asset('storage/members_images/' . auth()->user()->potrait_image) }}" />
                               @endif
 
                               <span class="block  w-full bg-cover bg-no-repeat bg-center"
