@@ -7,13 +7,14 @@ use App\Models\Category;
 use App\Http\Livewire\AboutUs;
 use App\Http\Livewire\Welcome;
 use App\Http\Livewire\HomePage;
+use App\Http\Livewire\UserData;
 use App\Http\Livewire\Admin\Roles;
 use App\Http\Livewire\Blog\ShowPost;
 use App\Http\Livewire\Blog\BlogIndex;
 use App\Http\Livewire\UpdatePassword;
 use Illuminate\Support\Facades\Route;
-use App\Http\Livewire\Events\ShowEvent;
 
+use App\Http\Livewire\Events\ShowEvent;
 use App\Http\Livewire\Admin\Permissions;
 use App\Http\Livewire\Blog\PostCategory;
 use App\Http\Livewire\Events\EventIndex;
@@ -93,6 +94,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function ()
     Route::get('/project/{id}', ShowProject::class)->name('show.project');
     Route::get('/events', EventIndex::class)->name('events.index');
     Route::get('/events/{slug}', ShowEvent::class)->name('show.event');
+  
     
    
 });

@@ -11,7 +11,7 @@ class Event extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'title', 'event_date', 'event_time', 'event_venue', 'body'];
+    protected $fillable = ['user_id', 'title', 'slug', 'image', 'event_date', 'event_time', 'event_venue', 'body'];
 
     public function images()
     {

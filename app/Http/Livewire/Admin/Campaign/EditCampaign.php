@@ -7,6 +7,7 @@ use Livewire\Component;
 use App\Models\Campaign;
 use App\Models\Organizer;
 use WireUi\Traits\Actions;
+use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Storage;
 
@@ -17,6 +18,7 @@ class EditCampaign extends Component
 
     public $campaignId;
     public $campaignTitle;
+    public $slug;
     public $startingDate;
     public $organizerId;
     public $description;
@@ -29,14 +31,16 @@ class EditCampaign extends Component
     {
         $campaign = Campaign::where('slug', $slug)->first();
 
+        $this->campaignId = $campaign->id;
+        // $this->slug = $campaign->slug;
         $this->campaignTitle = $campaign->campaign_title;
         $this->startingDate = $campaign->starting_date;
-        $this->organizerId = $campaign->org_id;
+        $this->organizerId = $campaign->organizer_id;
         $this->description = $campaign->description;
         $this->postedCoverImage = $campaign->cover_image;
         $this->goal = $campaign->goal;
         $this->body = $campaign->about;
-        $this->campaignId = $campaign->id;
+        
 
     }
     
@@ -46,7 +50,7 @@ class EditCampaign extends Component
         if ($this->coverImage) {
             Storage::delete('public/campaigns_images/'. $this->postedCoverImage);
             $this->postedCoverImage = $this->coverImage->getClientOriginalName();
-            $this->coverImage->storeAs('public/photos/', $this->postedCoverImage);
+            $this->coverImage->storeAs('public/campaigns_images/', $this->postedCoverImage);
         }
         // dd($this->postedCoverImage);
 
@@ -55,10 +59,13 @@ class EditCampaign extends Component
         $campaign->update([
             
             'campaign_title' => $this->campaignTitle,
+            'slug'           => Str::slug($this->campaignTitle),
             'description'    => $this->description,
             'starting_date'  => Carbon::create($this->startingDate),
             'cover_image'    => $this->postedCoverImage,
             'goal'           => $this->goal,
+            
+            // 'organizer_id'   => $this->organizerId,
             'about'          => $this->body,
      
     ]);
@@ -66,7 +73,7 @@ class EditCampaign extends Component
 
     $org->campaigns()->save($campaign);
         
-        $this->reset();
+        // $this->reset();
 
         $this->notification()->success(
             $title = 'Success',

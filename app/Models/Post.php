@@ -12,7 +12,7 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'title', 'body','active', 'featured', 'category_post_id', 'slug'];
+    protected $fillable = ['user_id', 'title', 'image', 'body','active', 'featured', 'category_post_id', 'slug'];
 
     protected $casts = [
         'active' => 'boolean',

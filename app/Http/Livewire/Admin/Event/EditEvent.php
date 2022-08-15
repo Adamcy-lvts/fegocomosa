@@ -51,20 +51,34 @@ public function mount($slug)
             'eventVenue' => 'required'
         ]);
 
+        
+
         if ($this->image) {
             Storage::delete('public/events_images/'. $this->postedEventImage);
             $this->postedEventImage = $this->image->getClientOriginalName();
             $this->image->storeAs('public/events_images/', $this->postedEventImage);
         }
 
-        Event::find($this->eventId)->update([
-            'title' => $this->title,
-            'event_time' => $this->eventTime,
-            'event_date' => Carbon::create($this->eventDate),
-            'event_venue' => $this->eventVenue,
-            'body' => $this->body,
-            'image' => $this->postedEventImage
-        ]);
+        $event = Event::find($this->eventId);
+
+        $event->title = $this->title;
+        $event->event_time = $this->eventTime;
+        $event->event_date = Carbon::create($this->eventDate);
+        $event->event_venue = $this->eventVenue;
+        $event->body = $this->body;
+        $event->image = $this->postedEventImage;
+
+        $event->save();
+
+
+        // $event->update([
+        //     'title' => $this->title,
+        //     'event_time' => $this->eventTime,
+        //     'event_date' => Carbon::create($this->eventDate),
+        //     'event_venue' => $this->eventVenue,
+        //     'body' => $this->body,
+        //     'image' => $this->postedEventImage
+        // ]);
         
 
         if ($this->eventImages) {

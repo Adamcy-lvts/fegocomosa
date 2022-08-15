@@ -44,14 +44,17 @@ class PostEdit extends Component
             'title' => 'required',
             'body'  => 'required',
         ]);
-// dd('is it working');
+
         if ($this->image) {
             Storage::delete('public/blog_images/'. $this->postedImage);
             $this->postedImage = $this->image->getClientOriginalName();
             $this->image->storeAs('public/blog_images/', $this->postedImage);
         }
+// dd($this->postedImage);
 
-        Post::find($this->postId)->update([
+        $post = Post::find($this->postId);
+
+        $post->update([
             'title' => $this->title,
             'user_id' => $this->userId,
             'category_post_id' => $this->selectedCategory,

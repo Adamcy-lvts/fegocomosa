@@ -44,8 +44,7 @@
     @livewireScripts
     @yield('script')
     @yield('contactScript')
-    {{-- <script src="{{ asset('js/welcome.js') }}"></script> --}}
-    {{-- <script src="{{ asset('ckeditor5/build/ckeditor.js') }}"></script> --}}
+
 
 </body>
 
