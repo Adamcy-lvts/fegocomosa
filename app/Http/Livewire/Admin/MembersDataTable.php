@@ -23,6 +23,8 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\NewSetAmbassadorNotification;
 
 class MembersDataTable extends Component
 {
@@ -36,35 +38,13 @@ class MembersDataTable extends Component
 
 
     public $pagination = 5;
-    public $memberId = null;
-    public $firstName;
-    public $lastName;
-    public $middleName;
-    public $birthDate;
-    public $address;
-    public $phone;
-    public $maritalStatus;
-    public $gender;
-    public $selectedState = null;
-    public $selectedCity = null;
-    public $selectedCategory = null;
-    public $profession;
-    public $admissionNumber;
-    public $jssClass;
-    public $sssClass;
-    public $selectedHouse;
-    public $yearOfEntry;
-    public $university;
-    public $yearOfGraduation;
-    public $workplace;
-    public $courseOfStudy;
-    public $email;
+    
     public $showModalForm = false;
     public $showModalAlert = false;
     public $showAlert = false;
     public $search = "";
     public $postedPotraitImage;
-    public $potraitImage;
+    
     public $cities;
     public $userCategories;
     public $filteredCities = null;
@@ -155,7 +135,7 @@ class MembersDataTable extends Component
     {
         $member = User::find($this->memberId);
 
-        SetAmbassador::updateOrCreate(
+        $newSetAmbassador = SetAmbassador::updateOrCreate(
             [
             'year' => Carbon::create($this->year)->format('Y'),
             ],
@@ -163,6 +143,10 @@ class MembersDataTable extends Component
             [
               'user_id' => $member->id,
             ]);
+
+        $members = User::all();
+
+        Notification::send($members, new NewSetAmbassadorNotification($newSetAmbassador));
 
         $this->notification()->success(
             $title = 'Success',
@@ -205,184 +189,7 @@ class MembersDataTable extends Component
         $this->checkedUsers = $this->usersQuery->pluck('id')->map(fn ($item) => (string) $item)->toArray();
     }
 
-    public function createMemberModal()
-    {
-        $this->reset();
-        $this->showModalForm = true;
-    }
-
-    public function storeMember()
-    {
-        $this->validate([
-            'firstName'     => 'required',
-            'lastName'      => 'required',
-            'birthDate'     => 'required',
-            'address'       => 'required',
-            'address'       => 'required',
-            'selectedState' => 'required',
-            'selectedCity'  => 'required',
-            'email'             => ['required', 'string', 'email', 'max:255', 'unique:users'],
-        ]);
-
-        $potrait_image = $this->potraitImage->getClientOriginalName();
-      
-
-        $this->potraitImage->storeAs('public/members_images', $potrait_image);
-        $member = new User();
-        $member->first_name        =  $this->firstName;
-        $member->last_name         =  $this->lastName;
-        $member->middle_name       =  $this->middleName;
-        $member->date_of_birth     =  Carbon::create($this->birthDate);
-        $member->gender_id         =  $this->gender;
-        $member->address           =  $this->address;
-        $member->phone             =  $this->phone;
-        $member->marital_status_id =  $this->maritalStatus;
-        $member->state_id          =  $this->selectedState;
-        $member->city_id           =  $this->selectedCity;
-        $member->profession        =  $this->profession;
-        $member->admission_number  =  $this->admissionNumber;
-        $member->jss_class         =  $this->jssClass;
-        $member->sss_class         =  $this->sssClass;
-        $member->house_id          =  $this->selectedHouse;
-        $member->year_of_entry     =  Carbon::create($this->yearOfEntry);
-        $member->year_of_graduation = Carbon::create($this->yearOfGraduation);
-        $member->workplace         =  $this->workplace;
-        $member->university        =  $this->university;
-        $member->potrait_image     =  $potrait_image;
-        $member->course_of_study   =  $this->courseOfStudy;
-        $member->email             =  $this->email;
-        $member->password          = Hash::make('swifty1989');
-        $member->save();
-
-
-        $this->reset();
-        session()->flash('flash.banner', 'Record Added Successfully');
-    }
-
-    public function showEditMember($id)
-    {
-
-        $this->reset();
-        $this->showModalForm = true;
-        $this->memberId = $id;
-        $this->cities = collect();
-
-        $user = User::find($this->memberId);
-
-        $selectedCity = $user->city->id;
-
-        $city = Lga::with('state.cities')->find($selectedCity);
-
-        if ($city) {
-            $this->cities = Lga::where('state_id', $city->state->id)->get();
-
-            $this->selectedCity = $city->id;
-            $this->selectedState = $city->state->id;
-        }
-
-        foreach ($user->categories as $this->userCategories) {
-            
-            $this->selectedCategory = $this->userCategories->pivot->category_id;
-        }
-       
-        $this->loadMember();
-
-   
-
-        
-    }
-
-    public function loadMember()
-    {
-        $member = User::findOrFail($this->memberId);
-
-        $this->firstName        = $member->first_name;
-        $this->lastName         = $member->last_name;
-        $this->middleName       = $member->middle_name;
-        $this->birthDate        = $member->date_of_birth;
-        $this->address          = $member->address;
-        $this->phone            = $member->phone; 
-        $this->maritalStatus    = $member->marital_status_id; 
-        $this->selectedState    = $member->state_id; 
-        $this->selectedCity     = $member->city_id; 
-        $this->profession       = $member->profession; 
-        $this->admissionNumber  = $member->admission_number; 
-        $this->jssClass         = $member->jss_class; 
-        $this->sssClass         = $member->sss_class;
-        $this->selectedHouse    = $member->house_id;
-        $this->yearOfEntry      = $member->year_of_entry; 
-        $this->yearOfGraduation = $member->year_of_graduation; 
-        $this->workplace        = $member->workplace; 
-        $this->university       = $member->university; 
-        $this->postedPotraitImage = $member->potrait_image; 
-        $this->courseOfStudy    = $member->course_of_study; 
-        $this->email            = $member->email; 
-
-      
-    }
-
-    public function updateMember()
-    {
-        $this->validate([
-            'firstName'     => 'required',
-            'lastName'      => 'required',
-            'birthDate'     => 'required',
-            'address'       => 'required',
-            'selectedState' => 'required',
-            'selectedCity'  => 'required',
-
-        ]);
-
-        if ($this->potraitImage) {
-            // Delete image if it exist 
-            Storage::delete('public/members_images/'. $this->postedPotraitImage);
-            // Get filename with extention 
-            $this->postedPotraitImage = $this->potraitImage->getClientOriginalName();
-             // Get just filename
-            $ImageName = pathinfo($this->postedPotraitImage, PATHINFO_FILENAME);
-             // Get just Extention
-            $Extentions = $this->potraitImage->getClientOriginalExtension();
-            // Filename to store
-             $ImageNameToStore = $this->firstName.'_'.$this->lastName.'_'.time().'.'.$Extentions;
-
-            $this->potraitImage->storeAs('public/members_images/', $ImageNameToStore);
-        }
-
-        User::find($this->memberId)->update([
-            'first_name'        => $this->firstName,
-            'last_name'         => $this->lastName,
-            'middle_name'       => $this->middleName,
-            'date_of_birth'     => $this->birthDate,
-            'address'           => $this->address,
-            'potrait_image'     => $ImageNameToStore,
-            'phone'             => $this->phone,
-            'marital_status'    => $this->maritalStatus, 
-            'state_id'          => $this->selectedState,
-            'city_id'           => $this->selectedCity,
-            'profession'        => $this->profession, 
-            'admission_number'  => $this->admissionNumber,
-            'jss_class'         => $this->jssClass, 
-            'sss_class'         => $this->sssClass,
-            'house_id'          => $this->selectedHouse,
-            'year_of_entry'     => $this->yearOfEntry, 
-            'year_of_graduation'=> $this->yearOfGraduation,
-            'workplace'         => $this->workplace, 
-            'university'        => $this->university, 
-            'course_of_study'   => $this->courseOfStudy, 
-            'email'             => $this->email 
-        ]);
-        
-        $user = User::find($this->memberId);
-        // dd($user);
-
-       $procategory = Category::find($this->selectedCategory); 
-
-       $user->categories()->sync($procategory);
-      
-        $this->reset();
-        session()->flash('flash.banner', 'Record Updated Successfully');
-        
-    }
+    
 
     public function SingleDeleteConfirmation($id)
     {

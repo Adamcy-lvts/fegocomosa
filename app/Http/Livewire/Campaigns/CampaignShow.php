@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Campaigns;
 
+use Carbon\Carbon;
 use App\Models\Lga;
 use App\Models\User;
 use App\Models\Donor;
@@ -10,6 +11,10 @@ use Livewire\Component;
 use App\Models\Campaign;
 use App\Models\Donation;
 use WireUi\Traits\Actions;
+use Illuminate\Support\Facades\Auth;
+use App\Notifications\DonationNotification;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\ContactCampaignOrganizerNotification;
 
 class CampaignShow extends Component
 {
@@ -30,6 +35,8 @@ class CampaignShow extends Component
     public $comment;
     public $message;
     public $contact = false;
+    public $campaignId;
+    public $campaign;
  
     // protected $listeners = ['reRenderParent'];
 
@@ -39,13 +46,14 @@ class CampaignShow extends Component
     
     public function mount($slug)
     {
-        $this->campaigns = Campaign::where('slug', $slug)->first();
+        $this->campaign = Campaign::where('slug', $slug)->first();
+        $this->campaignId = $this->campaign->id;
 
 
         if (auth()->user()) {
             
             $user = User::find(auth()->user()->id);
-
+   
             $this->fullName      = $user->first_name. ' '.$user->last_name;
             $this->email         = $user->email;
             $this->address       = $user->address;
@@ -72,25 +80,51 @@ class CampaignShow extends Component
       
     }
 
-    public function sendMessage()
-    {
-        $this->contact = true;
 
-    }
 
     public function MessageOrganizer()
     {
 
-        // $message = new Message;
-        // $message->full_name = $this->fullName;
-        // $message->email = $this->email;
-        // $message->message = $this->message;
-        // $message->save();
+       $this->validate([
+            'fullName'       => 'required',
+            'email'      => 'required',
+            'message'    => 'required',
+        ]);
 
 
-        // $this->fullName = '';
-        // $this->email = '';
-        $this->contact = false;
+      if (auth()->user()) {
+
+        $data = [
+            'user_id' => auth()->user()->id,
+            'full_name' => $this->fullName,
+            'email'  => $this->email,
+            'message' => $this->message,
+            'campaignTitle' => $this->campaign->campaign_title,
+            'timestamp' => Carbon::now()
+
+        ];
+      } else {
+        $data = [
+            'full_name' => $this->fullName,
+            'email'  => $this->email,
+            'message' => $this->message,
+            'campaignTitle' => $this->campaign->campaign_title,
+            'timestamp' => Carbon::now()
+
+        ];
+      }
+
+      $organizer = $this->campaign->organizer;
+
+      $organizer->notify(new ContactCampaignOrganizerNotification($data));
+
+
+        $this->fullName = '';
+        $this->email = '';
+        $this->message = '';
+
+        $this->emit('feedbackMessage');
+        
     }
 
     public function updatedSelectedState($state_id)
@@ -99,13 +133,54 @@ class CampaignShow extends Component
         $this->cities = Lga::where('state_id', $state_id)->get();
     }
 
-    
+    public function Donate()
+    {
+        $this->validate([
+            'full_name'       => 'required',
+            'email'      => 'required',
+            'phone'    => 'required',
+            'amount'    => 'required',
+        ]);
+
+
+        $donor = Donor::create([
+            'full_name' => $this->fullName,
+            'email'    => $this->email,
+            'phone'    => $this->phone,
+            'address'  => $this->address,
+            'city'     => $this->selectedCity,
+            'state'    => $this->selectedState,
+        ]);
+
+        $donation = Donation::create([
+            'campaign_id'  => $this->campaignId,
+            'user_id'      => Auth::user() ? Auth::user()->id : null,
+            'donor_id'     => $donor->id,
+            'amount'       => $this->currency,
+            'comment'      => $this->comment,
+        ]);
+        
+
+        $this->notification()->success(
+            $title = 'Success',
+            $description = 'Donation Recieved Thank you!'
+        );
+
+        $users = User::all();
+
+         Notification::send($users, new DonationNotification($donation));
+         
+     $this->reset();
+
+     $this->emit('refreshSelf');
+
+    }
 
     public function render()
     {
         return view('livewire.campaigns.campaign-show', [
             'states' => State::all(),
-            'campaign' => $this->campaigns,
+            'campaign' => $this->campaign,
         ])->layout('layouts.guest');
     }
 }

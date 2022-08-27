@@ -3,11 +3,14 @@
 namespace App\Http\Livewire\Admin\Post;
 
 use App\Models\Post;
+use App\Models\User;
 use Livewire\Component;
 use WireUi\Traits\Actions;
 use Illuminate\Support\Str;
 use App\Models\CategoryPost;
 use Livewire\WithFileUploads;
+use App\Notifications\NewPostNotification;
+use Illuminate\Support\Facades\Notification;
 
 class CreatePost extends Component
 {
@@ -51,6 +54,10 @@ class CreatePost extends Component
             $title = 'Post saved',
             $description = 'Article Published Successfully'
         );
+
+        $users = User::all();
+
+        Notification::send($users, new NewPostNotification($post));
 
          return redirect()->route('posts.data');
 

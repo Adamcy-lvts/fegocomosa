@@ -44,6 +44,8 @@
     @livewireScripts
     @yield('script')
     @yield('contactScript')
+    @yield('contactOrganizerScript')
+    @yield('donationFormScript')
 
 
 </body>

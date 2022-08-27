@@ -160,11 +160,6 @@
                             {{ $gradYear }}</span>
                     </div>
 
-                    <p class=" text-gray-400 pt-8 text-sm">Totally optional short description about yourself, what you
-                        do
-                        and so on.
-                    </p>
-
                     <div class="mt-6 pb-16 lg:pb-0 w-4/5 lg:w-full mx-auto flex flex-wrap items-center justify-between">
 
                         <a class="link" target="_blank" href="https://{{ $facebook }}"
@@ -250,7 +245,7 @@
             <!--Img Col-->
             <div class="w-full lg:w-5/12">
                 <!-- Big profile image for side bar (desktop) -->
-                <img src="{{ asset('storage/photos/' . $potraitImage) }}"
+                <img src="{{ asset('storage/members_images/' . $potraitImage) }}"
                     class="rounded-none lg:rounded-lg shadow-2xl hidden lg:block">
 
 

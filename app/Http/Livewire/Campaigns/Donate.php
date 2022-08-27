@@ -10,13 +10,15 @@ use Livewire\Component;
 use App\Models\Donation;
 use WireUi\Traits\Actions;
 use Illuminate\Support\Facades\Auth;
+use App\Notifications\DonationNotification;
+use Illuminate\Support\Facades\Notification;
 
 class Donate extends Component
 {
     use Actions;
 
     
-    public $campaigns;
+    public $campaign;
     public $campaignId;
     public $showDonationForm = false;
     public $donationId;
@@ -30,16 +32,15 @@ class Donate extends Component
     public $selectedCity = null;
     public $cities = null;
     public $comment;
+    public $amount;
 
 
 
     public function DonateModal($id)
         {
             $this->campaignId = $id;
-                $this->showDonationForm = true;
-                // dd($id);
-                
-
+            $this->showDonationForm = true;
+    
         }
 
     public function updatedSelectedState($state_id)
@@ -50,7 +51,15 @@ class Donate extends Component
 
     public function Donate()
     {
-    //   dd(Auth::user());
+        $this->campaignId = $this->campaign->id;
+        
+        $this->validate([
+            'fullName'       => 'required',
+            'email'      => 'required',
+            'phone'    => 'required',
+            'currency'    => 'required',
+        ]);
+
         $donor = Donor::create([
             'full_name' => $this->fullName,
             'email'    => $this->email,
@@ -67,14 +76,20 @@ class Donate extends Component
             'amount'       => $this->currency,
             'comment'      => $this->comment,
         ]);
+
+        $this->amount = $donation->amount;
         
 
         $this->notification()->success(
             $title = 'Success',
             $description = 'Donation Recieved Thank you!'
         );
-     $this->reset();
-
+         $users = User::all();
+         Notification::send($users, new DonationNotification($donation));
+         
+     $this->reset(); 
+     
+     $this->emit('DonationfeedbackMessage');
      $this->emitUp('refreshParent');
 
     }
@@ -90,6 +105,7 @@ class Donate extends Component
             $this->phone         = $user->phone;
             $this->selectedState = $user->state_id;
             $this->selectedCity  = $user->city_id;
+            $this->amount        = $this->amount ?? '';
 
            
             
@@ -110,7 +126,7 @@ class Donate extends Component
         
         return view('livewire.campaigns.donate', [
              'states' => State::all(),
-             'campaign' => $this->campaigns, 
+             'campaign' => $this->campaign, 
         ])->layout('layouts.guest');
     }
 }

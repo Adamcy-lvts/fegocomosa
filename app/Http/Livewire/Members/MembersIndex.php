@@ -12,6 +12,7 @@ use App\Models\Category;
 use App\Models\MaritalStatus;
 use App\Models\GraduationYears;
 use App\Models\SocialMediaLink;
+use Illuminate\Support\Facades\Session;
 
 class MembersIndex extends Component
 {   
@@ -75,6 +76,17 @@ class MembersIndex extends Component
         $this->memberId = $id;
         $this->simpleModal = true;
         $this->profileDetails();
+
+        $member = User::find($this->memberId);
+
+        $profileKey = 'profile_'.$member->id;
+
+        if (!Session::has($profileKey)) {
+            $member->incrementViewCount();//count the view
+            Session::put($profileKey, 1);
+        }
+
+
     }
 
    public function profileDetails()
@@ -83,8 +95,6 @@ class MembersIndex extends Component
         $member = User::find($this->memberId);
 
         $userSocialLinks = SocialMediaLink::where('user_id', $this->memberId )->first();
-
-        // dd($userSocialLinks->facebook);
 
       $this->firstName = $member->first_name;
       $this->lastName = $member->last_name;

@@ -195,75 +195,45 @@
     </div>
 
 
+    <x-modal.card title="Organizer" blur wire:model="showModalForm">
+        <div class="grid grid-cols-1  gap-6">
+            <x-input label="Category Name" placeholder="Category Name" wire:model.defer="name" />
+            <x-input label="Icon name" placeholder="Icon name" wire:model.defer="icon" />
 
-
-
-
-
-
-
-
-    <x-jet-dialog-modal wire:model="showModalForm">
-        @if ($CategoryId)
-            <x-slot name="title">Edit Project</x-slot>
-        @else
-            <x-slot name="title">Create Project</x-slot>
-        @endif
-
-
-        <x-slot name="content">
-            <x-errors />
-            <div class="space-y-8 divide-y divide-gray-200  mt-10">
-
-                <form method="#" enctype="multipart/form-data">
-
-                    <div class="grid grid-cols-1  gap-6">
-                        <x-input label="Category Name" placeholder="Category Name" wire:model.defer="name" />
-                        <x-input label="Icon name" placeholder="Icon name" wire:model.defer="icon" />
-
-                        <label class="inline-block mb-2 text-gray-500">Category Icon</label>
-                        <div class="flex items-center justify-center w-full">
-                            <label
-                                class="flex flex-col w-full h-32 border-2 border-dashed hover:bg-gray-500 hover:border-gray-300">
-                                <div class="flex flex-col items-center justify-center pt-7">
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                        class="w-12 h-12 text-gray-400 group-hover:text-gray-600" viewBox="0 0 20 20"
-                                        fill="currentColor">
-                                        <path fill-rule="evenodd"
-                                            d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                    <p class="pt-1 text-sm tracking-wider text-gray-400 group-hover:text-gray-600">
-                                        Select a photo</p>
-                                </div>
-                                <input wire:model="svgIcon" type="file" class="opacity-0" />
-                            </label>
-                        </div>
+            <label class="inline-block mb-2 text-gray-500">Category Icon</label>
+            <div class="flex items-center justify-center w-full">
+                <label class="flex flex-col w-full h-32 border-2 border-dashed hover:bg-gray-500 hover:border-gray-300">
+                    <div class="flex flex-col items-center justify-center pt-7">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            class="w-12 h-12 text-gray-400 group-hover:text-gray-600" viewBox="0 0 20 20"
+                            fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        <p class="pt-1 text-sm tracking-wider text-gray-400 group-hover:text-gray-600">
+                            Select a photo</p>
                     </div>
-                    <div class="sm:col-span-6">
-                        <div class="w-full m-2 p-2">
+                    <input wire:model="svgIcon" type="file" class="opacity-0" />
+                </label>
+            </div>
+        </div>
+        <div class="sm:col-span-6">
+            <div class="w-full m-2 p-2">
 
-                            @if ($postedSvgIcon)
-                                Project Image:
-                                <img src="{{ asset('storage/svg_icons/' . $postedSvgIcon) }}">
-                            @endif
-
-                        </div>
-
-
-                        @if ($svgIcon)
-                            Photo Preview:
-                            <img src="{{ $svgIcon->temporaryUrl() }}">
-                        @endif
-                    </div>
-
-                </form>
-
+                @if ($postedSvgIcon)
+                    Project Image:
+                    <img src="{{ asset('storage/svg_icons/' . $postedSvgIcon) }}">
+                @endif
 
             </div>
 
-        </x-slot>
 
+            @if ($svgIcon)
+                Photo Preview:
+                <img src="{{ $svgIcon->temporaryUrl() }}">
+            @endif
+        </div>
 
         <x-slot name="footer">
             @if ($CategoryId)
@@ -281,11 +251,7 @@
             @endif
 
         </x-slot>
-
-    </x-jet-dialog-modal>
-
-
-
+    </x-modal.card>
 
 
     <div>

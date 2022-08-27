@@ -19,7 +19,12 @@ class ContactUsForm extends Component
 
     public function contact()
     {
-        
+        $this->validate([
+            'name'       => 'required',
+            'email'      => 'required',
+            'message'    => 'required',
+        ]);
+
         if (auth()->user()) {
 
             $data = [
@@ -38,10 +43,6 @@ class ContactUsForm extends Component
             'datetime' => Carbon::now()
         ];
         }
-        
-
-        
-
  
         $admins = User::role('Super-Admin')->get();
    

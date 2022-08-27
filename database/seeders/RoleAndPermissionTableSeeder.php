@@ -50,7 +50,7 @@ class RoleAndPermissionTableSeeder extends Seeder
         $role1->givePermissionTo('Delete Member');
         $role1->givePermissionTo('Access Admin Menu');
 
-        $role2 = Role::create(['name' => 'publisher']);
+        $role2 = Role::create(['name' => 'writer']);
         $role2->givePermissionTo('publish articles');
         $role2->givePermissionTo('unpublish articles');
 
@@ -60,18 +60,7 @@ class RoleAndPermissionTableSeeder extends Seeder
         // create demo users
      
         $user = User::findOrFail(1);
-        $user->assignRole($role3);
-
-
-        // $admin = Role::create(['name' => 'admin']);
-        // $support = Role::create(['name' => 'member']);
-
-        // foreach (__('bap.permissions') as $permission => $translate) {
-        //     Permission::create(
-        //         ['guard_name' => 'web', 'name' => $permission]
-        //     );
-        //     $admin->givePermissionTo($permission);
-        // }
+        $user->assignRole($role3, $role1);
 
 
       

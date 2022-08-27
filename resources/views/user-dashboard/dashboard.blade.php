@@ -13,12 +13,9 @@
                     <div class="bg-white border-t border-b sm:border-l sm:border-r sm:rounded shadow mb-6">
                         <div class="border-b px-6">
                             <div class="flex justify-between -mb-px">
-                                {{-- <div class="lg:hidden text-blue-600 py-4 text-lg">
-                                    Your Stats
-                                </div> --}}
                                 <div class="hidden lg:flex">
                                     <button type="button"
-                                        class="appearance-none py-4 text-blue-600 border-b border-blue-500 mr-6">
+                                        class="appearance-none py-4 text-sm text-blue-600 border-b border-blue-500 mr-6">
                                         Your Stats
                                     </button>
 
@@ -27,146 +24,84 @@
                         </div>
 
                         <div class="flex md:flex-row flex-col">
-                            <div class="w-full md:w-1/3 text-center md:border-0 border-b py-8">
-                                <div class="md:border-r">
-                                    <div class="text-gray-500 mb-2">
-                                        <span class="text-5xl"> 5</span>
-                                    </div>
-                                    <div class="text-sm uppercase text-grey tracking-wide">
-                                        Total Donation Count
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="w-full md:w-1/3 text-center md:border-0 border-b py-8">
-                                <div class="md:border-r">
-                                    <div class="text-gray-500 mb-2">
-                                        <span class="text-5xl">12</span>
-                                    </div>
-                                    <div class="text-sm uppercase text-grey tracking-wide">
-                                        Profile Views
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="w-full md:w-1/3 text-center py-8">
-                                <div>
-                                    <div class="text-gray-500 mb-2">
-                                        <span class="text-5xl"><span> &#x20A6;</span>18,000</span>
-                                        <span class="text-2xl text-green-400 align-top">Paid</span>
-                                    </div>
-                                    <div class="text-sm uppercase text-grey tracking-wide">
-                                        Total Monthly/Yearly Dues
-                                    </div>
-                                </div>
-                            </div>
+                            @livewire('user-dashboard.stats.donation-count')
+                            @livewire('user-dashboard.stats.profile-views')
+                            @livewire('user-dashboard.stats.membership-payment')
                         </div>
 
                     </div>
                     <div class="flex flex-wrap -mx-4">
-                        <div class="w-full mb-6 lg:mb-0 lg:w-1/2 px-4 flex flex-col">
-                            <div
-                                class=" flex flex-col bg-white border-t border-b sm:rounded sm:border shadow overflow-hidden">
-                                <div class="border-b">
-                                    <div class="flex justify-between px-6 -mb-px">
-                                        <h3 class="text-blue-600 py-4 font-normal text-lg">
-                                            Notifications</h3>
+                        <div class="w-full mb-6 lg:mb-0 lg:w-1/2 px-4 gap-4 flex flex-col">
 
-                                    </div>
-                                </div>
-                                <div class=" px-6 py-6 text-gray-500  border-b -mx-4">
-                                    <div class="flex gap-4 px-4 flex-row">
+                            @livewire('user-dashboard.notifications.post-notification')
 
-                                        <img class=" object-cover object-center flex-shrink-0 w-16 h-16  rounded-full"
-                                            src="{{ asset('storage/photos/taylor_swift_4.jpg') }}" alt="Person" />
+                            @livewire('user-dashboard.notifications.new-members-notification')
 
-                                        <div class="flex w-full flex-col justify-center ">
-                                            <p class="text-sm md:text-lg font-semibold"> Musa Abubakar Izghe </p>
-                                            <p class="flex justify-between text-sm tracking-wide text-gray-800">
-                                                <span> Posted New Article Titled: <span class="font-semibold">Party
-                                                        Politics in Nigeria <a class="text-blue-500"
-                                                            href="#">Read</a></span></span> <span
-                                                    class="title-font text-sm text-gray-500">7 hours ago</span>
-                                            </p>
+                            @livewire('user-dashboard.notifications.donations-notification')
 
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class=" px-6 py-6 text-gray-500  border-b -mx-4">
-
-                                    <div class="flex gap-4 px-4 flex-row">
-
-                                        <img class=" object-cover object-center flex-shrink-0 w-16 h-16  rounded-full"
-                                            src="{{ asset('storage/photos/taylor_swift_1.jpg') }}" alt="Person" />
-
-                                        <div class="flex w-full flex-col justify-center ">
-                                            <p class="text-sm md:text-lg font-semibold"><span
-                                                    class="text-green-500 uppercase">Welcome,</span> Oliver
-                                                Aguilerra <span class="text-xs">Class Of 1999</span></p>
-                                            <p class="mb-2 text-xs text-gray-800">Product Manager</p>
-                                            <p class="flex justify-between text-sm tracking-wide text-gray-800">
-                                                <span> Registred as a New Member</span> <span
-                                                    class="title-font text-sm text-gray-500">53 minutes ago</span>
-                                            </p>
-
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class=" px-6 py-6 text-gray-500  border-b -mx-4">
-                                    <div class="flex gap-4 px-4 flex-row">
-
-                                        <img class=" object-cover object-center flex-shrink-0 w-16 h-16  rounded-full"
-                                            src="{{ asset('storage/photos/taylor_swift_4.jpg') }}" alt="Person" />
-
-                                        <div class="flex w-full flex-col justify-center ">
-                                            <p class="text-sm md:text-lg font-semibold"> Adamu Umar Bello </p>
-                                            <p class="mb-2 text-xs text-gray-800">Medical Doctor</p>
-                                            <p class="flex justify-between text-sm tracking-wide text-gray-800">
-                                                <span> Donated : <span class="font-semibold"><span>
-                                                            &#x20A6;</span>10,000 to the <a class="text-blue-500"
-                                                            href="#">laptop for IDP school
-                                                            children </a>Fundraiser</span></span> <span
-                                                    class="title-font text-sm text-gray-500">2 hours ago</span>
-                                            </p>
-
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class=" px-6 py-6 text-gray-500  border-b -mx-4">
-
-                                    <div class="flex gap-4 px-4 flex-row">
-
-                                        <img class=" object-cover object-center flex-shrink-0 w-16 h-16  rounded-full"
-                                            src="{{ asset('storage/photos/Taylor_Swift _1.jpg') }}" alt="Person" />
-
-                                        <div class="flex w-full flex-col justify-center ">
-                                            <p class="text-sm md:text-lg font-semibold"><span
-                                                    class="text-green-500 uppercase">Congratulations!,</span> Elizabeth
-                                                Ishaku </p>
-                                            <p class="mb-2 text-xs text-indigo-400"> Set Ambassador class
-                                                of 2010 </p>
-                                            <p class="flex justify-between text-sm tracking-wide text-indigo-500">
-                                                <span> Elected as Set Ambassador for class
-                                                    of 2010</span> <span class="title-font text-sm text-gray-500">53
-                                                    minutes ago</span>
-                                            </p>
-
-                                        </div>
-                                    </div>
-
-                                </div>
-
-
-
-                            </div>
                         </div>
-                        <div class="w-full lg:w-1/2 px-4">
+
+
+
+                        <div class="w-full lg:w-1/2 px-4 ">
+                            @if (!auth()->user()->paid())
+                                <div class="bg-white border-t border-b sm:rounded mb-4 sm:border shadow">
+                                    <div class="border-b">
+                                        <div class="flex justify-between px-6 -mb-px">
+                                            <h3 class="text-blue-600 py-4 font-normal text-sm">Pay Your Dues
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    <div class="px-4 py-4">
+                                        @if (session('status'))
+                                            <div class="alert alert-success">
+                                                {{ session('status') }}
+                                            </div>
+                                        @endif
+                                        <p class="mb-4 text-sm">Pay your membership fee/dues for the year
+                                            {{ now()->year }}
+                                        </p>
+
+                                        <form method="POST" action="{{ route('pay') }}">
+                                            @csrf
+                                            <div class="flex flex-col  md:flex-row gap-2">
+                                                <h1 class="text-4xl text-gray-700">Yearly Membership Fee is <span>
+                                                        &#x20A6;</span>10,000
+                                                </h1>
+                                                <input type="hidden" name="fname"
+                                                    value="{{ auth()->user()->first_name }}">
+                                                <input type="hidden" name="lname"
+                                                    value="{{ auth()->user()->last_name }}">
+                                                <input type="hidden" name="phone"
+                                                    value="{{ auth()->user()->phone }}">
+                                                <input type="hidden" name="email"
+                                                    value="{{ auth()->user()->email }}">
+                                                <input type="hidden" name="amount" value="1000000">
+                                                <input type="hidden" name="currency" value="NGN">
+                                                <input type="hidden" name="metadata"
+                                                    value="{{ json_encode($array = ['payment_for' => 'membership', 'member_id' => auth()->user()->id]) }}">
+
+
+                                                <input type="hidden" name="reference"
+                                                    value="{{ Paystack::genTranxRef() }}"> {{-- required --}}
+                                                @csrf
+
+                                                <x-button type="submit" class="w-full sm:w-0 py-2 px-8" green
+                                                    label="Pay" />
+                                            </div>
+                                        </form>
+                                        <div class="flex justify-between ">
+
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            @endif
                             <div class="bg-white border-t border-b sm:rounded mb-4 sm:border shadow">
                                 <div class="border-b">
                                     <div class="flex justify-between px-6 -mb-px">
-                                        <h3 class="text-blue-600 py-4 font-normal text-lg">Browser Sessions</h3>
+                                        <h3 class="text-blue-600 py-4 font-normal text-sm">Browser Sessions</h3>
                                     </div>
                                 </div>
                                 <div class="px-4 py-4">
@@ -177,11 +112,11 @@
 
                                 </div>
                             </div>
-                            <div class="w-full flex lg:flex-row gap-4 flex-col ">
+                            <div class="w-full flex mb-4 lg:flex-row gap-4 flex-col ">
                                 <div class="bg-white border-t border-b sm:rounded sm:border shadow">
                                     <div class="border-b">
                                         <div class="flex justify-between px-6 -mb-px">
-                                            <h3 class="text-blue-600 py-4 font-normal text-lg">Two Factor
+                                            <h3 class="text-blue-600 py-4 font-normal text-sm">Two Factor
                                                 Authentication
                                             </h3>
                                         </div>
@@ -199,7 +134,7 @@
                                 <div class="bg-white border-t border-b sm:rounded sm:border shadow">
                                     <div class="border-b">
                                         <div class="flex justify-between px-6 -mb-px">
-                                            <h3 class="text-blue-600 py-4 font-normal text-lg">Delete Account
+                                            <h3 class="text-blue-600 py-4 font-normal text-sm">Delete Account
                                             </h3>
                                         </div>
                                     </div>
@@ -214,6 +149,7 @@
                                     </div>
                                 </div>
                             </div>
+                            @livewire('user-dashboard.notifications.set-ambassadors-notification')
                         </div>
 
                     </div>

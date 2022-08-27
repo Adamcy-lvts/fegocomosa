@@ -76,6 +76,8 @@
     <script src="{{ asset('js/progressbar.js') }}"></script>
     @yield('script')
     @yield('contactScript')
+    @yield('contactOrganizerScript') 
+    @yield('donationFormScript')
 
 </body>
 

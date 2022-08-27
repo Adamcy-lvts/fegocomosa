@@ -239,9 +239,9 @@ button {
 .chart-row.three .chart-container-wrapper {
   width: 33.3%;
 }
-.chart-row.three .chart-container-wrapper .chart-container {
+/* .chart-row.three .chart-container-wrapper .chart-container {
   justify-content: space-between;
-}
+} */
 .chart-row.two .big {
   flex: 1;
   max-width: 77.7%;
@@ -327,6 +327,12 @@ button {
 .circular-chart.orange .circle-bg {
   stroke: #776547;
 }
+.circular-chart.green .circle {
+  stroke: #0b7a39;
+}
+.circular-chart.green .circle-bg {
+  stroke: #60a77e;
+}
 .circular-chart.blue .circle {
   stroke: #00cfde;
 }
@@ -398,7 +404,7 @@ button {
   background-color: #00cfde;
 }
 .bar-progress.on-hold {
-  background-color: #fdac42;
+  background-color: #128b45;
 }
 .bar-progress.rejected {
   background-color: #ff5c5c;
@@ -424,7 +430,7 @@ button {
   background-color: #00cfde;
 }
 .progress-color.on-hold {
-  background-color: #fdac42;
+  background-color: #128b45;
 }
 .progress-color.rejected {
   background-color: #ff5c5c;
@@ -459,16 +465,24 @@ button {
   flex-shrink: 0;
 }
 
+.applicant-info {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
 .applicant-info span {
   color: var(--main-color);
   font-size: 14px;
   line-height: 16px;
+ 
 }
 .applicant-info p {
   margin: 4px 0;
   font-size: 12px;
   line-height: 16px;
   color: var(--secondary-color);
+
 }
 
 .profile-box {
@@ -851,13 +865,13 @@ input.check {
   /* background: #2c3e50; */
   cursor: pointer;
 }
-.tab-close:hover {
-  /* background: #1a252f; */
-}
+/* .tab-close:hover {
+  background: #1a252f;
+} */
 
-input:checked + .tab-label {
-  /* background: #1a252f; */
-}
+/* input:checked + .tab-label {
+  background: #1a252f;
+} */
 input:checked + .tab-label::after {
   transform: rotate(90deg);
 }

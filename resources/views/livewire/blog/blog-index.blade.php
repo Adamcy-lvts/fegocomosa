@@ -50,16 +50,21 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="w-full md:w-1/6 p-3 text-sm">
+                                <div class="w-full md:w-1/6 p-3 text-xs">
                                     <div class="">Likes</div>
                                     <i class="fa-solid fa-thumbs-up"></i><span
                                         class="ml-2 font-bold">{{ $post->likes->count() }}</span>
 
                                 </div>
-                                <div class="w-full md:w-1/6 p-3 text-sm">
+                                <div class="w-full  md:w-1/6 p-3 text-xs">
                                     <div class="">Comments</div>
                                     <i class="fa-solid fa-comment"></i><span
-                                        class="ml-2 font-bold">{{ $post->comments->count() }}</span>
+                                        class="ml-2  font-bold">{{ $post->comments->count() }}</span>
+                                </div>
+                                <div class="w-full md:w-1/6 p-3 text-xs">
+                                    <div class="">Views</div>
+                                    <i class="fa-solid fa-eye"></i><span
+                                        class="ml-2 font-bold">{{ $post->reads }}</span>
                                 </div>
                             </div>
                         </div>

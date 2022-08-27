@@ -111,7 +111,6 @@ class CreateNewUser implements CreatesNewUsers
             'year' => Carbon::create($input['entry_year_id'])->format('Y')
         ]);
 
-        // dd($gradYear->id);
 
         $user =  User::create([
             'profile_photo_path'=> $imageWithPath,
@@ -150,7 +149,7 @@ class CreateNewUser implements CreatesNewUsers
                 $user->categories()->attach($procategory);
         }
         
-        Mail::to($user)->queue(new WelcomeMail($user));
+        // Mail::to($user)->queue(new WelcomeMail($user));
 
         return $user;
 

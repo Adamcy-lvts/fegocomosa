@@ -86,8 +86,8 @@
   border-radius: 0;
 }
 .hero-slider .flickity-page-dots .dot.is-selected {
-  background: #ff0000;
-  border: 0 solid #ff0000;
+  background: #0ea057;
+  border: 0 solid #0ea057;
 }
 
 .carousel-cell {

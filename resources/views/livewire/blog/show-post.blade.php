@@ -35,7 +35,7 @@
                                 {{ $post->user->first_name . ' ' . $post->user->last_name }}
                             </p>
                             <p class="mb-3 text-xs text-gray-800">Author</p>
-                            <p class="text-sm">{{ $this->post->user->about_you }}</p>
+                            <p class="text-sm">{{ $post->user->about_you }}</p>
                         </div>
 
                         <h2 class="text-2xl font-bold mb-3">Related Posts</h2>

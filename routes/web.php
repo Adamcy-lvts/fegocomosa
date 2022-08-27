@@ -37,12 +37,15 @@ use App\Http\Livewire\Admin\Event\CreateEvent;
 use App\Http\Livewire\Admin\ProjectsDataTable;
 use App\Http\Livewire\Campaigns\CampaignIndex;
 use App\Http\Controllers\ImageUploadController;
+use App\Http\Livewire\Admin\Members\EditMember;
+use App\Http\Livewire\Admin\Members\CreateMember;
 use App\Http\Livewire\Profile\AdditionalUserInfo;
 use App\Http\Livewire\UserCategory\CategoryIndex;
 use App\Http\Livewire\UserCategory\UsersCategory;
 use App\Http\Livewire\Admin\Campaign\EditCampaign;
 use App\Http\Livewire\Admin\Settings\CreateMemInfo;
 use App\Http\Livewire\Admin\Campaign\CreateCampaign;
+use App\Http\Controllers\PaymentProcessingController;
 use App\Http\Livewire\Admin\DonationManagement\Donors;
 use App\Http\Livewire\UserDashboard\Resume\EditResume;
 use App\Http\Livewire\UserDashboard\Resume\ViewResume;
@@ -72,7 +75,7 @@ Route::get('/about-us', AboutUs::class)->name('aboutus');
 Route::get('/campaigns', CampaignIndex::class)->name('campaigns');
 Route::get('/campaign/create', CreateCampaign::class)->name('campaign.create');
 Route::get('/campaign/edit/{slug}', EditCampaign::class)->name('campaign.edit');
-Route::get('/campaign/{slug}', CampaignShow::class)->name('campaigns.show');
+Route::get('/campaigns/{slug}', CampaignShow::class)->name('campaigns.show');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function ()
 {
@@ -94,6 +97,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function ()
     Route::get('/project/{id}', ShowProject::class)->name('show.project');
     Route::get('/events', EventIndex::class)->name('events.index');
     Route::get('/events/{slug}', ShowEvent::class)->name('show.event');
+
+
+    Route::post('/pay', [PaymentProcessingController::class, 'redirectToGateway'])->name('pay');
+    Route::get('/payment/callback', [PaymentProcessingController::class, 'handleGatewayCallback']);
   
     
    
@@ -108,6 +115,8 @@ Route::post('/image-url',[ ImageUploadController::class, 'imageUrl'])->name('ima
 Route::group(['middleware' => ['role:Super-Admin|admin']], function () {
     Route::view('/dashboard', 'dashboard')->name('dashboard');
     Route::get('admin/members', MembersDataTable::class)->name('members');
+    Route::get('admin/create/member', CreateMember::class)->name('member.create');
+    Route::get('admin/edit/member/{id}', EditMember::class)->name('edit.member');
     Route::get('/admin/posts', PostsDataTable::class)->name('posts.data');
     Route::get('/admin/posts/create', CreatePost::class)->name('post.create');
     Route::get('/admin/posts/edit/{slug}', PostEdit::class)->name('post.edit');

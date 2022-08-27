@@ -7,6 +7,12 @@ use App\Models\Post;
 use App\Models\Comment;
 use Livewire\Component;
 use WireUi\Traits\Actions;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Session;
+
+
 // use BeyondCode\Comments\Comment;
 
 class ShowPost extends Component
@@ -185,12 +191,23 @@ class ShowPost extends Component
         $this->likes = $post->likes->count();
         $relatedPosts = Post::where('category_post_id', $post->category_post_id)->inRandomOrder()->limit(4)->get();
 
-        return view('livewire.blog.show-post', [
-            'post' => $this->post,
-            'likes' => $this->likes,
-            'latestPost' => $post,
-            'relatedPosts' => $relatedPosts,
-            'comments' => $this->comments
-        ]);
+            $blogKey = 'blog_'.$post->iid;
+
+            if (!Session::has($blogKey)) {
+                $post->incrementReadCount();//count the view
+                Session::put($blogKey, 1);
+            }
+
+            
+            return view('livewire.blog.show-post', [
+                'post' => $this->post,
+                'likes' => $this->likes,
+                'latestPost' => $post,
+                'relatedPosts' => $relatedPosts,
+                'comments' => $this->comments
+            ]);
+        
+
+        
     }
 }

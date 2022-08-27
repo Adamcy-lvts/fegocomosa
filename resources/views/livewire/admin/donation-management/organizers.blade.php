@@ -110,7 +110,7 @@
                                 {{ $organisation->id }}
                             </td>
                             <td class="px-3 py-2   text-sm">
-                                <p class="text-gray-300 whitespace-no-wrap">{{ $organisation->org_name }}</p>
+                                <p class="text-gray-300 whitespace-no-wrap">{{ $organisation->organizer_name }}</p>
                             </td>
 
                             <td class="px-3 py-1   text-sm">

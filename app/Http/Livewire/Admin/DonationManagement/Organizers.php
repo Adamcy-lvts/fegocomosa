@@ -165,7 +165,7 @@ class Organizers extends Component
 
     public function getOrganizersQueryProperty()
     {
-        return Organizer::where('org_name', 'LIKE', '%' . $this->search . '%');
+        return Organizer::where('organizer_name', 'LIKE', '%' . $this->search . '%');
     }
 
 

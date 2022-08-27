@@ -21,7 +21,8 @@ class CreatePostsTable extends Migration
             $table->string('slug')->unique();
             $table->mediumText('body');
             $table->string('image')->nullable();
-            $table->boolean('active')->default(1)->nullable();
+            $table->boolean('active')->default(1);
+            $table->bigInteger('reads')->unsigned()->default(0)->index();
             $table->boolean('featured')->default(0)->nullable();
             $table->timestamps();
         });

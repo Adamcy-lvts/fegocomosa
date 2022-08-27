@@ -96,7 +96,7 @@
                          </th>
 
                          <th class="px-5 py-3   text-left text-xs font-semibold text-gray-300 uppercase tracking-wider">
-                             DESCRIPTION
+                             COVER IMAGE
                          </th>
 
                          <th class="px-5 py-3   text-left text-xs font-semibold text-gray-300 uppercase tracking-wider">
@@ -141,9 +141,11 @@
 
 
                              <td class="px-5 py-5 border-b border-gray-200 bg-gray-900 text-sm">
-                                 <p class="text-gray-300 whitespace-no-wrap">
-                                     {{ $campaign->description }}
-                                 </p>
+                                 <div class="flex-shrink-0 w-10 h-10">
+                                     <img class="h-10 w-10 rounded-full object-cover"
+                                         src="{{ asset('storage/campaigns_images/' . $campaign->cover_image) }}"
+                                         alt="{{ $campaign->title }}" />
+                                 </div>
                              </td>
 
                              <td class="px-5 py-5 border-b border-gray-200 bg-gray-900 text-sm">
@@ -154,7 +156,7 @@
 
                              <td class="px-5 py-5 border-b border-gray-200 bg-gray-900 text-sm">
                                  <p class="text-gray-300 whitespace-no-wrap">
-                                     {{ $campaign->organizer->org_name }}
+                                     {{ $campaign->organizer->organizer_name }}
                                  </p>
                              </td>
 

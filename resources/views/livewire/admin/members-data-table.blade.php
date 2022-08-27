@@ -12,11 +12,7 @@
         @endif
     </div>
 
-
-
-
-
-    <x-button label="Add Member" wire:click="createMemberModal" icon="user-add" />
+    <x-button label="Add Member" href="{{ route('member.create') }}" icon="user-add" />
 
     <div class="my-2 flex sm:flex-row flex-col">
 
@@ -55,9 +51,6 @@
             </x-jet-dropdown>
         @endif
     </div>
-
-
-
 
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 ">
 
@@ -98,15 +91,10 @@
 
 
         <div class="col-span-1 sm:col-span-2">
-            <x-input icon="search" label="Name" wire:model.debounce.500ms="search"
+            <x-input icon="search" wire:model.debounce.500ms="search"
                 placeholder="Search by First Name, Last Name, State" />
         </div>
     </div>
-
-
-
-
-
 
 
     <div class="dark:text-gray-400">
@@ -178,8 +166,10 @@
                                 {{ $member->id }}
                             </td>
                             <td class="px-3 py-2   text-sm">
-                                <p class="text-gray-300 whitespace-no-wrap">
-                                    {{ $member->first_name }}{{ $member->last_name }}</p>
+                                <a href="{{ route('member.profile', $member->id) }}">
+                                    <p class="text-gray-300 whitespace-no-wrap">
+                                        {{ $member->first_name . ' ' . $member->last_name }}</p>
+                                </a>
                             </td>
 
                             <td class="px-3 py-2   text-sm">
@@ -211,7 +201,7 @@
                             </td>
 
                             <td class="px-3 py-2   text-sm">
-                                <p class="text-gray-300 whitespace-no-wrap">{{ $member->year_of_graduation }}</p>
+                                <p class="text-gray-300 whitespace-no-wrap">{{ $member->graduationYear->year }}</p>
                             </td>
 
                             <td class="px-3 py-1   text-sm">
@@ -231,7 +221,7 @@
                                     <x-button wire:click="assignPermission({{ $member->id }})" icon="lock-closed"
                                         class="px-1.5 py-1" secondary />
 
-                                    <x-button wire:click="showEditMember({{ $member->id }})" icon="pencil"
+                                    <x-button href="{{ route('edit.member', $member->id) }}" icon="pencil"
                                         class="px-1.5 py-1" primary />
 
                                     <x-button wire:click="SingleDeleteConfirmation({{ $member->id }})"
@@ -276,160 +266,12 @@
     </div>
 
 
-    <x-jet-dialog-modal wire:model="showModalForm">
+    {{-- <x-jet-dialog-modal wire:model="showModalForm">
 
         <x-slot name="title">Create Member</x-slot>
 
         <x-slot name="content">
-            <x-errors />
-            <div class="space-y-8 divide-y divide-gray-200  mt-10">
-
-                <form method="#" enctype="multipart/form-data">
-
-
-                    <x-input label="First Name" placeholder="First Name" wire:model.defer="firstName" />
-                    <x-input label="Last Name" placeholder="Last Name" wire:model.defer="lastName" />
-
-                    <div class="col-span-1 md:col-span-2 md:grid md:grid-cols-7 md:gap-5">
-                        <div class="col-span-1 md:col-span-4">
-                            <x-input label="Middle Name" placeholder="Middle Name" wire:model.defer="middleName" />
-                        </div>
-
-                        <div class="col-span-1 md:col-span-3">
-                            <x-datetime-picker label="Birthdate" without-time placeholder="Birthdate"
-                                wire:model.defer="birthDate" />
-                        </div>
-                    </div>
-
-                    <div class="col-span-1 md:col-span-2 md:grid md:grid-cols-3 md:gap-6">
-                        <x-native-select label="Gender" placeholder="Gender" wire:model.defer="gender">
-                            @foreach ($genders as $gender)
-                                <option value="{{ $gender->id }}"
-                                    {{ $gender->id == auth()->user()->gender_id ? 'selected' : '' }}>
-                                    {{ $gender->gender }}</option>
-                            @endforeach
-                        </x-native-select>
-                        <x-inputs.phone label="Phone" placeholder="Phone" wire:model.defer="phone" />
-                        <x-native-select label="Marital Status" placeholder="Marital Status"
-                            wire:model.defer="maritalStatus">
-                            @foreach ($maritalStatuses as $maritalStatus)
-                                <option value="{{ $maritalStatus->id }}"
-                                    {{ $maritalStatus->id == auth()->user()->marital_status ? 'selected' : '' }}>
-                                    {{ $maritalStatus->marital_status }}</option>
-                            @endforeach
-                        </x-native-select>
-                    </div>
-
-
-                    <div class="col-span-1 md:col-span-2">
-                        <x-input label="Street Address" placeholder="Street Address" wire:model.defer="address" />
-                    </div>
-
-                    <div class="col-span-1 md:col-span-2 md:grid md:grid-cols-2 md:gap-6">
-                        <x-native-select label="State" placeholder="State" wire:model="selectedState">
-
-                            @foreach ($states as $state)
-                                <option value="{{ $state->id }}">{{ $state->name }}</option>
-                            @endforeach
-
-                        </x-native-select>
-
-                        <x-native-select label="City" placeholder="City" wire:model="selectedCity">
-                            @if (!is_null($cities))
-                                @foreach ($cities as $city)
-                                    <option value="{{ $city->id }}">{{ $city->name }}</option>
-                                @endforeach
-                            @endif
-                        </x-native-select>
-
-
-                    </div>
-
-                    <div class="col-span-1 md:col-span-2">
-                        <x-input label="Email" placeholder="Email" wire:model.defer="email" />
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-1 gap-6">
-                        <div class="col-span-1  md:col-span-3 md:grid md:grid-cols-3 md:gap-6">
-                            <x-datetime-picker without-time label="Year of Entry" placeholder="Year of Entry"
-                                wire:model.defer="yearOfEntry" />
-
-                            <x-native-select label="Year of Gradution" placeholder="Year of Gradution"
-                                wire:model.defer="yearOfGraduation">
-                                @foreach ($years as $year)
-                                    <option value="{{ $year->id }}">{{ $year->year }}</option>
-                                @endforeach
-                            </x-native-select>
-                            <x-input label="Admission Number" placeholder="Admission Number"
-                                wire:model.defer="admissionNumber" />
-                        </div>
-
-                        <div class="col-span-1  md:col-span-3 md:grid md:grid-cols-3 md:gap-6">
-                            <x-input label="Jss Class" placeholder="For example Jss 1Q - 3Q"
-                                wire:model.defer="jssClass" />
-                            <x-input label="Sss Class" placeholder="For example Sss 1Q - 3Q"
-                                wire:model.defer="sssClass" />
-
-                            <x-native-select label="House" placeholder="House" wire:model.defer="selectedHouse">
-                                @foreach ($houses as $house)
-                                    <option value="{{ $house->id }}">{{ $house->name }}</option>
-                                @endforeach
-                            </x-native-select>
-                        </div>
-                    </div>
-
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="col-span-1  md:col-span-3 md:grid md:grid-cols-3 md:gap-6">
-                            <x-input label="Profession" placeholder="Profession" wire:model.defer="profession" />
-                            <x-native-select label="Professional Category" placeholder="Professional Category"
-                                wire:model="selectedCategory">
-                                @foreach ($professionCategories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                @endforeach
-                            </x-native-select>
-                            <x-input label="Workplace" placeholder="Workplace" wire:model.defer="workplace" />
-                        </div>
-
-                        <div class="col-span-1  md:col-span-3 md:grid md:grid-cols-2 md:gap-6">
-                            <x-input label="University Attended" placeholder="example Univeristy of Maiduguri"
-                                wire:model.defer="university" />
-                            <x-input label="Course of Study"
-                                placeholder="example Electrical and Electronics Engineering"
-                                wire:model.defer="courseOfStudy" />
-
-                        </div>
-                    </div>
-
-                    <div class="sm:col-span-6">
-                        <div class="w-full m-2 p-2">
-
-                            @if ($postedPotraitImage)
-                                Event Image:
-                                <img src="{{ asset('storage/members_images/' . $postedPotraitImage) }}">
-                            @endif
-                        </div>
-
-
-                        @if ($potraitImage)
-                            Photo Preview:
-                            <img src="{{ $potraitImage->temporaryUrl() }}">
-                        @endif
-
-                    </div>
-
-
-                    <label for="title" class="block text-sm font-medium text-gray-100"> Potrait Image </label>
-                    <div class="mt-1">
-                        <input type="file" wire:model="potraitImage" id="image" name="potrait_image"
-                            class="  w-full border-gray-100 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" />
-                    </div>
-
-
-                </form>
-
-
-            </div>
+           
 
         </x-slot>
 
@@ -450,7 +292,7 @@
 
         </x-slot>
 
-    </x-jet-dialog-modal>
+    </x-jet-dialog-modal> --}}
 
     <x-modal.card title="Assign Roles" blur wire:model="ModalForm">
         <x-errors />

@@ -48,6 +48,12 @@ class Post extends Model
         return $this->likes->contains('user_id', $user->id);
     }
 
+    public function incrementReadCount() {
+        $this->reads++;
+        return $this->save();
+    }
+
+
     public function scopeSearch($query, $term)
     {
       $term = "%$term%";
@@ -61,4 +67,5 @@ class Post extends Model
             
      });
     }
+
 }

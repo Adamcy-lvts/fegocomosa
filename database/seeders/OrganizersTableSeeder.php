@@ -14,10 +14,25 @@ class OrganizersTableSeeder extends Seeder
      */
     public function run()
     {
-        Organizer::create(['org_name' => 'Fegocomosa']);
-        Organizer::create(['org_name' => 'Class of 2010']);
-        Organizer::create(['org_name' => 'Emma Anih']);
-        Organizer::create(['org_name' => 'Adamu Mohammed']);
-        Organizer::create(['org_name' => 'Class of 2011']);
+        Organizer::create([
+            'organizer_name' => 'Fegocomosa',
+            'email'          =>  'fegocomosa@gmail.com'
+            ]);
+        Organizer::create([
+            'organizer_name' => 'Class of 2010',
+             'email'         =>  'classof2010@gmail.com'
+            ]);
+        Organizer::create([
+            'organizer_name' => 'Emma Anih',
+             'email'         =>  'emmanuelanih@gmail.com'
+            ]);
+        Organizer::create([
+            'organizer_name' => 'Adamu Mohammed',
+             'email'         =>  'adamumoh1989@gmail.com'
+            ]);
+        Organizer::create([
+            'organizer_name' => 'Class of 2011',
+             'email'         =>  'classof2011@gmail.com'
+            ]);
     }
 }

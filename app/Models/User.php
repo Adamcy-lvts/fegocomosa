@@ -10,10 +10,12 @@ use App\Models\Position;
 use App\Models\Education;
 use App\Models\Reference;
 use App\Models\Experience;
+use App\Models\MembershipFee;
 use App\Models\SetAmbassador;
 use App\Models\SocialMediaLink;
 use App\Models\ExecutiveMembers;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\LoginLogoutActivity;
 use Laravel\Jetstream\HasProfilePhoto;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
@@ -40,13 +42,9 @@ class User extends Authenticatable
         'username', 'email', 'password', 'first_name', 'middle_name', 'last_name', 'about_you', 'date_of_birth',
         'gender_id', 'marital_status_id', 'phone', 'address', 'profession', 'profile_photo_path',
         'workplace', 'university', 'course_of_study', 'state_id', 'city_id', 'entry_year_id', 'graduation_year_id',
-        'jss_class', 'sss_class', 'admission_number', 'house_id', 'potrait_image',
+        'jss_class', 'sss_class', 'admission_number', 'house_id', 'potrait_image', 'active'
     ];
 
-    // protected $fillable = [
-    //     'name', 'email', 'password',
-    
-    // ];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -67,6 +65,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'active' => 'boolean',
     ];
 
     /**
@@ -132,6 +131,10 @@ class User extends Authenticatable
         return $this->hasOne(SetAmbassador::class);
     }
 
+    public function entryYear()
+    {
+        return $this->belongsTo('App\Models\EntryYear', 'entry_year_id');
+    }
 
     public function graduationYear()
     {
@@ -178,7 +181,30 @@ class User extends Authenticatable
         return $this->hasMany(Skill::class);
     }
 
-   
+    public function membershipfee()
+    {
+        return $this->hasMany(MembershipFee::class);
+    }
+
+   public function authentications()
+   {
+    return $this->hasMany(LoginLogoutActivity::class);
+   }
+
+   public function incrementViewCount() {
+        $this->profile_views++;
+        return $this->save();
+   }
+
+   public function paid()
+   {
+    $membershipPayment = $this->membershipfee()->where('user_id', auth()->user()->id)
+                ->where('year', now()->year)
+                ->first();
+      return $membershipPayment;       
+    
+   }
+
 
 
     public function scopeSearch($query, $term)

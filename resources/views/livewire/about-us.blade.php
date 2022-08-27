@@ -1,4 +1,3 @@
-<x-guest-menu />
 @auth
     @livewire('navigation-menu')
 @endauth
