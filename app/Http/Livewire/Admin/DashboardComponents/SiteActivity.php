@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin\DashboardComponents;
 
+use App\Models\User;
 use Livewire\Component;
 
 class SiteActivity extends Component
@@ -10,6 +11,27 @@ class SiteActivity extends Component
     protected $listeners = [
     'markAsRead' => '$refresh',
     ];
+    public $loginNotifications;
+    public $logoutNotifications;
+
+
+    public function mount()
+    {
+        $this->loginActivity();
+        $this->logoutActivity();
+    }
+
+    public function loginActivity()
+    {
+        $this->loginNotifications = auth()->user()->unreadNotifications->where('type', 'App\Notifications\LoginNotification');
+
+    }
+
+    public function logoutActivity()
+    {
+        $this->logoutNotifications = auth()->user()->unreadNotifications->where('type', 'App\Notifications\LogoutNotification');
+      
+    }
 
     public function markLoginNotesAsRead()
     {

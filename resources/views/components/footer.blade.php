@@ -23,41 +23,41 @@
         </div>
         <div class="flex-grow flex flex-wrap md:pr-20 -mb-10 md:text-left text-center order-first">
             <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-                <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES</h2>
+                <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Quick Links</h2>
                 <nav class="list-none mb-10">
                     <li>
                         <a href="{{ route('aboutus') }}" class="text-gray-600 hover:text-gray-800">About Us</a>
                     </li>
                     <li>
-                        <a class="text-gray-600 hover:text-gray-800">Second Link</a>
+                        <a class="text-gray-600 hover:text-gray-800">Memebers</a>
                     </li>
                     <li>
-                        <a class="text-gray-600 hover:text-gray-800">Third Link</a>
+                        <a class="text-gray-600 hover:text-gray-800">Professional Categories</a>
                     </li>
                     <li>
-                        <a class="text-gray-600 hover:text-gray-800">Fourth Link</a>
+                        <a class="text-gray-600 hover:text-gray-800">Campaigns</a>
                     </li>
                 </nav>
             </div>
             <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-                <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES</h2>
+                <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Quick Links</h2>
                 <nav class="list-none mb-10">
                     <li>
-                        <a class="text-gray-600 hover:text-gray-800">First Link</a>
+                        <a class="text-gray-600 hover:text-gray-800">Campaigns</a>
                     </li>
                     <li>
-                        <a class="text-gray-600 hover:text-gray-800">Second Link</a>
+                        <a class="text-gray-600 hover:text-gray-800">Blog</a>
                     </li>
                     <li>
-                        <a class="text-gray-600 hover:text-gray-800">Third Link</a>
+                        <a class="text-gray-600 hover:text-gray-800">Events</a>
                     </li>
                     <li>
-                        <a class="text-gray-600 hover:text-gray-800">Fourth Link</a>
+                        <a class="text-gray-600 hover:text-gray-800">Projects</a>
                     </li>
                 </nav>
             </div>
             <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-                <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES</h2>
+                <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">External Links</h2>
                 <nav class="list-none mb-10">
                     <li>
                         <a class="text-gray-600 hover:text-gray-800">First Link</a>

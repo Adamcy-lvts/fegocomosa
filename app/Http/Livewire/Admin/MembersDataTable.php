@@ -38,7 +38,7 @@ class MembersDataTable extends Component
 
 
     public $pagination = 5;
-    
+    public $memberId = null;
     public $showModalForm = false;
     public $showModalAlert = false;
     public $showAlert = false;
@@ -270,7 +270,7 @@ class MembersDataTable extends Component
 
     public function getUsersQueryProperty()
     {
-        return User::with(['Categories','house','gender','events','state','city'])->when($this->selectedHouseFilter, function($query) {
+        return User::select('id','first_name','last_name','email','profile_photo_path','address','phone','graduation_year_id')->with(['graduationYear'])->when($this->selectedHouseFilter, function($query) {
             $query->where('house_id', $this->selectedHouseFilter);
             })->when($this->FilterByState, function($query) {$query->where('state_id',$this->FilterByState);
             })->when($this->FilterByCity, function($query) {$query->where('city_id', $this->FilterByCity);

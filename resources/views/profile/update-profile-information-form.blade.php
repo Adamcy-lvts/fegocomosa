@@ -11,7 +11,8 @@
                                   @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                                       <div x-data="{ photoName: null, photoPreview: null }" class="col-span-6 sm:col-span-4">
                                           <!-- Profile Photo File Input -->
-                                          <input type="file" class="hidden" wire:model="photo" x-ref="photo"
+                                          <input accept="image/*" type="file" class="hidden" wire:model="photo"
+                                              x-ref="photo"
                                               x-on:change="
                                                 photoName = $refs.photo.files[0].name;
                                                 const reader = new FileReader();
@@ -63,16 +64,22 @@
 
                                       <x-native-select label="Year of Entry" placeholder="Year of Entry"
                                           wire:model.defer="state.entry_year_id">
-                                          @foreach ($entryYears as $entryYear)
-                                              <option value="{{ $entryYear->id }}">{{ $entryYear->year }}</option>
-                                          @endforeach
+                                          @if ($entryYears)
+                                              @foreach ($entryYears as $entryYear)
+                                                  <option value="{{ $entryYear->id }}">{{ $entryYear->year }}</option>
+                                              @endforeach
+                                          @endif
+
                                       </x-native-select>
 
                                       <x-native-select label="Year of Gradution" placeholder="Year of Gradution"
                                           wire:model.defer="state.graduation_year_id">
-                                          @foreach ($gradYears as $gradYear)
-                                              <option value="{{ $gradYear->id }}">{{ $gradYear->year }}</option>
-                                          @endforeach
+                                          @if ($gradYears)
+                                              @foreach ($gradYears as $gradYear)
+                                                  <option value="{{ $gradYear->id }}">{{ $gradYear->year }}</option>
+                                              @endforeach
+                                          @endif
+
                                       </x-native-select>
 
                                       <x-input label="Admission Number" placeholder="Admission Number"
@@ -86,9 +93,12 @@
                                           wire:model.defer="state.sss_class" />
                                       <x-native-select label="House" placeholder="House"
                                           wire:model.defer="state.house_id">
-                                          @foreach ($houses as $house)
-                                              <option value="{{ $house->id }}" }>{{ $house->name }}</option>
-                                          @endforeach
+                                          @if ($houses)
+                                              @foreach ($houses as $house)
+                                                  <option value="{{ $house->id }}" }>{{ $house->name }}</option>
+                                              @endforeach
+                                          @endif
+
                                       </x-native-select>
                                   </div>
                               </div>
@@ -107,6 +117,7 @@
                               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                   <x-input label="First Name" placeholder="First Name"
                                       wire:model.defer="state.first_name" />
+
                                   <x-input label="Last Name" placeholder="Last Name"
                                       wire:model.defer="state.last_name" />
 
@@ -125,21 +136,25 @@
                                   <div class="col-span-1 md:col-span-2 md:grid md:grid-cols-3 md:gap-6">
                                       <x-native-select label="Gender" placeholder="Gender"
                                           wire:model.defer="state.gender_id">
-                                          @foreach ($genders as $gender)
-                                              <option value="{{ $gender->id }}"
-                                                  {{ $gender->id == auth()->user()->gender_id ? 'selected' : '' }}>
-                                                  {{ $gender->gender }}</option>
-                                          @endforeach
+                                          @if ($genders)
+                                              @foreach ($genders as $gender)
+                                                  <option value="{{ $gender->id }}"
+                                                      {{ $gender->id == auth()->user()->gender_id ? 'selected' : '' }}>
+                                                      {{ $gender->gender }}</option>
+                                              @endforeach
+                                          @endif
                                       </x-native-select>
                                       <x-inputs.phone label="Phone" mask="(###)-####-####" placeholder="Phone"
                                           wire:model.defer="state.phone" />
                                       <x-native-select label="Marital Status" placeholder="Marital Status"
                                           wire:model.defer="state.marital_status_id">
-                                          @foreach ($maritalStatuses as $maritalStatus)
-                                              <option value="{{ $maritalStatus->id }}"
-                                                  {{ $maritalStatus->id == auth()->user()->marital_status ? 'selected' : '' }}>
-                                                  {{ $maritalStatus->marital_status }}</option>
-                                          @endforeach
+                                          @if ($maritalStatuses)
+                                              @foreach ($maritalStatuses as $maritalStatus)
+                                                  <option value="{{ $maritalStatus->id }}"
+                                                      {{ $maritalStatus->id == auth()->user()->marital_status ? 'selected' : '' }}>
+                                                      {{ $maritalStatus->marital_status }}</option>
+                                              @endforeach
+                                          @endif
                                       </x-native-select>
                                   </div>
 
@@ -151,11 +166,11 @@
                                   <div class="col-span-1 md:col-span-2 md:grid md:grid-cols-2 md:gap-6">
                                       <x-native-select label="State" placeholder="State"
                                           wire:model="state.selectedState">
-
-                                          @foreach ($states as $statec)
-                                              <option value="{{ $statec->id }}">{{ $statec->name }}</option>
-                                          @endforeach
-
+                                          @if ($states)
+                                              @foreach ($states as $statec)
+                                                  <option value="{{ $statec->id }}">{{ $statec->name }}</option>
+                                              @endforeach
+                                          @endif
                                       </x-native-select>
                                       <x-native-select label="City" placeholder="City"
                                           wire:model="state.selectedCity">
@@ -210,6 +225,7 @@
                                       {{ __('Remove Photo') }}
                                   </x-jet-secondary-button>
                               @endif
+                              <x-jet-input-error for="potraitImage" class="mt-2" />
                           </x-card>
 
                       </div>
@@ -226,9 +242,11 @@
                                   wire:model.defer="state.profession" />
                               <x-native-select label="Professional Category" placeholder="Professional Category"
                                   wire:model="selectedCategory">
-                                  @foreach ($professionCategories as $category)
-                                      <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                  @endforeach
+                                  @if ($professionCategories)
+                                      @foreach ($professionCategories as $category)
+                                          <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                      @endforeach
+                                  @endif
                               </x-native-select>
                               <x-input label="Workplace" placeholder="Workplace"
                                   wire:model.defer="state.workplace" />

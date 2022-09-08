@@ -37,12 +37,11 @@ class LogoutListener
 
         $lastlogin = $user->authentications()->orderByDesc('login_at')->first();
 
-        // dd($lastlogin);
-
+        if($lastlogin) {
          $lastlogin->update([
             'logout_at'  => Carbon::now()->toDateTimeString(),
         ]);
-
+        }
         $logoutime = $user->authentications()->orderByDesc('logout_at')->first();
         
         Notification::send($admins, new LogoutNotification($event->user, $logoutime));

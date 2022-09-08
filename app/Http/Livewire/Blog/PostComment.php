@@ -6,6 +6,8 @@ use App\Models\Post;
 use App\Models\Comment;
 use Livewire\Component;
 use WireUi\Traits\Actions;
+use Illuminate\Support\Facades\Mail;
+use App\Notifications\CommentNotification;
 
 class PostComment extends Component
 {
@@ -25,6 +27,8 @@ class PostComment extends Component
         $comment->user_id = auth()->user()->id;
         $post->comments()->save($comment);
 
+        $post->user->notify(new CommentNotification(auth()->user(), $post, $comment));
+        
             $this->comment = '';
         
             $this->notification()->success(

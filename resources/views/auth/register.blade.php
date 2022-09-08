@@ -1,4 +1,8 @@
 <x-guest-layout>
+    @push('styles')
+        <link rel="stylesheet" href="{{ asset('filepond/dist/filepond.css') }}">
+        <link rel="stylesheet" href="{{ asset('filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css') }}">
+    @endpush
 
     <div x-data="app()" x-cloak class="w-full md:w-7/12 mx-auto px-4 sm:px-0 py-24">
         <h1 class="text-xl ml-2 uppercase pb-12" x-text="`Registeration Step: ${step} of 4`"></h1>
@@ -51,34 +55,9 @@
                 @csrf
                 <div class="p-4" x-show.transition="step === 1">
 
-                    <div class="mb-5 text-center">
-                        <div class="mx-auto w-32 h-32 mb-2 border rounded-full relative bg-gray-100  shadow-inset">
-                            <img id="image" class="object-cover w-full h-32 rounded-full" :src="image" />
-                        </div>
-
-                        <label for="fileInput" type="button"
-                            class="cursor-pointer inine-flex justify-between items-center focus:outline-none border py-2 px-4 rounded-lg shadow-sm text-left text-gray-600 bg-white hover:bg-gray-100 font-medium">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="inline-flex flex-shrink-0 w-6 h-6 -mt-1 mr-1"
-                                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="0" y="0" width="24" height="24" stroke="none">
-                                </rect>
-                                <path
-                                    d="M5 7h1a2 2 0 0 0 2 -2a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1a2 2 0 0 0 2 2h1a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
-                                <circle cx="12" cy="13" r="3" />
-                            </svg>
-                            Browse Photo
-                        </label>
-
-                        <div class="mx-auto w-48 text-gray-500 text-xs mt-2 text-center mt-1">Click to add profile
-                            picture
-                        </div>
-
-                        <input name="photo" id="fileInput" accept="image/*" class="hidden" type="file"
-                            @change="let file = document.getElementById('fileInput').files[0];
-                            var reader = new FileReader();
-                            reader.onload = (e) => image = e.target.result;
-                            reader.readAsDataURL(file);">
+                    <div class="flex justify-center mx-auto w-full">
+                        <input id="avatar" type="file" class="filepond w-40 h-40" name="photo"
+                            accept="image/png, image/jpeg, image/gif" />
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -100,7 +79,8 @@
                         <x-native-select name="marital_status_id" :value="old('marital_status_id')" label="Marital Status"
                             placeholder="Marital Status">
                             @foreach ($marital_statuses as $marital_status)
-                                <option value="{{ $marital_status->id }}">{{ $marital_status->marital_status }}</option>
+                                <option value="{{ $marital_status->id }}">{{ $marital_status->marital_status }}
+                                </option>
                             @endforeach
                         </x-native-select>
 
@@ -161,11 +141,16 @@
                         <x-input name="university" :value="old('university')" label="University"
                             placeholder="University Attended" />
 
-                        <x-input name="course_of_study" :value="old('course_of_study')" label="Field of Study"
-                            placeholder="Field of Study" />
+                        <div class="col-span-1 sm:col-span-2">
+                            <x-input name="course_of_study" :value="old('course_of_study')" label="Field of Study"
+                                placeholder="Field of Study" />
+                        </div>
 
+                        <div class="col-span-1 sm:col-span-2">
+                            <x-input accept="image/*" type="file" name="potraitImage" id="potraitPicture"
+                                label="Potrait Image" :value="old('potrait_image')" />
+                        </div>
 
-                        <x-input type="file" name="potrait_image" label="Potrait Image" :value="old('potrait_image')" />
 
 
 
@@ -216,4 +201,72 @@
 
     </div>
 
+
+    @push('scripts')
+        <script src="{{ asset('filepond-image-validate-size/dist/filepond-plugin-image-validate-size.js') }}"></script>
+        <script src="{{ asset('filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js') }}"></script>
+        <script src="{{ asset('filepond-plugin-image-exif-orientation/dist/filepond-plugin-image-exif-orientation.js') }}">
+        </script>
+        <script src="{{ asset('filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js') }}"></script>
+        <script src="{{ asset('filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js') }}"></script>
+        <script src="{{ asset('filepond-plugin-image-transform/dist/filepond-plugin-image-transform.js') }}"></script>
+
+        <script src="{{ asset('filepond/dist/filepond.js') }}"></script>
+        <script>
+            // Register the plugin
+            FilePond.registerPlugin(
+                FilePondPluginImageValidateSize,
+                FilePondPluginFileValidateType,
+                FilePondPluginImageExifOrientation,
+                FilePondPluginImagePreview,
+                FilePondPluginImageResize,
+                FilePondPluginImageTransform
+            );
+            // Get a reference to the file input element
+            // const inputElement = document.querySelector('#potraitPicture');
+
+            Create a FilePond instance
+            const pond = FilePond.create(inputElement, {
+                allowImageValidateSize: true,
+                imageValidateSizeMinWidth: 900,
+                imageValidateSizeMinHeight: 1200,
+                imageValidateSizeLabelImageSizeTooSmall: 'Image resolution not supported',
+                imageValidateSizeLabelExpectedMinSize: 'The only supported resolution is {minWidth}px × {minHeight}px',
+
+                server: {
+                    url: '/imageUpload',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    }
+                }
+
+            });
+
+            // Get a reference to the file input element
+            const avatar = document.querySelector('#avatar');
+            // Select the file input and use 
+            // create() to turn it into a pond
+            // Create a FilePond instance
+            const pondAvatar = FilePond.create(avatar, {
+                labelIdle: `Drag & Drop your picture or <span class="filepond--label-action">Browse</span>`,
+                imagePreviewHeight: 170,
+                imageCropAspectRatio: '1:1',
+                imageResizeTargetWidth: 200,
+                imageResizeTargetHeight: 200,
+                imageResizeUpscale: false,
+                stylePanelLayout: 'compact circle',
+                styleLoadIndicatorPosition: 'center bottom',
+                styleProgressIndicatorPosition: 'right bottom',
+                styleButtonRemoveItemPosition: 'left bottom',
+                styleButtonProcessItemPosition: 'right bottom',
+
+                server: {
+                    url: '/avatarUpload',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    }
+                }
+            });
+        </script>
+    @endpush
 </x-guest-layout>

@@ -39,12 +39,9 @@
                     <div class="col-span-1 sm:col-span-2 mb-5">
                         <x-textarea id="editor1" label="Membership Info" placeholder="Membership Info"
                             wire:model.defer="info" name="info" />
-                        {{-- <textarea id="editor1" name="" id="" cols="30" rows="10"></textarea> --}}
+
                     </div>
                 </div>
-
-
-                {{-- <x-toggle label="Accept the terms and conditions" wire:model.defer="featured" /> --}}
 
                 <x-slot name="footer">
                     <div class="flex items-center gap-x-3 justify-end">

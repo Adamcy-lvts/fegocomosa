@@ -254,45 +254,15 @@
 
                 </tbody>
             </table>
-            <div class="px-5 py-5   flex flex-col xs:flex-row items-center xs:justify-between">
-                <span class="text-xs xs:text-sm text-gray-300">
 
-                </span>
-                <div class="inline-flex mt-2 xs:mt-0">
+            <div class="px-5 py-5">
+                <span class="text-xs xs:text-sm text-gray-300">
                     {{ $members->links() }}
-                </div>
+                </span>
             </div>
         </div>
     </div>
 
-
-    {{-- <x-jet-dialog-modal wire:model="showModalForm">
-
-        <x-slot name="title">Create Member</x-slot>
-
-        <x-slot name="content">
-           
-
-        </x-slot>
-
-
-        <x-slot name="footer">
-            @if ($memberId)
-                <div class="flex items-center gap-x-3 justify-end">
-                    <x-button wire:click="CancelConfirmation" label="Cancel" flat />
-                    <x-button type="submit" wire:click="updateMember" label="Update"
-                        wire:loading.attr="disabled" />
-                </div>
-            @else
-                <div class="flex items-center gap-x-3 justify-end">
-                    <x-button wire:click="CancelConfirmation" label="Cancel" flat />
-                    <x-button type="submit" wire:click="storeMember" label="Create" wire:loading.attr="disabled" />
-                </div>
-            @endif
-
-        </x-slot>
-
-    </x-jet-dialog-modal> --}}
 
     <x-modal.card title="Assign Roles" blur wire:model="ModalForm">
         <x-errors />

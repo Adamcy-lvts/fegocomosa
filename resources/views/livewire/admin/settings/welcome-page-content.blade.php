@@ -5,7 +5,7 @@
             {{ __('Guest Home Slider') }}
         </h2>
     </x-slot>
-    {{-- <x-jet-button class="" wire:click="SliderModal">Create</x-jet-button> --}}
+
     <x-button label="Create" primary wire:click="SliderModal" />
 
     <div class="my-2 flex sm:flex-row flex-col">
@@ -144,8 +144,8 @@
 
 
                                 <div class="flex items-center gap-x-3 justify-end">
-                                    <x-button type="button" wire:click="EditSlider({{ $slider->id }})" icon="pencil"
-                                        class="px-1.5 py-1" primary />
+                                    <x-button type="button" wire:click="EditSlider({{ $slider->id }})"
+                                        icon="pencil" class="px-1.5 py-1" primary />
 
                                     <x-button wire:click="DeleteConfirmaton({{ $slider->id }})" icon="x"
                                         class="px-1.5 py-1" negative />
@@ -176,20 +176,17 @@
 
                 </tbody>
             </table>
-            <div class="px-5 py-5   flex flex-col xs:flex-row items-center xs:justify-between">
-                <span class="text-xs xs:text-sm text-gray-300">
 
-                </span>
-                <div class="inline-flex mt-2 xs:mt-0">
+            <div class="px-5 py-5">
+                <span class="text-xs xs:text-sm text-gray-300">
                     {{ $sliders->links() }}
-                </div>
+                </span>
             </div>
         </div>
     </div>
 
     {{-- GUEST WELCOME PAGE MEMBERSHIP INFO TABLE --}}
 
-    {{-- <x-jet-button class="" wire:click="memberInfoModal">Create</x-jet-button> --}}
     <x-button label="Add Membership Info" primary wire:click="memberInfoModal" />
 
     <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto ">
@@ -311,7 +308,7 @@
             </div>
 
         </div>
-        {{-- <x-textarea id="editor" wire:model.lazy="info" label="Info" placeholder="write your info" /> --}}
+
         <x-slot name="footer">
             <div class="flex justify-between gap-x-4">
                 <x-button flat negative label="Delete" wire:click="delete" />
@@ -320,11 +317,13 @@
                     <x-button flat label="Cancel" x-on:click="close" />
                     @if ($sliderId)
                         <div class="flex items-center gap-x-3 justify-end">
-                            <x-button wire:click="updateSlider" label="Update" wire:loading.attr="disabled" primary />
+                            <x-button wire:click="updateSlider" label="Update" wire:loading.attr="disabled"
+                                primary />
                         </div>
                     @else
                         <div class="flex items-center gap-x-3 justify-end">
-                            <x-button wire:click="createSlider" label="Create" wire:loading.attr="disabled" primary />
+                            <x-button wire:click="createSlider" label="Create" wire:loading.attr="disabled"
+                                primary />
                         </div>
                     @endif
 
@@ -358,7 +357,6 @@
             @endif
             @if ($logo)
                 Photo Preview:
-                {{-- <img src="{{ $logo->temporaryUrl() }}"> --}}
             @endif
         </div>
         <label class="inline-block mb-2 text-gray-500">Upload

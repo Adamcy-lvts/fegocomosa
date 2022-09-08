@@ -64,15 +64,15 @@ class CampaignShow extends Component
            
             
 
-        $city = Lga::with('state.cities')->find($this->selectedCity);
+        // $city = Lga::with('state.cities')->find($this->selectedCity);
 
-            if ($city) {
-                $this->cities = Lga::where('state_id', $city->state->id)->get();
+        //     if ($city) {
+        //         $this->cities = Lga::where('state_id', $city->state->id)->get();
 
-                $this->selectedCity = $city->id;
-                $this->selectedState = $user->state_id;
+        //         $this->selectedCity = $city->id;
+        //         $this->selectedState = $user->state_id;
 
-            }
+        //     }
 
 
 
@@ -179,7 +179,6 @@ class CampaignShow extends Component
     public function render()
     {
         return view('livewire.campaigns.campaign-show', [
-            'states' => State::all(),
             'campaign' => $this->campaign,
         ])->layout('layouts.guest');
     }

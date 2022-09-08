@@ -15,10 +15,13 @@
                     snackwave tilde chillwave ugh. Pour-over meditation PBR&B pickled ennui celiac mlkshk freegan
                     photo
                     booth af fingerstache pitchfork.</p>
-                <div class="flex justify-center gap-2">
-                    <x-button label="Register" green href="{{ route('register') }}" />
-                    <x-button label="SignIn" outline green href="{{ route('login') }}" />
-                </div>
+                @guest
+                    <div class="flex justify-center gap-2">
+                        <x-button label="Register" green href="{{ route('register') }}" />
+                        <x-button label="SignIn" outline green href="{{ route('login') }}" />
+                    </div>
+                @endguest
+
             </div>
         </div>
     </section>
@@ -40,9 +43,11 @@
                 @foreach ($positions as $position)
                     <div class="p-4 lg:w-1/4 md:w-1/2">
                         <div class="h-full flex flex-col items-center text-center">
-                            <img alt="team"
-                                class="flex-shrink-0 rounded-lg w-full h-56 object-cover object-center mb-4"
-                                src="{{ asset($position->user->profile_photo_url) }}">
+                            <a href="{{ route('member.profile', $position->user->id) }}">
+                                <img alt="team"
+                                    class="flex-shrink-0 rounded-lg w-full h-56 object-cover object-center mb-4"
+                                    src="{{ asset($position->user->profile_photo_url) }}">
+                            </a>
                             <div class="w-full">
                                 <h2 class="title-font font-medium text-lg text-gray-900">
                                     {{ $position->user->first_name . ' ' . $position->user->last_name }}</h2>
@@ -80,20 +85,19 @@
             <div class="flex flex-wrap -m-2">
                 @foreach ($ambassadors as $ambassador)
                     <div class="p-2 lg:w-1/3 md:w-1/2 w-full">
+                        <a href="{{ route('member.profile', $ambassador->user->id) }}">
 
-
-                        <div class="h-full flex flex-row items-center border-gray-200 border p-4 rounded-lg">
-                            <img alt="team"
-                                class="w-20 h-20 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
-                                src="{{ asset($ambassador->user->profile_photo_url) }}">
-                            <div class="flex-grow">
-                                <h2 class="text-gray-900 title-font font-medium">
-                                    {{ $ambassador->user->first_name . ' ' . $ambassador->user->last_name }}</h2>
-                                {{-- <p class="text-gray-500">Civil Engineer</p> --}}
-                                <p class="text-gray-500">{{ $ambassador->year }} Set Ambassador</p>
+                            <div class="h-full flex flex-row items-center border-gray-200 border p-4 rounded-lg">
+                                <img alt="team"
+                                    class="w-20 h-20 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
+                                    src="{{ asset($ambassador->user->profile_photo_url) }}">
+                                <div class="flex-grow">
+                                    <h2 class="text-gray-900 title-font font-medium">
+                                        {{ $ambassador->user->first_name . ' ' . $ambassador->user->last_name }}</h2>
+                                    <p class="text-gray-500">{{ $ambassador->year }} Set Ambassador</p>
+                                </div>
                             </div>
-                        </div>
-
+                        </a>
                     </div>
                 @endforeach
 

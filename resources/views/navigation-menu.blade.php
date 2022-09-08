@@ -25,7 +25,7 @@
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('all.members') }}" :active="request()->routeIs('all.members')">
+                    <x-jet-nav-link href="{{ route('members') }}" :active="request()->routeIs('members*')">
                         {{ __('Members') }}
                     </x-jet-nav-link>
                 </div>
@@ -192,7 +192,7 @@
                 {{ __('Dashboard') }}
             </x-jet-responsive-nav-link>
 
-            <x-jet-responsive-nav-link href="{{ route('all.members') }}" :active="request()->routeIs('all.members')">
+            <x-jet-responsive-nav-link href="{{ route('members') }}" :active="request()->routeIs('members*')">
                 {{ __('Members') }}
             </x-jet-responsive-nav-link>
 

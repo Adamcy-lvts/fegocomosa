@@ -2,10 +2,12 @@
 
 namespace Tests\Feature;
 
-use App\Models\User;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use App\Models\User;
+use Spatie\Permission\Models\Role;
+use App\Providers\RouteServiceProvider;
+use Database\Seeders\GraduationYearTableSeeder;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class AuthenticationTest extends TestCase
 {
@@ -21,6 +23,16 @@ class AuthenticationTest extends TestCase
     public function test_users_can_authenticate_using_the_login_screen()
     {
         $user = User::factory()->create();
+
+        // Create roles
+        $super_admin = Role::create(['name' => 'Super Admin']);
+        $admin = Role::create(['name' => 'admin']);
+
+        // Assign role to user
+        $user->assignRole([$super_admin, $admin]);
+        // If you have to use Faker then you can also do this
+        // $user->assignRole($faker->randomElement([$super_admin, $admin]));
+        $this->seed(GraduationYearTableSeeder::class);
 
         $response = $this->post('/login', [
             'email' => $user->email,

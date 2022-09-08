@@ -80,7 +80,7 @@ class CreateResume extends Component
             $title = 'Success',
             $description = 'Education Details Saved'
         );
-        // $this->reset();
+        $this->reset();
       
         
 
@@ -106,7 +106,7 @@ class CreateResume extends Component
             $title = 'Success',
             $description = 'Experience Details Saved'
         );
-        // $this->reset();
+        $this->reset();
 
        
 
@@ -138,7 +138,7 @@ class CreateResume extends Component
             $title = 'Success',
             $description = 'Skill & Hobbies Details Saved'
         );
-        // $this->reset();
+        $this->reset();
 
     }
 
@@ -157,7 +157,7 @@ class CreateResume extends Component
             $title = 'Success',
             $description = 'Reference Details Saved'
         );
-        // $this->reset();
+        $this->reset();
 
     }
 

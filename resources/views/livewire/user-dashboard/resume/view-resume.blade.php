@@ -4,8 +4,13 @@
             {{ __('Resume') }}
         </x-slot>
         <!-- outer container -->
+        <div class="w-10/12  mx-auto">
+            <x-button label="Download PDF" href="{{ route('download.resume', $member->id) }}" />
+        </div>
+
         <div
             class="bg-white md:w-10/12 mx-auto border border-gray-300 rounded-sm shadow-lg py-10 px-10 w-full mt-10 mb-10">
+
             <!-- header (profile) -->
             <header class="border-b">
                 <!-- social icons-->
@@ -67,7 +72,7 @@
                     <div class="w-full md:w-4/6 text-center lg:text-left">
                         <h1 class="text-4xl md:text-5xl uppercase font-extrabold">
                             {{ $member->first_name . ' ' . $member->last_name }}</h1>
-                        <p class="text-xl mt-5">{{ $member->profession }}, Aspiring Full-Stack Developer
+                        <p class="text-xl mt-5">{{ $member->profession }}
                         </p>
                     </div>
                 </div>

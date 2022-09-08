@@ -53,13 +53,13 @@
             </div>
         </div>
 
-        <div class="flex gap-2 mb-3 flex-wrap">
+        {{-- <div class="flex gap-2 mb-3 flex-wrap">
             @foreach ($professionCategories as $category)
                 <x-button href="{{ route('category.members', $category->slug) }}" sm dark
                     label="{{ $category->name }}" />
             @endforeach
-            <x-button href="{{ route('all.members') }}" sm dark label="All Members" />
-        </div>
+            <x-button href="{{ route('members') }}" sm dark label="All Members" />
+        </div> --}}
 
         <div class="col-span-1 sm:col-span-2 mb-4">
             <x-input icon="search" label="" wire:model.debounce.500ms="search"
@@ -88,7 +88,7 @@
                                 {{ $member->first_name . ' ' . $member->last_name }}
                             </span>
                             <span>
-                                <x-button 2xs outline green label="{{ $member->profession }}" />
+                                <x-button 2xs flat green label="{{ $member->profession }}" />
                             </span>
                         </div>
                         <div class="flex justify-between">
@@ -98,17 +98,10 @@
                                     label="View Details" />
                             </div>
 
-                            <span class="flex gap-3 ">
-                                <a href="#" class="text-gray-500">
-                                    <i class="fab fa-facebook-f "></i>
-                                </a>
-                                <a href="#" class="ml-2 text-gray-500">
-                                    <i class="fab fa-twitter "></i>
-                                </a>
-                                <a href="#" class="ml-2 text-gray-500">
-                                    <i class="fab fa-whatsapp "></i>
-                                </a>
-                            </span>
+                            <div>
+                                <x-button type="button" href="{{ route('resume', $member->id) }}" 2xs flat
+                                    label="View Resume/CV" />
+                            </div>
                         </div>
                     </div>
                 </div>

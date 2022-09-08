@@ -9,6 +9,7 @@ use App\Models\State;
 use App\Models\Gender;
 use Livewire\Component;
 use App\Models\Category;
+use Livewire\WithPagination;
 use App\Models\MaritalStatus;
 use App\Models\GraduationYears;
 use App\Models\SocialMediaLink;
@@ -16,6 +17,8 @@ use Illuminate\Support\Facades\Session;
 
 class MembersIndex extends Component
 {   
+    use WithPagination;
+
     public $search = "";
     public $pagination = 8;
     public $filteredCities      = null;
@@ -47,17 +50,11 @@ class MembersIndex extends Component
     public $facebook, $twitter, $instagram , $whatsapp, $telegram, $linkedin, $website;
     
  
-    // protected $listeners = ['details'];
+    public function updatingSearch()
+    {
+         $this->resetPage();
 
-    // public function details($id)
-    // {
-    //     dd($id);
-    //      $member = User::find($id);
-
-    //   $this->firstName = $member->first_name;
-    //   $this->lastName = $member->last_name;
-    //   $this->potraitImage = $member->potrait_image;
-    // }
+    }
 
     public function ClearFilters()
     {
@@ -136,14 +133,14 @@ class MembersIndex extends Component
     {
         return $this->usersQuery->paginate($this->pagination);
 
-        // $this->resetPage();
+        
 
     }
 
      public function getUsersQueryProperty()
     {
         
-        return User::with(['Categories','house','gender','events','state','city'])->when($this->selectedHouseFilter, function($query) {
+        return User::select('id','first_name','middle_name','last_name','potrait_image','profession','graduation_year_id')->with(['graduationYear'])->when($this->selectedHouseFilter, function($query) {
             
             $query->where('house_id', $this->selectedHouseFilter);
             })->when($this->FilterByState, function($query) {$query->where('state_id',$this->FilterByState);

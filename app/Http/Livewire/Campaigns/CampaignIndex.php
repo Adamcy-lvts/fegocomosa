@@ -17,7 +17,7 @@ class CampaignIndex extends Component
     public function render()
     {
         return view('livewire.campaigns.campaign-index', [
-            'campaigns' => Campaign::orderBy('created_at', 'DESC')->paginate($this->pagination)
+            'campaigns' => Campaign::select('id','campaign_title','description','organizer_id','slug','cover_image')->with('organizer:id,organizer_name')->orderBy('created_at', 'DESC')->paginate($this->pagination)
         ])->layout('layouts.guest');
     }
 }

@@ -256,6 +256,6 @@ class PostsDataTable extends Component
 
     public function getPostsQueryProperty()
     {
-        return Post::with(['user'])->search(trim($this->search));
+        return Post::select('id','title','image','created_at','user_id','slug')->with(['user:id,username'])->search(trim($this->search));
     }
 }

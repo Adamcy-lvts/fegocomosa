@@ -33,7 +33,7 @@ class NewMemberNotification
     {
         $users = User::all();
 
-         Mail::to($event->user)->queue(new WelcomeMail($event->user));
+        //  Mail::to($event->user)->queue(new WelcomeMail($event->user));
 
         Notification::send($users, new NewRegisteredMember($event->user));
     }

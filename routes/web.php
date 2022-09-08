@@ -4,6 +4,7 @@
 
 
 use App\Models\Category;
+use Illuminate\Http\Request;
 use App\Http\Livewire\AboutUs;
 use App\Http\Livewire\Welcome;
 use App\Http\Livewire\HomePage;
@@ -12,16 +13,18 @@ use App\Http\Livewire\Admin\Roles;
 use App\Http\Livewire\Blog\ShowPost;
 use App\Http\Livewire\Blog\BlogIndex;
 use App\Http\Livewire\UpdatePassword;
-use Illuminate\Support\Facades\Route;
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Events\ShowEvent;
 use App\Http\Livewire\Admin\Permissions;
 use App\Http\Livewire\Blog\PostCategory;
 use App\Http\Livewire\Events\EventIndex;
 use App\Http\Livewire\WelcomeMemberPage;
+use App\Http\Controllers\ResumeController;
 use App\Http\Livewire\Admin\Post\PostEdit;
 use App\Http\Livewire\Members\ShowProfile;
 use App\Http\Livewire\Project\ShowProject;
+use App\Http\Controllers\ViewPDFController;
 use App\Http\Livewire\Admin\EventDataTable;
 use App\Http\Livewire\Admin\PostsDataTable;
 use App\Http\Livewire\Members\MembersIndex;
@@ -42,6 +45,7 @@ use App\Http\Livewire\Admin\Members\CreateMember;
 use App\Http\Livewire\Profile\AdditionalUserInfo;
 use App\Http\Livewire\UserCategory\CategoryIndex;
 use App\Http\Livewire\UserCategory\UsersCategory;
+use App\Http\Controllers\DownloadResumeController;
 use App\Http\Livewire\Admin\Campaign\EditCampaign;
 use App\Http\Livewire\Admin\Settings\CreateMemInfo;
 use App\Http\Livewire\Admin\Campaign\CreateCampaign;
@@ -85,9 +89,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function ()
     Route::get('/password-update', UpdatePassword::class)->name('update.password');
     Route::get('/add-more-info', AdditionalUserInfo::class)->name('more.info');
     Route::get('resume/create', CreateResume::class)->name('create.resume');
-    Route::get('resume/view', ViewResume::class)->name('view.resume');
+    Route::get('view/resume', ViewResume::class)->name('view.resume');
     Route::get('resume/edit', EditResume::class)->name('edit.resume');
-
+    Route::get('/members/resume/{id}', [ResumeController::class, 'show'])->name('resume');
+    Route::get('/download/resume/{id}', DownloadResumeController::class)->name('download.resume');
     Route::get('members/profession/{slug}', UsersCategory::class)->name('category');
     Route::get('/posts', BlogIndex::class)->name('posts');
     Route::get('/category/{slug}', PostCategory::class)->name('category.post');
@@ -98,6 +103,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function ()
     Route::get('/events', EventIndex::class)->name('events.index');
     Route::get('/events/{slug}', ShowEvent::class)->name('show.event');
 
+    Route::get('pdf/resume/{id}', [ViewPDFController::class,'show'])->name('view.pdf');
 
     Route::post('/pay', [PaymentProcessingController::class, 'redirectToGateway'])->name('pay');
     Route::get('/payment/callback', [PaymentProcessingController::class, 'handleGatewayCallback']);
@@ -114,7 +120,7 @@ Route::post('/image-url',[ ImageUploadController::class, 'imageUrl'])->name('ima
 
 Route::group(['middleware' => ['role:Super-Admin|admin']], function () {
     Route::view('/dashboard', 'dashboard')->name('dashboard');
-    Route::get('admin/members', MembersDataTable::class)->name('members');
+    Route::get('admin/members', MembersDataTable::class)->name('members.data');
     Route::get('admin/create/member', CreateMember::class)->name('member.create');
     Route::get('admin/edit/member/{id}', EditMember::class)->name('edit.member');
     Route::get('/admin/posts', PostsDataTable::class)->name('posts.data');
@@ -141,11 +147,27 @@ Route::post('/upload', 'App\Http\Controllers\UploadImageController@uploadImage')
 
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function ()  {
 
-    Route::get('/all/members', MembersIndex::class)->name('all.members');
+    Route::get('/members', MembersIndex::class)->name('members');
     Route::get('/members/{category_slug}', MemberCategory::class)->name('category.members');
     Route::get('member/profile/{id}', ShowProfile::class)->name('member.profile');
     
 });
 
+Route::post('/imageUpload', function (Request $request) {
+    
+      if ($request->potraitImage) {
+         $path = $request->file('potraitImage')->store('tmp', 'public');
+      }
+    return $path;
+}); 
+
+Route::post('/avatarUpload', function (Request $request) {
+    
+      if ($request->photo) {
+         $path = $request->file('photo')->store('tmp', 'public');
+      }
+    return $path;
+}); 
+           
 // Redirect to Success Page after registration 
 Route::get('/successful', RegistrationSucessful::class)->name('success');

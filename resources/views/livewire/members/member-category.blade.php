@@ -55,7 +55,7 @@
                 <x-button href="{{ route('category.members', $category->slug) }}" sm dark
                     label="{{ $category->name }}" />
             @endforeach
-            <x-button href="{{ route('all.members') }}" sm dark label="All Members" />
+            <x-button href="{{ route('members') }}" sm dark label="All Members" />
         </div>
 
         <div class="col-span-1 sm:col-span-2">

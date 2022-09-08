@@ -29,7 +29,7 @@
                                     src="{{ asset('storage/campaigns_images/' . $campaign->cover_image) }}"
                                     alt="content">
                                 <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">
-                                    Organizer: {{ $campaign->organizer->org_name }}</h3>
+                                    Organizer: {{ $campaign->organizer->organizer_name }}</h3>
                                 <h2 class="text-lg text-gray-900 font-medium title-font mb-4">
                                     {{ $campaign->campaign_title }}</h2>
                                 <p class="leading-relaxed text-base">{{ $campaign->description }}</p>

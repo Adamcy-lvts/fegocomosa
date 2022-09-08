@@ -208,11 +208,11 @@
 
                  </tbody>
              </table>
-             <div
-                 class="px-5 py-5 bg-gray-900 border-t flex flex-col xs:flex-row items-center xs:justify-between          ">
-                 <div class="inline-flex mt-2 xs:mt-0">
+
+             <div class="px-5 py-5">
+                 <span class="text-xs xs:text-sm text-gray-300">
                      {{ $campaigns->links() }}
-                 </div>
+                 </span>
              </div>
          </div>
      </div>

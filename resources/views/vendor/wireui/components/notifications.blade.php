@@ -1,5 +1,5 @@
 <div class="fixed {{ $zIndex }} inset-0 flex items-end justify-center px-4 py-6
-            pointer-events-none sm:p-5 sm:pt-4 sm:items-start sm:justify-end"
+            pointer-events-none sm:p-5 sm:pt-4 {{ $position }}"
      x-data="wireui_notifications"
      x-on:wireui:notification.window="addNotification($event.detail)"
      x-on:wireui:confirm-notification.window="addConfirmNotification($event.detail)"
@@ -51,11 +51,11 @@
                             }">
                             <p class="text-sm font-medium text-secondary-900 dark:text-secondary-400"
                                x-show="notification.title"
-                               x-text="notification.title">
+                               x-html="notification.title">
                             </p>
-                            <p class="text-sm text-secondary-500"
+                            <p class="mt-1 text-sm text-secondary-500"
                                x-show="notification.description"
-                               x-text="notification.description">
+                               x-html="notification.description">
                             </p>
 
                             <!-- actions buttons -->
@@ -104,7 +104,7 @@
                                     x-on:click="closeNotification(notification)">
                                 <span class="sr-only">Close</span>
                                 <x-dynamic-component
-                                        :component="WireUiComponent::resolve('icon')"
+                                        :component="WireUi::component('icon')"
                                         class="h-5 w-5"
                                         name="x"
                                 />

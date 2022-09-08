@@ -67,7 +67,7 @@
                     </a>
                 </li>
                 <li class="nav-list-item {{ Request::is('admin/members') ? 'active' : '' }}">
-                    <a class="nav-list-link" href="{{ route('members') }}">
+                    <a class="nav-list-link" href="{{ route('members.data') }}">
                         <i class="fal fa-lg fa-users"></i>
                         <span class="feather feather-columns feather feather-columns ml-3">Members</span>
                     </a>

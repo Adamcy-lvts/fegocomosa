@@ -27,9 +27,9 @@ class EventTableSeeder extends Seeder
                 'title'        => 'Annual Get Together ',
                 'slug'         => 'annual-get-together',
                 'event_time'   =>  $myDateTime->toTimeString(),
-                'event_date'   =>  $eventDate,
+                'event_date'   =>  Carbon::parse('2022-10-12'),
                 'event_venue'  => 'Federal Government College Maiduguri, Dining Hall',
-                'image'        => 'the_vampire_diaries_season_5.jpg',
+                'image'        => 'rihanna_9-wallpaper-1920x1080.jpg',
                 'body'         =>  '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, tenetur?</p>',
               
             ]);
@@ -39,9 +39,9 @@ class EventTableSeeder extends Seeder
                 'title'        => 'Annual General Conference (AGC)',
                 'slug'         => 'annual-general-conference',
                 'event_time'   =>  $myDateTime->toTimeString(),
-                'event_date'   =>  $eventDate,
+                'event_date'   =>  Carbon::parse('2022-10-22'),
                 'event_venue'  => 'Yankari Game Reserve, Bauchi State.',
-                'image'        => 'the_twilight_saga_breaking_dawn_part_2.jpg',
+                'image'        => 'megan_fox_16-wallpaper-1920x1080.jpg',
                 'body'         =>  '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, tenetur?</p>',
               
             ]);
@@ -51,9 +51,9 @@ class EventTableSeeder extends Seeder
                 'title'        => 'Class of 2012 Reunion: 10 Years Later',
                 'slug'         => 'class-of-2012-reunion:-10-years-lLater',
                 'event_time'   =>  $myDateTime->toTimeString(),
-                'event_date'   =>  $eventDate,
+                'event_date'   =>  Carbon::parse('2022-11-12'),
                 'event_venue'  => 'Federal Governmet College Maiduguri, Assembly Hall.',
-                'image'        => 'kristen_stewart_in_snow_white.jpg',
+                'image'        => 'stranger_things_1.jpg',
                 'body'         =>  '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, tenetur?</p>',
               
             ]);
@@ -63,7 +63,7 @@ class EventTableSeeder extends Seeder
                 'title'        => 'Class of 2010 Reunion',
                 'slug'         => 'class-of-2010-reunion',
                 'event_time'   =>  $myDateTime->toTimeString(),
-                'event_date'   =>  $eventDate,
+                'event_date'   =>  Carbon::parse('2022-12-12'),
                 'event_venue'  => 'Federal Governmet College Maiduguri, Assembly Hall.',
                 'image'        => 'man_of_steel_2015-wallpaper.jpg',
                 'body'         =>  '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, tenetur?</p>',

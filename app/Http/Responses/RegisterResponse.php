@@ -11,7 +11,6 @@ class RegisterResponse implements RegisterResponseContract
     public function toResponse($request)
     {
        
-            // return redirect()->route('success');
             return redirect()->intended('/successful');
         
     }

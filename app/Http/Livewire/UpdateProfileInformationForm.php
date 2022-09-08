@@ -25,6 +25,20 @@ class UpdateProfileInformationForm extends Component
 
     protected $listeners = ['refresh-profile-update-page' => '$refresh'];
 
+    protected $rules = ['photo' => 'nullable|mimes:jpg,jpeg,png|max:1024|dimensions:width=200,height=200',
+                        'potraitImage' => 'nullable|mimes:jpg,jpeg,png|max:1024|dimensions:width=900,height=1200'
+                       ];
+
+    protected $messages = [
+
+        'photo.dimensions' => 'Resize or crop your image to 200px by 200px.',
+        'photo.max' => 'The profile image must not be greater than 1 Megabyte.',
+        'potraitImage.dimensions' => 'Resize or crop your image to 900px by 1200px.',
+        'potraitImage.max' => 'The potrait image must not be greater than 1 Megabyte.'
+
+    ];
+
+    public $photo;
     public $potraitImage;
     public $postedPotraitImage;
     public $userId;
@@ -45,7 +59,7 @@ class UpdateProfileInformationForm extends Component
      *
      * @var mixed
      */
-    public $photo;
+   
 
     /**
      * Prepare the component.
@@ -78,6 +92,16 @@ class UpdateProfileInformationForm extends Component
             $this->selectedCategory = $userCategories->pivot->category_id;
         }
 
+        
+
+    }
+
+    public function updated($propertyName)
+
+    {
+
+        $this->validateOnly($propertyName);
+
     }
 
     public function updatedSelectedState($state_id)
@@ -92,8 +116,10 @@ class UpdateProfileInformationForm extends Component
      * @param  \Laravel\Fortify\Contracts\UpdatesUserProfileInformation  $updater
      * @return void
      */
+    
     public function updateProfileInformation(UpdatesUserProfileInformation $updater)
     {
+        $this->validate();
  
         $this->resetErrorBag();
 

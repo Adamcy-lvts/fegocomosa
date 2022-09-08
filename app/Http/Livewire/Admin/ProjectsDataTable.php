@@ -332,6 +332,6 @@ public function storeProject()
 
     public function getProjectsQueryProperty()
     {
-        return Project::with('user')->search(trim($this->search));
+        return Project::select('id','title','status','budget','completion_date','starting_date')->search(trim($this->search));
     }
 }

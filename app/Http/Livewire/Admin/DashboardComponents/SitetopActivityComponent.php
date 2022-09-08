@@ -13,6 +13,12 @@ class SitetopActivityComponent extends Component
     public $user;
     public $newPostNotification;
 
+    
+    protected $listeners = [
+    'markAsRead' => '$refresh',
+    ];
+
+
     public function mount()
     {
         $this->user = auth()->user();
@@ -20,6 +26,20 @@ class SitetopActivityComponent extends Component
         $this->postNotification();
     }
     
+    public function markasreadAmbassador($notification)
+    {
+        
+        $this->user->unreadNotifications->where('id', $notification['id'])->markAsRead();
+
+        $this->emitSelf('markAsRead');
+    }
+
+    public function markasreadPost($notification)
+    {
+        $this->user->unreadNotifications->where('id', $notification['id'])->markAsRead();
+
+        $this->emitSelf('markAsRead');
+    }
 
     public function postNotification()
     {
@@ -29,23 +49,12 @@ class SitetopActivityComponent extends Component
     }
 
     public function SetAmbassadorNotification()
-    {
-        
+    { 
 
-        $this->setAmbassadorNotes = $this->user->unreadNotifications->where('type', 'App\Notifications\NewSetAmbassadorNotification')->where('created_at', '>=', now()->subDays(30));
-            
-           foreach ($this->setAmbassadorNotes as $AmbassadorNote) {
-            $this->newAmbassador = User::find($AmbassadorNote->data['user_id']);
-           }
-        
-        
-        if ($this->newAmbassador) {
-
-            $this->AmbassadorFullName = $this->newAmbassador->first_name . ' ' . $this->newAmbassador->last_name;
-        }
-                
+        $this->setAmbassadorNotes = $this->user->unreadNotifications->where('type', 'App\Notifications\NewSetAmbassadorNotification');        
            
     }
+
     public function render()
     {
         return view('livewire.admin.dashboard-components.sitetop-activity-component');

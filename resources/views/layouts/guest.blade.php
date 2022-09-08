@@ -35,6 +35,7 @@
 <body>
     <x-guest-menu />
     <x-notifications />
+    @stack('styles')
     <div class="font-sans  text-gray-900 antialiased">
         {{ $slot }}
     </div>
@@ -42,6 +43,7 @@
 
     <script src="{{ asset('js/jquery-3.4.1.js') }}"></script>
     @livewireScripts
+    @stack('scripts')
     @yield('script')
     @yield('contactScript')
     @yield('contactOrganizerScript')

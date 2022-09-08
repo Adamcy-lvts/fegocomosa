@@ -183,75 +183,73 @@
 
                 </tbody>
             </table>
-            <div class="px-5 py-5   flex flex-col xs:flex-row items-center xs:justify-between">
+            <div class="px-5 py-5">
                 <span class="text-xs xs:text-sm text-gray-300">
-
-                </span>
-                <div class="inline-flex mt-2 xs:mt-0">
                     {{ $procategories->links() }}
+                </span>
+
+            </div>
+        </div>
+
+
+        <x-modal.card title="Organizer" blur wire:model="showModalForm">
+            <div class="grid grid-cols-1  gap-6">
+                <x-input label="Category Name" placeholder="Category Name" wire:model.defer="name" />
+                <x-input label="Icon name" placeholder="Icon name" wire:model.defer="icon" />
+
+                <label class="inline-block mb-2 text-gray-500">Category Icon</label>
+                <div class="flex items-center justify-center w-full">
+                    <label
+                        class="flex flex-col w-full h-32 border-2 border-dashed hover:bg-gray-500 hover:border-gray-300">
+                        <div class="flex flex-col items-center justify-center pt-7">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="w-12 h-12 text-gray-400 group-hover:text-gray-600" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            <p class="pt-1 text-sm tracking-wider text-gray-400 group-hover:text-gray-600">
+                                Select a photo</p>
+                        </div>
+                        <input wire:model="svgIcon" type="file" class="opacity-0" />
+                    </label>
                 </div>
             </div>
-        </div>
-    </div>
+            <div class="sm:col-span-6">
+                <div class="w-full m-2 p-2">
+
+                    @if ($postedSvgIcon)
+                        Project Image:
+                        <img src="{{ asset('storage/svg_icons/' . $postedSvgIcon) }}">
+                    @endif
+
+                </div>
 
 
-    <x-modal.card title="Organizer" blur wire:model="showModalForm">
-        <div class="grid grid-cols-1  gap-6">
-            <x-input label="Category Name" placeholder="Category Name" wire:model.defer="name" />
-            <x-input label="Icon name" placeholder="Icon name" wire:model.defer="icon" />
-
-            <label class="inline-block mb-2 text-gray-500">Category Icon</label>
-            <div class="flex items-center justify-center w-full">
-                <label class="flex flex-col w-full h-32 border-2 border-dashed hover:bg-gray-500 hover:border-gray-300">
-                    <div class="flex flex-col items-center justify-center pt-7">
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                            class="w-12 h-12 text-gray-400 group-hover:text-gray-600" viewBox="0 0 20 20"
-                            fill="currentColor">
-                            <path fill-rule="evenodd"
-                                d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z"
-                                clip-rule="evenodd" />
-                        </svg>
-                        <p class="pt-1 text-sm tracking-wider text-gray-400 group-hover:text-gray-600">
-                            Select a photo</p>
-                    </div>
-                    <input wire:model="svgIcon" type="file" class="opacity-0" />
-                </label>
+                @if ($svgIcon)
+                    Photo Preview:
+                    <img src="{{ $svgIcon->temporaryUrl() }}">
+                @endif
             </div>
-        </div>
-        <div class="sm:col-span-6">
-            <div class="w-full m-2 p-2">
 
-                @if ($postedSvgIcon)
-                    Project Image:
-                    <img src="{{ asset('storage/svg_icons/' . $postedSvgIcon) }}">
+            <x-slot name="footer">
+                @if ($CategoryId)
+                    <div class="flex items-center gap-x-3 justify-end">
+                        <x-button wire:click="CancelConfirmation" label="Cancel" flat />
+                        <x-button type="submit" wire:click="updateProCategory" label="Update"
+                            wire:loading.attr="disabled" />
+                    </div>
+                @else
+                    <div class="flex items-center gap-x-3 justify-end">
+                        <x-button wire:click="CancelConfirmation" label="Cancel" flat />
+                        <x-button type="submit" wire:click="storeProCategory" label="Create"
+                            wire:loading.attr="disabled" />
+                    </div>
                 @endif
 
-            </div>
+            </x-slot>
+        </x-modal.card>
 
 
-            @if ($svgIcon)
-                Photo Preview:
-                <img src="{{ $svgIcon->temporaryUrl() }}">
-            @endif
-        </div>
-
-        <x-slot name="footer">
-            @if ($CategoryId)
-                <div class="flex items-center gap-x-3 justify-end">
-                    <x-button wire:click="CancelConfirmation" label="Cancel" flat />
-                    <x-button type="submit" wire:click="updateProCategory" label="Update"
-                        wire:loading.attr="disabled" />
-                </div>
-            @else
-                <div class="flex items-center gap-x-3 justify-end">
-                    <x-button wire:click="CancelConfirmation" label="Cancel" flat />
-                    <x-button type="submit" wire:click="storeProCategory" label="Create"
-                        wire:loading.attr="disabled" />
-                </div>
-            @endif
-
-        </x-slot>
-    </x-modal.card>
-
-
-    <div>
+        <div>

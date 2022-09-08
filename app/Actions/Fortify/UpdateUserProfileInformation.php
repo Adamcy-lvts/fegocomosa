@@ -23,7 +23,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
     {
         // dd( $input['selectedRole']);
         Validator::make($input, [
-            // 'username' => ['required', 'string', 'max:255'],
+            'first_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
             'photo' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
         ])->validateWithBag('updateProfileInformation');
@@ -62,11 +62,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 'email' => $input['email'],
             ])->save();
         }
-        // $roleId = $input['selectedRole'];
-        // $role = Role::find($roleId);
-        
 
-        // $user->syncRoles($role);
     }
 
     /**
@@ -79,7 +75,6 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
     protected function updateVerifiedUser($user, array $input)
     {
         $user->forceFill([
-            // 'name' => $input['name'],
             // 'username'          => $input['username'],
             'first_name'        => $input['first_name'],
             'middle_name'       => $input['middle_name'],

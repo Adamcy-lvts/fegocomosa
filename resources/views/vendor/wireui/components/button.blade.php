@@ -4,6 +4,7 @@
     $defaultAttributes = [
         'wire:loading.attr'  => 'disabled',
         'wire:loading.class' => '!cursor-wait',
+        'wire:target'        => ($spinner && strlen($spinner) > 1) ? $spinner : null,
     ];
 
     $href === null
@@ -14,7 +15,7 @@
 <{{ $tag }} {{ $attributes->merge($defaultAttributes) }}>
     @if ($icon)
         <x-dynamic-component
-            :component="WireUiComponent::resolve('icon')"
+            :component="WireUi::component('icon')"
             :name="$icon"
             class="{{ $iconSize }} shrink-0"
         />
@@ -24,7 +25,7 @@
 
     @if ($rightIcon)
         <x-dynamic-component
-            :component="WireUiComponent::resolve('icon')"
+            :component="WireUi::component('icon')"
             :name="$rightIcon"
             class="{{ $iconSize }} shrink-0"
             :wire:loading.remove="(bool) $spinner"

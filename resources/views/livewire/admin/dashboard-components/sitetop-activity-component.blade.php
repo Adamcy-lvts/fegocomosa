@@ -25,8 +25,11 @@
                                 <a class="text-blue-500"
                                     href="{{ route('posts.show', $postNotification->data['post_slug']) }}">
                                     Read</a></span></span>
-                        <span
-                            class="title-font text-xs text-gray-500">{{ Carbon\Carbon::parse($postNotification->data['created_at'])->DiffForHumans() }}</span>
+                        <span class="title-font text-xs text-gray-500">
+                            <x-button xs flat wire:click="markasreadPost({{ $postNotification }})"
+                                label="Mark as read" />
+                            {{ Carbon\Carbon::parse($postNotification->data['created_at'])->DiffForHumans() }}
+                        </span>
                     </p>
 
                 </div>
@@ -35,6 +38,9 @@
 
 
         @foreach ($setAmbassadorNotes->take(5) as $ambassadorNotification)
+            @php
+                $newAmbassador = App\Models\User::find($ambassadorNotification->data['user_id']);
+            @endphp
             <div class="flex gap-4 px-4 w-full flex-row">
 
                 <img class=" object-cover object-center flex-shrink-0 w-16 h-16  rounded-full"
@@ -42,13 +48,17 @@
 
                 <div class="flex w-full flex-col justify-center ">
                     <p class="text-sm text-gray-500 md:text-lg font-semibold"></span>
-                        {{ $AmbassadorFullName }}
+                        {{ $newAmbassador->first_name . ' ' . $newAmbassador->last_name }}
 
                     </p>
                     <p class="flex justify-between text-xs tracking-wide text-green-500">
                         <span> Elected as Set Ambassador for class
                             of {{ $ambassadorNotification->data['year'] }}</span> <span
-                            class="title-font text-xs text-gray-500">{{ Carbon\Carbon::parse($ambassadorNotification->data['created_at'])->DiffForHumans() }}</span>
+                            class="title-font text-xs text-gray-500">
+                            <x-button xs flat wire:click="markasreadAmbassador({{ $ambassadorNotification }})"
+                                label="Mark as read" />
+                            {{ Carbon\Carbon::parse($ambassadorNotification->data['created_at'])->DiffForHumans() }}
+                        </span>
                     </p>
 
                 </div>
