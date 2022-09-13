@@ -34,8 +34,6 @@ class AppServiceProvider extends ServiceProvider
     {
        Schema::defaultStringLength(191);
 
-    //    $houses = House::all();
-
         Fortify::registerView(function () {
            
 

@@ -3,7 +3,6 @@
 namespace App\Providers;
 
 use App\Listeners\LoginListener;
-use App\Listeners\EmailDelivered;
 use App\Listeners\LogoutListener;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Logout;
@@ -25,10 +24,6 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
             NewMemberNotification::class
-        ],
-
-        MessageSent::class => [
-            EmailDelivered::class
         ],
 
          Login::class => [

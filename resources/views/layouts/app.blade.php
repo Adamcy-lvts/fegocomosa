@@ -20,8 +20,7 @@
     <link rel="stylesheet" href="{{ asset('fontawesome-6/css/all.css') }}">
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <link rel="stylesheet" type="text/css"
-        href="  https://cdnjs.cloudflare.com/ajax/libs/flickity/2.0.5/flickity.min.css">
+
     <link rel="stylesheet" type="text/css" href="{{ asset('css/materialize-card.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/welcome.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/slider.css') }}">
@@ -69,14 +68,13 @@
     @stack('modals')
 
     @livewireScripts
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.0.5/flickity.pkgd.min.js"></script>
+    @stack('flickty-scripts')
     <script src="{{ asset('js/jquery-3.4.1.js') }}"></script>
-    <script src="{{ asset('js/slider.js') }}"></script>
     <script src="{{ asset('js/progressbar.js') }}"></script>
     @yield('script')
+
     @yield('contactScript')
-    @yield('contactOrganizerScript') 
+    @yield('contactOrganizerScript')
     @yield('donationFormScript')
 
 </body>

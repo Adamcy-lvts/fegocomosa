@@ -18,7 +18,7 @@ class ProfileInformationTest extends TestCase
 
     public function test_current_profile_information_is_available()
     {
-       $this->withoutExceptionHandling();
+    //    $this->withoutExceptionHandling();
 
         $this->actingAs($user = User::factory()->create());
        
@@ -49,5 +49,11 @@ class ProfileInformationTest extends TestCase
 
         $this->assertEquals($user->username, $user->fresh()->username);
         $this->assertEquals($user->email, $user->fresh()->email);
+        $this->assertEquals($user->first_name, $user->fresh()->first_name);
+        $this->assertEquals($user->middle_name, $user->fresh()->middle_name);
+        $this->assertEquals($user->last_name, $user->fresh()->last_name);
+        $this->assertEquals($user->state_id, $user->fresh()->state_id);
+        $this->assertEquals($user->username, $user->fresh()->username);
+        $this->assertEquals($user->city_id, $user->fresh()->city_id);
     }
 }

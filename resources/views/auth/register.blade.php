@@ -1,8 +1,4 @@
 <x-guest-layout>
-    @push('styles')
-        <link rel="stylesheet" href="{{ asset('filepond/dist/filepond.css') }}">
-        <link rel="stylesheet" href="{{ asset('filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css') }}">
-    @endpush
 
     <div x-data="app()" x-cloak class="w-full md:w-7/12 mx-auto px-4 sm:px-0 py-24">
         <h1 class="text-xl ml-2 uppercase pb-12" x-text="`Registeration Step: ${step} of 4`"></h1>
@@ -203,69 +199,66 @@
 
 
     @push('scripts')
-        <script src="{{ asset('filepond-image-validate-size/dist/filepond-plugin-image-validate-size.js') }}"></script>
-        <script src="{{ asset('filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js') }}"></script>
-        <script src="{{ asset('filepond-plugin-image-exif-orientation/dist/filepond-plugin-image-exif-orientation.js') }}">
-        </script>
-        <script src="{{ asset('filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js') }}"></script>
-        <script src="{{ asset('filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js') }}"></script>
-        <script src="{{ asset('filepond-plugin-image-transform/dist/filepond-plugin-image-transform.js') }}"></script>
-
-        <script src="{{ asset('filepond/dist/filepond.js') }}"></script>
         <script>
-            // Register the plugin
-            FilePond.registerPlugin(
-                FilePondPluginImageValidateSize,
-                FilePondPluginFileValidateType,
-                FilePondPluginImageExifOrientation,
-                FilePondPluginImagePreview,
-                FilePondPluginImageResize,
-                FilePondPluginImageTransform
-            );
-            // Get a reference to the file input element
-            // const inputElement = document.querySelector('#potraitPicture');
+            window.addEventListener('load', () => {
+                // Register the plugin
+                FilePond.registerPlugin(
+                    FilePondPluginImageValidateSize,
+                    FilePondPluginFileValidateType,
+                    FilePondPluginImageExifOrientation,
+                    FilePondPluginImagePreview,
+                    FilePondPluginImageResize,
+                    FilePondPluginImageTransform
+                );
+                // Get a reference to the file input element
+                const inputElement = document.querySelector('#potraitPicture');
 
-            Create a FilePond instance
-            const pond = FilePond.create(inputElement, {
-                allowImageValidateSize: true,
-                imageValidateSizeMinWidth: 900,
-                imageValidateSizeMinHeight: 1200,
-                imageValidateSizeLabelImageSizeTooSmall: 'Image resolution not supported',
-                imageValidateSizeLabelExpectedMinSize: 'The only supported resolution is {minWidth}px × {minHeight}px',
+                // Create a FilePond instance
+                const pond = FilePond.create(inputElement, {
+                    allowImageValidateSize: true,
+                    imageValidateSizeMinWidth: 900,
+                    imageValidateSizeMinHeight: 1200,
+                    imageValidateSizeMaxWidth: 900,
+                    imageValidateSizeMaxHeight: 1200,
+                    imageValidateSizeLabelImageSizeTooSmall: 'Image resolution too small',
+                    imageValidateSizeLabelExpectedMinSize: 'The only supported resolution is {minWidth}px × {minHeight}px',
+                    imageValidateSizeLabelImageSizeTooBig: 'Image resolution too big',
+                    imageValidateSizeLabelExpectedMaxSize: 'The only supported resolution is {minWidth}px × {minHeight}px',
 
-                server: {
-                    url: '/imageUpload',
-                    headers: {
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    server: {
+                        url: '/imageUpload',
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        }
                     }
-                }
 
-            });
+                });
 
-            // Get a reference to the file input element
-            const avatar = document.querySelector('#avatar');
-            // Select the file input and use 
-            // create() to turn it into a pond
-            // Create a FilePond instance
-            const pondAvatar = FilePond.create(avatar, {
-                labelIdle: `Drag & Drop your picture or <span class="filepond--label-action">Browse</span>`,
-                imagePreviewHeight: 170,
-                imageCropAspectRatio: '1:1',
-                imageResizeTargetWidth: 200,
-                imageResizeTargetHeight: 200,
-                imageResizeUpscale: false,
-                stylePanelLayout: 'compact circle',
-                styleLoadIndicatorPosition: 'center bottom',
-                styleProgressIndicatorPosition: 'right bottom',
-                styleButtonRemoveItemPosition: 'left bottom',
-                styleButtonProcessItemPosition: 'right bottom',
+                // Get a reference to the file input element
+                const avatar = document.querySelector('#avatar');
+                // Select the file input and use 
+                // create() to turn it into a pond
+                // Create a FilePond instance
+                const pondAvatar = FilePond.create(avatar, {
+                    labelIdle: `Drag & Drop your picture or <span class="filepond--label-action">Browse</span>`,
+                    imagePreviewHeight: 170,
+                    imageCropAspectRatio: '1:1',
+                    imageResizeTargetWidth: 200,
+                    imageResizeTargetHeight: 200,
+                    imageResizeUpscale: false,
+                    stylePanelLayout: 'compact circle',
+                    styleLoadIndicatorPosition: 'center bottom',
+                    styleProgressIndicatorPosition: 'right bottom',
+                    styleButtonRemoveItemPosition: 'left bottom',
+                    styleButtonProcessItemPosition: 'right bottom',
 
-                server: {
-                    url: '/avatarUpload',
-                    headers: {
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    server: {
+                        url: '/avatarUpload',
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        }
                     }
-                }
+                });
             });
         </script>
     @endpush

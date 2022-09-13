@@ -73,7 +73,7 @@
                 <div class="cards">
 
                     <div class="cards-image waves-effect waves-block static waves-light">
-                        <a href="{{ route('member.profile', $member->id) }}">
+                        <a href="{{ route('member.profile', $member) }}">
                             <img src="{{ asset('storage/members_images/' . $member->potrait_image) }}" />
                             <div class="absolute top-0 left-0">
                                 <span class="bg-black text-xs italic md:p-2 lg:p-2 p-1 text-white bg-opacity-25">

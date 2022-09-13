@@ -251,11 +251,11 @@
                         </div>
                     </div>
 
-                    <x-jet-responsive-nav-link href="{{ route('projects.index') }}" :active="request()->routeIs('projects.index')">
+                    <x-jet-responsive-nav-link href="{{ route('projects') }}" :active="request()->routeIs('projects')">
                         {{ __('Orders') }}
                     </x-jet-responsive-nav-link>
 
-                    <x-jet-responsive-nav-link href="{{ route('events.index') }}" :active="request()->routeIs('events.index')">
+                    <x-jet-responsive-nav-link href="{{ route('events') }}" :active="request()->routeIs('events')">
                         {{ __('Add Links') }}
                     </x-jet-responsive-nav-link>
 

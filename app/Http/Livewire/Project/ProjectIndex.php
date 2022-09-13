@@ -11,7 +11,7 @@ class ProjectIndex extends Component
     {
         return view('livewire.project.project-index',[
             'projects' => Project::all(),
-            'completedProjects' => Project::groupBy('status', 'completed')->get(),
+            'completedProjects' => Project::where('status', 'completed')->get(),
             'inProgressProjects' => Project::where('status', 'in progress')->get()
         ]);
     }

@@ -93,14 +93,14 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function ()
     Route::get('resume/edit', EditResume::class)->name('edit.resume');
     Route::get('/members/resume/{id}', [ResumeController::class, 'show'])->name('resume');
     Route::get('/download/resume/{id}', DownloadResumeController::class)->name('download.resume');
-    Route::get('members/profession/{slug}', UsersCategory::class)->name('category');
     Route::get('/posts', BlogIndex::class)->name('posts');
     Route::get('/category/{slug}', PostCategory::class)->name('category.post');
     Route::get('/posts/show/{slug}', ShowPost::class)->name('posts.show');
     Route::get('/members/categories', CategoryIndex::class)->name('category.index');
-    Route::get('/projects', ProjectIndex::class)->name('projects.index');
-    Route::get('/project/{id}', ShowProject::class)->name('show.project');
-    Route::get('/events', EventIndex::class)->name('events.index');
+    Route::get('members/profession/{slug}', UsersCategory::class)->name('category');
+    Route::get('/projects', ProjectIndex::class)->name('projects');
+    Route::get('/projects/{slug}', ShowProject::class)->name('show.project');
+    Route::get('/events', EventIndex::class)->name('events');
     Route::get('/events/{slug}', ShowEvent::class)->name('show.event');
 
     Route::get('pdf/resume/{id}', [ViewPDFController::class,'show'])->name('view.pdf');
@@ -149,7 +149,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function ()  {
 
     Route::get('/members', MembersIndex::class)->name('members');
     Route::get('/members/{category_slug}', MemberCategory::class)->name('category.members');
-    Route::get('member/profile/{id}', ShowProfile::class)->name('member.profile');
+    Route::get('member/profile/{member:username}', ShowProfile::class)->name('member.profile');
     
 });
 

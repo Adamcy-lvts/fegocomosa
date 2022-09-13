@@ -32,7 +32,7 @@ class CreateNewUser implements CreatesNewUsers
     {       
 
         Validator::make($input, [
-            'username'          => ['required', 'string', 'max:255'],
+            'username'          => ['required', 'string', 'max:255', 'unique:users'],
             'first_name'        => ['required', 'string', 'max:255'],
             'last_name'         => ['required', 'string', 'max:255'],
             'date_of_birth'     => ['required'],
@@ -56,7 +56,6 @@ class CreateNewUser implements CreatesNewUsers
      
       $request = request();
 
-    //   dd( $request->hasFile('photo'));
 
        if ($request->photo) {
 
@@ -97,7 +96,7 @@ class CreateNewUser implements CreatesNewUsers
 
 
         $user =  User::create([
-            // 'profile_photo_path'=> "profile-photos/$avatarNameToStore",
+            'profile_photo_path'=> "profile-photos/$avatarNameToStore",
             'username'          => $input['username'],
             'first_name'        => $input['first_name'],
             'middle_name'       => $input['middle_name'],
@@ -119,21 +118,21 @@ class CreateNewUser implements CreatesNewUsers
             'workplace'         => $input['workplace'],
             'university'        => $input['university'],
             'course_of_study'   => $input['course_of_study'],
-            // 'potrait_image'     => $ImageNameToStore,
+            'potrait_image'     => $ImageNameToStore,
             'email'             => $input['email'],
             'password'          => Hash::make($input['password']),
         ]);
 
-        // if ($input['profession_category']) {
+        if ($input['profession_category']) {
 
-        //         $categoryId = $input['profession_category'];
+                $categoryId = $input['profession_category'];
             
-        //         $procategory = Category::find($categoryId); 
+                $procategory = Category::find($categoryId); 
 
-        //         $user->categories()->attach($procategory);
-        // }
+                $user->categories()->attach($procategory);
+        }
         
-        // Mail::to($user)->queue(new WelcomeMail($user));
+        Mail::to($user)->send(new WelcomeMail($user));
 
         return $user;
 

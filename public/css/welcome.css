@@ -145,7 +145,7 @@ div h1 {
 #section-1 .content-slider .slider .banner .banner-inner-wrapper {
   height: 100%;
   padding-top: 6em;
-  /* background-image: linear-gradient(rgba(243, 129, 129, 0.9), rgba(252, 227, 138, 0.9)); */
+  /* background-image: linear-gradient(rgba(19, 136, 64, 0.9), rgba(241, 240, 236, 0.9)); */
   box-sizing: border-box;
 }
 #section-1 .content-slider .slider .banner .banner-inner-wrapper h2 {
@@ -159,6 +159,7 @@ div h1 {
   font-size: 6em;
   line-height: 95%;
 }
+
 #section-1 .content-slider .slider .banner .banner-inner-wrapper .line {
   display: block;
   width: 4em;
@@ -376,9 +377,9 @@ div h1 {
   #section-1 {
     height: 29em;
   }
-  #section-1 .content-slider nav {
+  /* #section-1 .content-slider nav {
     bottom: -1em;
-  }
+  } */
   #section-1 .content-slider nav .controls {
     width: 90%;
   }
@@ -386,7 +387,7 @@ div h1 {
     font-size: 2em;
   }
   #section-1 .content-slider .slider .banner .banner-inner-wrapper h1 {
-    font-size: 4.5em;
+    font-size: 2.5em;
   }
   #section-1 .content-slider .slider .banner .banner-inner-wrapper {
     padding-top: 5em;
@@ -442,9 +443,12 @@ div h1 {
   #section-1 .content-slider .slider .banner .banner-inner-wrapper h2 {
     font-size: 1.5em;
   }
+
   #section-1 .content-slider .slider .banner .banner-inner-wrapper h1 {
-    font-size: 3em;
+    font-size: 2em;
+    /* line-height: 95%; */
   }
+
   #section-1 .content-slider .slider .banner .banner-inner-wrapper .line {
     margin: 1.7em auto;
   }

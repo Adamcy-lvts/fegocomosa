@@ -17,7 +17,7 @@ class BlogIndex extends Component
     public function render()
     {
         return view('livewire.blog.blog-index', [
-            'posts' => Post::select('id','title','image','user_id','slug','category_post_id','created_at')->with('user')->orderBy('created_at', 'DESC')->paginate($this->pagination),
+            'posts' => Post::select('id','title','image','user_id','slug','category_post_id','created_at', 'reads')->with('user')->orderBy('created_at', 'DESC')->paginate($this->pagination),
             'categories' => CategoryPost::all(),
         ]);
     }

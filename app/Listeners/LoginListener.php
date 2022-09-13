@@ -32,7 +32,7 @@ class LoginListener
     public function handle(Login $event)
     {
         $admins = User::role('admin')->get();
-// dd(session()->getId());
+
         $loginTimeStamp = LoginLogoutActivity::create([
             'user_id' => $event->user->id,
             'ip_address' => request()->ip(),

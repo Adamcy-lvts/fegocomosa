@@ -63,7 +63,7 @@
     <section class="text-gray-700 body-font border-t border-gray-200">
         <div class="container px-5 py-24 mx-auto flex flex-wrap">
             <div class="flex flex-col gap-2 text-center w-full mb-20">
-                <a href="{{ route('projects.index') }}">
+                <a href="{{ route('projects') }}">
                     <h2 class="text-xs text-green-600 tracking-widest font-medium title-font mb-1">Check Out All
                         Completed
                         Projects</h2>
@@ -101,8 +101,8 @@
                         <h2 class="text-gray-900 text-lg title-font font-medium mb-3">Completed Projects</h2>
                         <p class="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast
                             vegan taxidermy. Gastropub indxgo juice poutine.</p>
-                        <a href="{{ route('projects.index') }}"
-                            class="mt-3 text-green-600 inline-flex items-center">Learn More
+                        <a href="{{ route('projects') }}" class="mt-3 text-green-600 inline-flex items-center">Learn
+                            More
                             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                 stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
                                 <path d="M5 12h14M12 5l7 7-7 7"></path>
@@ -119,8 +119,7 @@
                         <h2 class="text-gray-900 text-lg title-font font-medium mb-3">Projects In Progress</h2>
                         <p class="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast
                             vegan taxidermy. Gastropub indxgo juice poutine.</p>
-                        <a href="{{ route('projects.index') }}"
-                            class="mt-3 text-green-600 inline-flex items-center">Learn
+                        <a href="{{ route('projects') }}" class="mt-3 text-green-600 inline-flex items-center">Learn
                             More
                             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                 stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
@@ -138,8 +137,8 @@
                         <h2 class="text-gray-900 text-lg title-font font-medium mb-3">Proposed Projects</h2>
                         <p class="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast
                             vegan taxidermy. Gastropub indxgo juice poutine.</p>
-                        <a href="{{ route('projects.index') }}"
-                            class="mt-3 text-green-600 inline-flex items-center">Learn More
+                        <a href="{{ route('projects') }}" class="mt-3 text-green-600 inline-flex items-center">Learn
+                            More
                             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                 stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
                                 <path d="M5 12h14M12 5l7 7-7 7"></path>
@@ -282,30 +281,41 @@
             bannerTimer = setInterval(bannerSwitcher, 5000)
         });
     </script>
+
+
+    <script>
+        window.addEventListener('load', () => {
+            var options = {
+                accessibility: true,
+                prevNextButtons: true,
+                wrapAround: true,
+                pauseAutoPlayOnHover: false,
+                pageDots: true,
+                setGallerySize: false,
+                autoPlay: true,
+                imagesLoaded: true,
+                arrowShape: {
+                    x0: 10,
+                    x1: 60,
+                    y1: 50,
+                    x2: 60,
+                    y2: 45,
+                    x3: 15
+                }
+            };
+
+            var carousel = document.querySelector('[data-carousel]');
+            var slides = document.getElementsByClassName('carousel-cell');
+            var flkty = new Flickity(carousel, options);
+
+            flkty.on('scroll', function() {
+                flkty.slides.forEach(function(slide, i) {
+                    var image = slides[i];
+                    var x = (slide.target + flkty.x) * -1 / 3;
+                    image.style.backgroundPosition = x + 'px';
+                });
+            });
+        });
+        // HERO SLIDER
+    </script>
 @endsection
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{{-- <x-member-slider :carousel="$carousel" />
-
-<x-event :events="$events" />
-
-<x-project :projects="$projects" :projectsimages="$projectsimages" />
-
-<x-professon-category :procategory="$procategory" />
-
-<x-executive-members :users="$users" :positions="$positions" />
-
-@livewire('contact-us-form') --}}

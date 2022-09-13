@@ -4,10 +4,12 @@ namespace Tests\Feature;
 
 use Carbon\Carbon;
 use Tests\TestCase;
+use App\Models\User;
 use Laravel\Fortify\Features;
 use Laravel\Jetstream\Jetstream;
 use Spatie\Permission\Models\Role;
 use App\Providers\RouteServiceProvider;
+use Database\Seeders\CategoryTableSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class RegistrationTest extends TestCase
@@ -38,15 +40,23 @@ class RegistrationTest extends TestCase
 
     public function test_new_users_can_register()
     {
-        //  $this->withoutExceptionHandling();
+         $this->withoutExceptionHandling();
+
+          $user = User::factory()->create();
+
+        // Create roles
+        $super_admin = Role::create(['name' => 'Super-Admin']);
+        $admin = Role::create(['name' => 'admin']);
+
+        // Assign role to user
+        $user->assignRole([$super_admin, $admin]);
 
         if (! Features::enabled(Features::registration())) {
             return $this->markTestSkipped('Registration support is not enabled.');
         }
 
-        // Create roles
-        $super_admin = Role::create(['name' => 'Super Admin']);
-        $admin = Role::create(['name' => 'admin']);
+        $this->seed(CategoryTableSeeder::class);
+
 
         $response = $this->post('/register', [
             // 'photo'             => 'taylor_profile.jpg',
@@ -71,15 +81,19 @@ class RegistrationTest extends TestCase
             'course_of_study'   => 'EEE',
             'entry_year_id'     => Carbon::parse('2000-04-12'),
             'graduation_year_id'=> Carbon::parse('2006-04-12'),
+            'profession_category' => 1,
             'email' => 'test@example.com',
             'password' => 'password',
             'password_confirmation' => 'password',
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature(),
         ]);
+
         
         $response->assertValid();
 
         $this->assertAuthenticated();
-        $response->assertRedirect('/successful');
+        $response->assertRedirect('/home');
+        // $response->assertRedirect('/successful');
+
     }
 }

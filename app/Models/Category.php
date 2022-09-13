@@ -11,7 +11,7 @@ class Category extends Model
 
       protected $fillable = ['name','icon', 'svg_icon'];
 
-    public function user()
+    public function users()
     {
         return $this->belongsToMany(User::class);
     }

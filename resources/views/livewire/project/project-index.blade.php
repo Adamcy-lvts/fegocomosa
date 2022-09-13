@@ -33,7 +33,7 @@
                         @foreach ($projects as $project)
                             <div
                                 class="  overflow-hidden transition-shadow duration-300 bg-white rounded border shadow-lg">
-                                <a href="{{ route('show.project', $project->id) }}">
+                                <a href="{{ route('show.project', $project->slug) }}">
                                     <img src="{{ asset('storage/projects_images/' . $project->cover_image) }}"
                                         class="object-cover w-full h-64" alt="" />
                                     <div class="p-5 ">
@@ -70,7 +70,7 @@
                 <div class="grid gap-8 lg:grid-cols-3 sm:max-w-sm sm:mx-auto lg:max-w-full">
                     @foreach ($completedProjects as $project)
                         <div class="  overflow-hidden transition-shadow duration-300 bg-white rounded shadow-lg">
-                            <a href="{{ route('show.project', $project->id) }}">
+                            <a href="{{ route('show.project', $project->slug) }}">
                                 <img src="{{ asset('storage/projects_images/' . $project->cover_image) }}"
                                     class="object-cover w-full h-64" alt="" />
                                 <div class="p-5 ">
@@ -106,7 +106,7 @@
                 <div class="grid gap-8 lg:grid-cols-3 sm:max-w-sm sm:mx-auto lg:max-w-full">
                     @foreach ($inProgressProjects as $project)
                         <div class="  overflow-hidden transition-shadow duration-300 bg-white rounded shadow-lg">
-                            <a href="{{ route('show.project', $project->id) }}">
+                            <a href="{{ route('show.project', $project->slug) }}">
                                 <img src="{{ asset('storage/projects_images/' . $project->cover_image) }}"
                                     class="object-cover w-full h-64" alt="" />
                                 <div class="p-5 ">

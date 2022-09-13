@@ -131,7 +131,7 @@ class ProjectsDataTable extends Component
                 $projectimage->delete();
             }
 
-            foreach ($this->projectImages as $projectImage) {
+            foreach ($this->projectImages as $key => $projectImage) {
 
                 $image_name = $projectImage->getClientOriginalName();
     
@@ -141,6 +141,8 @@ class ProjectsDataTable extends Component
     
                 $projectImages->images = $image_name;
                 $projectImages->project_id = $project->id;
+                $projectImages->caption = $this->captions[$key];
+                $projectImages->save();
     
                 $projectImages->save();
     

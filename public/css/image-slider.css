@@ -13,7 +13,7 @@
 
 .image-slider {
   width: 100%;
-  height: 598px;
+  height: 698px;
   overflow: hidden;
 }
 .image-slider .carousel-cell {
@@ -102,7 +102,7 @@
 
 @media (min-width: 450px) { 
     .image-slider .carousel-cell .inner {
-       bottom: 30%;
+       bottom: 20%;
     }
 
     .image-slider {
@@ -121,6 +121,10 @@
     .image-slider .flickity-page-dots .dot {
         width: 20px;
         height: 3px;
+    }
+
+    .image-slider .flickity-page-dots {
+      bottom: 20px;
     }
  }
 
@@ -145,6 +149,10 @@
     .image-slider .flickity-page-dots .dot {
         width: 30px;
         height: 4px;
+    }
+
+    .image-slider .flickity-page-dots {
+      bottom: 30px;
     }
  }
 
@@ -245,6 +253,9 @@
     .image-slider .flickity-page-dots .dot {
         width: 30px;
         height: 4px;
+    }
+    .image-slider .flickity-page-dots {
+      bottom: 60px;
     }
 
 }

@@ -90,7 +90,7 @@
     <section class="text-gray-700 body-font border-t border-gray-200">
         <div class="container px-5 py-24 mx-auto flex flex-wrap">
             <div class="flex flex-col gap-2 text-center w-full mb-20">
-                <a href="{{ route('projects.index') }}">
+                <a href="{{ route('projects') }}">
                     <h2 class="text-xs text-green-600 tracking-widest font-medium title-font mb-1">Check Out All
                         Completed
                         Projects</h2>
@@ -307,24 +307,3 @@
         });
     </script>
 @endsection
-
-
-
-{{-- </div> --}}
-
-
-
-
-
-
-
-
-{{-- <x-guest-slider :textsslider="$textsslider" :membershipinfo="$membershipinfo" />
-
-<x-event :events="$events" />
-
-<x-project :projects="$projects" :projectsimages="$projectsimages" />
-
-<x-professon-category :procategory="$procategory" />
-
-<x-executive-members :users="$users" :positions="$positions" /> --}}

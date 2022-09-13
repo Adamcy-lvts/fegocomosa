@@ -2,25 +2,27 @@
 
 namespace App\Mail;
 
+use App\Models\User;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
 class WelcomeMail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
-    public $member;
-
+     public $member;
+     public $adminEmail;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($member)
+    public function __construct( User $member)
     {
         $this->member = $member;
+        $this->adminEmail = User::role('Super-Admin')->first();
     }
 
     /**
@@ -30,6 +32,7 @@ class WelcomeMail extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->from('fegocomosa@gmail.com')->markdown('emails.welcome-mail.welcome-mail');
+        
+        return $this->from($this->adminEmail->email)->markdown('emails.welcome-mail');
     }
 }

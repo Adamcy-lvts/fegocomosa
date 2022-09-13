@@ -10,10 +10,11 @@ class ShowProfile extends Component
 {
     public $member;
 
-    public function mount($id)
+    public function mount(User $member)
     {
-        $this->member = User::find($id);
-        // dd($this->member);
+        
+        $this->member = $member;
+      
 
     }
     public function render()

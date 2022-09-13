@@ -161,7 +161,7 @@ class EditMember extends Component
             $description = 'Member Updated Successfully'
         );
 
-        redirect()->route('members');
+        redirect()->route('members.data');
 
         session()->flash('flash.banner', 'Record Updated Successfully');
         

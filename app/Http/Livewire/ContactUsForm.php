@@ -31,7 +31,7 @@ class ContactUsForm extends Component
                
             'user_id' =>  auth()->user()->id,
             'name' =>  $this->name,
-            'email' => $this->email,
+            'email' => auth()->user()->email,
             'message' =>  $this->message,
             'datetime' => Carbon::now()
         ];

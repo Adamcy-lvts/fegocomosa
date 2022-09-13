@@ -29,6 +29,6 @@ class ContactUsMail extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->markdown('emails.contact.contact-us');
+        return $this->markdown('emails.contact-us');
     }
 }

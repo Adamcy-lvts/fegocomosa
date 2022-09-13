@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Carbon\Carbon;
 use App\Models\Project;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 
 class ProjectTableSeeder extends Seeder
@@ -22,6 +23,7 @@ class ProjectTableSeeder extends Seeder
         Project::create([
             'user_id'            => 1,
             'title'              => 'Digital Multimeters for students',
+            'slug'               => Str::slug('Digital Multimeters for students'),
             'budget'             => 500000,
             'proposed_by'        => 'Adamu Mohammed',
             'executed_by'        => 'Class of 2010',
@@ -36,6 +38,7 @@ class ProjectTableSeeder extends Seeder
         Project::create([
             'user_id'            => 2,
             'title'              => 'Bore hole For Girls hostels ',
+            'slug'               => Str::slug('Bore hole For Girls hostels '),
             'budget'             => 1000000,
             'proposed_by'        => 'Musty Lawan',
             'executed_by'        => 'Class of 2010',
@@ -50,6 +53,7 @@ class ProjectTableSeeder extends Seeder
         Project::create([
             'user_id'            => 4,
             'title'              => 'Computer Lab',
+            'slug'               => Str::slug('Computer Lab'),
             'budget'             => 500000,
             'proposed_by'        => 'Class of 2010',
             'executed_by'        => 'Class of 2010',
@@ -64,6 +68,7 @@ class ProjectTableSeeder extends Seeder
         Project::create([
             'user_id'            => 1,
             'title'              => 'Digital White Board for Lecture Theatre',
+            'slug'               => Str::slug('Digital White Board for Lecture Theatre'),
             'budget'             => 700000,
             'proposed_by'        => 'Adamu Mohammed',
             'executed_by'        => 'Class of 2010',

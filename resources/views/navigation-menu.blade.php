@@ -42,12 +42,12 @@
                     </x-jet-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('projects.index') }}" :active="request()->routeIs('projects.index')">
+                    <x-jet-nav-link href="{{ route('projects') }}" :active="request()->routeIs('projects*')">
                         {{ __('Projects') }}
                     </x-jet-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('events.index') }}" :active="request()->routeIs('events.index')">
+                    <x-jet-nav-link href="{{ route('events') }}" :active="request()->routeIs('events*')">
                         {{ __('Events') }}
                     </x-jet-nav-link>
                 </div>
@@ -204,11 +204,11 @@
                 {{ __('Campaign') }}
             </x-jet-responsive-nav-link>
 
-            <x-jet-responsive-nav-link href="{{ route('projects.index') }}" :active="request()->routeIs('projects.index')">
+            <x-jet-responsive-nav-link href="{{ route('projects') }}" :active="request()->routeIs('projects*')">
                 {{ __('Projects') }}
             </x-jet-responsive-nav-link>
 
-            <x-jet-responsive-nav-link href="{{ route('events.index') }}" :active="request()->routeIs('events.index')">
+            <x-jet-responsive-nav-link href="{{ route('events') }}" :active="request()->routeIs('events')">
                 {{ __('Events') }}
             </x-jet-responsive-nav-link>
 

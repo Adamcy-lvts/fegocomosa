@@ -24,7 +24,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens;
     use HasFactory;
@@ -214,6 +214,7 @@ class User extends Authenticatable
       $query->where(function ($query) use ($term) {
        $query->where('first_name', 'like', $term)
              ->orWhere('last_name', 'like', $term)
+             ->orWhere('username', 'like', $term)
              ->orWhere('graduation_year_id', 'like', $term)
              ->orWhere('house_id', 'like', $term)
              ->orWhere('jss_class', 'like', $term)

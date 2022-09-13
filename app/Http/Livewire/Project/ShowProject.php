@@ -9,13 +9,14 @@ class ShowProject extends Component
 {
     public $project;
 
-    public function mount($id)
+    public function mount($slug)
     {
-        $this->project = Project::find($id);
+        $this->project = Project::where('slug', $slug)->first();
+         
     }
     public function render()
     {
-        // $project
+        
         return view('livewire.project.show-project');
     }
 }
