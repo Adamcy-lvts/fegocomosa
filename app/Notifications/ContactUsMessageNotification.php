@@ -11,15 +11,17 @@ class ContactUsMessageNotification extends Notification implements ShouldQueue
 {
     use Queueable;
     public $data;
+    public $email;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($data)
+    public function __construct($data, $email)
     {
         $this->data = $data;
+        $this->email = $email;
     }
 
     /**
@@ -42,9 +44,9 @@ class ContactUsMessageNotification extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->from($this->data['email'])
+                    ->from($this->data['email'], $this->data['name'])
                     ->subject('Contact Us Message')
-                    ->greeting('Message from'.' '.$this->data['name'])
+                    ->greeting('Message from'.' '.$this->data['name'].' '.$this->data['email'])
                     ->line($this->data['message'])
                     ->action('Notification Action', url('/'))
                     ->line('Thank you for using our application!');

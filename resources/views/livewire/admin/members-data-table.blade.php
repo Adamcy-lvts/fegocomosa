@@ -271,8 +271,8 @@
 
             @foreach ($roles as $role)
                 {{-- <x-button xs icon="check" positive label="{{$role->name}}" /> --}}
-                <x-checkbox class="w-1/2 py-2" id="right-label" label="{{ $role->name }}"
-                    wire:model.defer="assaignedRoles" value="{{ $role->id }}" />
+                <x-checkbox id="right-label" label="{{ $role->name }}" wire:model.defer="assaignedRoles"
+                    value="{{ $role->id }}" />
             @endforeach
 
         </div>

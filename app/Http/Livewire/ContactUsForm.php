@@ -17,6 +17,15 @@ class ContactUsForm extends Component
     public $message;
     public $showContactForm = false;
 
+    public function mount()
+    {
+        if (auth()->user()) {
+            $this->name = auth()->user()->first_name.' '.auth()->user()->last_name;
+            $this->email = auth()->user()->email;
+           
+        }
+    }
+
     public function contact()
     {
         $this->validate([
@@ -46,7 +55,7 @@ class ContactUsForm extends Component
  
         $admins = User::role('Super-Admin')->get();
    
-        Notification::send($admins, new ContactUsMessageNotification($data));
+        Notification::send($admins, new ContactUsMessageNotification($data, $this->email));
 
         $this->emit('messageSubmitted');
         

@@ -33,6 +33,6 @@ class WelcomeMail extends Mailable implements ShouldQueue
     public function build()
     {
         
-        return $this->from($this->adminEmail->email)->markdown('emails.welcome-mail');
+        return $this->from($this->adminEmail->email, 'Fegocomosa')->markdown('emails.welcome-mail');
     }
 }
