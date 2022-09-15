@@ -104,7 +104,7 @@
                     <div class="mySlides fade">
                         <div class="numbertext">{{ $projectImage->id }}/{{ $projectsimages->count() }}</div>
                         <img alt="feature" class="object-cover object-center h-full w-full"
-                            src="{{ 'storage/projects_images/' . $projectImage->images }}">
+                            src="{{ asset('storage/projects_images/' . $projectImage->images) }}">
 
                         <div class="text">{{ $projectImage->caption }}</div>
 
@@ -233,7 +233,7 @@
                             <a href="{{ route('member.profile', $position->user->id) }}">
                                 <img alt="team"
                                     class="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4"
-                                    src="{{ $position->user->profile_photo_url ?? '' }}">
+                                    src="{{ asset($position->user->profile_photo_url ?? '') }}">
                             </a>
                             <div class="flex-grow sm:pl-8">
                                 <a href="{{ route('member.profile', $position->user->id) }}">
