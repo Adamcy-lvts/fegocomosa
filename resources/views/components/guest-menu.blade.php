@@ -7,7 +7,7 @@
 
             <!-- Logo -->
             <div class="flex-shrink-0 flex ml-2 md:ml-0 items-center">
-                <a href="{{ route('home') }}">
+                <a href="{{ route('welcome') }}">
                     <img class="w-12 text-white p-2 " src="{{ asset('images/Logo-min.svg') }}" alt="">
                 </a>
                 <span class="ml-3 text-xl">FEGOCOMOSA</span>
