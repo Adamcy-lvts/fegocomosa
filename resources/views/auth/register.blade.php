@@ -198,7 +198,7 @@
     </div>
 
 
-    @push('scripts')
+    @push('filepond-scripts')
         <script>
             window.addEventListener('load', () => {
                 // Register the plugin
