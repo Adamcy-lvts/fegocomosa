@@ -272,7 +272,7 @@
     </section>
 
 </div>
-@section('script')
+@push('script')
     <script>
         var slideIndex = 0;
         showSlides();
@@ -306,4 +306,4 @@
             bannerTimer = setInterval(bannerSwitcher, 5000)
         });
     </script>
-@endsection
+@endpush

@@ -43,8 +43,7 @@
 
     <script src="{{ asset('js/jquery-3.4.1.js') }}"></script>
     @livewireScripts
-    @stack('scripts')
-    @yield('script')
+    @stack('script')
     @yield('contactScript')
     @yield('contactOrganizerScript')
     @yield('donationFormScript')
