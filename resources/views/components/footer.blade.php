@@ -6,7 +6,7 @@
                 <a href="{{ route('home') }}"
                     class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
 
-                    <img class="w-28 p-2" src="{{ asset('storage/svg_icons/Logo-min.svg') }}" alt="">
+                    <img class="w-28 p-2" src="{{ asset('images/Logo-min.svg') }}" alt="">
 
                 </a>
             @endauth
@@ -14,7 +14,7 @@
                 <a href="/"
                     class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
 
-                    <img class="w-28 p-2" src="{{ asset('storage/svg_icons/Logo-min.svg') }}" alt="">
+                    <img class="w-28 p-2" src="{{ asset('images/Logo-min.svg') }}" alt="">
 
                 </a>
             @endguest

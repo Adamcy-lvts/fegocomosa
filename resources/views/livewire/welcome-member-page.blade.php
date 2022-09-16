@@ -3,7 +3,7 @@
         <div class="hero-slider" data-carousel>
             @foreach ($carousel as $slider)
                 <div class="carousel-cell"
-                    style="background-image:url({{ asset('storage/photos/' . $slider->image_background) }});">
+                    style="background-image:url({{ asset('images/' . $slider->image_background) }});">
                     <div class="overlay"></div>
                     <div class="inner">
                         <h3 class="subtitle">{{ $slider->caption_2 }}</h3>
