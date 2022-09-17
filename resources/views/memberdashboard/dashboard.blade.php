@@ -82,7 +82,8 @@
                                                     value="{{ json_encode($array = ['payment_for' => 'membership', 'member_id' => auth()->user()->id]) }}">
 
 
-                                                {{-- <input type="hidden" name="reference"  value="{{ Paystack::genTranxRef() }}"> --}}
+                                                <input type="hidden" name="reference"
+                                                    value="{{ Paystack::genTranxRef() }}">
 
 
                                                 <x-button type="submit" class="w-full sm:w-0 py-2 px-8" green
