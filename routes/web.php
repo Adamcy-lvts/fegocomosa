@@ -85,7 +85,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function ()
 {
     Route::get('/home', WelcomeMemberPage::class)->name('home');
     
-    Route::view('/member/dashboard', 'memberdashboard/dashboard')->name('user.dashboard');
+    Route::view('/member/dashboard', 'memberdashboard/dashboard')->name('member.dashboard');
     Route::get('/password-update', UpdatePassword::class)->name('update.password');
     Route::get('/add-more-info', AdditionalUserInfo::class)->name('more.info');
     Route::get('resume/create', CreateResume::class)->name('create.resume');

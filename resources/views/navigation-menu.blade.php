@@ -17,7 +17,7 @@
                             {{ __('Dashboard') }}
                         </x-jet-nav-link>
                     @else
-                        <x-jet-nav-link href="{{ route('user.dashboard') }}" :active="request()->routeIs('user.dashboard')">
+                        <x-jet-nav-link href="{{ route('member.dashboard') }}" :active="request()->routeIs('member/dashboard')">
                             {{ __('Dashboard') }}
                         </x-jet-nav-link>
                     @endif

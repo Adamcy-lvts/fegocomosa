@@ -35,7 +35,7 @@
 
         </div>
         <nav class="text-gray-900 text-base font-sans pt-3 divide-y ">
-            <a href="{{ route('user.dashboard') }}"
+            <a href="{{ route('member.dashboard') }}"
                 class="flex border-t items-center {{ Request::is('member/dashboard') ? 'bg-gray-900 text-gray-100' : '' }}    py-4 pl-6 hover:bg-gray-600">
                 <i class="fas fa-tachometer-alt"></i>
                 <span class="ml-2">Dashboard</span>
@@ -202,15 +202,15 @@
             <!-- Mobile Header & Nav -->
             <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
                 <div class="pt-2 pb-3 space-y-1">
-                    {{-- <x-jet-responsive-nav-link href="{{ route('user.dashboard') }}" :active="request()->routeIs('user.dashboard')">
+                    <x-jet-responsive-nav-link href="{{ route('member.dashboard') }}" :active="request()->routeIs('member/dashboard')">
                         {{ __('Dashboard') }}
-                    </x-jet-responsive-nav-link> --}}
+                    </x-jet-responsive-nav-link>
 
-                    <x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('all.members')">
+                    <x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('user/profile')">
                         {{ __('Profile') }}
                     </x-jet-responsive-nav-link>
 
-                    <x-jet-responsive-nav-link href="{{ route('update.password') }}" :active="request()->routeIs('posts')">
+                    <x-jet-responsive-nav-link href="{{ route('update.password') }}" :active="request()->routeIs('password-update')">
                         {{ __('Change password') }}
                     </x-jet-responsive-nav-link>
 
