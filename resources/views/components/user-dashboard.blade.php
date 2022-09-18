@@ -339,7 +339,8 @@
                     @php
                         $year = Carbon\Carbon::now()->year;
                     @endphp
-                    <p class="text-gray-500 text-sm text-center sm:text-left">© {{ $year }} Fegocomosa —
+                    <p class="text-gray-500 text-sm text-center sm:text-left">© {{ $year }} <a
+                            href="/home">Fegocomosa</a> —
                         <a href="https://twitter.com/knyttneve" rel="noopener noreferrer" class="text-gray-600 ml-1"
                             target="_blank">Made With <i class="fa-duotone fa-heart"></i> By Adamu Mohammed</a>
                     </p>

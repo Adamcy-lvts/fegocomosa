@@ -13,7 +13,7 @@
             <!-- header (profile) -->
             <header class="border-b px-10">
                 <!-- social icons-->
-                <ul class="flex flex-wrap justify-end gap-2">
+                <ul class="hidden md:flex flex-wrap justify-end gap-2">
                     <!-- linkedin -->
                     <li>
                         <a href="https://www.linkedin.com/"
