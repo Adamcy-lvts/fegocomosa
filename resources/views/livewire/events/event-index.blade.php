@@ -5,7 +5,7 @@
                 <div class="carousel-cell">
                     <img alt="content" class="carousel-cell-image block md:w-4/4  w-full"
                         src="{{ asset('storage/events_images/' . $event->image) }}">
-                    <div class="overlay"></div>
+                    <div class="event-slider-overlay"></div>
                     <div class="inner">
                         <h2 class="title">Up Coming Event</h2>
 
