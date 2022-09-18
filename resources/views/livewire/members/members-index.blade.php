@@ -82,13 +82,12 @@
                             </div>
                         </a>
                     </div>
-                    <div class="cards-content">
-                        <div class="flex justify-between">
-                            <span class="cards-title activator grey-text text-darken-4">
+                    <div class="px-4 pb-5 pt-2">
+                        <div class="flex flex-col">
+                            {{-- <x-button 2xs flat green label="{{ $member->profession }}" /> --}}
+                            <span class="text-xs text-green-600">{{ $member->profession }}</span>
+                            <span class=" mb-2 text-lg md:text-2xl font-light">
                                 {{ $member->first_name . ' ' . $member->last_name }}
-                            </span>
-                            <span>
-                                <x-button 2xs flat green label="{{ $member->profession }}" />
                             </span>
                         </div>
                         <div class="flex justify-between">
@@ -121,7 +120,7 @@
 
             <!--Main Col-->
             <div id="profile"
-                class="w-full lg:w-7/12 rounded-lg lg:rounded-l-lg lg:rounded-r-none shadow-2xl bg-black opacity-75 mx-6 lg:mx-0">
+                class="w-full lg:w-7/12 rounded-lg lg:rounded-l-lg lg:rounded-r-none shadow-2xl bg-black opacity-90 mx-6 lg:mx-0">
 
 
                 <div class="p-4 md:p-12 text-center lg:text-left">
@@ -133,25 +132,27 @@
                         </div>
                     </div>
 
-                    <h1 class="text-2xl text-gray-200 font-bold pt-8 lg:pt-0">{{ $firstName . ' ' . $lastName }}</h1>
+                    <h1 class="text-lg lg:text-2xl text-gray-200 font-bold pt-8 lg:pt-0">
+                        {{ $firstName . ' ' . $lastName }}</h1>
                     <div class="mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-gray-500 opacity-25"></div>
-                    <div class="pt-4 text-gray-100 flex items-center justify-center lg:justify-start">
-                        <i class="fa-thin fa-briefcase "></i><span class="text-sm  ml-2">Works At:
+                    <div class="pt-4 text-gray-100 flex flex-wrap items-center justify-center lg:justify-start">
+                        <i class="fa-thin fa-briefcase "></i><span class="text-xs md:text-sm  ml-2">Works At:
                             {{ $workplace }}</span>
                     </div>
-                    <div class="pt-2 text-gray-100 flex items-center justify-center lg:justify-start">
-                        <i class="fa-thin fa-location-dot "></i><span class="text-sm  ml-2">Address:
+                    <div class="pt-2 text-gray-100 flex flex-wrap items-center justify-center lg:justify-start">
+                        <i class="fa-thin fa-location-dot "></i><span class="text-xs md:text-sm  ml-2">Address:
                             {{ $address }}</span>
                     </div>
-                    <div class="pt-2 text-gray-100 flex items-center justify-center lg:justify-start">
-                        <i class="fa-thin fa-envelope "></i><span class="text-sm  ml-2">Email:
+                    <div class="pt-2 text-gray-100 flex flex-wrap items-center justify-center lg:justify-start">
+                        <i class="fa-thin fa-envelope "></i><span class="text-xs md:text-sm  ml-2">Email:
                             {{ $email }}</span>
                     </div>
-                    <div class="pt-2 text-gray-100 flex items-center justify-center lg:justify-start">
-                        <i class="fa-thin fa-phone"></i><span class="text-sm  ml-2">Phone: {{ $phone }}</span>
+                    <div class="pt-2 text-gray-100 flex flex-wrap items-center justify-center lg:justify-start">
+                        <i class="fa-thin fa-phone"></i><span class="text-xs md:text-sm  ml-2">Phone:
+                            {{ $phone }}</span>
                     </div>
-                    <div class="pt-2 text-gray-100 flex items-center justify-center lg:justify-start">
-                        <i class="fa-thin fa-graduation-cap"></i><span class="text-sm  ml-2">Graduation Year:
+                    <div class="pt-2 text-gray-100 flex flex-wrap items-center justify-center lg:justify-start">
+                        <i class="fa-thin fa-graduation-cap"></i><span class="text-xs md:text-sm  ml-2">Graduation Year:
                             {{ $gradYear }}</span>
                     </div>
 
@@ -159,7 +160,7 @@
 
                         <a class="link" target="_blank" href="https://{{ $facebook }}"
                             data-tippy-content="@facebook_handle"><svg
-                                class="h-6 fill-current text-gray-600 hover:text-gray-400" role="img"
+                                class="h-4 md:h-6 fill-current text-gray-600 hover:text-gray-400" role="img"
                                 viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <title>Facebook</title>
                                 <path
@@ -167,7 +168,7 @@
                             </svg></a>
                         <a class="link" target="_blank" href="https://{{ $twitter }}"
                             data-tippy-content="@twitter_handle"><svg
-                                class="h-6 fill-current text-gray-600 hover:text-green-700" role="img"
+                                class="h-4 md:h-6 fill-current text-gray-600 hover:text-green-700" role="img"
                                 viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <title>Twitter</title>
                                 <path
@@ -176,7 +177,7 @@
 
                         <a class="link" target="_blank" href="https://{{ $instagram }}"
                             data-tippy-content="@instagram_handle"><svg
-                                class="h-6 fill-current text-gray-600 hover:text-green-700" role="img"
+                                class="h-4 md:h-6 fill-current text-gray-600 hover:text-green-700" role="img"
                                 viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <title>Instagram</title>
                                 <path
@@ -187,7 +188,7 @@
                             data-tippy-content="@telegram_handle">
 
                             <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"
-                                class="h-7 fill-current text-gray-600 hover:text-green-700" role="img">
+                                class="h-5 md:h-7 fill-current text-gray-600 hover:text-green-700" role="img">
                                 <title>Telegram</title>
                                 <g id="_x33_35-telegram">
                                     <g>
@@ -202,7 +203,7 @@
                         </a>
                         <a class="link" target="_blank" href="https://{{ $whatsapp }}"
                             data-tippy-content="@whatsapp_handle"><svg
-                                class="h-7 fill-current text-gray-600 hover:text-green-700" role="img"
+                                class="h-5 md:h-7 fill-current text-gray-600 hover:text-green-700" role="img"
                                 viewBox="0 0 56.693 56.693" xmlns="http://www.w3.org/2000/svg">
                                 <title>Whatsapp</title>
                                 <path class="st0"
@@ -213,7 +214,7 @@
                         <a class="link" target="_blank" href="https://{{ $linkedin }}"
                             data-tippy-content="@linkedin_handle">
                             <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"
-                                class="h-6 fill-current text-gray-600 hover:text-green-700" role="img"
+                                class="h-4 md:h-6 fill-current text-gray-600 hover:text-green-700" role="img"
                                 xmlns:serif="http://www.serif.com/">
                                 <title>LinkedIn</title>
                                 <path
@@ -223,7 +224,7 @@
 
                         <a class="link" href="https://{{ $website }}"
                             data-tippy-content="@website_handle"><svg
-                                class="h-7 fill-current text-gray-600 hover:text-green-700" role="img"
+                                class="h-5 md:h-7 fill-current text-gray-600 hover:text-green-700" role="img"
                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 760">
                                 <path d="M760 380a380 380 0 1 1-760 0 380 380 0 1 1 760 0z" />
                                 <title>Website</title>
@@ -239,10 +240,12 @@
 
             <!--Img Col-->
             <div class="w-full lg:w-5/12">
+                <div class="mt-8 grid place-content-end ">
+                    <x-button xs class="hidden lg:block" red label="Close" x-on:click="close" />
+                </div>
                 <!-- Big profile image for side bar (desktop) -->
                 <img src="{{ asset('storage/members_images/' . $potraitImage) }}"
                     class="rounded-none lg:rounded-lg shadow-2xl hidden lg:block">
-
 
             </div>
 
