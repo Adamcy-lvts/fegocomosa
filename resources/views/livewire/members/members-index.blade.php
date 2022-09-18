@@ -129,7 +129,7 @@
                     <div class="block lg:hidden rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center"
                         style="background-image: url('{{ asset('storage/' . $profileImage) }}')">
                         <div class="mt-8 grid place-content-end ">
-                            <x-button red label="Close" x-on:click="close" />
+                            <x-button xs red label="Close" x-on:click="close" />
                         </div>
                     </div>
 
