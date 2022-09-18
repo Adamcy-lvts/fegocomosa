@@ -8,11 +8,10 @@
             <x-button label="Download PDF" href="{{ route('download.resume', $member->id) }}" />
         </div>
 
-        <div
-            class="bg-white md:w-10/12 mx-auto border border-gray-300 rounded-sm shadow-lg py-10 px-10 w-full mt-10 mb-10">
+        <div class="bg-white md:w-10/12 mx-auto border border-gray-300 rounded-sm shadow-lg py-10  w-full mt-10 mb-10">
 
             <!-- header (profile) -->
-            <header class="border-b">
+            <header class="border-b px-10">
                 <!-- social icons-->
                 <ul class="flex flex-wrap justify-end gap-2">
                     <!-- linkedin -->
@@ -78,8 +77,8 @@
                 </div>
             </header>
             <!-- detailed info -->
-            <main class="flex flex-col md:flex-row md:gap-x-10 ">
-                <div class="w-full md:w-2/6 border-r pt-10">
+            <main class="flex flex-col md:flex-row md:gap-x-10 px-10">
+                <div class="w-full md:w-2/6 border-0 md:border-r pt-10">
                     <!-- contact details -->
                     <strong class="text-xl font-medium uppercase">Contact Details</strong>
                     <ul class="mt-2 mb-10 text-sm">
