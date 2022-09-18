@@ -112,9 +112,17 @@
     } */
 
     .hero-slider {
-    width: 100%;
+    width: 450px;
     height: 300px;
     overflow: hidden;
+    }
+
+    .hero-slider .carousel-cell {
+    width: 450px;
+    height: 300px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     }
 
     .hero-slider .carousel-cell .inner {
