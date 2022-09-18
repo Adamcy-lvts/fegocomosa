@@ -3207,6 +3207,9 @@ select {
 .font-extrabold {
   font-weight: 800;
 }
+.font-light {
+  font-weight: 300;
+}
 .uppercase {
   text-transform: uppercase;
 }
@@ -3586,6 +3589,10 @@ select {
   --tw-text-opacity: 1;
   color: rgb(30 64 175 / var(--tw-text-opacity));
 }
+.text-green-300 {
+  --tw-text-opacity: 1;
+  color: rgb(134 239 172 / var(--tw-text-opacity));
+}
 .underline {
   -webkit-text-decoration-line: underline;
           text-decoration-line: underline;
@@ -3634,6 +3641,9 @@ select {
 }
 .opacity-50 {
   opacity: 0.5;
+}
+.opacity-90 {
+  opacity: 0.9;
 }
 .shadow {
   --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
@@ -6255,6 +6265,14 @@ input[type="number"].appearance-number-none {
     display: none;
   }
 
+  .md\:h-6 {
+    height: 1.5rem;
+  }
+
+  .md\:h-7 {
+    height: 1.75rem;
+  }
+
   .md\:h-64 {
     height: 16rem;
   }
@@ -6475,6 +6493,11 @@ input[type="number"].appearance-number-none {
     line-height: 1;
   }
 
+  .md\:text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
   .md\:text-2xl {
     font-size: 1.5rem;
     line-height: 2rem;
@@ -6554,10 +6577,6 @@ input[type="number"].appearance-number-none {
 
   .lg\:h-auto {
     height: auto;
-  }
-
-  .lg\:h-48 {
-    height: 12rem;
   }
 
   .lg\:w-1\/2 {
@@ -6708,6 +6727,11 @@ input[type="number"].appearance-number-none {
 
   .lg\:text-center {
     text-align: center;
+  }
+
+  .lg\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 
   .lg\:text-sm {
