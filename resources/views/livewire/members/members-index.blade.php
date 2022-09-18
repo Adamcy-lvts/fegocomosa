@@ -115,7 +115,9 @@
     </div>
 
     <x-modal max-width="5xl" wire:model.defer="simpleModal">
-
+        <div class="mt-8 grid place-content-end ">
+            <x-button red label="Close" x-on:click="close" />
+        </div>
 
         <div class="max-w-4xl flex items-center h-auto lg:h-screen flex-wrap mx-auto my-32 lg:my-0">
 
@@ -127,11 +129,7 @@
                 <div class="p-4 md:p-12 text-center lg:text-left">
                     <!-- Image for mobile view-->
                     <div class="block lg:hidden rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center"
-                        style="background-image: url('{{ asset('storage/' . $profileImage) }}')">
-                        <div class="mt-8 grid place-content-end  ">
-                            <x-button xs red label="Close" x-on:click="close" />
-                        </div>
-                    </div>
+                        style="background-image: url('{{ asset('storage/' . $profileImage) }}')"></div>
 
                     <h1 class="text-2xl text-gray-200 font-bold pt-8 lg:pt-0">{{ $firstName . ' ' . $lastName }}</h1>
                     <div class="mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-gray-500 opacity-25"></div>
