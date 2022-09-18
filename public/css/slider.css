@@ -141,6 +141,18 @@
  }
 
 @media (min-width: 640px) { 
+      .hero-slider {
+        width: 100%;
+        height: 1060px;
+        overflow: hidden;
+        }
+        .hero-slider .carousel-cell {
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
     .hero-slider .carousel-cell .inner {
        bottom: 60%;
     }
