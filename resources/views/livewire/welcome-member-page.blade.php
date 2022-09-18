@@ -4,7 +4,7 @@
             @foreach ($carousel as $slider)
                 <div class="carousel-cell">
                     <img alt="content" class="carousel-cell-image block md:w-4/4  w-full"
-                        src="{{ asset('storage/events_images/' . $slider->image_background) }}">
+                        src="{{ asset('images/' . $slider->image_background) }}">
                     <div class="overlay"></div>
                     <div class="inner">
                         <h3 class="subtitle">{{ $slider->caption_2 }}</h3>
