@@ -19,13 +19,15 @@ class DownloadResumeController extends Controller
         'member' => $member
        ])->render();
 
-        $file = $member->first_name.'_'.'resume.pdf';
+       Browsershot::html($html)->showBackground()->format('A4')->pdf();
 
-        Browsershot::html($html)->showBackground()->format('A4')->save(storage_path("app/pdf/{$member->first_name}_{$member->id}_resume.pdf"));
+        // $file = $member->first_name.'_'.'resume.pdf';
+
+        // Browsershot::html($html)->showBackground()->format('A4')->save(storage_path("app/pdf/{$member->first_name}_{$member->id}_resume.pdf"));
       
-        $path = storage_path("app/pdf/{$member->first_name}_{$member->id}_resume.pdf");
+        // $path = storage_path("app/pdf/{$member->first_name}_{$member->id}_resume.pdf");
 
-        return response()->download($path)->deleteFileAfterSend(true);;
+        // return response()->download($path)->deleteFileAfterSend(true);
       
         
     }
