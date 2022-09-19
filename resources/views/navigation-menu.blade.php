@@ -188,10 +188,17 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-jet-responsive-nav-link>
-
+            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                @if (auth()->user()->hasAnyRole('Super-Admin', 'admin'))
+                    <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                        {{ __('Dashboard') }}
+                    </x-jet-responsive-nav-link>
+                @else
+                    <x-jet-responsive-nav-link href="{{ route('member.dashboard') }}" :active="request()->routeIs('member/dashboard')">
+                        {{ __('Dashboard') }}
+                    </x-jet-responsive-nav-link>
+                @endif
+            </div>
             <x-jet-responsive-nav-link href="{{ route('members') }}" :active="request()->routeIs('members*')">
                 {{ __('Members') }}
             </x-jet-responsive-nav-link>
