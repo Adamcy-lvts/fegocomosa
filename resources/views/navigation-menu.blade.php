@@ -215,6 +215,10 @@
                 {{ __('Projects') }}
             </x-jet-responsive-nav-link>
 
+            <x-jet-responsive-nav-link href="{{ route('category.index') }}" :active="request()->routeIs('category.index')">
+                {{ __('Members Category') }}
+            </x-jet-responsive-nav-link>
+
             <x-jet-responsive-nav-link href="{{ route('events') }}" :active="request()->routeIs('events')">
                 {{ __('Events') }}
             </x-jet-responsive-nav-link>
