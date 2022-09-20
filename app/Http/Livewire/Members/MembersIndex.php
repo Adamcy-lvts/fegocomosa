@@ -104,13 +104,13 @@ class MembersIndex extends Component
       $this->email = $member->email;
       $this->phone  = $member->phone; 
       $this->gradYear = $member->graduationYear->year;
-      $this->facebook = $userSocialLinks->facebook ?? " No social media handle for this user";
-      $this->twitter = $userSocialLinks->twitter ?? " No social media handle for this user";
-      $this->instagram = $userSocialLinks->instagram  ?? "No social media handle for this user ";
-      $this->whatsapp = $member->socialMedia->whatsapp ?? "No social media handle for this user ";
-      $this->telegram = $member->socialMedia->telegram ?? "No social media handle for this user ";
-      $this->linkedin = $member->socialMedia->linkedin ?? "No social media handle for this user ";
-      $this->website = $member->socialMedia->website ?? "#";
+      $this->facebook = 'https://'.$userSocialLinks->facebook ?? "#";
+      $this->twitter = 'https://'.$userSocialLinks->twitter ?? "#";
+      $this->instagram = 'https://'.$userSocialLinks->instagram  ?? "#";
+      $this->whatsapp = 'https://'.$member->socialMedia->whatsapp ?? "#";
+      $this->telegram = 'https://'.$member->socialMedia->telegram ?? "#";
+      $this->linkedin = 'https://'.$member->socialMedia->linkedin ?? "#";
+      $this->website = 'https://'.$member->socialMedia->website ?? "#";
    }
 
 
