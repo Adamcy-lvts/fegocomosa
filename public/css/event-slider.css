@@ -13,16 +13,17 @@
 
 .event-slider {
   width: 100%;
-  height: 1080px;
+  height: 210px;
   overflow: hidden;
 }
 .event-slider .carousel-cell {
   width: 100%;
-  height: 100%;
+  height: 210px;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
+
 .event-slider .carousel-cell .inner {
   position: relative;
   bottom: 50%;
