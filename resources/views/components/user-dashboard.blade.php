@@ -50,11 +50,11 @@
                 <i class="fa-solid fa-key"></i>
                 <span class="ml-2">Change Password</span>
             </a>
-            <a href="#"
+            {{-- <a href="#"
                 class="flex items-center cursor-not-allowed hover:opacity-100 py-4 pl-6 hover:bg-gray-600">
                 <i class="fas fa-shopping-cart"></i>
                 <span class="ml-2">Orders</span>
-            </a>
+            </a> --}}
             <div x-data="accordion" class="w-full max-w-lg mx-auto space-y-4">
                 <!-- Accordion 1 -->
                 <div class="w-full bg-white  rounded-md py-2">
@@ -278,7 +278,7 @@
                             Profile
                         </a>
                     </div>
-                    <div class="flex -mb-px mr-8 cursor-not-allowed">
+                    {{-- <div class="flex -mb-px mr-8 cursor-not-allowed">
                         <a href="#"
                             class="no-underline text-white opacity-50 md:text-gray-500 md:opacity-100 flex items-center py-4 border-b border-transparent hover:opacity-100 md:hover:border-gray-500">
 
@@ -286,7 +286,7 @@
                                 class="fas fa-shopping-cart h-6 w-6 text-gray-500 mr-2 {{ Request::is('orders*') ? 'fill-blue-500' : '' }}"></i>
                             Orders
                         </a>
-                    </div>
+                    </div> --}}
                     <div class="flex -mb-px mr-8">
                         <a href="{{ route('view.resume') }}"
                             class="no-underline text-white opacity-50 md:text-gray-500 md:opacity-100 flex items-center py-4  {{ Request::is('resume*') ? 'border-b border-blue-500 md:text-blue-600' : '' }} md:hover:border-b md:hover:border-gray-500">
