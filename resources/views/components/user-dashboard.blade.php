@@ -95,11 +95,7 @@
                 <i class="fa-solid fa-id-card"></i>
                 <span class="ml-2">ID Card</span>
             </a> --}}
-            <a href="{{ route('more.info') }}"
-                class="flex border border-b items-center  opacity-75  hover:opacity-100 py-4 pl-6 hover:bg-gray-600">
-                <i class="fa-solid fa-id-card"></i>
-                <span class="ml-2">Add Info</span>
-            </a>
+
         </nav>
 
         <form method="POST" action="{{ route('logout') }}">
@@ -254,10 +250,6 @@
                     {{-- <x-jet-responsive-nav-link href="{{ route('projects') }}" :active="request()->routeIs('projects')">
                         {{ __('Orders') }}
                     </x-jet-responsive-nav-link> --}}
-
-                    <x-jet-responsive-nav-link href="{{ route('more.info') }}" :active="request()->routeIs('more.info')">
-                        {{ __('Add Social Media Links') }}
-                    </x-jet-responsive-nav-link>
 
                 </div>
             </div>
