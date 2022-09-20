@@ -90,11 +90,11 @@
                     </div>
                 </div>
             </div>
-            <a href="#"
+            {{-- <a href="#"
                 class="flex border border-b items-center cursor-not-allowed opacity-75 hover:opacity-100 py-4 pl-6 hover:bg-gray-600">
                 <i class="fa-solid fa-id-card"></i>
                 <span class="ml-2">ID Card</span>
-            </a>
+            </a> --}}
             <a href="{{ route('more.info') }}"
                 class="flex border border-b items-center  opacity-75  hover:opacity-100 py-4 pl-6 hover:bg-gray-600">
                 <i class="fa-solid fa-id-card"></i>
@@ -251,12 +251,12 @@
                         </div>
                     </div>
 
-                    <x-jet-responsive-nav-link href="{{ route('projects') }}" :active="request()->routeIs('projects')">
+                    {{-- <x-jet-responsive-nav-link href="{{ route('projects') }}" :active="request()->routeIs('projects')">
                         {{ __('Orders') }}
-                    </x-jet-responsive-nav-link>
+                    </x-jet-responsive-nav-link> --}}
 
-                    <x-jet-responsive-nav-link href="{{ route('events') }}" :active="request()->routeIs('events')">
-                        {{ __('Add Links') }}
+                    <x-jet-responsive-nav-link href="{{ route('more.info') }}" :active="request()->routeIs('more.info')">
+                        {{ __('Add Social Media Links') }}
                     </x-jet-responsive-nav-link>
 
                 </div>

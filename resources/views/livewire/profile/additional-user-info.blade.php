@@ -1,6 +1,6 @@
 <div>
-    <div class="w-1/2">
-        <x-card title="Social Media Links">
+    <div class="mt-5 mx-auto w-full md:w-10/12">
+        <x-card title="Add Your Social Media Links">
             <x-errors class="mb-4" />
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">

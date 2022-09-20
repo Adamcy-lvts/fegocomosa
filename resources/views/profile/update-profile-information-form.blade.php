@@ -278,15 +278,9 @@
                   </x-card>
 
               </div>
-
-
-
-
           </div>
           </div>
       </x-slot>
-      {{-- </div>
 
-
-        </div> --}}
   </x-jet-form-section>
+  @livewire('profile.additional-user-info')
