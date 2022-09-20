@@ -104,13 +104,13 @@ class MembersIndex extends Component
       $this->email = $member->email;
       $this->phone  = $member->phone; 
       $this->gradYear = $member->graduationYear->year;
-      $this->facebook = 'https://'.$userSocialLinks->facebook ?? "#";
-      $this->twitter = 'https://'.$userSocialLinks->twitter ?? "#";
-      $this->instagram = 'https://'.$userSocialLinks->instagram  ?? "#";
-      $this->whatsapp = 'https://'.$member->socialMedia->whatsapp ?? "#";
-      $this->telegram = 'https://'.$member->socialMedia->telegram ?? "#";
-      $this->linkedin = 'https://'.$member->socialMedia->linkedin ?? "#";
-      $this->website = 'https://'.$member->socialMedia->website ?? "#";
+      $this->facebook = $userSocialLinks->facebook ?? "#";
+      $this->twitter = $userSocialLinks->twitter ?? "#";
+      $this->instagram = $userSocialLinks->instagram  ?? "#";
+      $this->whatsapp = $member->socialMedia->whatsapp ?? "#";
+      $this->telegram = $member->socialMedia->telegram ?? "#";
+      $this->linkedin = $member->socialMedia->linkedin ?? "#";
+      $this->website = $member->socialMedia->website ?? "#";
    }
 
 
