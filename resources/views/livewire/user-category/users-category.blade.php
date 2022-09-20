@@ -1,6 +1,6 @@
 <div>
 
-    <div class="container mx-auto p-5">
+    <div class="container mx-auto p-5 md:p-0 md:w-8/12">
         <div class="col-span-1  md:col-span-3 md:grid md:grid-cols-3 md:gap-6">
             @foreach ($users as $member)
                 <div class="cards">
