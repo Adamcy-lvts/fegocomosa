@@ -223,15 +223,15 @@
                                     pack
                                     vaporware.</p>
                                 <span class="inline-flex">
-                                    <a href="https://{{ $position->user->socialMedia->facebook }}"
+                                    <a href="https://{{ $position->user->socialMedia->facebook ?? '#' }}"
                                         class="text-gray-500">
                                         <i class="fab fa-facebook-f"></i>
                                     </a>
-                                    <a href="https://{{ $position->user->socialMedia->twitter }}"
+                                    <a href="https://{{ $position->user->socialMedia->twitter ?? '#' }}"
                                         class="ml-2 text-gray-500">
                                         <i class="fab fa-twitter"></i>
                                     </a>
-                                    <a href="https://{{ $position->user->socialMedia->whatsapp }}"
+                                    <a href="https://{{ $position->user->socialMedia->whatsapp ?? '#' }}"
                                         class="ml-2 text-gray-500">
                                         <i class="fab fa-whatsapp"></i>
                                     </a>
