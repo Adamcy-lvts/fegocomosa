@@ -110,7 +110,7 @@ class MembersIndex extends Component
       $this->whatsapp = $member->socialMedia->whatsapp ?? "No social media handle for this user ";
       $this->telegram = $member->socialMedia->telegram ?? "No social media handle for this user ";
       $this->linkedin = $member->socialMedia->linkedin ?? "No social media handle for this user ";
-      $this->website = $member->socialMedia->website ?? "No social media handle for this user ";
+      $this->website = $member->socialMedia->website ?? "#";
    }
 
 
