@@ -10,7 +10,7 @@
                         <h2 class="title">Up Coming Event</h2>
 
 
-                        <div class="">
+                        <div class="flex justify-center container mx-auto">
                             <div>
                                 {{-- <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 407.061 594"
                                     class="hidden md:block w-5 sm:w-7 fill-gray-100 hover:fill-green-600">
@@ -22,7 +22,10 @@
                                     </g>
                                 </svg> --}}
                             </div>
-                            <h3 class="subtitle">Venue: {{ $event->event_venue }}</h3>
+                            <div class="w-48 md:w-full">
+                                <h3 class="subtitle">Venue: {{ $event->event_venue }}</h3>
+                            </div>
+
                         </div>
 
 
