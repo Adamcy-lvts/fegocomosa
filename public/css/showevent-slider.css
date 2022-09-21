@@ -144,10 +144,12 @@
      .showevent-slider .flickity-prev-next-button {
         width: 60px;
         height: 60px;
+        background: transparent;
+        margin-top: 0px;
     }
 
     .showevent-slider .flickity-page-dots .dot {
-        width: 30px;
+        width: 20px;
         height: 4px;
     }
 
