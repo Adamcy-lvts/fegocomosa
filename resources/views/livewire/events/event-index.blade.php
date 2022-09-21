@@ -22,8 +22,9 @@
                                     </g>
                                 </svg> --}}
                             </div>
-                            <div class="w-48 md:w-full">
-                                <h3 class="subtitle">Venue: {{ $event->event_venue }}</h3>
+                            <div class="w-48 sm:w-full">
+                                <h3 class="subtitle"><span class="font-semibold">Venue:</span> {{ $event->event_venue }}
+                                </h3>
                             </div>
 
                         </div>
