@@ -4,7 +4,7 @@
             {{-- <div class="lg:w-4/6 mx-auto"> --}}
             <h1 class="text-lg md:text-2xl mb-4">{{ $event->title }}</h1>
             <div class="rounded-lg ">
-                <div class="image-slider mb-5" data-carousel>
+                <div class="showevent-slider mb-5" data-carousel>
                     @forelse ($event->images as $image)
                         <div class="carousel-cell">
                             <img alt="content" class="carousel-cell-image block md:w-4/4  w-full"
