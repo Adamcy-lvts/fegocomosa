@@ -26,7 +26,7 @@
 
 .event-slider .carousel-cell .inner {
   position: relative;
-  bottom: 40%;
+  bottom: 50%;
   transform: translateY(-50%);
   color: white;
   text-align: center;
@@ -46,10 +46,9 @@
 .event-slider .carousel-cell .inner .title {
   font-family: "Montserrat", sans-serif;
   font-size: 0.9rem;
-  margin-bottom: 10px;
   text-transform: uppercase;
   letter-spacing: 3px;
-  margin-bottom: 40px;
+  
 }
 .event-slider .carousel-cell .inner .btn {
   border: 1px solid #fff;

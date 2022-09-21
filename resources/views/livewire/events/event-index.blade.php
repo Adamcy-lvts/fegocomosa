@@ -10,7 +10,7 @@
                         <h2 class="title">Up Coming Event</h2>
 
 
-                        <div class="flex flex-col justify-center md:flex-row gap-2 w-2/3 sm:w-full">
+                        <div class="flex flex-col flex-wrap md:flex-row gap-2 md:w-full">
                             <div>
                                 <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 407.061 594"
                                     class="hidden md:block w-5 sm:w-7 fill-gray-100 hover:fill-green-600">
