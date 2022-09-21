@@ -102,7 +102,7 @@
 
 @media (min-width: 450px) { 
     .showevent-slider .carousel-cell .inner {
-       bottom: 20%;
+       bottom: 50%;
     }
 
     .showevent-slider {
