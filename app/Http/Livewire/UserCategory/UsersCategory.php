@@ -46,13 +46,14 @@ class UsersCategory extends Component
     public $email;
     public $phone;
     public $facebook, $twitter, $instagram , $whatsapp, $telegram, $linkedin, $website;
+    public $category;
 
     public function mount($slug)
     {
 
-        $category = Category::where('slug', $slug)->first();
+        $this->category = Category::where('slug', $slug)->first();
 
-        $this->users = $category->users;
+        $this->users = $this->category->users;
     }
 
     public function ProfileModal($id)
