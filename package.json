@@ -23,6 +23,7 @@
     "dependencies": {
         "@tailwindcss/aspect-ratio": "^0.4.0",
         "acorn": "^8.7.0",
+        "autoprefixer": "10.4.5",
         "filepond": "^4.30.4",
         "filepond-plugin-file-validate-type": "^1.2.8",
         "filepond-plugin-image-exif-orientation": "^1.0.11",
