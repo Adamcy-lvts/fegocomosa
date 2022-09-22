@@ -152,7 +152,6 @@ class MembersIndex extends Component
             });
             })->search(trim($this->search));
 
-            // $this->resetPage();
     }
 
     public function render()
