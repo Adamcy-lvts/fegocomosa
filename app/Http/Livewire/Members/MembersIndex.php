@@ -140,7 +140,7 @@ class MembersIndex extends Component
      public function getUsersQueryProperty()
     {
         
-        return User::select('id','username','first_name','middle_name','last_name','potrait_image','profession','graduation_year_id')->with(['graduationYear'])->when($this->selectedHouseFilter, function($query) {
+        return User::select('id','username','first_name','middle_name','last_name','potrait_image','profession','graduation_year_id')->where('active', 1)->with(['graduationYear'])->when($this->selectedHouseFilter, function($query) {
             
             $query->where('house_id', $this->selectedHouseFilter);
             })->when($this->FilterByState, function($query) {$query->where('state_id',$this->FilterByState);
