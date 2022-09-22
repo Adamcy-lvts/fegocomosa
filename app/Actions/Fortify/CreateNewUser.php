@@ -21,6 +21,9 @@ class CreateNewUser implements CreatesNewUsers
 {
     use PasswordValidationRules;
 
+    public $ImageNameToStore = null;
+    public $avatarNameToStore = null;
+
    
     /**
      * Validate and create a newly registered user.
@@ -65,10 +68,10 @@ class CreateNewUser implements CreatesNewUsers
         // Get just filename without tmp/
         $ImageNameWithExt = Str::after($ImageNameWithPath, 'tmp/');
         // Filename to store
-        $avatarNameToStore =  $input['first_name'].'_'.$input['last_name'].'_'.$ImageNameWithExt;
+        $this->avatarNameToStore =  $input['first_name'].'_'.$input['last_name'].'_'.$ImageNameWithExt;
         // $ImageNameToStore = $input['first_name'].'_'.$generatedName;
         // Move Image
-        Storage::disk('public')->move($request->photo, "profile-photos/$avatarNameToStore");
+        Storage::disk('public')->move($request->photo, "profile-photos/$this->avatarNameToStore");
 
     }
 
@@ -79,11 +82,11 @@ class CreateNewUser implements CreatesNewUsers
         // Get just filename without tmp/
         $ImageNameWithExt = Str::after($ImageNameWithPath, 'tmp/');
         // Filename to store
-        $ImageNameToStore = $input['first_name'].'_'.$input['last_name'].'_'.time().$ImageNameWithExt;
-        // $ImageNameToStore = $input['first_name'].'_'.$generatedName;
+        $this->ImageNameToStore = $input['first_name'].'_'.$input['last_name'].'_'.time().$ImageNameWithExt;
+        // $this->ImageNameToStore = $input['first_name'].'_'.$generatedName;
         // Move Image
-        Storage::disk('public')->move($request->potraitImage, "members_images/$ImageNameToStore");
-        // $paths = $request->file('potrait_image')->storeAs('public/members_images/', $ImageNameToStore);
+        Storage::disk('public')->move($request->potraitImage, "members_images/$this->ImageNameToStore");
+        // $paths = $request->file('potrait_image')->storeAs('public/members_images/', $this->ImageNameToStore);
 
     }
 
@@ -95,9 +98,11 @@ class CreateNewUser implements CreatesNewUsers
             'year' => Carbon::create($input['entry_year_id'])->format('Y')
         ]);
 
+        
+
 
         $user =  User::create([
-            'profile_photo_path'=> "profile-photos/$avatarNameToStore",
+            'profile_photo_path'=> "profile-photos/$this->avatarNameToStore",
             'username'          => $input['username'],
             'first_name'        => $input['first_name'],
             'middle_name'       => $input['middle_name'],
@@ -119,7 +124,7 @@ class CreateNewUser implements CreatesNewUsers
             'workplace'         => $input['workplace'],
             'university'        => $input['university'],
             'course_of_study'   => $input['course_of_study'],
-            'potrait_image'     => $ImageNameToStore,
+            'potrait_image'     => $this->ImageNameToStore,
             'email'             => $input['email'],
             'password'          => Hash::make($input['password']),
         ]);
