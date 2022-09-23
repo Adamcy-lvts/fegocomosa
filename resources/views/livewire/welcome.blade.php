@@ -60,11 +60,12 @@
                                     class="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full bg-green-600 text-white flex-shrink-0">
                                     <i class="fal fa-calendar-check"></i>
                                 </div>
-                                <h2 class="text-gray-900 text-lg title-font uppercase font-medium">{{ $event->title }}
+                                <h2 class="text-gray-900 text-sm md:text-lg title-font uppercase font-medium">
+                                    {{ $event->title }}
                                 </h2>
                             </div>
                             <div class="flex-grow">
-                                <div class="flex mb-4 justify-between">
+                                <div class="flex flex-wrap mb-4 justify-between">
                                     <h1 class="text-4xl md:text-6xl ">{{ presentDay($event->event_date) }}</h1>
                                     <h3 class="text-3xl md:text-5xl ">{{ presentMonth($event->event_date) }}</h3>
                                 </div>
@@ -127,7 +128,8 @@
                     </div>
                     <div class="flex-grow">
                         <h2 class="text-gray-900 text-lg title-font font-medium mb-3">Completed Projects</h2>
-                        <p class="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast
+                        <p class="leading-relaxed text-sm md:text-base">Blue bottle crucifix vinyl post-ironic four
+                            dollar toast
                             vegan taxidermy. Gastropub indxgo juice poutine.</p>
                         <a class="mt-3 text-green-600 inline-flex items-center">Learn More
                             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -144,7 +146,8 @@
                     </div>
                     <div class="flex-grow">
                         <h2 class="text-gray-900 text-lg title-font font-medium mb-3">Projects In Progress</h2>
-                        <p class="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast
+                        <p class="leading-relaxed text-sm md:text-base">Blue bottle crucifix vinyl post-ironic four
+                            dollar toast
                             vegan taxidermy. Gastropub indxgo juice poutine.</p>
                         <a class="mt-3 text-green-600 inline-flex items-center">Learn More
                             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -161,7 +164,8 @@
                     </div>
                     <div class="flex-grow">
                         <h2 class="text-gray-900 text-lg title-font font-medium mb-3">Proposed Projects</h2>
-                        <p class="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast
+                        <p class="leading-relaxed text-sm md:text-base">Blue bottle crucifix vinyl post-ironic four
+                            dollar toast
                             vegan taxidermy. Gastropub indxgo juice poutine.</p>
                         <a class="mt-3 text-green-600 inline-flex items-center">Learn More
                             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"

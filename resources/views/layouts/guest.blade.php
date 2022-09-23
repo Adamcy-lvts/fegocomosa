@@ -10,7 +10,8 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+    {{-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap"> --}}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Raleway:300,400">
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/materialize-card.css') }}">
@@ -33,12 +34,12 @@
 
 </head>
 
-<body>
+<body class="font-raleway antialiased">
     <x-guest-menu />
     <x-notifications />
     @stack('ck-style')
     @stack('styles')
-    <div class="font-sans  text-gray-900 antialiased">
+    <div class="text-gray-900">
         {{ $slot }}
     </div>
     <x-footer />
