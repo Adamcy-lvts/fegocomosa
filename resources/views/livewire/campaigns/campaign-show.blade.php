@@ -1,4 +1,7 @@
 <div>
+    @push('ck-style')
+        <link rel="stylesheet" type="text/css" href="{{ url('css/ckeditor.css') }}">
+    @endpush
     @auth
         @livewire('navigation-menu')
     @endauth
