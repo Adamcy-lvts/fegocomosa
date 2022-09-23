@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Fegocomosa</title>
     <link rel="stylesheet" type="text/css" href="{{ url('css/editor.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
     <link rel="stylesheet" href="{{ asset('fontawesome-6/css/all.css') }}">
