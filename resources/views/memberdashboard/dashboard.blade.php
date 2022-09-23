@@ -65,7 +65,8 @@
                                         <form method="POST" action="{{ route('pay') }}">
                                             @csrf
                                             <div class="flex flex-col  md:flex-row gap-2">
-                                                <h1 class="text-4xl text-gray-700">Yearly Membership Fee is <span>
+                                                <h1 class="text-2xl sm:text-4xl text-gray-700">Yearly Membership Fee is
+                                                    <span>
                                                         &#x20A6;</span>10,000
                                                 </h1>
                                                 <input type="hidden" name="fname"
