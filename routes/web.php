@@ -89,7 +89,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function ()
     Route::get('/password-update', UpdatePassword::class)->name('update.password');
     Route::get('/add-more-info', AdditionalUserInfo::class)->name('more.info');
     Route::get('resume/create', CreateResume::class)->name('create.resume');
-    Route::get('view/resume', ViewResume::class)->name('view.resume');
+    Route::get('resume/view', ViewResume::class)->name('view.resume');
     Route::get('resume/edit', EditResume::class)->name('edit.resume');
     Route::get('/members/resume/{id}', [ResumeController::class, 'show'])->name('resume');
     Route::get('/download/resume/{id}', DownloadResumeController::class)->name('download.resume');
