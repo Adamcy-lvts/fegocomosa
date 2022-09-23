@@ -31,6 +31,7 @@
                                         tile poke farm.</p>
                                 </div>
                             </div>
+                        </a>
                     </div>
                 @endforeach
 
@@ -38,8 +39,5 @@
 
         </div>
 
-
-</div>
-
-</section>
+    </section>
 </div>
