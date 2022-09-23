@@ -27,7 +27,6 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/image-slider.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/event-slider.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/showevent-slider.css') }}">
-
     <link rel="stylesheet" type="text/css" href="{{ asset('css/modal.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/progressbar.css') }}">
 
@@ -42,9 +41,10 @@
 </head>
 
 <body class="font-raleway antialiased">
+
     <x-notifications />
     <x-jet-banner />
-    @stack('ck-style')
+
     <div class="min-h-screen ">
         @livewire('navigation-menu')
 

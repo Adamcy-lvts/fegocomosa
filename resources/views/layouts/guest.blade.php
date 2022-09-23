@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
     <link rel="stylesheet" href="{{ asset('css/slider.css') }}">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url('css/editor.css') }}">
+    {{-- <link rel="stylesheet" type="text/css" href="{{ url('css/ckeditor.css') }}"> --}}
     {{-- <link rel="stylesheet" href="{{ asset('fontawesome-pro-5.10.2-web/css/all.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('fontawesome-6/css/all.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
@@ -35,6 +35,7 @@
 <body>
     <x-guest-menu />
     <x-notifications />
+    @stack('ck-style')
     @stack('styles')
     <div class="font-sans  text-gray-900 antialiased">
         {{ $slot }}

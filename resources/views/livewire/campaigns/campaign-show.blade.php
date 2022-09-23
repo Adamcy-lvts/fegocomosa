@@ -1,7 +1,8 @@
+@push('ck-style')
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/ckeditor.css') }}">
+@endpush
 <div>
-    @push('ck-style')
-        <link rel="stylesheet" type="text/css" href="{{ url('css/ckeditor.css') }}">
-    @endpush
+
     @auth
         @livewire('navigation-menu')
     @endauth
@@ -11,7 +12,7 @@
 
             <div class=" mx-auto flex flex-row flex-wrap">
                 <div class="lg:hidden block">
-                    <h1 class="text-gray-900 text-2xl title-font font-medium mb-1">{{ $campaign->campaign_title }}
+                    <h1 class=" text-gray-900 text-2xl title-font font-medium mb-1">{{ $campaign->campaign_title }}
                     </h1>
 
                     <h2 class="text-sm title-font mb-5 text-gray-500 tracking-widest">
@@ -28,7 +29,7 @@
                     <img alt="ecommerce" class="w-full mb-2 lg:h-auto h-128 object-cover object-center rounded"
                         src="{{ asset('storage/campaigns_images/' . $campaign->cover_image) }}">
                     <figcaption class="text-sm font-bold italic mb-4">{{ $campaign->caption }}</figcaption>
-                    <div class=" w-full pr-5">
+                    <div class="target w-full pr-5">
                         {!! $campaign->about !!}
                     </div>
                 </div>
@@ -36,8 +37,10 @@
 
 
                 <div class="lg:w-1/2 w-full lg:pl-10 lg:py-3 mt-6 lg:mt-0">
+
                     <div class="hidden lg:block">
-                        <h1 class="text-gray-900 text-2xl title-font font-medium mb-1">{{ $campaign->campaign_title }}
+                        <h1 class=" text-gray-900 text-2xl title-font font-medium mb-1">
+                            {{ $campaign->campaign_title }}
                         </h1>
 
                         <h2 class="text-sm title-font mb-5 text-gray-500 tracking-widest">
@@ -179,7 +182,9 @@
             var element = document.getElementById("contactform");
             element.classList.add("animate__animated", "animate__zoomOut");
 
+            var HOne = document.getElementByTagName("h1");
 
+            HOne.classList.add('target');
 
             setTimeout(function() {
                 element.classList.add("hidden", "animate__animated", "animate__zoomOut",
