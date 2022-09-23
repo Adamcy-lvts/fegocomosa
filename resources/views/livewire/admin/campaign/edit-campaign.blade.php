@@ -35,6 +35,9 @@
                 @if ($coverImage)
                     <img src="{{ $coverImage->temporaryUrl() }}">
                 @endif
+                @if ($postedCoverImage)
+                    <img src="{{ asset('storage/campaigns_images/' . $postedCoverImage) }}">
+                @endif
                 <x-input wire:model="coverImage" type="file" class="opacity-2" />
             </div>
 </div>
