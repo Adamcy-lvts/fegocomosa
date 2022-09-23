@@ -20,7 +20,7 @@ class CreateDonationsTable extends Migration
             $table->foreignId('campaign_id');
             $table->foreignId('donor_id');
             $table->decimal('amount', $precision = 8, $scale = 2);
-            $table->text('comment');
+            $table->text('comment')->nullable();
             $table->timestamps();
         });
     }

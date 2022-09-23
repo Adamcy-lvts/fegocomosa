@@ -19,7 +19,7 @@ class CreateCampaignsTable extends Migration
             $table->string('campaign_title');
             $table->string('slug');
             $table->text('description');
-            $table->mediumText('about');
+            $table->mediumText('about')->nullable();
             $table->integer('goal');
             $table->date('starting_date');
             $table->string('cover_image')->nullable();

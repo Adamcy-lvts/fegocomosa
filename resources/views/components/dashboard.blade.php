@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>Fegocomosa</title>
-    <link rel="stylesheet" type="text/css" href="{{ url('css/editor.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url('css/ckeditor.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
     <link rel="stylesheet" href="{{ asset('fontawesome-6/css/all.css') }}">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">

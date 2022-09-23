@@ -73,7 +73,7 @@
                             </div>
                         </div>
                         {{-- FEEDBACK MESSAGE --}}
-                        <div class="py-8">
+                        <div class="hidden py-8">
                             <div id="showFeedback"
                                 class="hidden bg-green-100 border-t-4 border-green-500 rounded-b text-green-900 px-4 py-3 shadow-md"
                                 role="alert">
@@ -103,7 +103,7 @@
                                     $sumTotal = App\Models\Donation::where('campaign_id', $campaign->id)->sum('amount');
                                 @endphp
                                 <h2 class="title-font font-medium text-3xl text-gray-900">
-                                    <span>&#x20A6;</span>{{ number_format($sumTotal) }}
+                                    <span> &#x20A6; </span>{{ number_format($sumTotal) }}
                                 </h2>
                                 <p class="leading-relaxed">raised of <span> &#x20A6;</span>
                                     {{ number_format($campaign->goal) }}
