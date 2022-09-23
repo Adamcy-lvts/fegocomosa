@@ -289,8 +289,8 @@
                     </div> --}}
                     <div class="flex -mb-px mr-8">
                         <a href="{{ route('view.resume') }}"
-                            class="no-underline text-white opacity-50 md:text-gray-500 md:opacity-100 flex items-center py-4  {{ Request::is('resume*') ? 'border-b border-blue-500 md:text-blue-600' : '' }} md:hover:border-b md:hover:border-gray-500">
-                            <svg class="h-6 w-6 fill-gray-500 mr-2 {{ Request::is('resume*') ? 'fill-blue-500' : '' }}"
+                            class="no-underline text-white opacity-50 md:text-gray-500 md:opacity-100 flex items-center py-4  {{ Request::is('view/resume') ? 'border-b border-blue-500 md:text-blue-600' : '' }} md:hover:border-b md:hover:border-gray-500">
+                            <svg class="h-6 w-6 fill-gray-500 mr-2 {{ Request::is('view/resume') ? 'fill-blue-500' : '' }}"
                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                 <path
                                     d="M11 12h2v2h9s-.149-4.459-.2-5.854C21.75 6.82 21.275 6 19.8 6h-3.208l-1.197-2.256C15.064 3.121 14.951 3 14.216 3H9.783c-.735 0-.847.121-1.179.744-.165.311-.7 1.318-1.196 2.256H4.199c-1.476 0-1.945.82-2 2.146C2.145 9.473 2 14 2 14h9v-2zM9.649 4.916c.23-.432.308-.516.817-.516h3.067c.509 0 .588.084.816.516L14.924 6h-5.85l.575-1.084zM13 17h-2v-2H2.5s.124 1.797.199 3.322c.031.633.218 1.678 1.8 1.678H19.5c1.582 0 1.765-1.047 1.8-1.678.087-1.568.2-3.322.2-3.322H13v2z"
