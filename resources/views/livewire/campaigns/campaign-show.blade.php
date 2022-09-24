@@ -103,13 +103,11 @@
 
                     <div class="flex flex-col lg:flex-row -m-4 text-center mb-5">
                         <div class="p-4 lg:w-2/4  w-full">
-                            <div class="border-2 text-center border-gray-200 px-8 py-4 rounded-lg">
+                            <div class="border text-center border-gray-200 px-8 py-4 rounded-lg">
                                 <i class="fa-thin fa-chart-line-up fa-3x"></i>
-                                @php
-                                    $sumTotal = App\Models\Donation::where('campaign_id', $campaign->id)->sum('amount');
-                                @endphp
+
                                 <h2 class="title-font font-medium text-3xl text-gray-900">
-                                    <span> &#x20A6; </span>{{ number_format($sumTotal) }}
+                                    <span> &#x20A6; </span>{{ number_format($donationSumTotal) }}
                                 </h2>
                                 <p class="leading-relaxed">raised of <span> &#x20A6;</span>
                                     {{ number_format($campaign->goal) }}
@@ -117,7 +115,7 @@
                             </div>
                         </div>
                         <div class="p-4 lg:w-2/4 flex-grow-1 w-full">
-                            <div class="border-2 text-center border-gray-200 px-8 py-4 rounded-lg">
+                            <div class="border text-center border-gray-200 px-8 py-4 rounded-lg">
                                 <i class="fa-thin fa-circle-dollar-to-slot fa-3x"></i>
                                 <h2 class="title-font font-medium text-3xl text-gray-900">
                                     {{ count($campaign->donations) }}</h2>

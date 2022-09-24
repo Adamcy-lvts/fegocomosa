@@ -37,6 +37,7 @@ class CampaignShow extends Component
     public $contact = false;
     public $campaignId;
     public $campaign;
+    public $donationSumTotal;
  
     // protected $listeners = ['reRenderParent'];
 
@@ -60,19 +61,9 @@ class CampaignShow extends Component
             $this->phone         = $user->phone;
             $this->selectedState = $user->state_id;
             $this->selectedCity  = $user->city_id;
-
-           
             
 
-        // $city = Lga::with('state.cities')->find($this->selectedCity);
-
-        //     if ($city) {
-        //         $this->cities = Lga::where('state_id', $city->state->id)->get();
-
-        //         $this->selectedCity = $city->id;
-        //         $this->selectedState = $user->state_id;
-
-        //     }
+            $this->donationSumTotal = Donation::where('campaign_id', $this->campaignId)->sum('amount');
 
 
 
