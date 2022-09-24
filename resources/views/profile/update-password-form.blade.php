@@ -33,7 +33,7 @@
                 {{-- <x-jet-button>
                     {{ __('Save') }}
                 </x-jet-button> --}}
-                <x-button type="submit" label="Save" wire:loading.attr="disabled" primary />
+                <x-button type="submit" label="Save" wire:loading.attr="disabled" green />
             </x-slot>
 
         </div>
