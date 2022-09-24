@@ -39,8 +39,8 @@
                             </div>
                             <div class="flex-grow">
                                 <div class="flex mb-4 justify-between">
-                                    <h1 class="text-4xl text-6xl ">{{ presentDay($event->event_date) }}</h1>
-                                    <h3 class="text-3xl text-5xl ">{{ presentMonth($event->event_date) }}</h3>
+                                    <h1 class="text-4xl md:text-6xl ">{{ presentDay($event->event_date) }}</h1>
+                                    <h3 class="text-3xl md:text-5xl ">{{ presentMonth($event->event_date) }}</h3>
                                 </div>
                                 <h3 class=""></h3>
 
