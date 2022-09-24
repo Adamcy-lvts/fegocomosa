@@ -53,7 +53,7 @@
 
                     <div class="flex justify-center mx-auto w-full">
                         <input id="avatar" type="file" class="filepond w-40 h-40" name="photo"
-                            accept="image/png, image/jpeg, image/gif" />
+                            accept="image/png, image/jpeg, image/gif, image/jpg " />
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -208,7 +208,9 @@
                     FilePondPluginImageExifOrientation,
                     FilePondPluginImagePreview,
                     FilePondPluginImageResize,
-                    FilePondPluginImageTransform
+                    FilePondPluginImageTransform,
+                    FilePondPluginImageCrop,
+                    FilePondPluginFileValidateSize,
                 );
                 // Get a reference to the file input element
                 const inputElement = document.querySelector('#potraitPicture');
@@ -241,6 +243,12 @@
                 // Create a FilePond instance
                 const pondAvatar = FilePond.create(avatar, {
                     labelIdle: `Drag & Drop your picture or <span class="filepond--label-action">Browse</span>`,
+                    maxFileSize: "1MB",
+                    labelMaxFileSize: 'Maximum file size is {filesize}',
+                    imageValidateSizeMinWidth: 400,
+                    imageValidateSizeMinHeight: 400,
+                    imageValidateSizeLabelImageSizeTooSmall: 'Image resolution too small',
+                    imageValidateSizeLabelExpectedMinSize: 'The image resolution should not be less than {minWidth}px × {minHeight}px',
                     imagePreviewHeight: 170,
                     imageCropAspectRatio: '1:1',
                     imageResizeTargetWidth: 200,
@@ -251,6 +259,7 @@
                     styleProgressIndicatorPosition: 'right bottom',
                     styleButtonRemoveItemPosition: 'left bottom',
                     styleButtonProcessItemPosition: 'right bottom',
+
 
                     server: {
                         url: '/avatarUpload',
