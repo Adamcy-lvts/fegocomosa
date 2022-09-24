@@ -33,7 +33,8 @@
                                     class="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full bg-green-600 text-white flex-shrink-0">
                                     <i class="fal fa-calendar-check"></i>
                                 </div>
-                                <h2 class="text-gray-900 text-lg title-font font-medium">{{ $event->title }}</h2>
+                                <h2 class="text-gray-900 text-sm md:text-lg title-font font-medium">{{ $event->title }}
+                                </h2>
                             </div>
                             <div class="flex-grow">
                                 <div class="flex mb-4 justify-between">
