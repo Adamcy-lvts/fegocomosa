@@ -37,13 +37,13 @@
                             </div>
                             <div class="flex-grow">
                                 <div class="flex mb-4 justify-between">
-                                    <h1 class="text-6xl ">{{ presentDay($event->event_date) }}</h1>
-                                    <h3 class="text-5xl ">{{ presentMonth($event->event_date) }}</h3>
+                                    <h1 class="text-4xl text-6xl ">{{ presentDay($event->event_date) }}</h1>
+                                    <h3 class="text-3xl text-5xl ">{{ presentMonth($event->event_date) }}</h3>
                                 </div>
                                 <h3 class=""></h3>
 
-                                <small class="text-lg">Time: {{ timeFormat($event->event_time) }}</small>
-                                <p class="text-lg">Venue: {{ $event->event_venue }}
+                                <small class="text-sm md:text-lg">Time: {{ timeFormat($event->event_time) }}</small>
+                                <p class="text-sm md:text-lg">Venue: {{ $event->event_venue }}
                                 </p>
                                 <a href="{{ route('show.event', $event->slug) }}"
                                     class="mt-3 text-green-600 inline-flex items-center">More Info
@@ -100,7 +100,8 @@
                     </div>
                     <div class="flex-grow">
                         <h2 class="text-gray-900 text-lg title-font font-medium mb-3">Completed Projects</h2>
-                        <p class="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast
+                        <p class="leading-relaxed text-sm lg:text-base">Blue bottle crucifix vinyl post-ironic four
+                            dollar toast
                             vegan taxidermy. Gastropub indxgo juice poutine.</p>
                         <a href="{{ route('projects') }}" class="mt-3 text-green-600 inline-flex items-center">Learn
                             More
@@ -118,7 +119,8 @@
                     </div>
                     <div class="flex-grow">
                         <h2 class="text-gray-900 text-lg title-font font-medium mb-3">Projects In Progress</h2>
-                        <p class="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast
+                        <p class="leading-relaxed text-sm lg:text-base">Blue bottle crucifix vinyl post-ironic four
+                            dollar toast
                             vegan taxidermy. Gastropub indxgo juice poutine.</p>
                         <a href="{{ route('projects') }}" class="mt-3 text-green-600 inline-flex items-center">Learn
                             More
@@ -136,7 +138,8 @@
                     </div>
                     <div class="flex-grow">
                         <h2 class="text-gray-900 text-lg title-font font-medium mb-3">Proposed Projects</h2>
-                        <p class="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast
+                        <p class="leading-relaxed text-sm lg:text-base">Blue bottle crucifix vinyl post-ironic four
+                            dollar toast
                             vegan taxidermy. Gastropub indxgo juice poutine.</p>
                         <a href="{{ route('projects') }}" class="mt-3 text-green-600 inline-flex items-center">Learn
                             More
