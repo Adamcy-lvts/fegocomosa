@@ -11,6 +11,8 @@ import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orien
 import FilePondPluginImageTransform from 'filepond-plugin-image-transform';
 import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
 import FilePondPluginImageValidateSize from 'filepond-plugin-image-validate-size';
+import FilePondPluginImageCrop from 'filepond-plugin-image-crop';
+import FilePondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
 
 import 'flickity/dist/flickity.min.css';
 import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
@@ -23,6 +25,8 @@ window.FilePondPluginImageExifOrientation = FilePondPluginImageExifOrientation;
 window.FilePondPluginImageTransform = FilePondPluginImageTransform;
 window.FilePondPluginImagePreview = FilePondPluginImagePreview;
 window.FilePondPluginImageValidateSize = FilePondPluginImageValidateSize;
+window.FilePondPluginImageCrop = FilePondPluginImageCrop;
+window.FilePondPluginFileValidateSize = FilePondPluginFileValidateSize;
 
 window.Flickity = Flickity;
 window.Alpine = Alpine;
