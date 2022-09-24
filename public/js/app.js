@@ -5048,10 +5048,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var filepond_plugin_image_preview__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(filepond_plugin_image_preview__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var filepond_plugin_image_validate_size__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! filepond-plugin-image-validate-size */ "./node_modules/filepond-plugin-image-validate-size/dist/filepond-plugin-image-validate-size.js");
 /* harmony import */ var filepond_plugin_image_validate_size__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(filepond_plugin_image_validate_size__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var flickity_dist_flickity_min_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! flickity/dist/flickity.min.css */ "./node_modules/flickity/dist/flickity.min.css");
-/* harmony import */ var filepond_plugin_image_preview_dist_filepond_plugin_image_preview_css__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css */ "./node_modules/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css");
-/* harmony import */ var filepond_dist_filepond_min_css__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! filepond/dist/filepond.min.css */ "./node_modules/filepond/dist/filepond.min.css");
+/* harmony import */ var filepond_plugin_image_crop__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! filepond-plugin-image-crop */ "./node_modules/filepond-plugin-image-crop/dist/filepond-plugin-image-crop.js");
+/* harmony import */ var filepond_plugin_image_crop__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(filepond_plugin_image_crop__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var filepond_plugin_file_validate_size__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! filepond-plugin-file-validate-size */ "./node_modules/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.js");
+/* harmony import */ var filepond_plugin_file_validate_size__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(filepond_plugin_file_validate_size__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var flickity_dist_flickity_min_css__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! flickity/dist/flickity.min.css */ "./node_modules/flickity/dist/flickity.min.css");
+/* harmony import */ var filepond_plugin_image_preview_dist_filepond_plugin_image_preview_css__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css */ "./node_modules/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css");
+/* harmony import */ var filepond_dist_filepond_min_css__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! filepond/dist/filepond.min.css */ "./node_modules/filepond/dist/filepond.min.css");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+
+
 
 
 
@@ -5072,6 +5078,8 @@ window.FilePondPluginImageExifOrientation = (filepond_plugin_image_exif_orientat
 window.FilePondPluginImageTransform = (filepond_plugin_image_transform__WEBPACK_IMPORTED_MODULE_6___default());
 window.FilePondPluginImagePreview = (filepond_plugin_image_preview__WEBPACK_IMPORTED_MODULE_7___default());
 window.FilePondPluginImageValidateSize = (filepond_plugin_image_validate_size__WEBPACK_IMPORTED_MODULE_8___default());
+window.FilePondPluginImageCrop = (filepond_plugin_image_crop__WEBPACK_IMPORTED_MODULE_9___default());
+window.FilePondPluginFileValidateSize = (filepond_plugin_file_validate_size__WEBPACK_IMPORTED_MODULE_10___default());
 window.Flickity = (flickity__WEBPACK_IMPORTED_MODULE_1___default());
 window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"];
 alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].start();
@@ -5438,6 +5446,187 @@ return EvEmitter;
 
 /***/ }),
 
+/***/ "./node_modules/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.js":
+/*!****************************************************************************************************!*\
+  !*** ./node_modules/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.js ***!
+  \****************************************************************************************************/
+/***/ (function(module) {
+
+/*!
+ * FilePondPluginFileValidateSize 2.2.7
+ * Licensed under MIT, https://opensource.org/licenses/MIT/
+ * Please visit https://pqina.nl/filepond/ for details.
+ */
+
+/* eslint-disable */
+
+(function(global, factory) {
+     true
+        ? (module.exports = factory())
+        : 0;
+})(this, function() {
+    'use strict';
+
+    var plugin = function plugin(_ref) {
+        var addFilter = _ref.addFilter,
+            utils = _ref.utils;
+        // get quick reference to Type utils
+        var Type = utils.Type,
+            replaceInString = utils.replaceInString,
+            toNaturalFileSize = utils.toNaturalFileSize;
+
+        // filtering if an item is allowed in hopper
+        addFilter('ALLOW_HOPPER_ITEM', function(file, _ref2) {
+            var query = _ref2.query;
+            if (!query('GET_ALLOW_FILE_SIZE_VALIDATION')) {
+                return true;
+            }
+
+            var sizeMax = query('GET_MAX_FILE_SIZE');
+            if (sizeMax !== null && file.size > sizeMax) {
+                return false;
+            }
+
+            var sizeMin = query('GET_MIN_FILE_SIZE');
+            if (sizeMin !== null && file.size < sizeMin) {
+                return false;
+            }
+
+            return true;
+        });
+
+        // called for each file that is loaded
+        // right before it is set to the item state
+        // should return a promise
+        addFilter('LOAD_FILE', function(file, _ref3) {
+            var query = _ref3.query;
+            return new Promise(function(resolve, reject) {
+                // if not allowed, all fine, exit
+                if (!query('GET_ALLOW_FILE_SIZE_VALIDATION')) {
+                    return resolve(file);
+                }
+
+                // check if file should be filtered
+                var fileFilter = query('GET_FILE_VALIDATE_SIZE_FILTER');
+                if (fileFilter && !fileFilter(file)) {
+                    return resolve(file);
+                }
+
+                // reject or resolve based on file size
+                var sizeMax = query('GET_MAX_FILE_SIZE');
+                if (sizeMax !== null && file.size > sizeMax) {
+                    reject({
+                        status: {
+                            main: query('GET_LABEL_MAX_FILE_SIZE_EXCEEDED'),
+                            sub: replaceInString(query('GET_LABEL_MAX_FILE_SIZE'), {
+                                filesize: toNaturalFileSize(
+                                    sizeMax,
+                                    '.',
+                                    query('GET_FILE_SIZE_BASE'),
+                                    query('GET_FILE_SIZE_LABELS', query)
+                                ),
+                            }),
+                        },
+                    });
+
+                    return;
+                }
+
+                // reject or resolve based on file size
+                var sizeMin = query('GET_MIN_FILE_SIZE');
+                if (sizeMin !== null && file.size < sizeMin) {
+                    reject({
+                        status: {
+                            main: query('GET_LABEL_MIN_FILE_SIZE_EXCEEDED'),
+                            sub: replaceInString(query('GET_LABEL_MIN_FILE_SIZE'), {
+                                filesize: toNaturalFileSize(
+                                    sizeMin,
+                                    '.',
+                                    query('GET_FILE_SIZE_BASE'),
+                                    query('GET_FILE_SIZE_LABELS', query)
+                                ),
+                            }),
+                        },
+                    });
+
+                    return;
+                }
+
+                // returns the current option value
+                var totalSizeMax = query('GET_MAX_TOTAL_FILE_SIZE');
+                if (totalSizeMax !== null) {
+                    // get the current total file size
+                    var currentTotalSize = query('GET_ACTIVE_ITEMS').reduce(function(total, item) {
+                        return total + item.fileSize;
+                    }, 0);
+
+                    // get the size of the new file
+                    if (currentTotalSize > totalSizeMax) {
+                        reject({
+                            status: {
+                                main: query('GET_LABEL_MAX_TOTAL_FILE_SIZE_EXCEEDED'),
+                                sub: replaceInString(query('GET_LABEL_MAX_TOTAL_FILE_SIZE'), {
+                                    filesize: toNaturalFileSize(
+                                        totalSizeMax,
+                                        '.',
+                                        query('GET_FILE_SIZE_BASE'),
+                                        query('GET_FILE_SIZE_LABELS', query)
+                                    ),
+                                }),
+                            },
+                        });
+
+                        return;
+                    }
+                }
+
+                // file is fine, let's pass it back
+                resolve(file);
+            });
+        });
+
+        return {
+            options: {
+                // Enable or disable file type validation
+                allowFileSizeValidation: [true, Type.BOOLEAN],
+
+                // Max individual file size in bytes
+                maxFileSize: [null, Type.INT],
+
+                // Min individual file size in bytes
+                minFileSize: [null, Type.INT],
+
+                // Max total file size in bytes
+                maxTotalFileSize: [null, Type.INT],
+
+                // Filter the files that need to be validated for size
+                fileValidateSizeFilter: [null, Type.FUNCTION],
+
+                // error labels
+                labelMinFileSizeExceeded: ['File is too small', Type.STRING],
+                labelMinFileSize: ['Minimum file size is {filesize}', Type.STRING],
+
+                labelMaxFileSizeExceeded: ['File is too large', Type.STRING],
+                labelMaxFileSize: ['Maximum file size is {filesize}', Type.STRING],
+
+                labelMaxTotalFileSizeExceeded: ['Maximum total size exceeded', Type.STRING],
+                labelMaxTotalFileSize: ['Maximum total file size is {filesize}', Type.STRING],
+            },
+        };
+    };
+
+    // fire pluginloaded event if running in browser, this allows registering the plugin when using async script tags
+    var isBrowser = typeof window !== 'undefined' && typeof window.document !== 'undefined';
+    if (isBrowser) {
+        document.dispatchEvent(new CustomEvent('FilePond:pluginloaded', { detail: plugin }));
+    }
+
+    return plugin;
+});
+
+
+/***/ }),
+
 /***/ "./node_modules/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js":
 /*!****************************************************************************************************!*\
   !*** ./node_modules/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js ***!
@@ -5674,6 +5863,195 @@ return EvEmitter;
 
         // Custom function to detect type of file
         fileValidateTypeDetectType: [null, Type.FUNCTION]
+      }
+    };
+  };
+
+  // fire pluginloaded event if running in browser, this allows registering the plugin when using async script tags
+  var isBrowser =
+    typeof window !== 'undefined' && typeof window.document !== 'undefined';
+  if (isBrowser) {
+    document.dispatchEvent(
+      new CustomEvent('FilePond:pluginloaded', { detail: plugin })
+    );
+  }
+
+  return plugin;
+});
+
+
+/***/ }),
+
+/***/ "./node_modules/filepond-plugin-image-crop/dist/filepond-plugin-image-crop.js":
+/*!************************************************************************************!*\
+  !*** ./node_modules/filepond-plugin-image-crop/dist/filepond-plugin-image-crop.js ***!
+  \************************************************************************************/
+/***/ (function(module) {
+
+/*!
+ * FilePondPluginImageCrop 2.0.6
+ * Licensed under MIT, https://opensource.org/licenses/MIT/
+ * Please visit https://pqina.nl/filepond/ for details.
+ */
+
+/* eslint-disable */
+
+(function(global, factory) {
+   true
+    ? (module.exports = factory())
+    : 0;
+})(this, function() {
+  'use strict';
+
+  var isImage = function isImage(file) {
+    return /^image/.test(file.type);
+  };
+
+  /**
+   * Image Auto Crop Plugin
+   */
+  var plugin = function plugin(_ref) {
+    var addFilter = _ref.addFilter,
+      utils = _ref.utils;
+    var Type = utils.Type,
+      isFile = utils.isFile,
+      getNumericAspectRatioFromString = utils.getNumericAspectRatioFromString;
+
+    // tests if crop is allowed on this item
+    var allowCrop = function allowCrop(item, query) {
+      return !(!isImage(item.file) || !query('GET_ALLOW_IMAGE_CROP'));
+    };
+
+    var isObject = function isObject(value) {
+      return typeof value === 'object';
+    };
+
+    var isNumber = function isNumber(value) {
+      return typeof value === 'number';
+    };
+
+    var updateCrop = function updateCrop(item, obj) {
+      return item.setMetadata(
+        'crop',
+        Object.assign({}, item.getMetadata('crop'), obj)
+      );
+    };
+
+    // extend item methods
+    addFilter('DID_CREATE_ITEM', function(item, _ref2) {
+      var query = _ref2.query;
+
+      item.extend('setImageCrop', function(crop) {
+        if (!allowCrop(item, query) || !isObject(center)) return;
+        item.setMetadata('crop', crop);
+        return crop;
+      });
+
+      item.extend('setImageCropCenter', function(center) {
+        if (!allowCrop(item, query) || !isObject(center)) return;
+        return updateCrop(item, { center: center });
+      });
+
+      item.extend('setImageCropZoom', function(zoom) {
+        if (!allowCrop(item, query) || !isNumber(zoom)) return;
+        return updateCrop(item, { zoom: Math.max(1, zoom) });
+      });
+
+      item.extend('setImageCropRotation', function(rotation) {
+        if (!allowCrop(item, query) || !isNumber(rotation)) return;
+        return updateCrop(item, { rotation: rotation });
+      });
+
+      item.extend('setImageCropFlip', function(flip) {
+        if (!allowCrop(item, query) || !isObject(flip)) return;
+        return updateCrop(item, { flip: flip });
+      });
+
+      item.extend('setImageCropAspectRatio', function(newAspectRatio) {
+        if (!allowCrop(item, query) || typeof newAspectRatio === 'undefined')
+          return;
+
+        var currentCrop = item.getMetadata('crop');
+
+        var aspectRatio = getNumericAspectRatioFromString(newAspectRatio);
+
+        var newCrop = {
+          center: {
+            x: 0.5,
+            y: 0.5
+          },
+
+          flip: currentCrop
+            ? Object.assign({}, currentCrop.flip)
+            : {
+                horizontal: false,
+                vertical: false
+              },
+
+          rotation: 0,
+          zoom: 1,
+          aspectRatio: aspectRatio
+        };
+
+        item.setMetadata('crop', newCrop);
+
+        return newCrop;
+      });
+    });
+
+    // subscribe to file transformations
+    addFilter('DID_LOAD_ITEM', function(item, _ref3) {
+      var query = _ref3.query;
+      return new Promise(function(resolve, reject) {
+        // get file reference
+        var file = item.file;
+
+        // if this is not an image we do not have any business cropping it and we'll continue with the unaltered dataset
+        if (!isFile(file) || !isImage(file) || !query('GET_ALLOW_IMAGE_CROP')) {
+          return resolve(item);
+        }
+
+        // already has crop metadata set?
+        var crop = item.getMetadata('crop');
+        if (crop) {
+          return resolve(item);
+        }
+
+        // get the required aspect ratio and exit if it's not set
+        var humanAspectRatio = query('GET_IMAGE_CROP_ASPECT_RATIO');
+
+        // set default crop rectangle
+        item.setMetadata('crop', {
+          center: {
+            x: 0.5,
+            y: 0.5
+          },
+
+          flip: {
+            horizontal: false,
+            vertical: false
+          },
+
+          rotation: 0,
+          zoom: 1,
+          aspectRatio: humanAspectRatio
+            ? getNumericAspectRatioFromString(humanAspectRatio)
+            : null
+        });
+
+        // we done!
+        resolve(item);
+      });
+    });
+
+    // Expose plugin options
+    return {
+      options: {
+        // enable or disable image cropping
+        allowImageCrop: [true, Type.BOOLEAN],
+
+        // the aspect ratio of the crop ('1:1', '16:9', etc)
+        imageCropAspectRatio: [null, Type.STRING]
       }
     };
   };
