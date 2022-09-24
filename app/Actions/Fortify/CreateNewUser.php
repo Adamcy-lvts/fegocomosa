@@ -91,11 +91,11 @@ class CreateNewUser implements CreatesNewUsers
     }
 
         $gradYear = GraduationYears::updateOrCreate([
-            'year' => Carbon::create($input['graduation_year_id'])->format('Y')
+            'year' => Carbon::createFromFormat('d/m/Y',$input['graduation_year_id'])->format('Y')
         ]);
 
         $entryYear = EntryYear::updateOrCreate([
-            'year' => Carbon::create($input['entry_year_id'])->format('Y')
+            'year' => Carbon::createFromFormat('d/m/Y',$input['entry_year_id'])->format('Y')
         ]);
 
         
