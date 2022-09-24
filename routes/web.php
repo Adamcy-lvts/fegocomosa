@@ -104,9 +104,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function ()
     Route::get('/events/{slug}', ShowEvent::class)->name('show.event');
 
     Route::get('pdf/resume/{id}', [ViewPDFController::class,'show'])->name('view.pdf');
-
-    Route::post('/pay', [PaymentProcessingController::class, 'redirectToGateway'])->name('pay');
-    Route::get('/payment/callback', [PaymentProcessingController::class, 'handleGatewayCallback']);
   
     
    
@@ -171,3 +168,6 @@ Route::post('/avatarUpload', function (Request $request) {
            
 // Redirect to Success Page after registration 
 Route::get('/successful', RegistrationSucessful::class)->name('success');
+
+Route::post('/pay', [PaymentProcessingController::class, 'redirectToGateway'])->name('pay');
+Route::get('/payment/callback', [PaymentProcessingController::class, 'handleGatewayCallback']);
