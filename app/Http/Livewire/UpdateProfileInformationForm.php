@@ -25,15 +25,15 @@ class UpdateProfileInformationForm extends Component
 
     protected $listeners = ['refresh-profile-update-page' => '$refresh'];
 
-    protected $rules = ['photo' => 'nullable|mimes:jpg,jpeg,png|max:1024|dimensions:width=200,height=200',
+    protected $rules = ['photo' => 'nullable|mimes:jpg,jpeg,png|max:1024|dimensions:width=300,height=300',
                         'potraitImage' => 'nullable|mimes:jpg,jpeg,png|max:1024|dimensions:width=900,height=1200'
                        ];
 
     protected $messages = [
 
-        'photo.dimensions' => 'Resize or crop your image to 200px by 200px.',
+        'photo.dimensions' => 'Resize or crop your image to 300px by 300px.',
         'photo.max' => 'The profile image must not be greater than 1 Megabyte.',
-        'potraitImage.dimensions' => 'Resize or crop your image to 900px by 1200px.',
+        'potraitImage.dimensions' => 'Resize or crop your image to 900px width by 1200px height.',
         'potraitImage.max' => 'The potrait image must not be greater than 1 Megabyte.'
 
     ];
