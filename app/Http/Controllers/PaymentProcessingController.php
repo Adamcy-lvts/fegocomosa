@@ -6,11 +6,15 @@ use Paystack;
 
 use Carbon\Carbon;
 use App\Models\User;
+use App\Models\Donor;
 use App\Http\Requests;
+use App\Models\Donation;
 use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use App\Models\MembershipFee;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Redirect;
 
 class PaymentProcessingController extends Controller
@@ -22,10 +26,20 @@ class PaymentProcessingController extends Controller
 
     public function redirectToGateway()
     {
+        // dd(request()->all());
         // dd( Paystack::createCustomer());
 
         
-             
+        //    Paystack::createCustomer();  
+           $response = Http::withToken('sk_test_f9a5b6ece8c6f04fb27bb9a0d368f5fc5569ccfc')->post('https://api.paystack.co/customer', [
+                "email" => request()->email,
+                "first_name" => request()->fname,
+                "last_name" => request()->lname,
+                "phone" => request()->phone,
+                "metadata" => ['address' => request()->address, 'state' => request()->state_id, 'city' => request()->city_id, 'comment' => request()->comment ]
+            ]);
+
+            // dd($response);
 
         try{
             return Paystack::getAuthorizationUrl()->redirectNow();
@@ -44,7 +58,7 @@ class PaymentProcessingController extends Controller
     {
         $paymentDetails = Paystack::getPaymentData();
 
-        // dd($paymentDetails);
+        
 
         $payDetails = Arr::get($paymentDetails, 'data');
 
@@ -60,12 +74,39 @@ class PaymentProcessingController extends Controller
 
             MembershipFee::create([
                 'user_id' => $user->id,
-                'amount' => $payDetails['amount'],
+                'amount' => $payDetails['amount']/100,
                 'year'   => Carbon::parse($payDetails['paid_at'])->format('Y'),
             ]); 
 
-        // return redirect()->route('user.dashboard');
-        return back()->withInput();
+             return back()->withInput();
+        }
+
+        if ($payDetails['status'] == 'success' && $payDetails['metadata']['payment_for'] == 'donation') {
+
+            $user  = User::find($payDetails['metadata']['member_id']);
+           
+
+
+             $donor = Donor::create([
+                'full_name'=> $payDetails['customer']['first_name'].' '.$payDetails['customer']['last_name'],
+                'email'    => $payDetails['customer']['email'],
+                'phone'    => $payDetails['customer']['phone'],
+                'address'  => $payDetails['customer']['metadata']['address'],
+                'city'     => $payDetails['customer']['metadata']['city'],
+                'state'    => $payDetails['customer']['metadata']['state'],
+                ]);
+
+                $donation = Donation::create([
+                    'campaign_id'  => $payDetails['metadata']['campaign_id'],
+                    'user_id'      => Auth::user() ? Auth::user()->id : null,
+                    'donor_id'     => $donor->id,
+                    'amount'       => $payDetails['amount']/100,
+                    'comment'      => $payDetails['customer']['metadata']['comment'],
+                ]);
+
+         
+
+             return back()->withInput();
         }
     }
 }

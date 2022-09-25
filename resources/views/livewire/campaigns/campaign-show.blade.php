@@ -105,9 +105,11 @@
                         <div class="p-4 lg:w-2/4  w-full">
                             <div class="border text-center border-gray-200 px-8 py-4 rounded-lg">
                                 <i class="fa-thin fa-chart-line-up fa-3x"></i>
-
+                                @php
+                                    $sumTotal = App\Models\Donation::where('campaign_id', $campaign->id)->sum('amount');
+                                @endphp
                                 <h2 class="title-font font-medium text-3xl text-gray-900">
-                                    <span> &#x20A6; </span>{{ number_format($donationSumTotal) }}
+                                    <span> &#x20A6; </span>{{ number_format($sumTotal) }}
                                 </h2>
                                 <p class="leading-relaxed">raised of <span> &#x20A6;</span>
                                     {{ number_format($campaign->goal) }}
@@ -123,7 +125,8 @@
                             </div>
                         </div>
                     </div>
-                    @livewire('campaigns.donate', ['campaign' => $campaign])
+                    {{-- @livewire('campaigns.donate', ['campaign' => $campaign]) --}}
+                    @include('donation-form.donation-form', ['campaign' => $campaign])
 
                     <div class="flex flex-wrap flex-col -m-2">
 
