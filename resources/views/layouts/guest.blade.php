@@ -22,6 +22,7 @@
     {{-- <link rel="stylesheet" href="{{ asset('fontawesome-pro-5.10.2-web/css/all.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('fontawesome-6/css/all.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
 
 
@@ -43,7 +44,7 @@
         {{ $slot }}
     </div>
     <x-footer />
-
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="{{ asset('js/jquery-3.4.1.js') }}"></script>
     @livewireScripts
     @stack('script')
