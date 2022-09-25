@@ -64,7 +64,11 @@
 
 
                         <x-input name="middle_name" :value="old('middle_name')" label="Middle Name" placeholder="Middle Name" />
-                        @livewire('component.birthdate-datepicker')
+                        {{-- @livewire('component.birthdate-datepicker') --}}
+                        <x-input label="Birthdate" type="date" placeholder="Birthdate" name="date_of_birth"
+                            :value="old('date_of_birth')" />
+
+
 
                         <x-native-select name="gender_id" :value="old('gender_id')" label="Gender" placeholder="Gender">
                             @foreach ($genders as $gender)
@@ -101,8 +105,13 @@
                 {{-- STEP 2 FEGOCOMSA INFO --}}
                 <div class="p-4" x-show.transition="step === 2">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="col-span-1 sm:col-span-2 sm:grid sm:grid-cols-1 ">
-                            @livewire('component.datepicker')
+
+                        <div class="col-span-1 sm:col-span-2 sm:grid sm:grid-cols-2 sm:gap-6">
+                            <x-input type="date" class="sm:mb-0 mb-4" label="Entry Year" placeholder="Entry Year"
+                                wire:model.defer="entry_year_id" name="entry_year_id" :value="old('entry_year_id')" />
+
+                            <x-input type="date" label="Graduation Year" wire:model.defer="graduation_year_id"
+                                placeholder="Graduation Year" name="graduation_year_id" :value="old('graduation_year_id')" />
                         </div>
 
                         <x-input label="Jss Class" placeholder="Jss Class" name="jss_class" :value="old('jss_class')" />
@@ -268,6 +277,12 @@
                         }
                     }
                 });
+            });
+
+            flatpickr("input[type=date]", {
+
+                dateFormat: "d.m.Y",
+
             });
         </script>
     @endpush
