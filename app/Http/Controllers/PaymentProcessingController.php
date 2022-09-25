@@ -62,7 +62,7 @@ class PaymentProcessingController extends Controller
 
         $payDetails = Arr::get($paymentDetails, 'data');
 
-        // dd($payDetails);
+        dd($payDetails);
 
         $first_name = $payDetails['customer']['first_name'];
         $last_name = $payDetails['customer']['last_name'];
