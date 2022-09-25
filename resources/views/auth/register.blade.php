@@ -108,10 +108,10 @@
 
                         <div class="col-span-1 sm:col-span-2 sm:grid sm:grid-cols-2 sm:gap-6">
                             <x-input type="date" class="sm:mb-0 mb-4" label="Entry Year" placeholder="Entry Year"
-                                wire:model.defer="entry_year_id" name="entry_year_id" :value="old('entry_year_id')" />
+                                name="entry_year_id" :value="old('entry_year_id')" />
 
-                            <x-input type="date" label="Graduation Year" wire:model.defer="graduation_year_id"
-                                placeholder="Graduation Year" name="graduation_year_id" :value="old('graduation_year_id')" />
+                            <x-input type="date" label="Graduation Year" placeholder="Graduation Year"
+                                name="graduation_year_id" :value="old('graduation_year_id')" />
                         </div>
 
                         <x-input label="Jss Class" placeholder="Jss Class" name="jss_class" :value="old('jss_class')" />
