@@ -1,7 +1,7 @@
 <x-user-dashboard>
 
     <x-slot name="header">
-        {{ __('Dasboard') }}
+        {{ __('Dashboard') }}
     </x-slot>
 
 

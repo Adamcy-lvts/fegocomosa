@@ -16,7 +16,7 @@
         "spatie/browsershot": "^3.57",
         "spatie/laravel-permission": "^5.5",
         "unicodeveloper/laravel-paystack": "^1.0",
-        "wireui/wireui": "^1.15.1"
+        "wireui/wireui": "^1.15"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.7",
