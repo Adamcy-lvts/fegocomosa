@@ -123,10 +123,27 @@ class UpdateProfileInformationForm extends Component
  
         $this->resetErrorBag();
 
+        if ($this->photo) {
+
+            $profilePhoto = $this->photo->getClientOriginalName();
+
+            // Get just filename
+            $ImageName = pathinfo($profilePhoto, PATHINFO_FILENAME);
+
+              // Get just Extention
+            $Extentions = $this->photo->getClientOriginalExtension();
+
+            // Filename to store
+             $avatarNameToStore = $this->state['first_name'].'_'.$this->state['last_name'].'_'.time().'.'.$Extentions;
+
+            // $this->photo->storeAs('public/members_images', $avatarNameToStore);
+
+        }
+
         $updater->update(
             Auth::user(),
             $this->photo
-                ? array_merge($this->state, ['photo' => $this->photo])
+                ? array_merge($this->state, ['photo' => $avatarNameToStore])
                 : $this->state
         );
 
