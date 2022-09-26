@@ -58,28 +58,24 @@
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
 
-                        <x-input
-                            class="border-gray-300 focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                        <x-input class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
                             name="first_name" :value="old('first_name')" label="First Name" placeholder="First Name" />
 
-                        <x-input
-                            class="border-gray-300 focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                        <x-input class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
                             name="last_name" :value="old('last_name')" label="Last Name" placeholder="Last Name" />
 
 
-                        <x-input
-                            class="border-gray-300 focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                        <x-input class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
                             name="middle_name" :value="old('middle_name')" label="Middle Name" placeholder="Middle Name" />
 
-                        <x-input
-                            class="border-gray-300 focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                        <x-input class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
                             label="Birthdate" type="date" placeholder="Birthdate" name="date_of_birth"
                             :value="old('date_of_birth')" />
 
 
 
                         <x-native-select
-                            class="border-gray-300 focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                            class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
                             name="gender_id" :value="old('gender_id')" label="Gender" placeholder="Gender">
                             @foreach ($genders as $gender)
                                 <option value="{{ $gender->id }}">{{ $gender->gender }}</option>
@@ -87,7 +83,7 @@
                         </x-native-select>
 
                         <x-native-select
-                            class="border-gray-300 focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                            class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
                             name="marital_status_id" :value="old('marital_status_id')" label="Marital Status"
                             placeholder="Marital Status">
                             @foreach ($marital_statuses as $marital_status)
@@ -99,7 +95,7 @@
                         <div class="col-span-1 sm:col-span-2 sm:grid sm:grid-cols-7 sm:gap-5 ">
                             <div class="col-span-1 sm:col-span-4 sm:mb-0 mb-5">
                                 <x-input
-                                    class="border-gray-300 focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                                    class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
                                     name="address" :value="old('address')" label="Address" placeholder="Address" />
                             </div>
 
@@ -122,31 +118,28 @@
 
                         <div class="col-span-1 sm:col-span-2 sm:grid sm:grid-cols-2 sm:gap-6">
                             <x-input
-                                class="border-gray-300 focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 rounded-md shadow-sm sm:mb-0 mb-4"
+                                class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 sm:mb-0 mb-4"
                                 type="date" label="Entry Year" placeholder="Entry Year" name="entry_year_id"
                                 :value="old('entry_year_id')" />
 
                             <x-input
-                                class="border-gray-300 focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                                class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
                                 type="date" label="Graduation Year" placeholder="Graduation Year"
                                 name="graduation_year_id" :value="old('graduation_year_id')" />
                         </div>
 
-                        <x-input
-                            class="border-gray-300 focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                        <x-input class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
                             label="Jss Class" placeholder="Jss Class" name="jss_class" :value="old('jss_class')" />
 
-                        <x-input
-                            class="border-gray-300 focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                        <x-input class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
                             label="Sss Class" placeholder="Sss Class" name="sss_class" :value="old('sss_class')" />
 
-                        <x-input
-                            class="border-gray-300 focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                        <x-input class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
                             label="Admission Number" placeholder="Admission Number" name="admission_number"
                             :value="old('admission_number')" />
 
                         <x-native-select
-                            class="border-gray-300 focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                            class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
                             name="house_id" :value="old('house_id')" label="House" placeholder="House">
                             @foreach ($houses as $house)
                                 <option value="{{ $house->id }}">{{ $house->name }}</option>
@@ -159,36 +152,33 @@
                 <div class="p-4" x-show.transition="step === 3">
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
 
-                        <x-input
-                            class="border-gray-300 focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                        <x-input class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
                             name="profession" label="Profession" placeholder="Profession" :value="old('profession')" />
-                        <x-input
-                            class="border-gray-300 focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                        <x-input class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
                             name="workplace" label="Workplace" placeholder="Workplace" :value="old('workplace')" />
 
                         <x-native-select
-                            class="border-gray-300 focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                            class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
                             name="profession_category" label="Profession Category" placeholder="Profession Category">
                             @foreach ($proCategories as $categories)
                                 <option value="{{ $categories->id }}">{{ $categories->name }}</option>
                             @endforeach
                         </x-native-select>
 
-                        <x-input
-                            class="border-gray-300 focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                        <x-input class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
                             name="university" :value="old('university')" label="University"
                             placeholder="University Attended" />
 
                         <div class="col-span-1 sm:col-span-2">
                             <x-input
-                                class="border-gray-300 focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                                class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
                                 name="course_of_study" :value="old('course_of_study')" label="Field of Study"
                                 placeholder="Field of Study" />
                         </div>
 
                         <div class="col-span-1 sm:col-span-2">
                             <x-input
-                                class="border-gray-300 focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                                class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
                                 accept="image/*" type="file" name="potraitImage" id="potraitPicture"
                                 label="Potrait Image" :value="old('potrait_image')" />
                         </div>
@@ -206,25 +196,25 @@
 
                         <div class="col-span-1 sm:col-span-2">
                             <x-input
-                                class="border-gray-300 focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                                class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
                                 label="User Name" placeholder="User Name" name="username" :value="old('username')" />
                         </div>
 
                         <div class="col-span-1 sm:col-span-2">
                             <x-input
-                                class="border-gray-300 focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                                class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
                                 label="Email" placeholder="example@mail.com" name="email" :value="old('email')" />
                         </div>
 
                         <div class="col-span-1 sm:col-span-2">
                             <x-input
-                                class="border-gray-300 focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                                class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
                                 label="Password" type="password" name="password" />
                         </div>
 
                         <div class="col-span-1 sm:col-span-2">
                             <x-input
-                                class="border-gray-300 focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                                class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
                                 label="Confirm Password" type="password" name="password_confirmation" />
                         </div>
 
