@@ -281,7 +281,7 @@
 
             flatpickr("input[type=date]", {
 
-                dateFormat: "d.m.Y",
+                dateFormat: "d/m/Y",
 
             });
         </script>
