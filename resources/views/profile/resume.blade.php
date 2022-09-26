@@ -267,9 +267,9 @@
                                                     {{ $experience->employer }}
                                                 </h2>
                                                 <h3 class="text-sm">{{ $experience->job_title }} |
-                                                    {{ Carbon\Carbon::parse($experience->starting_date)->format('Y') }}
+                                                    {{ Carbon\Carbon::parse($experience->start_date)->format('Y') }}
                                                     -
-                                                    {{ Carbon\Carbon::parse($experience->completion_date)->format('Y') }}
+                                                    {{ Carbon\Carbon::parse($experience->end_date)->format('Y') }}
                                                 </h3>
                                                 <p class="leading-relaxed text-sm ">{{ $experience->description }}</p>
                                             </div>
