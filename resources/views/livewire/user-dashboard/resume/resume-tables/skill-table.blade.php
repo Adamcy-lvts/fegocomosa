@@ -66,10 +66,12 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
 
         <div class="col-span-1 sm:col-span-2">
-            <x-input label="Skill Name" placeholder="Skill Name" wire:model.defer="skillName" />
+            <x-input class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                label="Skill Name" placeholder="Skill Name" wire:model.defer="skillName" />
         </div>
         <div class="col-span-1 sm:col-span-2">
-            <x-input label="rating" placeholder="rating" wire:model.defer="rating" />
+            <x-input class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50" label="rating"
+                placeholder="rating" wire:model.defer="rating" />
         </div>
     </div>
 

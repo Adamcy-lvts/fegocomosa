@@ -67,7 +67,8 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
 
         <div class="col-span-1 sm:col-span-2">
-            <x-input label="Hobby Name" placeholder="Hobby Name" wire:model.defer="hobbyName" />
+            <x-input class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                label="Hobby Name" placeholder="Hobby Name" wire:model.defer="hobbyName" />
         </div>
     </div>
 

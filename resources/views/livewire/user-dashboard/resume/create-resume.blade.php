@@ -45,20 +45,24 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
                     <div class="col-span-1 md:col-span-2">
-                        <x-input label="Institution Name" placeholder="Institution Name"
+                        <x-input class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                            label="Institution Name" placeholder="Institution Name"
                             wire:model.defer="institutionName" />
                     </div>
 
 
                     <div class="col-span-1 md:col-span-2 md:grid md:grid-cols-7 gap-5 md:gap-5">
                         <div class="col-span-1 md:col-span-4">
-                            <x-input label="Qualification" placeholder="Degree, Diploma Certificate..."
+                            <x-input
+                                class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                                label="Qualification" placeholder="Degree, Diploma Certificate..."
                                 wire:model.defer="qualification" />
                         </div>
 
                         <div class="col-span-1 md:col-span-3">
-                            <x-input label="Field of Study" placeholder="Field of Study"
-                                wire:model.defer="fieldStudied" />
+                            <x-input
+                                class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                                label="Field of Study" placeholder="Field of Study" wire:model.defer="fieldStudied" />
                         </div>
                     </div>
 
@@ -75,9 +79,11 @@
 
                     <div class="col-span-1 md:col-span-2 md:grid md:grid-cols-2 md:gap-5">
 
-                        <x-input label="Job Title" placeholder="Job Title" wire:model.defer="jobTitle" />
+                        <x-input class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                            label="Job Title" placeholder="Job Title" wire:model.defer="jobTitle" />
 
-                        <x-input label="Company/Institution" placeholder="Company/Institution/Employer"
+                        <x-input class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                            label="Company/Institution" placeholder="Company/Institution/Employer"
                             wire:model.defer="employer" />
 
                     </div>
@@ -99,12 +105,14 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
                     <div class="col-span-1 md:col-span-2">
-                        <x-input label="Skill" placeholder="Skill" wire:model.defer="skill" />
-                        <x-input label="Rating" placeholder="Rating" wire:model.defer="rating" />
+                        <x-input class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                            label="Skill" placeholder="Skill" wire:model.defer="skill" />
+                        <x-input class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                            label="Rating" placeholder="Rating" wire:model.defer="rating" />
                     </div>
                     <div class="col-span-1 md:col-span-2">
-                        <x-input label="Hobby" placeholder="Your Hobbies and Interests"
-                            wire:model.defer="hobbyInterest" />
+                        <x-input class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                            label="Hobby" placeholder="Your Hobbies and Interests" wire:model.defer="hobbyInterest" />
                     </div>
 
 
@@ -114,28 +122,36 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
                     <div class="col-span-1 md:col-span-2">
-                        <x-input label="Full Name" placeholder="Full Name" wire:model.defer="fullName" />
+                        <x-input class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                            label="Full Name" placeholder="Full Name" wire:model.defer="fullName" />
                     </div>
 
                     <div class="col-span-1 md:col-span-2 md:grid md:grid-cols-7 md:gap-5">
                         <div class="col-span-1 md:col-span-4">
-                            <x-input label="Email" placeholder="example@mail.com" wire:model.defer="email" />
+                            <x-input
+                                class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                                label="Email" placeholder="example@mail.com" wire:model.defer="email" />
                         </div>
 
                         <div class="col-span-1 md:col-span-3">
-                            <x-inputs.phone mask="(###)-####-####" label="Phone" placeholder="Phone"
-                                wire:model.defer="phone" />
+                            <x-inputs.phone
+                                class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                                mask="(###)-####-####" label="Phone" placeholder="Phone" wire:model.defer="phone" />
                         </div>
                     </div>
 
                     <div class="col-span-1 md:col-span-2 md:grid md:grid-cols-7 gap-5 md:gap-5">
                         <div class="col-span-1 md:col-span-4">
-                            <x-input label="Work At" placeholder="Microsoft, University of Maiduguri"
+                            <x-input
+                                class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                                label="Work At" placeholder="Microsoft, University of Maiduguri"
                                 wire:model.defer="workAt" />
                         </div>
 
                         <div class="col-span-1 md:col-span-3">
-                            <x-input label="Job Position" placeholder="Lecturer, Professor of Computer Science"
+                            <x-input
+                                class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                                label="Job Position" placeholder="Lecturer, Professor of Computer Science"
                                 wire:model.defer="jobPosition" />
                         </div>
                     </div>

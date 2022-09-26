@@ -94,19 +94,24 @@
      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
 
          <div class="col-span-1 sm:col-span-2">
-             <x-input label="Job Title" placeholder="Job Title" wire:model.defer="fullName" />
+             <x-input class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                 label="Job Title" placeholder="Job Title" wire:model.defer="fullName" />
          </div>
          <div class="col-span-1 sm:col-span-2">
-             <x-input label="Job Title" placeholder="Job Title" wire:model.defer="jobPosition" />
+             <x-input class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                 label="Job Title" placeholder="Job Title" wire:model.defer="jobPosition" />
          </div>
          <div class="col-span-1 sm:col-span-2">
-             <x-input label="Email" placeholder="Email" wire:model.defer="email" />
+             <x-input class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                 label="Email" placeholder="Email" wire:model.defer="email" />
          </div>
          <div class="col-span-1 sm:col-span-2">
-             <x-inputs.phone mask="(###)-####-####" label="Phone" placeholder="Phone" wire:model.defer="phone" />
+             <x-input class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"s.phone
+                 mask="(###)-####-####" label="Phone" placeholder="Phone" wire:model.defer="phone" />
          </div>
          <div class="col-span-1 sm:col-span-2">
-             <x-input label="Working At" placeholder="Working At" wire:model.defer="workAt" />
+             <x-input class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                 label="Working At" placeholder="Working At" wire:model.defer="workAt" />
          </div>
 
      </div>

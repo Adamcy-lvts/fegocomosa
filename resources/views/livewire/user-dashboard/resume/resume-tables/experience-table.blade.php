@@ -98,17 +98,20 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
 
         <div class="col-span-1 sm:col-span-2">
-            <x-input label="Job Title" placeholder="Job Title" wire:model.defer="jobTitle" />
+            <x-input class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                label="Job Title" placeholder="Job Title" wire:model.defer="jobTitle" />
         </div>
         <div class="col-span-1 sm:col-span-2">
-            <x-input label="Employer" placeholder="Employer" wire:model.defer="employer" />
+            <x-input class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                label="Employer" placeholder="Employer" wire:model.defer="employer" />
         </div>
         <div class="col-span-1 sm:col-span-2">
-            <x-datetime-picker without-time label="Starting Date" placeholder="Starting Date"
-                wire:model.defer="startDate" />
+            <x-datetime-picker class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                without-time label="Starting Date" placeholder="Starting Date" wire:model.defer="startDate" />
         </div>
         <div class="col-span-1 sm:col-span-2">
-            <x-datetime-picker without-time label="Ending Date" placeholder="Ending Date" wire:model.defer="endDate" />
+            <x-datetime-picker class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                without-time label="Ending Date" placeholder="Ending Date" wire:model.defer="endDate" />
         </div>
 
     </div>

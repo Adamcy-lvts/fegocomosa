@@ -110,20 +110,24 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
 
         <div class="col-span-1 sm:col-span-2">
-            <x-input label="Institution Name" placeholder="Institution Name" wire:model.defer="institutionName" />
+            <x-input class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                label="Institution Name" placeholder="Institution Name" wire:model.defer="institutionName" />
         </div>
         <div class="col-span-1 sm:col-span-2">
-            <x-input label="Course" placeholder="Course" wire:model.defer="course" />
+            <x-input class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50" label="Course"
+                placeholder="Course" wire:model.defer="course" />
         </div>
         <div class="col-span-1 sm:col-span-2">
-            <x-input label="Certicate" placeholder="Certicate" wire:model.defer="certificate" />
+            <x-input class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                label="Certicate" placeholder="Certicate" wire:model.defer="certificate" />
         </div>
         <div class="col-span-1 sm:col-span-2">
-            <x-datetime-picker without-time label="Start Date" placeholder="Start Date"
-                wire:model.defer="startingDate" />
+            <x-datetime-picker class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                without-time label="Start Date" placeholder="Start Date" wire:model.defer="startingDate" />
         </div>
         <div class="col-span-1 sm:col-span-2">
-            <x-datetime-picker without-time label="End Date" placeholder="End Date" wire:model.defer="endingDate" />
+            <x-datetime-picker class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                without-time label="End Date" placeholder="End Date" wire:model.defer="endingDate" />
         </div>
 
     </div>
