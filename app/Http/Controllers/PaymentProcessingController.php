@@ -26,11 +26,7 @@ class PaymentProcessingController extends Controller
 
     public function redirectToGateway()
     {
-        // dd(request()->all());
-        // dd( Paystack::createCustomer());
 
-        
-        //    Paystack::createCustomer();  
            $response = Http::withToken('sk_test_f9a5b6ece8c6f04fb27bb9a0d368f5fc5569ccfc')->post('https://api.paystack.co/customer', [
                 "email" => request()->email,
                 "first_name" => request()->fname,
@@ -58,8 +54,6 @@ class PaymentProcessingController extends Controller
     {
         $paymentDetails = Paystack::getPaymentData();
 
-        
-
         $payDetails = Arr::get($paymentDetails, 'data');
 
         // dd($payDetails);
@@ -70,7 +64,6 @@ class PaymentProcessingController extends Controller
         if ($payDetails['status'] == 'success' && $payDetails['metadata']['payment_for'] == 'membership') {
 
             $user  = User::find($payDetails['metadata']['member_id']);
-            // dd(Carbon::now()->y);
 
             MembershipFee::create([
                 'user_id' => $user->id,
