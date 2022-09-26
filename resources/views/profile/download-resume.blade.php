@@ -715,7 +715,7 @@
                             <h2 class="heading">Education</h2>
                         </div>
                         <div class="experience-text">
-                            @foreach ($member->educations->latest() as $education)
+                            @foreach ($member->educations as $education)
                                 <div class="work-content">
                                     <div class="clock-timeline-container">
                                         <div class="line"></div>
