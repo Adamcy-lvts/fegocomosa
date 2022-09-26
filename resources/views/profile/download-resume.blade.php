@@ -505,7 +505,7 @@
                 <div class="header-content">
                     <div class="avatar-container">
                         <div class="avatar-image"
-                            style="background-image: url({{ asset('storage/profile-photos/Becky_G_1_1660122800.jpg') }})">
+                            style="background-image: url({{ asset('storage/profile-photos/' . $member->profile_photo_path) }})">
 
                         </div>
                     </div>
