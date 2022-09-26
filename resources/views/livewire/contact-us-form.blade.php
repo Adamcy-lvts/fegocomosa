@@ -10,10 +10,13 @@
         </div>
         <div class="lg:w-1/2 md:w-2/3 mx-auto">
             <div id="messageform" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <x-input label="Name" placeholder="Name" wire:model.defer="name" />
-                <x-input label="Email" placeholder="Email" wire:model.defer="email" />
+                <x-input class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                    label="Name" placeholder="Name" wire:model.defer="name" />
+                <x-input class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                    label="Email" placeholder="Email" wire:model.defer="email" />
                 <div class="col-span-1 sm:col-span-2">
-                    <x-textarea label="Message" placeholder="Message" wire:model.defer="message" />
+                    <x-textarea class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                        label="Message" placeholder="Message" wire:model.defer="message" />
                 </div>
                 <div class="mx-auto col-span-1 sm:col-span-2">
                     <x-button wire:click="contact" green label="Submit" />
