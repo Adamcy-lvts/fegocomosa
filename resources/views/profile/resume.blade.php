@@ -123,7 +123,7 @@
                         <!-- skills -->
                         {{-- {{ dd() }} --}}
                         @if ($member->skills->isNotEmpty())
-                            <h1 class="text-xl font-medium uppercase mb-10">Skills</h1>
+                            <strong class="text-xl font-medium uppercase mb-10">Skills</strong>
 
                             <div class="mb-10">
                                 <!--progress bar #1-->
