@@ -4,21 +4,33 @@
             <x-errors class="mb-4" />
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <x-input class="!pl-[6.5rem]" label="Facebook" prefix="https://www."
-                    placeholder="facebook.com/your-username" wire:model.defer="facebook" />
+                <x-input
+                    class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 !pl-[6.5rem]"
+                    label="Facebook" prefix="https://www." placeholder="facebook.com/your-username"
+                    wire:model.defer="facebook" />
 
-                <x-input class="!pl-[6.5rem]" label="Twitter" prefix="https://www."
-                    placeholder="twitter.com/your-username" wire:model.defer="twitter" />
-                <x-input class="!pl-[6.5rem]" label="Instagram" placeholder="instagram.com/your-username/"
-                    wire:model.defer="instagram" prefix="https://www." />
-                <x-input class="!pl-[4rem]" label="Whatsapp" placeholder="wa.me/your-phone-number"
-                    wire:model.defer="whatsapp" prefix="https://" />
-                <x-input class="!pl-[4rem]" label="Telegram" placeholder="t.me/your-username"
-                    wire:model.defer="telegram" prefix="https://" />
-                <x-input class="!pl-[6.5rem]" label="LinkedIn" placeholder="linkedin.com/in/username"
-                    wire:model.defer="linkedin" prefix="https://www." />
-                <x-input class="!pl-[6.5rem]" wire:model.defer="website" label="Website" placeholder="your-website.com"
+                <x-input
+                    class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 !pl-[6.5rem]"
+                    label="Twitter" prefix="https://www." placeholder="twitter.com/your-username"
+                    wire:model.defer="twitter" />
+                <x-input
+                    class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 !pl-[6.5rem]"
+                    label="Instagram" placeholder="instagram.com/your-username/" wire:model.defer="instagram"
                     prefix="https://www." />
+                <x-input
+                    class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 !pl-[4rem]"
+                    label="Whatsapp" placeholder="wa.me/your-phone-number" wire:model.defer="whatsapp"
+                    prefix="https://" />
+                <x-input
+                    class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 !pl-[4rem]"
+                    label="Telegram" placeholder="t.me/your-username" wire:model.defer="telegram" prefix="https://" />
+                <x-input
+                    class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 !pl-[6.5rem]"
+                    label="LinkedIn" placeholder="linkedin.com/in/username" wire:model.defer="linkedin"
+                    prefix="https://www." />
+                <x-input
+                    class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 !pl-[6.5rem]"
+                    wire:model.defer="website" label="Website" placeholder="your-website.com" prefix="https://www." />
 
 
             </div>

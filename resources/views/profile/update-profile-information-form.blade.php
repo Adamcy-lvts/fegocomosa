@@ -62,7 +62,9 @@
                               <div class="grid grid-cols-1 md:grid-cols-1 gap-6">
                                   <div class="col-span-1  md:col-span-3 md:grid md:grid-cols-3 md:gap-6">
 
-                                      <x-native-select label="Year of Entry" placeholder="Year of Entry"
+                                      <x-native-select
+                                          class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                                          label="Year of Entry" placeholder="Year of Entry"
                                           wire:model.defer="state.entry_year_id">
                                           @if ($entryYears)
                                               @foreach ($entryYears as $entryYear)
@@ -72,7 +74,9 @@
 
                                       </x-native-select>
 
-                                      <x-native-select label="Year of Gradution" placeholder="Year of Gradution"
+                                      <x-native-select
+                                          class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                                          label="Year of Gradution" placeholder="Year of Gradution"
                                           wire:model.defer="state.graduation_year_id">
                                           @if ($gradYears)
                                               @foreach ($gradYears as $gradYear)
@@ -82,17 +86,24 @@
 
                                       </x-native-select>
 
-                                      <x-input label="Admission Number" placeholder="Admission Number"
+                                      <x-input
+                                          class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                                          label="Admission Number" placeholder="Admission Number"
                                           wire:model.defer="state.addmission_number" />
                                   </div>
 
                                   <div class="col-span-1  md:col-span-3 md:grid md:grid-cols-3 md:gap-6">
-                                      <x-input label="Jss Class" placeholder="For example Jss 1Q - 3Q"
+                                      <x-input
+                                          class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                                          label="Jss Class" placeholder="For example Jss 1Q - 3Q"
                                           wire:model.defer="state.jss_class" />
-                                      <x-input label="Sss Class" placeholder="For example Sss 1Q - 3Q"
+                                      <x-input
+                                          class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                                          label="Sss Class" placeholder="For example Sss 1Q - 3Q"
                                           wire:model.defer="state.sss_class" />
-                                      <x-native-select label="House" placeholder="House"
-                                          wire:model.defer="state.house_id">
+                                      <x-native-select
+                                          class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                                          label="House" placeholder="House" wire:model.defer="state.house_id">
                                           @if ($houses)
                                               @foreach ($houses as $house)
                                                   <option value="{{ $house->id }}" }>{{ $house->name }}</option>
@@ -115,15 +126,19 @@
                               <x-errors class="mb-4" />
 
                               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                  <x-input label="First Name" placeholder="First Name"
-                                      wire:model.defer="state.first_name" />
+                                  <x-input
+                                      class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                                      label="First Name" placeholder="First Name" wire:model.defer="state.first_name" />
 
-                                  <x-input label="Last Name" placeholder="Last Name"
-                                      wire:model.defer="state.last_name" />
+                                  <x-input
+                                      class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                                      label="Last Name" placeholder="Last Name" wire:model.defer="state.last_name" />
 
                                   <div class="col-span-1 md:col-span-2 md:grid md:grid-cols-7 md:gap-5">
                                       <div class="col-span-1 md:col-span-4">
-                                          <x-input label="Middle Name" placeholder="Middle Name"
+                                          <x-input
+                                              class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                                              label="Middle Name" placeholder="Middle Name"
                                               wire:model.defer="state.middle_name" />
                                       </div>
 
@@ -134,8 +149,9 @@
                                   </div>
 
                                   <div class="col-span-1 md:col-span-2 md:grid md:grid-cols-3 md:gap-6">
-                                      <x-native-select label="Gender" placeholder="Gender"
-                                          wire:model.defer="state.gender_id">
+                                      <x-native-select
+                                          class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                                          label="Gender" placeholder="Gender" wire:model.defer="state.gender_id">
                                           @if ($genders)
                                               @foreach ($genders as $gender)
                                                   <option value="{{ $gender->id }}"
@@ -146,7 +162,9 @@
                                       </x-native-select>
                                       <x-inputs.phone label="Phone" mask="(###)-####-####" placeholder="Phone"
                                           wire:model.defer="state.phone" />
-                                      <x-native-select label="Marital Status" placeholder="Marital Status"
+                                      <x-native-select
+                                          class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                                          label="Marital Status" placeholder="Marital Status"
                                           wire:model.defer="state.marital_status_id">
                                           @if ($maritalStatuses)
                                               @foreach ($maritalStatuses as $maritalStatus)
@@ -159,21 +177,25 @@
                                   </div>
 
                                   <div class="col-span-1 md:col-span-2">
-                                      <x-input label="Street Address" placeholder="Street Address"
+                                      <x-input
+                                          class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                                          label="Street Address" placeholder="Street Address"
                                           wire:model.defer="state.address" />
                                   </div>
 
                                   <div class="col-span-1 md:col-span-2 md:grid md:grid-cols-2 md:gap-6">
-                                      <x-native-select label="State" placeholder="State"
-                                          wire:model="state.selectedState">
+                                      <x-native-select
+                                          class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                                          label="State" placeholder="State" wire:model="state.selectedState">
                                           @if ($states)
                                               @foreach ($states as $statec)
                                                   <option value="{{ $statec->id }}">{{ $statec->name }}</option>
                                               @endforeach
                                           @endif
                                       </x-native-select>
-                                      <x-native-select label="City" placeholder="City"
-                                          wire:model="state.selectedCity">
+                                      <x-native-select
+                                          class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                                          label="City" placeholder="City" wire:model="state.selectedCity">
                                           @if (!is_null($cities))
                                               @foreach ($cities as $city)
                                                   <option value="{{ $city->id }}">{{ $city->name }}</option>
@@ -183,7 +205,9 @@
                                   </div>
 
                                   <div class="col-span-1 md:col-span-2">
-                                      <x-input label="Email" placeholder="Email" wire:model.defer="state.email" />
+                                      <x-input
+                                          class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                                          label="Email" placeholder="Email" wire:model.defer="state.email" />
                                   </div>
 
                               </div>
@@ -238,9 +262,12 @@
                   <x-card class="uppercase" title="Professional Information">
                       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                           <div class="col-span-1  md:col-span-3 md:grid md:grid-cols-3 md:gap-6">
-                              <x-input label="Profession" placeholder="Profession"
-                                  wire:model.defer="state.profession" />
-                              <x-native-select label="Professional Category" placeholder="Professional Category"
+                              <x-input
+                                  class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                                  label="Profession" placeholder="Profession" wire:model.defer="state.profession" />
+                              <x-native-select
+                                  class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                                  label="Professional Category" placeholder="Professional Category"
                                   wire:model="selectedCategory">
                                   @if ($professionCategories)
                                       @foreach ($professionCategories as $category)
@@ -248,15 +275,19 @@
                                       @endforeach
                                   @endif
                               </x-native-select>
-                              <x-input label="Workplace" placeholder="Workplace"
-                                  wire:model.defer="state.workplace" />
+                              <x-input
+                                  class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                                  label="Workplace" placeholder="Workplace" wire:model.defer="state.workplace" />
                           </div>
 
                           <div class="col-span-1  md:col-span-3 md:grid md:grid-cols-2 md:gap-6">
-                              <x-input label="University Attended" placeholder="example Univeristy of Maiduguri"
+                              <x-input
+                                  class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                                  label="University Attended" placeholder="example Univeristy of Maiduguri"
                                   wire:model.defer="state.university" />
-                              <x-input label="Field of Study"
-                                  placeholder="example Electrical and Electronics Engineering"
+                              <x-input
+                                  class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                                  label="Field of Study" placeholder="example Electrical and Electronics Engineering"
                                   wire:model.defer="state.course_of_study" />
 
                           </div>
