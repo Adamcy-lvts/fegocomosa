@@ -14,6 +14,10 @@ class PhoneMask extends Component
         if (Auth::user()) {
            $this->phone = Auth::user()->phone;
         }
+        if (old('phone')) {
+           $this->phone = old('phone');
+        }
+         
         
     }
 

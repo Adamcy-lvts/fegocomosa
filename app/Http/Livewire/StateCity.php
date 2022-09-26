@@ -19,6 +19,8 @@ class StateCity extends Component
     public function mount()
     {
        
+       $this->selectedState = old('state_id');
+       $this->selectedCity = old('city_id');
         
     }
 

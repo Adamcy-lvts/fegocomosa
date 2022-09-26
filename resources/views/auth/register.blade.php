@@ -64,7 +64,7 @@
 
 
                         <x-input name="middle_name" :value="old('middle_name')" label="Middle Name" placeholder="Middle Name" />
-                        {{-- @livewire('component.birthdate-datepicker') --}}
+
                         <x-input label="Birthdate" type="date" placeholder="Birthdate" name="date_of_birth"
                             :value="old('date_of_birth')" />
 
@@ -97,7 +97,7 @@
                         <div class="col-span-1 sm:col-span-2 sm:grid sm:grid-cols-1 ">
                             @livewire('state-city')
                         </div>
-                        {{-- <x-toggle label="Accept the terms and conditions" wire:model.defer="user.terms" /> --}}
+
                     </div>
 
                 </div><!-- step 1 ending -->
