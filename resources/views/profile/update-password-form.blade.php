@@ -16,11 +16,14 @@
         <div>
             <x-slot name="form">
                 <div class="grid grid-cols-1  gap-6">
-                    <x-input type="password" label="Current Password" placeholder="Current Password"
+                    <x-input class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                        type="password" label="Current Password" placeholder="Current Password"
                         wire:model.defer="state.current_password" />
-                    <x-input type="password" label="New Password" placeholder="New Password"
+                    <x-input class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                        type="password" label="New Password" placeholder="New Password"
                         wire:model.defer="state.password" />
-                    <x-input type="password" label="Confirm Password" placeholder="Confirm Password"
+                    <x-input class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                        type="password" label="Confirm Password" placeholder="Confirm Password"
                         wire:model.defer="state.password_confirmation" />
                 </div>
             </x-slot>
