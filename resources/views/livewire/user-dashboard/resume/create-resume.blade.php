@@ -66,10 +66,12 @@
                         </div>
                     </div>
 
-                    <x-datetime-picker without-time label="Start Date" placeholder="Start Date"
-                        wire:model.defer="startDate" />
-                    <x-datetime-picker without-time label="End Date" placeholder="End Date"
-                        wire:model.defer="endDate" />
+                    <x-datetime-picker
+                        class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                        without-time label="Start Date" placeholder="Start Date" wire:model.defer="startDate" />
+                    <x-datetime-picker
+                        class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                        without-time label="End Date" placeholder="End Date" wire:model.defer="endDate" />
 
 
                 </div>
@@ -89,14 +91,18 @@
                     </div>
 
                     <div class="col-span-1 md:col-span-2">
-                        <x-textarea label="Description" placeholder="Description of the job, Position, Responsibity"
+                        <x-textarea class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                            label="Description" placeholder="Description of the job, Position, Responsibity"
                             wire:model.defer="description" />
                     </div>
 
-                    <x-datetime-picker without-time label="Starting Date" placeholder="Starting Date"
+                    <x-datetime-picker
+                        class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                        without-time label="Starting Date" placeholder="Starting Date"
                         wire:model.defer="startingDate" />
-                    <x-datetime-picker without-time label="Ending Date" placeholder="Ending Date"
-                        wire:model.defer="endingDate" />
+                    <x-datetime-picker
+                        class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                        without-time label="Ending Date" placeholder="Ending Date" wire:model.defer="endingDate" />
 
 
                 </div>
@@ -107,7 +113,7 @@
                     <div class="col-span-1 md:col-span-2">
                         <x-input class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
                             label="Skill" placeholder="Skill" wire:model.defer="skill" />
-                        <x-input class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                        <x-input class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
                             label="Rating" placeholder="Rating" wire:model.defer="rating" />
                     </div>
                     <div class="col-span-1 md:col-span-2">
@@ -136,7 +142,8 @@
                         <div class="col-span-1 md:col-span-3">
                             <x-inputs.phone
                                 class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
-                                mask="(###)-####-####" label="Phone" placeholder="Phone" wire:model.defer="phone" />
+                                mask="(###)-####-####" label="Phone" placeholder="Phone"
+                                wire:model.defer="phone" />
                         </div>
                     </div>
 
