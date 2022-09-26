@@ -125,20 +125,19 @@
                         @if ($member->skills->isNotEmpty())
                             <strong class="text-xl font-medium uppercase mb-10">Skills</strong>
 
-                            <div class="mb-10">
+                            <div class="mb-10 mt-10">
                                 <!--progress bar #1-->
-                                <div class=" ">
 
-                                    <div class="progress-container text-sm pr-3">
-                                        <!--progress bar-->
-                                        @foreach ($member->skills as $skill)
-                                            <div class="progress-bar w-full " data-effect="1"
-                                                data-value="{{ $skill->rating }}" data-skill="{{ $skill->skill_name }}">
-                                            </div>
-                                        @endforeach
+                                <div class="progress-container text-sm pr-3">
+                                    <!--progress bar-->
+                                    @foreach ($member->skills as $skill)
+                                        <div class="progress-bar w-full " data-effect="1"
+                                            data-value="{{ $skill->rating }}" data-skill="{{ $skill->skill_name }}">
+                                        </div>
+                                    @endforeach
 
-                                    </div>
                                 </div>
+
                             </div>
                         @endif
 
