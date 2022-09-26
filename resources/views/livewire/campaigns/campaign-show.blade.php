@@ -65,13 +65,19 @@
                             <div x-show="open" x-transition.duration.500ms>
 
                                 <div class="col-span-1 sm:col-span-2 mb-2">
-                                    <x-input placeholder="Name" wire:model.defer="fullName" />
+                                    <x-input
+                                        class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                                        placeholder="Name" wire:model.defer="fullName" />
                                 </div>
                                 <div class="col-span-1 sm:col-span-2 mb-2">
-                                    <x-input placeholder="Email" wire:model.defer="email" />
+                                    <x-input
+                                        class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                                        placeholder="Email" wire:model.defer="email" />
                                 </div>
                                 <div class="col-span-1 sm:col-span-2 mb-2">
-                                    <x-textarea placeholder="Message" wire:model.defer="message" />
+                                    <x-textarea
+                                        class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                                        placeholder="Message" wire:model.defer="message" />
                                 </div>
                                 <x-button wire:click="MessageOrganizer" class="w-full  py-2 px-8" outline positive
                                     label="Submit" />

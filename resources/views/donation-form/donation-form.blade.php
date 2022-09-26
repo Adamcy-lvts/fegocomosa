@@ -12,41 +12,49 @@
 
                 @auth
                     <div class="col-span-1 sm:col-span-2">
-                        <x-input label="Full Name" placeholder="Full Name" value="{{ auth()->user()->first_name ?? '' }}"
+                        <x-input class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                            label="Full Name" placeholder="Full Name" value="{{ auth()->user()->first_name ?? '' }}"
                             name="fname" />
-                        <x-input label="last Name" placeholder="Full Name" value="{{ auth()->user()->last_name ?? '' }}"
+                        <x-input class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                            label="last Name" placeholder="Full Name" value="{{ auth()->user()->last_name ?? '' }}"
                             name="lname" />
                     </div>
                 @endauth
 
                 @guest
-                    <x-input label="Full Name" placeholder="Full Name" name="fname" />
-                    <x-input label="last Name" placeholder="Full Name" name="lname" />
+                    <x-input class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                        label="Full Name" placeholder="Full Name" name="fname" />
+                    <x-input class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                        label="last Name" placeholder="Full Name" name="lname" />
                 @endguest
 
                 @auth
-                    <x-input label="Email" placeholder="example@mail.com" name="email"
+                    <x-input class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                        label="Email" placeholder="example@mail.com" name="email"
                         value="{{ auth()->user()->email ?? '' }}" />
 
                     @livewire('component.phone-mask')
                 @endauth
 
                 @guest
-                    <x-input label="Email" placeholder="example@mail.com" name="email" />
+                    <x-input class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                        label="Email" placeholder="example@mail.com" name="email" />
 
                     @livewire('component.phone-mask')
                 @endguest
 
                 @auth
                     <div class="col-span-1 sm:col-span-2">
-                        <x-input label="Address" placeholder="Address" name="address"
+                        <x-input class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                            label="Address" placeholder="Address" name="address"
                             value="{{ auth()->user()->address ?? '' }}" />
                     </div>
                 @endauth
 
                 @guest
                     <div class="col-span-1 sm:col-span-2">
-                        <x-input label="Address" placeholder="Address" name="address" />
+                        <x-input class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                            label="Address" placeholder="Address" name="address" />
                     </div>
                 @endguest
 
@@ -55,7 +63,8 @@
                 </div>
                 {{-- @livewire('component.currency') --}}
                 <div class="col-span-1 sm:col-span-2">
-                    <x-input label="Amount" placeholder="amount" name="amount" />
+                    <x-input class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                        label="Amount" placeholder="amount" name="amount" />
                 </div>
 
                 <input type="hidden" name="additional_info">
@@ -66,7 +75,8 @@
                 <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}"> {{-- required --}}
 
                 <div class="col-span-1 sm:col-span-2">
-                    <x-textarea label="Comment" placeholder="Comment" />
+                    <x-textarea class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                        label="Comment" placeholder="Comment" />
                 </div>
                 <div class="col-span-1 sm:col-span-2">
                     <x-button type="submit" label="Donate" class="w-full  py-2 px-8" green />
