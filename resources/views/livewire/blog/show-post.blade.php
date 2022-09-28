@@ -38,8 +38,9 @@
                             <p class="text-sm">{{ $post->user->about_you }}</p>
                         </div>
 
-                        <h2 class="text-2xl font-bold mb-3">Related Posts</h2>
+
                         <div class="hidden md:flex gap-4 flex-col">
+                            <h2 class="text-2xl font-bold mb-3">Related Posts</h2>
                             @foreach ($relatedPosts as $relatedPost)
                                 <a href="{{ route('posts.show', $relatedPost->slug) }}">
                                     <div class="relative h-64 w-full flex items-end justify-start text-left bg-cover bg-center"
@@ -76,7 +77,7 @@
                         </h3>
                         <div class="w-full mb-5">
                             <p class=" leading-relaxed text-lg mb-4">{!! $post->body !!}</p>
-                            <div class=" text-2xl">Show some love if you enjoyed it!
+                            <div class="mt-5 text-2xl">Show some love if you enjoyed it!
                                 <div class=" text-2xl mb-4">
                                     @if ($latestPost->likedBy(auth()->user()))
                                         <div class=" ">
