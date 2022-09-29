@@ -102,7 +102,7 @@
                     <input type="hidden" name="additional_info">
 
                     <input type="hidden" name="metadata"
-                        value="{{ json_encode($array = ['payment_for' => 'donation', 'campaign_id' => $campaign->id]) }}">
+                        value="{{ json_encode($array = ['payment_for' => 'donation', 'campaign_id' => $campaign->id, 'member_id' => '']) }}">
 
                     <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}">
                     {{-- required --}}
