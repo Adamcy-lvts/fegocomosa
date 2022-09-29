@@ -63,7 +63,10 @@ class PaymentProcessingController extends Controller
 
         if ($payDetails['status'] == 'success' && $payDetails['metadata']['payment_for'] == 'membership') {
 
-            $user  = User::find($payDetails['metadata']['member_id']);
+            if ($payDetails['metadata']['member_id']) {
+                $user  = User::find($payDetails['metadata']['member_id']);
+            }
+            
 
             MembershipFee::create([
                 'user_id' => $user->id,
@@ -76,7 +79,9 @@ class PaymentProcessingController extends Controller
 
         if ($payDetails['status'] == 'success' && $payDetails['metadata']['payment_for'] == 'donation') {
 
-            $user  = User::find($payDetails['metadata']['member_id']);
+            if ($payDetails['metadata']['member_id']) {
+                    $user  = User::find($payDetails['metadata']['member_id']);
+            }
            
 
 
