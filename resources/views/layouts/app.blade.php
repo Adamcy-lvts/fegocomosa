@@ -30,6 +30,9 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/showevent-slider.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/modal.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/progressbar.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/content-styles.css') }}">
+
+
 
     @livewireStyles
 
@@ -71,6 +74,7 @@
     @livewireScripts
     @stack('flickty-scripts')
     <script src="{{ asset('js/jquery-3.4.1.js') }}"></script>
+    @stack('donation-script')
     <script src="{{ asset('js/progressbar.js') }}"></script>
     @yield('script')
 

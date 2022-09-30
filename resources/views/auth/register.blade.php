@@ -44,6 +44,16 @@
                         </div>
                         <div class="text-xs w-10 text-gray-600" x-text="parseInt(step / 4 * 100) +'%'"></div>
                     </div>
+
+                </div>
+                <div x-data="{ show: true }" x-show="show" x-transition.duration.800ms x-init="setTimeout(() => show = false, 10000)"
+                    class="bg-blue-50 rounded max-w-md text-blue-700 px-2 py-1" role="alert">
+                    <p class="text-sm font-bold"><span class="mr-3"><i
+                                class="fa-light fa-circle-exclamation"></i></i></span>
+                        Note:
+                    </p>
+                    <p class="text-xs ml-7">Any input field label with * on it is a required field
+                    </p>
                 </div>
             </div>
 
@@ -59,17 +69,17 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
 
                         <x-input class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
-                            name="first_name" :value="old('first_name')" label="First Name" placeholder="First Name" />
+                            name="first_name" :value="old('first_name')" label="First Name*" placeholder="First Name" />
 
                         <x-input class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
-                            name="last_name" :value="old('last_name')" label="Last Name" placeholder="Last Name" />
+                            name="last_name" :value="old('last_name')" label="Last Name*" placeholder="Last Name" />
 
 
                         <x-input class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
                             name="middle_name" :value="old('middle_name')" label="Middle Name" placeholder="Middle Name" />
 
                         <x-input class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
-                            label="Birthdate" type="date" placeholder="Birthdate" name="date_of_birth"
+                            label="Birthdate*" type="date" placeholder="Birthdate" name="date_of_birth"
                             :value="old('date_of_birth')" />
 
 
@@ -96,7 +106,7 @@
                             <div class="col-span-1 sm:col-span-4 sm:mb-0 mb-5">
                                 <x-input
                                     class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
-                                    name="address" :value="old('address')" label="Address" placeholder="Address" />
+                                    name="address" :value="old('address')" label="Address*" placeholder="Address" />
                             </div>
 
                             <div class="col-span-1 sm:col-span-3">
@@ -119,20 +129,20 @@
                         <div class="col-span-1 sm:col-span-2 sm:grid sm:grid-cols-2 sm:gap-6">
                             <x-input
                                 class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 sm:mb-0 mb-4"
-                                type="date" label="Entry Year" placeholder="Entry Year" name="entry_year_id"
+                                type="date" label="Entry Year*" placeholder="Entry Year" name="entry_year_id"
                                 :value="old('entry_year_id')" />
 
                             <x-input
                                 class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
-                                type="date" label="Graduation Year" placeholder="Graduation Year"
+                                type="date" label="Graduation Year*" placeholder="Graduation Year"
                                 name="graduation_year_id" :value="old('graduation_year_id')" />
                         </div>
 
                         <x-input class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
-                            label="Jss Class" placeholder="Jss Class" name="jss_class" :value="old('jss_class')" />
+                            label="Jss Class*" placeholder="Jss Class" name="jss_class" :value="old('jss_class')" />
 
                         <x-input class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
-                            label="Sss Class" placeholder="Sss Class" name="sss_class" :value="old('sss_class')" />
+                            label="Sss Class*" placeholder="Sss Class" name="sss_class" :value="old('sss_class')" />
 
                         <x-input class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
                             label="Admission Number" placeholder="Admission Number" name="admission_number"
@@ -153,9 +163,9 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
 
                         <x-input class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
-                            name="profession" label="Profession" placeholder="Profession" :value="old('profession')" />
+                            name="profession" label="Profession*" placeholder="Profession" :value="old('profession')" />
                         <x-input class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
-                            name="workplace" label="Workplace" placeholder="Workplace" :value="old('workplace')" />
+                            name="workplace" label="Workplace*" placeholder="Workplace" :value="old('workplace')" />
 
                         <x-native-select
                             class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
@@ -177,6 +187,18 @@
                         </div>
 
                         <div class="col-span-1 sm:col-span-2">
+                            <div class="bg-yellow-50 border-t border-b border-yellow-400 text-yellow-700 px-2 py-1"
+                                role="alert">
+                                <p class="text-sm font-bold"><span class="mr-3"><i
+                                            class="fa-light fa-triangle-exclamation "></i></span>
+                                    Attention
+                                </p>
+                                <p class="text-xs ml-7">Do not upload image with less than <b>800px</b> by
+                                    <b>1080px</b>
+                                    resoultion, if you do it will be rejected, if u have image with higher resolution we
+                                    will crop it for you.
+                                </p>
+                            </div>
                             <x-input
                                 class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
                                 accept="image/*" type="file" name="potraitImage" id="potraitPicture"
@@ -197,25 +219,25 @@
                         <div class="col-span-1 sm:col-span-2">
                             <x-input
                                 class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
-                                label="User Name" placeholder="User Name" name="username" :value="old('username')" />
+                                label="User Name*" placeholder="User Name" name="username" :value="old('username')" />
                         </div>
 
                         <div class="col-span-1 sm:col-span-2">
                             <x-input
                                 class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
-                                label="Email" placeholder="example@mail.com" name="email" :value="old('email')" />
+                                label="Email*" placeholder="example@mail.com" name="email" :value="old('email')" />
                         </div>
 
                         <div class="col-span-1 sm:col-span-2">
                             <x-input
                                 class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
-                                label="Password" type="password" name="password" />
+                                label="Password*" type="password" name="password" />
                         </div>
 
                         <div class="col-span-1 sm:col-span-2">
                             <x-input
                                 class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
-                                label="Confirm Password" type="password" name="password_confirmation" />
+                                label="Confirm Password*" type="password" name="password_confirmation" />
                         </div>
 
                     </div>
