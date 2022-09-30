@@ -261,14 +261,13 @@
                 // Create a FilePond instance
                 const pond = FilePond.create(inputElement, {
                     allowImageValidateSize: true,
-                    imageValidateSizeMinWidth: 900,
-                    imageValidateSizeMinHeight: 1200,
-                    imageValidateSizeMaxWidth: 900,
-                    imageValidateSizeMaxHeight: 1200,
-                    imageValidateSizeLabelImageSizeTooSmall: 'Image resolution too small',
-                    imageValidateSizeLabelExpectedMinSize: 'The only supported resolution is {minWidth}px × {minHeight}px',
-                    imageValidateSizeLabelImageSizeTooBig: 'Image resolution too big',
-                    imageValidateSizeLabelExpectedMaxSize: 'The only supported resolution is {minWidth}px × {minHeight}px',
+                    imageCropAspectRatio: '0.75:1',
+                    imageResizeTargetWidth: 800,
+                    imageResizeTargetHeight: 1080,
+                    imageValidateSizeMinWidth: 800,
+                    imageValidateSizeMinHeight: 1080,
+                    imageValidateSizeLabelImageSizeTooSmall: 'Image resolution is too low',
+                    imageValidateSizeLabelExpectedMinSize: 'Crop your image to {minWidth}px × {minHeight}px',
 
                     server: {
                         url: '/imageUpload',

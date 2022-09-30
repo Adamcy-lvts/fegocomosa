@@ -107,7 +107,7 @@ class CreateNewUser implements CreatesNewUsers
             'first_name'        => $input['first_name'],
             'middle_name'       => $input['middle_name'],
             'last_name'         => $input['last_name'],
-            'date_of_birth'     => Carbon::create($input['date_of_birth']),
+            'date_of_birth'     => Carbon::createFromFormat('d/m/Y',$input['date_of_birth']),
             'address'           => $input['address'],
             'gender_id'         => $input['gender_id'],
             'marital_status_id' => $input['marital_status_id'],
