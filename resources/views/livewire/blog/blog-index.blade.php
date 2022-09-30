@@ -31,7 +31,7 @@
 
                                     </h2>
                                     <h1 class="title-font text-lg font-medium text-gray-900 mb-1">
-                                        {{ \Illuminate\Support\Str::words($post->title, $limit = 6, $end = '...') }}
+                                        {{ \Illuminate\Support\Str::words($post->title, $limit = 8, $end = '...') }}
                                     </h1>
                                 </div>
                             </a>
