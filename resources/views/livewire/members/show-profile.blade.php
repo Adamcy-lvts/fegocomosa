@@ -96,7 +96,8 @@
                                         Address:</span>
                                     {{ $member->workplace }}</li>
                                 @foreach ($member->categories as $category)
-                                    <li>Profession Category: {{ $category->name }}</li>
+                                    <li class="p-2 hover:bg-gray-200 rounded">Profession Category:
+                                        {{ $category->name }}</li>
                                 @endforeach
 
 
