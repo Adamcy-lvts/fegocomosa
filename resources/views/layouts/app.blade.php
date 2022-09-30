@@ -30,7 +30,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/showevent-slider.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/modal.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/progressbar.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/content-styles.css') }}">
+
 
 
 
@@ -48,7 +48,7 @@
 
     <x-notifications />
     <x-jet-banner />
-
+    @stack('blog-styles')
     <div class="min-h-screen ">
         @livewire('navigation-menu')
 
