@@ -70,7 +70,7 @@ class PaymentProcessingController extends Controller
 
             MembershipFee::create([
                 'user_id' => $user->id,
-                'amount' => $payDetails['amount']/100,
+                'amount' => $payDetails['amount'],
                 'year'   => Carbon::parse($payDetails['paid_at'])->format('Y'),
             ]); 
 
