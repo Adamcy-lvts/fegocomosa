@@ -28,35 +28,35 @@
                         @livewire('component.phone-mask')
                     </div>
 
-                    <div x-data="{ amount: '', open: true }">
+                    <div>
 
                         <div class="flex flex-row gap-3 mb-4">
 
-                            <button type="button" x-on:click="amount = '500'*100; open = !open"
-                                class="p-4 flex-grow border focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 rounded"><span>
+                            <button type="button" value="500"
+                                class="button p-4 flex-grow border focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 rounded"><span>
                                     &#x20A6;500</span></button>
 
-
-                            <button type="button" x-on:click="amount = '1000'*100; open = !open"
-                                class="p-4 flex-grow border focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 rounded"><span>
+                            {{-- x-on:click="amount = '1000'*100; open = !open" --}}
+                            <button type="button" value="1000"
+                                class="p-4 button flex-grow border focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 rounded"><span>
                                     &#x20A6;1000</span></button>
 
 
-                            <button type="button" x-on:click="amount = '5000'*100; open = !open"
-                                class="p-4 flex-grow border focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 rounded"><span>
+                            <button type="button" value="5000"
+                                class="p-4 button flex-grow border focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 rounded"><span>
                                     &#x20A6;5,000</span></button>
                         </div>
                         <div class="flex flex-row gap-3 mb-4">
-                            <button type="button" x-on:click="amount = '10000'*100; open = !open"
-                                class="p-4 flex-grow border focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 rounded"><span>
+                            <button type="button" value="10000"
+                                class="p-4 button flex-grow border focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 rounded"><span>
                                     &#x20A6;10,000</span></button>
 
-                            <button type="button" x-on:click="amount = '20000'*100; open = !open"
-                                class="p-4 flex-grow border focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 rounded"><span>
+                            <button type="button" value="20000"
+                                class="p-4 button flex-grow border focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 rounded"><span>
                                     &#x20A6;20,000</span></button>
 
-                            <button type="button" x-on:click="amount = '50000'*100; open = !open"
-                                class="p-4 flex-grow border focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 rounded"><span>
+                            <button type="button" value="50000"
+                                class="p-4 button flex-grow border focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50 rounded"><span>
                                     &#x20A6;50,000</span></button>
                         </div>
 
@@ -67,7 +67,7 @@
 
                             <x-input x-show="open" type="number"
                                 class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
-                                placeholder="Amount" name="amount" x-model.number='amount' />
+                                placeholder="Amount" name="input-amount" x-model.number='amount' id="amount" />
                         </div>
                     </div>
 
@@ -115,7 +115,7 @@
                     </div>
 
 
-                    <div x-data="{ amount: '', open: true }">
+                    <div>
 
                         <div class="flex flex-row gap-3 mb-4">
 
