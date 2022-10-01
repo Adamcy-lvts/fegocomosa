@@ -14,15 +14,15 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
 
                         <x-input class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
-                            label="First Name" placeholder="First Name" value="{{ auth()->user()->first_name }}"
+                            label="First Name" placeholder="First Name*" value="{{ auth()->user()->first_name }}"
                             name="fname" />
                         <x-input class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
-                            label="Last Name" placeholder="Last Name" value="{{ auth()->user()->last_name }}"
+                            label="Last Name" placeholder="Last Name*" value="{{ auth()->user()->last_name }}"
                             name="lname" />
 
 
                         <x-input class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
-                            label="Email" placeholder="example@mail.com" name="email"
+                            label="Email*" placeholder="example@mail.com" name="email"
                             value="{{ auth()->user()->email }}" />
 
                         @livewire('component.phone-mask')
@@ -103,12 +103,12 @@
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-3">
                         <x-input class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
-                            label="First Name" placeholder="First Name" name="fname" />
+                            label="First Name" placeholder="First Name*" name="fname" />
                         <x-input class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
-                            label="Last Name" placeholder="Last Name" name="lname" />
+                            label="Last Name" placeholder="Last Name*" name="lname" />
 
                         <x-input class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
-                            label="Email" placeholder="example@mail.com" name="email" />
+                            label="Email*" placeholder="example@mail.com" name="email" />
 
                         @livewire('component.phone-mask')
 
