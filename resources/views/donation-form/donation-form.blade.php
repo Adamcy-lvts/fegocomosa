@@ -81,7 +81,7 @@
                             label="Comment" placeholder="Comment" />
                     </div>
                     <div class="col-span-1 sm:col-span-2">
-                        <x-button type="submit" label="Donate" class="w-full  py-2 px-8" green />
+                        <x-button id="displayAmount" type="submit" label="Donate" class="w-full  py-2 px-8" green />
                     </div>
                 </div>
             </div>
