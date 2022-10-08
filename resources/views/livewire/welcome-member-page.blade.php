@@ -4,11 +4,11 @@
             @foreach ($carousel as $slider)
                 <div class="carousel-cell">
                     <img alt="content" class="carousel-cell-image block md:w-4/4  w-full"
-                        src="{{ asset('images/' . $slider->image_background) }}">
+                        src="{{ asset('images/' . $slider->feature_image) }}">
                     <div class="overlay"></div>
                     <div class="inner">
-                        <h3 class="subtitle">{{ $slider->caption_2 }}</h3>
-                        <h2 class="title">{{ $slider->caption }}</h2>
+                        <h3 class="subtitle">{{ $slider->caption }}</h3>
+                        <h2 class="title">{{ $slider->title }}</h2>
                         <a href="{{ $slider->link }}" target="_blank" class="btn">Tell me more</a>
                     </div>
                 </div>
@@ -77,9 +77,9 @@
             </div>
             <div class="slideshow-container lg:w-1/2 w-full mb-8 lg:mb-0 rounded-lg overflow-hidden">
                 @foreach ($projectsimages as $projectImage)
-                    <div class="mySlides fade">
+                    <div class="mySlides fade h-3/4">
                         <div class="numbertext">{{ $projectImage->id }}/{{ $projectsimages->count() }}</div>
-                        <img alt="feature" class="object-cover object-center h-full w-full"
+                        <img alt="feature" class=" object-center object-cover"
                             src="{{ asset('storage/projects_images/' . $projectImage->images) }}">
 
                         <div class="text">{{ $projectImage->caption }}</div>
@@ -105,7 +105,8 @@
                         <p class="leading-relaxed text-sm lg:text-base">Blue bottle crucifix vinyl post-ironic four
                             dollar toast
                             vegan taxidermy. Gastropub indxgo juice poutine.</p>
-                        <a href="{{ route('projects') }}" class="mt-3 text-green-600 inline-flex items-center">Learn
+                        <a href="{{ url('projects#completed') }}"
+                            class="mt-3 text-green-600 inline-flex items-center">Learn
                             More
                             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                 stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
@@ -124,7 +125,8 @@
                         <p class="leading-relaxed text-sm lg:text-base">Blue bottle crucifix vinyl post-ironic four
                             dollar toast
                             vegan taxidermy. Gastropub indxgo juice poutine.</p>
-                        <a href="{{ route('projects') }}" class="mt-3 text-green-600 inline-flex items-center">Learn
+                        <a href="{{ url('projects#in-progress') }}"
+                            class="mt-3 text-green-600 inline-flex items-center">Learn
                             More
                             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                 stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
@@ -207,36 +209,36 @@
 
             <div class="flex flex-wrap -m-4">
 
-                @foreach ($positions as $position)
+                @foreach ($executives as $members)
                     <div class="p-4 lg:w-1/2">
 
                         <div
                             class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
-                            <a href="{{ route('member.profile', $position->user->username) }}">
+                            <a href="{{ route('member.profile', $members->user->username) }}">
                                 <img alt="team"
                                     class="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4"
-                                    src="{{ asset($position->user->profile_photo_url ?? '') }}">
+                                    src="{{ asset($members->user->profile_photo_url ?? '') }}">
                             </a>
                             <div class="flex-grow sm:pl-8">
 
                                 <h2 class="title-font font-medium text-lg text-gray-900"> <a
-                                        href="{{ route('member.profile', $position->user->username) }}">{{ ($position->user->first_name ?? '') . ' ' . ($position->user->last_name ?? '') }}
+                                        href="{{ route('member.profile', $members->user->username) }}">{{ ($members->user->first_name ?? '') . ' ' . ($members->user->last_name ?? '') }}
                                     </a>
                                 </h2>
-                                <h3 class="text-gray-500 mb-3">{{ $position->name }}</h3>
+                                <h3 class="text-gray-500 mb-3">{{ $members->position }}</h3>
                                 <p class="mb-4">DIY tote bag drinking vinegar cronut adaptogen squid fanny
                                     pack
                                     vaporware.</p>
                                 <span class="inline-flex">
-                                    <a href="https://{{ $position->user->socialMedia->facebook ?? '#' }}"
+                                    <a href="https://{{ $members->user->socialMedia->facebook ?? '#' }}"
                                         class="text-gray-500">
                                         <i class="fab fa-facebook-f"></i>
                                     </a>
-                                    <a href="https://{{ $position->user->socialMedia->twitter ?? '#' }}"
+                                    <a href="https://{{ $members->user->socialMedia->twitter ?? '#' }}"
                                         class="ml-2 text-gray-500">
                                         <i class="fab fa-twitter"></i>
                                     </a>
-                                    <a href="https://{{ $position->user->socialMedia->whatsapp ?? '#' }}"
+                                    <a href="https://{{ $members->user->socialMedia->whatsapp ?? '#' }}"
                                         class="ml-2 text-gray-500">
                                         <i class="fab fa-whatsapp"></i>
                                     </a>
@@ -289,7 +291,38 @@
                     image.style.backgroundPosition = x + 'px';
                 });
             });
+
+            var slideIndex = 0;
+            showSlides();
+
+            function showSlides() {
+                var i;
+                var slides = document.getElementsByClassName("mySlides");
+                for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                }
+                slideIndex++;
+                if (slideIndex > slides.length) {
+                    slideIndex = 1
+                }
+                slides[slideIndex - 1].style.display = "block";
+                setTimeout(showSlides, 2000); // Change image every 2 seconds
+            }
+
+            ///// Section-1 CSS-Slider /////
+            // Auto Switching Images for CSS-Slider
+            function bannerSwitcher() {
+                next = $('.sec-1-input').filter(':checked').next('.sec-1-input');
+                if (next.length) next.prop('checked', true);
+                else $('.sec-1-input').first().prop('checked', true);
+            }
+
+            var bannerTimer = setInterval(bannerSwitcher, 5000);
+
+            $('nav .controls label').click(function() {
+                clearInterval(bannerTimer);
+                bannerTimer = setInterval(bannerSwitcher, 5000)
+            });
         });
-        // HERO SLIDER
     </script>
 @endsection

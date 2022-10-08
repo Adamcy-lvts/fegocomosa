@@ -8,9 +8,11 @@ use Livewire\Component;
 use App\Models\Category;
 use App\Models\Position;
 use App\Models\GuestSlider;
+use App\Models\FeatureImage;
 use App\Models\MemberSlider;
 use App\Models\ProjectImages;
-use App\Models\MembershipInfo;
+use App\Models\ExecutiveMember;
+
 
 class WelcomeMemberPage extends Component
 {
@@ -26,8 +28,8 @@ class WelcomeMemberPage extends Component
             'events' =>Event::latest()->take(3)->where('event_date', '>', $currentDate->toDateString())->get(),
             'projectsimages' => ProjectImages::all(),
             'procategory'    => Category::take(6)->get(),
-            'positions'      => Position::with('user')->take(4)->get(),
-            'carousel'       => MemberSlider::all()
+            'executives'      => ExecutiveMember::orderBy('id', 'asc')->get(),
+            'carousel'       => FeatureImage::all()
         ]);
     }
 }

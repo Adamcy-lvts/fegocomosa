@@ -11,9 +11,10 @@ use App\Http\Livewire\HomePage;
 use App\Http\Livewire\UserData;
 use App\Http\Livewire\Admin\Roles;
 use App\Http\Livewire\Blog\ShowPost;
+use App\Http\Livewire\Admin\Payments;
 use App\Http\Livewire\Blog\BlogIndex;
-use App\Http\Livewire\UpdatePassword;
 
+use App\Http\Livewire\UpdatePassword;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Events\ShowEvent;
 use App\Http\Livewire\Admin\Permissions;
@@ -38,6 +39,7 @@ use App\Http\Livewire\Members\MemberCategory;
 use App\Http\Livewire\Admin\DonationDataTable;
 use App\Http\Livewire\Admin\Event\CreateEvent;
 use App\Http\Livewire\Admin\ProjectsDataTable;
+use App\Http\Livewire\Admin\Settings\Settings;
 use App\Http\Livewire\Campaigns\CampaignIndex;
 use App\Http\Controllers\ImageUploadController;
 use App\Http\Livewire\Admin\Members\EditMember;
@@ -130,13 +132,13 @@ Route::group(['middleware' => ['role:Super-Admin|admin']], function () {
     Route::get('/admin/events', EventDataTable::class)->name('event.data');
     Route::get('/admin/event/create', CreateEvent::class)->name('event.create');
     Route::get('/admin/event/edit/{slug}', EditEvent::class)->name('event.edit');
-
+    Route::get('admin/payments', Payments::class)->name('payments');
     Route::get('/admin/projects', ProjectsDataTable::class)->name('projects.data');
     Route::get('/admin/procategory', ProfessionalCategoryDataTable::class)->name('profession.category');
     Route::get('admin/roles', Roles::class)->name('roles');
     Route::get('admin/permissions', Permissions::class)->name('permissions');
     Route::get('admin/settings/welcomepage', WelcomePageContent::class)->name('welcomepage.slider');
-    Route::get('admin/settings/creatememinfo', CreateMemInfo::class)->name('createinfo');
+    Route::get('admin/settings', Settings::class)->name('settings');
 });
 
 Route::post('/upload', 'App\Http\Controllers\UploadImageController@uploadImage')->name('image.upload');

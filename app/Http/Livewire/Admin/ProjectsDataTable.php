@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\Project;
 use Livewire\Component;
 use WireUi\Traits\Actions;
+use Illuminate\Support\Str;
 use App\Models\ImageCaption;
 use Livewire\WithPagination;
 use App\Models\ProjectImages;
@@ -109,6 +110,7 @@ class ProjectsDataTable extends Component
 
         Project::find($this->projectId)->update([
             'title' => $this->title,
+            'slug' => Str::slug($this->title),
             'status' => $this->status,
             'budget' =>  $this->budget,
             'proposed_by' =>  $this->proposedBy,
@@ -182,7 +184,7 @@ public function storeProject()
         $project = new Project();
         $project->user_id = auth()->user()->id;
         $project->title = $this->title;
-        
+        $project->slug = Str::slug($this->title);
         $project->status = $this->status;
         $project->budget = $this->budget;
         $project->proposed_by = $this->proposedBy;

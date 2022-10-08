@@ -35,7 +35,8 @@ class DatabaseSeeder extends Seeder
         $this->call(MemberSliderTableSeeder::class);
         $this->call(GraduationYearTableSeeder::class);
         $this->call(EntryYearTableSeeder::class);
-        // $this->call(PostTableSeeder::class);
+        $this->call(NavigationMenuSeeder::class);
+        $this->call(GuestNavBarMenuSeeder::class);
         $this->call(PostCategoryTableSeeder::class);
     }
 }

@@ -10,7 +10,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Jetstream\Http\Livewire\DeleteUserForm;
 use App\Http\Livewire\UserDashboard\Stats\ProfileViews;
 use App\Http\Livewire\UserDashboard\Stats\DonationCount;
-use App\Http\Livewire\UserDashboard\Stats\MembershipPayment;
+use App\Http\Livewire\UserDashboard\Stats\MembershipPayments;
 use Laravel\Jetstream\Http\Livewire\TwoFactorAuthenticationForm;
 use App\Http\Livewire\UserDashboard\Notifications\PostNotification;
 use Laravel\Jetstream\Http\Livewire\LogoutOtherBrowserSessionsForm;
@@ -57,7 +57,7 @@ class UserDashboardTest extends TestCase
    {
        $this->actingAs($user = User::factory()->create());
        
-       $this->get('/member/dashboard')->assertSeeLivewire(MembershipPayment::class);
+       $this->get('/member/dashboard')->assertSeeLivewire(MembershipPayments::class);
    }
    /** @test */
    public function user_dashboard_contains_post_notification_component()

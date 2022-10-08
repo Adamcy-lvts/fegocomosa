@@ -1,7 +1,7 @@
 <div>
 
 
-    <x-button label="Create" primary wire:click="SliderModal" />
+    <x-button label="Create" primary wire:click="featuredModal" />
 
     <div class="my-2 flex sm:flex-row flex-col">
 
@@ -48,11 +48,6 @@
                 <option>15</option>
             </x-native-select>
         </div>
-
-        <div class="col-span-1 md:col-span-2">
-            <x-input icon="search" label="Name" wire:model.debounce.500ms="search"
-                placeholder="Search by Article by Title or published date" />
-        </div>
     </div>
 
     <div class="dark:text-gray-400">
@@ -60,11 +55,11 @@
         @if ($checkPageItems)
             <div>
                 @if ($checkAllItems)
-                    <div> You have selected all <strong>{{ $sliders->total() }}</strong> records</div>
+                    <div> You have selected all <strong>{{ $featureImages->total() }}</strong> records</div>
                 @else
                     You have selected <strong>{{ count($checkedSliderContent) }}</strong> records, do you wan to
                     select All
-                    <strong>{{ $sliders->total() }}</strong> records?
+                    <strong>{{ $featureImages->total() }}</strong> records?
                     <a href="#" wire:click="checkAllItems">Select All Records</a>
             </div>
         @endif
@@ -92,14 +87,10 @@
                             CAPTION
                         </th>
                         <th class="px-5 py-3   text-left text-xs font-semibold text-gray-300 uppercase tracking-wider">
-                            BANNER ID
+                            IMAGE
                         </th>
                         <th class="px-5 py-3   text-left text-xs font-semibold text-gray-300 uppercase tracking-wider">
-                            LINK 1
-                        </th>
-
-                        <th class="px-5 py-3   text-left text-xs font-semibold text-gray-300 uppercase tracking-wider">
-                            LINK 2
+                            LINKS
                         </th>
 
                         <th class="px-5 py-3   text-left text-xs font-semibold text-gray-300 uppercase tracking-wider">
@@ -110,39 +101,38 @@
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-700">
-                    @forelse ($sliders as $slider)
+                    @forelse ($featureImages as $featureImage)
                         <tr class="divide-y divide-slate-700">
                             <td class="px-3 py-2  ">
-                                <x-jet-checkbox value="{{ $slider->id }}" wire:model="checkedSliderContent">
+                                <x-jet-checkbox value="{{ $featureImage->id }}" wire:model="checkedSliderContent">
                                 </x-jet-checkbox>
                             </td>
                             <td class="px-3 py-2  text-gray-300  text-sm">
-                                {{ $slider->id }}
+                                {{ $featureImage->id }}
                             </td>
                             <td class="px-3 py-2   text-sm">
-                                <p class="text-gray-300 whitespace-no-wrap">{{ $slider->title }}</p>
+                                <p class="text-gray-300 whitespace-no-wrap">{{ $featureImage->title }}</p>
                             </td>
                             <td class="px-3 py-2   text-sm">
-                                <p class="text-gray-300 whitespace-no-wrap">{{ $slider->caption }}</p>
+                                <p class="text-gray-300 whitespace-no-wrap">{{ $featureImage->caption }}</p>
                             </td>
                             <td class="px-3 py-2   text-sm">
-                                <p class="text-gray-300 whitespace-no-wrap">{{ $slider->banner_id }}</p>
+
+                                <img width="30%" src="{{ asset('images/' . $featureImage->feature_image) }}">
                             </td>
                             <td class="px-3 py-2   text-sm">
-                                <p class="text-gray-300 whitespace-no-wrap">{{ $slider->link1 }}</p>
+                                <p class="text-gray-300 whitespace-no-wrap">{{ $featureImage->link }}</p>
                             </td>
-                            <td class="px-3 py-2   text-sm">
-                                <p class="text-gray-300 whitespace-no-wrap">{{ $slider->link2 }}</p>
-                            </td>
+
 
                             <td class="px-3 py-1   text-sm">
 
 
                                 <div class="flex items-center gap-x-3 justify-end">
-                                    <x-button type="button" wire:click="EditSlider({{ $slider->id }})"
+                                    <x-button type="button" wire:click="EditImage({{ $featureImage->id }})"
                                         icon="pencil" class="px-1.5 py-1" primary />
 
-                                    <x-button wire:click="DeleteConfirmaton({{ $slider->id }})" icon="x"
+                                    <x-button wire:click="DeleteConfirmaton({{ $featureImage->id }})" icon="x"
                                         class="px-1.5 py-1" negative />
                                 </div>
 
@@ -174,7 +164,7 @@
 
             <div class="px-5 py-5">
                 <span class="text-xs xs:text-sm text-gray-300">
-                    {{ $sliders->links() }}
+                    {{ $featureImages->links() }}
                 </span>
             </div>
         </div>
@@ -183,7 +173,7 @@
 
 
 
-    <x-modal.card title="Page Slider" blur wire:model="showModalForm">
+    <x-modal.card title="Feature Image" blur wire:model="showFeaturedForm">
         <x-errors class="mb-4" />
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
 
@@ -193,15 +183,37 @@
             <div class="col-span-1 sm:col-span-2">
                 <x-input label="Caption" placeholder="Caption" wire:model.defer="caption" />
             </div>
+            @if ($featuredImage)
+                Project Image:
+                <img width="50%" src="{{ asset('images/' . $featuredImage) }}">
+            @endif
+            @if ($image)
+                Photo Preview:
+                <img src="{{ $image->temporaryUrl() }}">
+            @endif
+            <label class="inline-block mb-2 text-gray-500">Feature Image</label>
+
             <div class="col-span-1 sm:col-span-2">
-                <x-input label="Banner Id" placeholder="Banner Id" wire:model.defer="bannerId" />
+                <label class="flex flex-col w-full h-32 border-2 border-dashed hover:bg-gray-500 hover:border-gray-300">
+                    <div class="flex flex-col items-center justify-center pt-7">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            class="w-12 h-12 text-gray-400 group-hover:text-gray-600" viewBox="0 0 20 20"
+                            fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        <p class="pt-1 text-sm tracking-wider text-gray-400 group-hover:text-gray-600">
+                            Select a photo</p>
+                    </div>
+                    <input wire:model="image" type="file" class="opacity-0" />
+                </label>
             </div>
+
             <div class="col-span-1 sm:col-span-2">
-                <x-input label="Link 1" placeholder="Link 1" wire:model.defer="link1" />
+                <x-input label="Link" placeholder="Link" wire:model.defer="link" />
             </div>
-            <div class="col-span-1 sm:col-span-2">
-                <x-input label="Link 1" placeholder="Link 1" wire:model.defer="link1" />
-            </div>
+
         </div>
 
         <x-slot name="footer">
@@ -210,15 +222,13 @@
 
                 <div class="flex">
                     <x-button flat label="Cancel" x-on:click="close" />
-                    @if ($sliderId)
+                    @if ($featureImageId)
                         <div class="flex items-center gap-x-3 justify-end">
-                            <x-button wire:click="updateSlider" label="Update" wire:loading.attr="disabled"
-                                primary />
+                            <x-button wire:click="updateImage" label="Update" wire:loading.attr="disabled" primary />
                         </div>
                     @else
                         <div class="flex items-center gap-x-3 justify-end">
-                            <x-button wire:click="createSlider" label="Create" wire:loading.attr="disabled"
-                                primary />
+                            <x-button wire:click="createImage" label="Create" wire:loading.attr="disabled" primary />
                         </div>
                     @endif
 

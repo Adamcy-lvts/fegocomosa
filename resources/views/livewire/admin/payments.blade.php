@@ -1,8 +1,8 @@
 <div>
-    @if (auth()->user()->hasAnyRole(['Super-Admin', 'admin']))
+    @if (auth()->user()->hasRole(['Super-Admin', 'admin', 'accountant']))
         <x-slot name="header">
             <h2 class=" text-white font-sans text-3xl leading-tight">
-                {{ __('Members') }}
+                {{ __('Payments') }}
             </h2>
         </x-slot>
 
@@ -11,20 +11,20 @@
                 <x-jet-banner />
             @endif
         </div>
-
-        <x-button label="Add Member" href="{{ route('member.create') }}" icon="user-add" />
-
+        @can('make payment')
+            <x-button label="Make Payment" wire:click="paymentModal" icon="user-add" />
+        @endcan
         <div class="my-2 flex sm:flex-row flex-col">
 
 
-            @if ($checkedUsers)
+            @if ($checkedPayments)
                 <x-jet-dropdown align="right" width="48">
                     <x-slot name="trigger">
 
                         <span class="inline-flex rounded-md">
                             <button type="button"
                                 class=" ml-3 inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition">
-                                {{ count($checkedUsers) }} Selected Record(s)
+                                {{ count($checkedPayments) }} Selected Record(s)
 
                                 <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                                     fill="currentColor">
@@ -59,34 +59,9 @@
                     <option>5</option>
                     <option>10</option>
                     <option>15</option>
+                    <option>20</option>
                 </x-native-select>
 
-                <x-native-select label="Filter by State" wire:model="FilterByState" placeholder="Filter By State">
-                    @foreach ($states as $state)
-                        <option value="{{ $state->id }}">{{ $state->name }}</option>
-                    @endforeach
-                </x-native-select>
-
-                @if (!is_null($cities))
-                    <x-native-select label="Filter by City" placeholder="Filter by City" wire:model="FilterByCity">
-                        @foreach ($cities as $city)
-                            <option value="{{ $city->id }}">{{ $city->name }}</option>
-                        @endforeach
-                    </x-native-select>
-                @endif
-
-                <x-native-select label="Filter By Profession" placeholder="Filter By Profession"
-                    wire:model="FilterByProfession">
-                    @foreach ($professionCategories as $category)
-                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                    @endforeach
-                </x-native-select>
-
-                <x-native-select label="Filter By House" placeholder="Filter By House" wire:model="selectedHouseFilter">
-                    @foreach ($houses as $house)
-                        <option value="{{ $house->id }}">{{ $house->name }}</option>
-                    @endforeach
-                </x-native-select>
             </div>
 
 
@@ -102,15 +77,16 @@
             @if ($checkPageItems)
                 <div>
                     @if ($checkAllItems)
-                        <div> You have selected all <strong>{{ $members->total() }}</strong> records</div>
+                        <div> You have selected all <strong>{{ $payments->total() }}</strong> records</div>
                     @else
-                        You have selected <strong>{{ count($checkedUsers) }}</strong> records, do you wan to select All
-                        <strong>{{ $members->total() }}</strong> records?
+                        You have selected <strong>{{ count($checkedPayments) }}</strong> records, do you want to select
+                        All
+                        records?
                         <a href="#" wire:click="checkAllItems">Select All Records</a>
                     @endif
                 </div>
-
             @endif
+
 
         </div>
 
@@ -141,12 +117,17 @@
 
                             <th
                                 class="px-5 py-3   text-left text-xs font-semibold text-gray-300 uppercase tracking-wider">
-                                Email
+                                Amount
                             </th>
 
                             <th
                                 class="px-5 py-3   text-left text-xs font-semibold text-gray-300 uppercase tracking-wider">
-                                Membership Payment
+                                Payment Year
+                            </th>
+
+                            <th
+                                class="px-5 py-3   text-left text-xs font-semibold text-gray-300 uppercase tracking-wider">
+                                Paid On
                             </th>
 
                             <th
@@ -167,19 +148,20 @@
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-slate-700">
-                        @forelse ($members as $member)
+                        @forelse ($payments as $payment)
                             <tr class="divide-y divide-slate-700">
                                 <td class="px-3 py-2  ">
-                                    <x-jet-checkbox value="{{ $member->id }}" wire:model="checkedUsers">
+                                    <x-jet-checkbox value="{{ $payment->id }}" wire:model="checkedPayments">
                                     </x-jet-checkbox>
                                 </td>
                                 <td class="px-3 py-2  text-gray-300  text-sm">
-                                    {{ $member->id }}
+                                    {{ $payment->id }}
                                 </td>
                                 <td class="px-3 py-2   text-sm">
-                                    <a href="{{ route('member.profile', $member->id) }}">
+                                    <a href="{{ route('member.profile', $payment->id) }}">
                                         <p class="text-gray-300 whitespace-no-wrap">
-                                            {{ $member->first_name . ' ' . $member->last_name }}</p>
+                                            {{-- {{ dd($payment->member()) }} --}}
+                                            {{ $payment->user->first_name . ' ' . $payment->user->last_name }}</p>
                                     </a>
                                 </td>
 
@@ -187,7 +169,7 @@
                                     <div class="flex items-center">
                                         <div class="flex-shrink-0 w-10 h-10">
                                             <img class="h-10 w-10 rounded-full object-cover"
-                                                src="{{ $member->profile_photo_url }}"
+                                                src="{{ $payment->user->profile_photo_url }}"
                                                 alt="{{ Auth::user()->name }}" />
                                         </div>
                                         <div class="ml-3">
@@ -200,52 +182,40 @@
 
                                 <td class="px-3 py-2   text-sm">
                                     <p class="text-gray-300 whitespace-no-wrap">
-                                        {{ $member->email }}
+                                        {{ $payment->amount }}
                                     </p>
                                 </td>
 
                                 <td class="px-3 py-2   text-sm">
-                                    @if ($member->paid($member))
-                                        <p class="font-bold text-green-700 p-4 bg-green-200 whitespace-no-wrap"> PAID
-                                        </p>
-                                    @else
-                                        <p class="font-bold text-red-700 p-4 bg-red-200 whitespace-no-wrap"> NOT PAID
-                                        </p>
-                                    @endif
-
+                                    <p class="text-gray-300 whitespace-no-wrap">{{ $payment->year }}</p>
                                 </td>
 
                                 <td class="px-3 py-2   text-sm">
-                                    <p class="text-gray-300 whitespace-no-wrap">{{ $member->phone }}</p>
+                                    @php
+                                        $date = Carbon\Carbon::create($payment->datetime);
+                                    @endphp
+                                    <p class="text-gray-300 whitespace-no-wrap">
+                                        {{ $date->toDayDateTimeString() }}</p>
                                 </td>
 
                                 <td class="px-3 py-2   text-sm">
-                                    <p class="text-gray-300 whitespace-no-wrap">{{ $member->graduationYear->year }}</p>
+                                    <p class="text-gray-300 whitespace-no-wrap">{{ $payment->user->phone }}</p>
+                                </td>
+
+                                <td class="px-3 py-2   text-sm">
+                                    <p class="text-gray-300 whitespace-no-wrap">
+                                        {{ $payment->user->graduationYear->year }}</p>
                                 </td>
 
                                 <td class="px-3 py-1   text-sm">
 
                                     <div class="flex items-center gap-x-3 justify-end">
-                                        <button type="button" wire:click="makeAmbassador({{ $member->id }})"
-                                            class="px-1.5 py-0.5 text-gray-300 hover:bg-gray-700 rounded"><i
-                                                class="fad fa-badge-check"></i></button>
-                                        @can('assign executive position')
-                                            <x-button wire:click="assignPosition({{ $member->id }})" icon="badge-check"
-                                                class="px-1.5 py-1" secondary />
+                                        @can('edit payment')
+                                            <x-button wire:click="EditPayment({{ $payment->id }})" icon="pencil"
+                                                class="px-1.5 py-1" primary />
                                         @endcan
-                                        @can('assign role')
-                                            <button type="button" wire:click="assignRole({{ $member->id }})"
-                                                class="px-1.5 py-0.5 text-gray-300 bg-indigo-500 rounded"><i
-                                                    class="fal fa-user-tag"></i></button>
-                                        @endcan
-                                        @can('assign permission')
-                                            <x-button wire:click="assignPermission({{ $member->id }})"
-                                                icon="lock-closed" class="px-1.5 py-1" secondary />
-                                        @endcan
-                                        <x-button href="{{ route('edit.member', $member->id) }}" icon="pencil"
-                                            class="px-1.5 py-1" primary />
-                                        @can('delete member')
-                                            <x-button wire:click="SingleDeleteConfirmation({{ $member->id }})"
+                                        @can('delete payment')
+                                            <x-button wire:click="SingleDeleteConfirmation({{ $payment->id }})"
                                                 icon="x" class="px-1.5 py-1" negative />
                                         @endcan
                                     </div>
@@ -279,79 +249,51 @@
 
                 <div class="px-5 py-5">
                     <span class="text-xs xs:text-sm text-gray-300">
-                        {{ $members->links() }}
+                        {{ $payments->links() }}
                     </span>
                 </div>
             </div>
         </div>
 
 
-        <x-modal.card title="Assign Roles" blur wire:model="ModalForm">
-            <x-errors />
+        <x-modal.card title="Payment" blur wire:model="showModalForm">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
 
+                <div class="col-span-1 sm:col-span-2">
+                    <x-inputs.currency label="Amount" placeholder="Amount" wire:model.defer="amount" />
+                </div>
 
-                @foreach ($roles as $role)
-                    {{-- <x-button xs icon="check" positive label="{{$role->name}}" /> --}}
-                    <x-checkbox id="right-label" label="{{ $role->name }}" wire:model.defer="assaignedRoles"
-                        value="{{ $role->id }}" />
+            </div>
+            <x-native-select label="Members" placeholder="Members" wire:model.defer="member">
+                <option>
+                    <--Select a Member-->
+                </option>
+                @foreach ($members as $member)
+                    <option value="{{ $member->id }}">
+                        {{ $member->first_name . ' ' . $member->last_name }}</option>
                 @endforeach
+            </x-native-select>
+            <x-datetime-picker label="Payment Year" placeholder="Payment Year" wire:model.defer="paymentYear" />
+            <x-datetime-picker label="Payment Date" placeholder="Payment Date" wire:model.defer="paymentDate" />
 
-            </div>
             <x-slot name="footer">
                 <div class="flex justify-between gap-x-4">
-                    <x-button flat label="Cancel" x-on:click="close" />
+                    <x-button flat negative label="Delete" wire:click="delete" />
 
-                    <div class="flex items-center gap-x-3 justify-end">
-                        <x-button wire:click="assign" label="Assign" wire:loading.attr="disabled" primary />
+                    <div class="flex">
+                        <x-button flat label="Cancel" x-on:click="close" />
+                        @if ($paymentId)
+                            <div class="flex items-center gap-x-3 justify-end">
+                                <x-button wire:click="updatePayment" label="Update" wire:loading.attr="disabled" />
+                            </div>
+                        @else
+                            <div class="flex items-center gap-x-3 justify-end">
+                                <x-button wire:click="payment" label="Pay" wire:loading.attr="disabled" />
+                            </div>
+                        @endif
+
                     </div>
                 </div>
-            </x-slot>
-        </x-modal.card>
-
-        <x-modal.card title="Assign Position" blur wire:model="ModalPositionedForm">
-            <x-errors />
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                <x-native-select label="Position" placeholder="Position" wire:model.defer="selectedPosition">
-                    <option>
-                        <--Select position-->
-                    </option>
-                    @foreach ($positions as $position)
-                        <option value="{{ $position->name }}">
-                            {{ $position->name }}</option>
-                    @endforeach
-                </x-native-select>
-            </div>
-            @if ($executiveMemberImage)
-                Executive Member Image:
-                <img class="w-48" src="{{ asset('storage/members_images/' . $executiveMemberImage) }}">
-            @endif
-            <x-slot name="footer">
-                <div class="flex justify-between gap-x-4">
-                    <x-button flat label="Cancel" x-on:click="close" />
-                    <div class="flex items-center gap-x-3 justify-end">
-                        <x-button wire:click="givePosition" label="Assign" wire:loading.attr="disabled" primary />
-                    </div>
-                </div>
-
-            </x-slot>
-        </x-modal.card>
-
-        <x-modal.card title="Assign Set Ambasssador" blur wire:model="AmbassadorModal">
-            <x-errors />
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                <x-datetime-picker without-time label="Graduation Year" placeholder="Graduation Year"
-                    wire:model.defer="year" />
-            </div>
-            <x-slot name="footer">
-                <div class="flex justify-between gap-x-4">
-                    <x-button flat label="Cancel" x-on:click="close" />
-                    <div class="flex items-center gap-x-3 justify-end">
-                        <x-button wire:click="assignAmbassador" label="Assign" wire:loading.attr="disabled"
-                            primary />
-                    </div>
-                </div>
-
             </x-slot>
         </x-modal.card>
 
@@ -402,5 +344,4 @@
         </div>
 
     @endif
-
 </div>

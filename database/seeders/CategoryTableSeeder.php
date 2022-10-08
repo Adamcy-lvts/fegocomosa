@@ -44,8 +44,8 @@ class CategoryTableSeeder extends Seeder
                 ]);
     
             Category::create([
-                'name' => "Police",
-                'slug' => "nurses",
+                'name' => "Paramilitary",
+                'slug' => "paramilitary",
                 'icon' => 'fa-thin fa-siren fa-2xl'
     
                 ]);
@@ -53,12 +53,34 @@ class CategoryTableSeeder extends Seeder
             Category::create([
                 'name' => "Business",
                 'slug' => "business",
+                'icon' => 'fa-thin fa-briefcase fa-2xl'
+    
+                ]);
+            Category::create([
+                'name' => "Entrepreneurs",
+                'slug' => "entrepreneurs",
                 'icon' => 'fa-thin fa-chart-pie fa-2xl'
     
                 ]);
+            Category::create([
+                'name' => "Civil Servants",
+                'slug' => "civil-servants",
+                'icon' => 'fa-thin fa-user-tie-hair fa-2xl'
     
-            
-             Category::create([
+                ]);
+            Category::create([
+                'name' => "Artist",
+                'slug' => "artist",
+                'icon' => 'fa-thin fa-microphone-lines fa-2xl'
+    
+                ]);
+            Category::create([
+                'name' => "Architect",
+                'slug' => "architect",
+                'icon' => 'fa-thin fa-ruler-triangle fa-2xl'
+  
+                ]);
+            Category::create([
                 'name' => "Military",
                 'slug' => "military",
                 'icon' => 'fa-thin fa-jet-fighter fa-2xl'
@@ -67,10 +89,38 @@ class CategoryTableSeeder extends Seeder
             Category::create([
                 'name' => "Bankers",
                 'slug' => "bankers",
-                'icon' => 'fa-thin fa-building-columns fa-2xl'
+                'icon' => 'fa-thin fa-sack-dollar fa-2xl'
     
                 ]);
+            Category::create([
+            'name' => "Accademicians",
+            'slug' => "accademicians",
+            'icon' => 'fa-thin fa-graduation-cap fa-2xl'
+
+            ]);
+            Category::create([
+            'name' => "Graphic Designers",
+            'slug' => "grapic-designers",
+            'icon' => 'fa-thin fa-pen-nib fa-2xl'
+
+            ]);
+             Category::create([
+            'name' => "Politicians",
+            'slug' => "politicians",
+            'icon' => 'fa-thin fa-box-ballot fa-2xl'
+
+            ]);
+             Category::create([
+            'name' => "Programmers",
+            'slug' => "programmers",
+            'icon' => 'fa-thin fa-code fa-2xl'
+            ]);
+             Category::create([
+            'name' => "Journalist",
+            'slug' => "Journalist",
+            'icon' => 'fa-thin fa-microphone fa-2xl'
+            ]);
          }
-            
+        
     }
 }

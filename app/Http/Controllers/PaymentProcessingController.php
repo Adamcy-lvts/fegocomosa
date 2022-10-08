@@ -11,7 +11,7 @@ use App\Http\Requests;
 use App\Models\Donation;
 use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
-use App\Models\MembershipFee;
+use App\Models\MembershipPayment;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
@@ -67,11 +67,13 @@ class PaymentProcessingController extends Controller
                 $user  = User::find($payDetails['metadata']['member_id']);
             }
             
-
-            MembershipFee::create([
+            date_default_timezone_set("Africa/Lagos");
+            MembershipPayment::create([
                 'user_id' => $user->id,
-                'amount' => $payDetails['amount'],
+                'amount' => $payDetails['amount']/100,
                 'year'   => Carbon::parse($payDetails['paid_at'])->format('Y'),
+                'datetime'   => date('Y-m-d G:i:s', strtotime($payDetails['transaction_date']))
+                
             ]); 
 
              return back()->withInput();

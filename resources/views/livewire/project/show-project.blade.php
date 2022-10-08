@@ -1,7 +1,7 @@
 <div>
     <section class="text-gray-600 body-font">
         <div class="container px-5 py-24 mx-auto flex flex-col">
-            <div class="lg:w-4/6 mx-auto">
+            <div class="lg:w-4/6 mx-0 sm:mx-auto">
                 <h1 class="text-lg md:text-2xl mb-4">{{ $project->title }}</h1>
                 <div class="rounded-lg ">
                     <div class="project-slider" data-carousel>
@@ -22,10 +22,10 @@
                         <div class="sm:w-2/3 text-center sm:pr-8 sm:py-8">
                             <!-- Project Info -->
                             <h1 class="text-sm md:text-2xl mb-4">Project Details</h1>
-                            <div class="flex md:gap-5 flex-col text-left text-sm">
+                            <div class="flex md:gap-5 flex-col text-left text-sm sm:text-lg">
                                 <div class="flex flex-col gap-4 mb-4 md:mb-0 ">
                                     <div class="flex justify-between">
-                                        <div class="text-left">Proposed By</div>
+                                        <div class="text-left">Proposed By:</div>
                                         <div class="text-left">{{ $project->proposed_by }}</div>
                                     </div>
 
@@ -34,27 +34,47 @@
                                         $completionDate = Carbon\Carbon::parse($project->completion_date);
                                     @endphp
                                     <div class="flex justify-between">
-                                        <div class="text-left">Executed By</div>
+                                        <div class="text-left">Executed By:</div>
                                         <div class="text-left">{{ $project->executed_by }}</div>
                                     </div>
                                     <div class="flex justify-between">
-                                        <div>Staring Date</div>
+                                        <div>Staring Date:</div>
                                         <div>{{ $startingDate->format('jS F Y') }}</div>
                                     </div>
                                 </div>
 
                                 <div class="flex flex-col gap-4 ">
                                     <div class="flex justify-between">
-                                        <div>Completion Date</div>
-                                        <div>{{ $completionDate->format('jS F Y') }}</div>
+                                        <div>Completion Date:</div>
+                                        @if ($completionDate)
+                                            <div>{{ $completionDate->format('jS F Y') }}</div>
+                                        @else
+                                            <p>--</p>
+                                        @endif
+
                                     </div>
 
                                     <div class="flex justify-between">
-                                        <div>Budget</div>
+                                        <div>Budget:</div>
                                         <div><span> &#x20A6;</span>{{ number_format($project->budget) }}</div>
                                     </div>
 
+                                    <div class="flex justify-between">
+                                        <div>Status:</div>
+                                        <div>{{ $project->status }}</div>
+                                    </div>
+
+
                                 </div>
+
+                                <!--progress bar-->
+                                <div class="progress-container mt-4 text-sm sm:text-lg pr-3">
+                                    <h4>Progress:</h4>
+                                    <div class="progress-bar w-full " data-effect="1"
+                                        data-value="{{ $project->progress_indicator }}" data-skill="">
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                         <div

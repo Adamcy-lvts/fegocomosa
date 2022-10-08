@@ -12,7 +12,7 @@
         @else
             <div class="text-gray-500 mb-2">
                 <span class="text-5xl"><span>
-                        &#x20A6;</span>{{ number_format($membershipPayment->amount / 100) }}</span>
+                        &#x20A6;</span>{{ number_format($membershipPayment->amount) }}</span>
                 <span class="text-sm text-green-600 align-top">Paid</span>
             </div>
             <div class="text-sm uppercase text-grey tracking-wide">

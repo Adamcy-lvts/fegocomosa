@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class MembershipFee extends Model
+class FeatureImage extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'amount', 'year'
+        'title', 'caption', 'feature_image', 'link'
     ];
 }

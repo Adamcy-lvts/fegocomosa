@@ -75,6 +75,7 @@
     @stack('flickty-scripts')
     <script src="{{ asset('js/jquery-3.4.1.js') }}"></script>
     @stack('donation-script')
+    {{-- @stack('script-slider') --}}
     <script src="{{ asset('js/progressbar.js') }}"></script>
     @yield('script')
 

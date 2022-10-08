@@ -26,7 +26,7 @@
                         <div class="flex md:flex-row flex-col">
                             @livewire('user-dashboard.stats.donation-count')
                             @livewire('user-dashboard.stats.profile-views')
-                            @livewire('user-dashboard.stats.membership-payment')
+                            @livewire('user-dashboard.stats.membership-payments')
                         </div>
 
                     </div>
@@ -44,7 +44,7 @@
 
 
                         <div class="w-full lg:w-1/2 px-4 ">
-                            @if (!auth()->user()->paid())
+                            @if (!auth()->user()->paid(auth()->user()))
                                 <div class="bg-white border-t border-b sm:rounded mb-4 sm:border shadow">
                                     <div class="border-b">
                                         <div class="flex justify-between px-6 -mb-px">

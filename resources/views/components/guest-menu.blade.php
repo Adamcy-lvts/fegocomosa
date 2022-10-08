@@ -18,12 +18,15 @@
             <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center ">
                 <div class="flex justify-between h-16">
                     <div class=" hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-jet-nav-link href="{{ route('welcome') }}" :active="request()->routeIs('welcome')">
-                            {{ __('Home') }}
-                        </x-jet-nav-link>
+                        @foreach ($guestNavbar as $key => $navbar)
+                            <x-jet-nav-link href="{{ route($navbar->link) }}" :active="request()->routeIs($navbar->link)">
+                                {{ __($navbar->name) }}
+                            </x-jet-nav-link>
+                        @endforeach
+
                     </div>
 
-                    <div class=" hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    {{-- <div class=" hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                         <x-jet-nav-link href="{{ route('aboutus') }}" :active="request()->routeIs('aboutus')">
                             {{ __('About Us') }}
                         </x-jet-nav-link>
@@ -39,7 +42,7 @@
                         <x-jet-nav-link href="{{ route('campaigns') }}" :active="request()->routeIs('campaigns*')">
                             {{ __('Fundraiser') }}
                         </x-jet-nav-link>
-                    </div>
+                    </div> --}}
                 </div>
             </nav>
             <x-button xs href="{{ route('login') }}" outline green icon="arrow-circle-right" label="Sign In"

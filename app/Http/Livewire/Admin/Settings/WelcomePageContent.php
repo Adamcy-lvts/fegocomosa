@@ -220,100 +220,7 @@ public function getSliderSProperty()
     {
         return GuestSlider::where('title', 'LIKE', '%' . $this->search . '%');
     }
-
-// MEMBERSHIP INFO 
-    public function memberInfoModal()
-    {
-        $this->reset();
-        $this->infoModalForm = true;
-    }
-
-    public function createInfo()
-    {
-        // dd(request()->info);
-        $this->validate([
-            'info1' => 'required', 
-            'info2' => 'required', 
-        ]);
-        $logo_name = $this->logo->getClientOriginalName();
-        $this->logo->storeAs('public/photos', $logo_name);
-        $guestInfo = MembershipInfo::create([
-            'h1'   => $this->h1,
-            'h2'   => $this->h2,
-            'link1' => $this->Inlink,
-            'link2' => $this->Uplink,
-            'info1' => $this->info1,
-            'info2' => $this->info2,
-            'logo' => $logo_name,
-            
-            ]);
-dd($guestInfo);
-        $this->reset();
-
-        $this->notification()->success(
-            $title = 'Success',
-            $description = 'Info Created Successfully'
-        );
-    }
-
-    public function EditMemberInfo($id)
-    {
-        $this->reset();
-        $this->infoModalForm = true;
-        $this->infoId = $id;
-        $guestInfo = MembershipInfo::find($this->infoId);
-
-
-        $this->loadguestInfo();
-    }
-
-    public function loadguestInfo()
-    {
-        
-        $guestInfo = MembershipInfo::findOrFail($this->infoId);
-        $this->h1 = $guestInfo->h1;
-        $this->h2 = $guestInfo->h2;
-        $this->Inlink = $guestInfo->link1;
-        $this->Uplink = $guestInfo->link2;
-        $this->info1 = $guestInfo->info1;
-        $this->info2 = $guestInfo->info2;
-        $this->postedLogo = $guestInfo->logo;
     
-    }
-
-    public function updateInfo()
-    {
-        $this->validate([
-            'info1' => 'required', 
-        ]);
-
-        if ($this->logo) {
-            Storage::delete('public/photos/'. $this->postedLogo);
-            $this->postedLogo = $this->logo->getClientOriginalName();
-            $this->logo->storeAs('public/photos/', $this->postedLogo);
-        }
-
-        $guestInfo = MembershipInfo::find($this->infoId);
-        
-        $guestInfo->update([
-            'h1'    => $this->h1,
-            'h2'    => $this->h2,
-            'link1'    => $this->Inlink,
-            'link2'    => $this->Uplink,
-             'info1'    => $this->info1,
-             'info2'    => $this->info2,
-             'logo'    => $this->postedLogo,
-        ]);
-        
-        $this->reset();
-
-        $this->notification()->success(
-            $title = 'Success',
-            $description = 'Membership Info Updated Successfully'
-        );
-       
-
-    }
 
     public function DeleteConfirm($id)
     {
@@ -344,7 +251,6 @@ dd($guestInfo);
     {
         return view('livewire.admin.settings.welcome-page-content',[
             'sliders' => $this->sliders, 
-            'membershipinfo' => MembershipInfo::all(),
         ])->layout('components.dashboard');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMembershipFeesTable extends Migration
+class CreateFeatureImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateMembershipFeesTable extends Migration
      */
     public function up()
     {
-        Schema::create('membership_fees', function (Blueprint $table) {
+        Schema::create('feature_images', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('amount');
-            $table->year('year');
+            $table->string('feature_image');
+            $table->string('title')->nullable();
+             $table->string('caption')->nullable();
+            $table->string('link')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateMembershipFeesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('membership_fees');
+        Schema::dropIfExists('feature_images');
     }
 }

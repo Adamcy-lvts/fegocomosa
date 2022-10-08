@@ -17,8 +17,6 @@
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" charset="utf-8"></script> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-
-
 </head>
 
 <body>
@@ -66,24 +64,36 @@
                         <span class="feather feather-columns ml-3">Permissions</span>
                     </a>
                 </li>
-                <li class="nav-list-item {{ Request::is('admin/members') ? 'active' : '' }}">
-                    <a class="nav-list-link" href="{{ route('members.data') }}">
-                        <i class="fal fa-lg fa-users"></i>
-                        <span class="feather feather-columns feather feather-columns ml-3">Members</span>
+                @if (auth()->user()->hasAnyRole(['Super-Admin', 'admin']))
+                    <li class="nav-list-item {{ Request::is('admin/members') ? 'active' : '' }}">
+                        <a class="nav-list-link" href="{{ route('members.data') }}">
+                            <i class="fal fa-lg fa-users"></i>
+                            <span class="feather feather-columns feather feather-columns ml-3">Members</span>
+                        </a>
+                    </li>
+                @endif
+                <li class="nav-list-item {{ Request::is('admin/payments') ? 'active' : '' }}">
+                    <a class="nav-list-link" href="{{ route('payments') }}">
+                        <i class="fa-thin fa-lg fa-money-check-dollar-pen"></i>
+                        <span class="feather feather-columns feather feather-columns ml-3">Payments</span>
                     </a>
                 </li>
-                <li class="nav-list-item {{ Request::is('admin/posts') ? 'active' : '' }}">
-                    <a class="nav-list-link" href="{{ route('posts.data') }}">
-                        <i class="fal fa-lg fa-newspaper"></i>
-                        <span class="feather feather-columns ml-3"> Post</span>
-                    </a>
-                </li>
-                <li class="nav-list-item {{ Request::is('admin/events') ? 'active' : '' }}">
-                    <a class="nav-list-link" href="{{ route('event.data') }}">
-                        <i class="fal fa-lg fa-calendar-alt"></i>
-                        <span class="feather feather-columns ml-3">Event</span>
-                    </a>
-                </li>
+                @can('access article')
+                    <li class="nav-list-item {{ Request::is('admin/posts') ? 'active' : '' }}">
+                        <a class="nav-list-link" href="{{ route('posts.data') }}">
+                            <i class="fal fa-lg fa-newspaper"></i>
+                            <span class="feather feather-columns ml-3"> Post</span>
+                        </a>
+                    </li>
+                @endcan
+                @can('access events')
+                    <li class="nav-list-item {{ Request::is('admin/events') ? 'active' : '' }}">
+                        <a class="nav-list-link" href="{{ route('event.data') }}">
+                            <i class="fal fa-lg fa-calendar-alt"></i>
+                            <span class="feather feather-columns ml-3">Event</span>
+                        </a>
+                    </li>
+                @endcan
                 <li class="nav-list-item {{ Request::is('admin/projects') ? 'active' : '' }}">
                     <a class="nav-list-link" href="{{ route('projects.data') }}">
                         <i class="fa-light fa-lg  fa-bars-progress"></i>
@@ -127,8 +137,8 @@
 
                         </div>
                     </div>
-                    <li class="nav-list-item {{ Request::is('admin/settings/welcomepage') ? 'active' : '' }}">
-                        <a class="nav-list-link" href="{{ route('welcomepage.slider') }}">
+                    <li class="nav-list-item {{ Request::is('admin/settings') ? 'active' : '' }}">
+                        <a class="nav-list-link" href="{{ route('settings') }}">
 
                             <i class="fal fa-lg fa-cog"></i>
                             <span class="feather feather-columns ml-3">Settings</span>

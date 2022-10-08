@@ -40,6 +40,7 @@ class RegistrationTest extends TestCase
 
     public function test_new_users_can_register()
     {
+        
          $this->withoutExceptionHandling();
 
           $user = User::factory()->create();
@@ -64,7 +65,7 @@ class RegistrationTest extends TestCase
             'first_name'        => 'Mohammed',
             'middle_name'       => '',
             'last_name'         => 'Ali',
-            'date_of_birth'     =>  Carbon::parse('1991-04-12'),
+            'date_of_birth'     =>  "12/04/1991",
             'gender_id'         =>  1,
             'marital_status_id' =>  2,
             'address'           => 'Bama, Borno State',
@@ -79,8 +80,8 @@ class RegistrationTest extends TestCase
             'house_id'          => 2,
             'university'        => 'unimaid',
             'course_of_study'   => 'EEE',
-            'entry_year_id'     => Carbon::parse('2000-04-12'),
-            'graduation_year_id'=> Carbon::parse('2006-04-12'),
+            'entry_year_id'     => "04/04/2021",
+            'graduation_year_id'=> "04/04/2022",
             'profession_category' => 1,
             'email' => 'test@example.com',
             'password' => 'password',

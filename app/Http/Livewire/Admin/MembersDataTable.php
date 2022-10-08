@@ -16,6 +16,7 @@ use Livewire\WithPagination;
 use App\Models\MaritalStatus;
 use App\Models\SetAmbassador;
 use Livewire\WithFileUploads;
+use App\Models\ExecutiveMember;
 use App\Models\GraduationYears;
 use App\Models\ExecutiveMembers;
 use App\Models\CategoryProfession;
@@ -62,7 +63,10 @@ class MembersDataTable extends Component
     public $userRoles;
     public $assignedPosition;
     public $ModalPositionedForm = false;
-    public $userPositions;
+    public $selectedPosition;
+    public $executiveId;
+    public $executiveMemberImage;
+
     public $AmbassadorModal = false;
     public $year;
     
@@ -104,18 +108,42 @@ class MembersDataTable extends Component
         $this->ModalPositionedForm = true;
         $this->memberId = $id;
 
-        $user = User::find($this->memberId);
+        $user = User::find($id);
 
-        $this->assignedPosition = $this->userPositions = $user->position()->pluck('id');
+        $this->executiveId = $user->executive_member->id ?? '';
+
+        $executiveIdMember = ExecutiveMember::find($this->executiveId);
+
+        $this->selectedPosition = $executiveIdMember->position ?? '';
+
+        $this->executiveMemberImage = $executiveIdMember->user->potrait_image ?? '';
+
+
     }
 
     public function givePosition()
     {
-        // dd($this->assignedPosition);
 
-       Position::find($this->assignedPosition)->update([
-            'user_id' => $this->memberId
-        ]);
+        $executiveIdMember = ExecutiveMember::find($this->executiveId);
+
+        if ($executiveIdMember) {
+
+            $executiveIdMember->delete();
+        }
+
+       ExecutiveMember::updateOrCreate(
+        
+        [
+           'position' => $this->selectedPosition,
+        ],
+        
+        [
+           'user_id' => $this->memberId,
+          
+       ]);
+
+
+
         $this->reset();
 
         $this->notification()->success(

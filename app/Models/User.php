@@ -10,10 +10,11 @@ use App\Models\Position;
 use App\Models\Education;
 use App\Models\Reference;
 use App\Models\Experience;
-use App\Models\MembershipFee;
 use App\Models\SetAmbassador;
+use App\Models\ExecutiveMember;
 use App\Models\SocialMediaLink;
 use App\Models\ExecutiveMembers;
+use App\Models\MembershipPayment;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\LoginLogoutActivity;
 use Laravel\Jetstream\HasProfilePhoto;
@@ -121,9 +122,9 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsTo('App\Models\MaritalStatus');
     }
 
-    public function position()
+    public function executive_member()
     {
-        return $this->hasOne(Position::class);
+        return $this->hasOne(ExecutiveMember::class);
     }
 
     public function ambassador()
@@ -181,9 +182,9 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Skill::class);
     }
 
-    public function membershipfee()
+    public function payments()
     {
-        return $this->hasMany(MembershipFee::class);
+        return $this->hasMany(MembershipPayment::class);
     }
 
    public function authentications()
@@ -196,9 +197,9 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->save();
    }
 
-   public function paid()
+   public function paid($user)
    {
-    $membershipPayment = $this->membershipfee()->where('user_id', auth()->user()->id)
+    $membershipPayment = $this->payments()->where('user_id', $user->id)
                 ->where('year', now()->year)
                 ->first();
       return $membershipPayment;       

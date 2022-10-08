@@ -5,19 +5,19 @@
             <a x-bind="tab"
                 class="inline-flex w-full  items-center justify-center px-8 py-4 text-sm font-medium text-gray-600 transition"
                 :class="activeTab === 0 ? 'text-green-600 border-green-500' : ''" @click="activeTab = 0"
-                href="#in-all-projects#">All Projects</a>
+                href="#in-all-projects">All Projects</a>
             <a x-bind="tab"
                 class="inline-flex w-full items-center justify-center px-8 py-4 text-sm font-medium text-gray-600 transition"
                 :class="activeTab === 1 ? 'text-green-600 border-green-500' : ''" @click="activeTab = 1"
-                href="#completed#">Completed Projects</a>
+                href="#completed">Completed Projects</a>
             <a x-bind="tab"
                 class="inline-flex w-full items-center justify-center px-8 py-4 text-sm font-medium text-gray-600 transition"
                 :class="activeTab === 2 ? 'text-green-600 border-green-500' : ''" @click="activeTab = 2"
-                href="#in-progress#">Projects In Progress</a>
+                href="#in-progress">Projects In Progress</a>
             <a x-bind="tab"
                 class="inline-flex w-full items-center justify-center px-8 py-4 text-sm font-medium text-gray-600 transition"
                 :class="activeTab === 3 ? 'text-green-600 border-green-500' : ''" @click="activeTab = 3"
-                href="#proposed#">Proposed Projects</a>
+                href="#proposed">Proposed Projects</a>
 
             <div x-bind="indicator"
                 class="border-t-2 border-green-600 absolute left-0 bottom-0 transition-all duration-500"></div>
@@ -65,7 +65,8 @@
             </div>
         </div>
         <div x-show="activeTab===1">
-            <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+            <div id="completed"
+                class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
                 {{-- COMPLETED PROJECTS --}}
                 <div class="grid gap-8 lg:grid-cols-3 sm:max-w-sm sm:mx-auto lg:max-w-full">
                     @foreach ($completedProjects as $project)
@@ -141,6 +142,8 @@
 
 @section('script')
     <script>
+        // console.log(hash);
+
         function tabs() {
             return {
                 previousTab: 0,
@@ -161,8 +164,21 @@
                         const element = this.$refs.tabs.children[0]
 
                         this.setWidthAndXFromElement(element)
-
+                        console.log(element)
                         element.classList.add('text-green-600')
+
+                        var hash = document.location.hash
+
+                        if (hash == '#completed') {
+                            this.activeTab = 1
+                        } else if (hash == '#in-progress') {
+                            this.activeTab = 2
+                        } else if (hash == '#proposed') {
+                            this.activeTab = 3
+                        } else {
+                            this.activeTab = 0
+                        }
+
                     },
                 },
 
@@ -183,7 +199,7 @@
                         this.activeTab = Array
                             .from(this.$refs.tabs.children)
                             .indexOf(element)
-
+                        // console.log(this.activeTab)
                         this.$refs.tabs.children[this.previousTab]
                             .classList
                             .remove('text-green-600')

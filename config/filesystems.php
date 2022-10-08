@@ -42,6 +42,13 @@ return [
             'visibility' => 'public',
         ],
 
+          'site_images' => [
+            'driver' => 'local',
+            'root'   => public_path(),
+            'url' => env('APP_URL').'/public',
+            'visibility' => 'public',
+         ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
@@ -54,6 +61,15 @@ return [
         ],
 
     ],
+
+    // 'disks' => [
+    //     'site_images' => [
+    //     'driver' => 'local',
+    //     'root'   => public_path() . '/images',
+    //     'url' => env('APP_URL').'/public',
+    //     'visibility' => 'public',
+    //     ]
+    // ],
 
     /*
     |--------------------------------------------------------------------------

@@ -9,7 +9,8 @@ use App\Models\Category;
 use App\Models\Position;
 use App\Models\GuestSlider;
 use App\Models\ProjectImages;
-use App\Models\MembershipInfo;
+use App\Models\ExecutiveMember;
+
 
 class Welcome extends Component
 {
@@ -21,8 +22,8 @@ class Welcome extends Component
             'events' =>Event::latest()->take(3)->where('event_date', '>', $currentDate->toDateString())->get(),
             'projectsimages' => ProjectImages::all(),
             'textsslider' => GuestSlider::all(),
-            'membershipinfo' => MembershipInfo::all(),
             'procategory'   => Category::take(6)->get(),
+            'executives'      => ExecutiveMember::orderBy('id', 'asc')->get(),
             'positions' => Position::take(4)->get(),
           
         ])->layout('layouts.guest');

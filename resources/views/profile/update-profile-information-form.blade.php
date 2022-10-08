@@ -271,6 +271,7 @@
                                   class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
                                   label="Professional Category" placeholder="Professional Category"
                                   wire:model="selectedCategory">
+                                  <option value="">-- Select Profession Category --</option>
                                   @if ($professionCategories)
                                       @foreach ($professionCategories as $category)
                                           <option value="{{ $category->id }}">{{ $category->name }}</option>

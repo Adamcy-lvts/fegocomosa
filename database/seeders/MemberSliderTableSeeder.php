@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\MemberSlider;
+use App\Models\FeatureImage;
 use Illuminate\Database\Seeder;
 
 class MemberSliderTableSeeder extends Seeder
@@ -14,40 +14,40 @@ class MemberSliderTableSeeder extends Seeder
      */
     public function run()
     {
-        if (MemberSlider::count() == 0) {
-            MemberSlider::create([
+        if (FeatureImage::count() == 0) {
+            FeatureImage::create([
             
-                'image_background' => "ariana_grande_.jpg",
-                'caption'          => 'Ariana Grande',
+                'feature_image' => "ariana_grande_.jpg",
+                'title'          => 'Ariana Grande',
                 'link'             => 'http://damore.com/aut-itaque-et-ea-voluptates',
-                'caption_2'         => 'Cuteness',
+                'caption'         => 'Cuteness',
 
             ]);
 
-            MemberSlider::create([
+            FeatureImage::create([
             
-                'image_background' => "stranger-things-1.png",
-                'caption'          => 'Stranger Things',
+                'feature_image' => "stranger-things-1.png",
+                'title'          => 'Stranger Things',
                 'link'             => 'http://damore.com/aut-itaque-et-ea-voluptates',
-                'caption_2'         => 'Upside Down',
+                'caption'         => 'Upside Down',
 
             ]);
 
-            MemberSlider::create([
+            FeatureImage::create([
             
-                'image_background' => "the_amazing_spider_man_2_emma_stone.jpg",
-                'caption'          => 'Emma Stone',
+                'feature_image' => "the_amazing_spider_man_2_emma_stone.jpg",
+                'title'          => 'Emma Stone',
                 'link'             => 'http://damore.com/aut-itaque-et-ea-voluptates',
-                'caption_2'         => 'Spider Man',
+                'caption'         => 'Spider Man',
 
             ]);
 
-            MemberSlider::create([
+            FeatureImage::create([
             
-                'image_background' => "man_of_steel_2015-wallpaper.jpg",
-                'caption'          => 'Super Man',
+                'feature_image' => "man_of_steel_2015-wallpaper.jpg",
+                'title'          => 'Super Man',
                 'link'             => 'http://damore.com/aut-itaque-et-ea-voluptates',
-                'caption_2'         => 'Man of Steel',
+                'caption'         => 'Man of Steel',
 
             ]);
         }

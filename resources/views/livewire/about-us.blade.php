@@ -40,18 +40,18 @@
                 </p>
             </div>
             <div class="flex flex-wrap -m-4">
-                @foreach ($positions as $position)
+                @foreach ($executives as $executive)
                     <div class="p-4 lg:w-1/4 md:w-1/2">
                         <div class="h-full flex flex-col items-center text-center">
-                            <a href="{{ route('member.profile', $position->user->id) }}">
+                            <a href="{{ route('member.profile', $executive->user->id) }}">
                                 <img alt="team"
                                     class="flex-shrink-0 rounded-lg w-full h-56 object-cover object-center mb-4"
-                                    src="{{ asset($position->user->profile_photo_url) }}">
+                                    src="{{ asset($executive->user->profile_photo_url) }}">
                             </a>
                             <div class="w-full">
                                 <h2 class="title-font font-medium text-lg text-gray-900">
-                                    {{ $position->user->first_name . ' ' . $position->user->last_name }}</h2>
-                                <h3 class="text-gray-500 mb-3">{{ $position->name }}</h3>
+                                    {{ $executive->user->first_name . ' ' . $executive->user->last_name }}</h2>
+                                <h3 class="text-gray-500 mb-3">{{ $executive->name }}</h3>
                                 <span class="inline-flex">
                                     <a href="#" class="text-gray-500">
                                         <i class="fab fa-facebook-f"></i>

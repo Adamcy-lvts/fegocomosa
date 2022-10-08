@@ -24,12 +24,15 @@
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('members') }}" :active="request()->routeIs('members*')">
-                        {{ __('Members') }}
-                    </x-jet-nav-link>
+                    @foreach ($menus as $menu_item)
+                        <x-jet-nav-link href="{{ route($menu_item->link) }}" :active="request()->routeIs($menu_item->link)">
+                            {{ __($menu_item->name) }}
+                        </x-jet-nav-link>
+                    @endforeach
+
                 </div>
 
-                <div class=" hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                {{-- <div class=" hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('posts') }}" :active="request()->routeIs('posts*')">
                         {{ __('Blog') }}
                     </x-jet-nav-link>
@@ -55,7 +58,7 @@
                     <x-jet-nav-link href="{{ route('events') }}" :active="request()->routeIs('events*')">
                         {{ __('Events') }}
                     </x-jet-nav-link>
-                </div>
+                </div> --}}
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">

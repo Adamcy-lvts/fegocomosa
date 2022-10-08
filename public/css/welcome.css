@@ -7,10 +7,14 @@ div h1 {
 
 /* Slideshow container */
 .slideshow-container {
-  max-width: 1000px;
+  /* max-width: 1280px; */
   position: relative;
   /* margin: auto; */
 }
+
+/* .slideshow-container img {
+    height: 720px;
+} */
 
 /* Hide the images by default */
 .mySlides {
@@ -302,6 +306,10 @@ div h1 {
   #section-1 .content-slider .slider .banner .banner-inner-wrapper {
     padding-top: 12em;
   }
+
+  .slideshow-container img {
+    height: 720px;
+}
 }
 @media only screen and (max-width: 1919px) {
   body {
@@ -380,6 +388,10 @@ div h1 {
   /* #section-1 .content-slider nav {
     bottom: -1em;
   } */
+  /* .slideshow-container img {
+    height: 720px;
+} */
+
   #section-1 .content-slider nav .controls {
     width: 90%;
   }

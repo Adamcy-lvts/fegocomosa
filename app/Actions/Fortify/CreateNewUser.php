@@ -113,7 +113,7 @@ class CreateNewUser implements CreatesNewUsers
             'marital_status_id' => $input['marital_status_id'],
             'phone'             => $input['phone'],
             'state_id'          => $input['state_id'],
-            'city_id'            => $input['city_id'],
+            'city_id'           => $input['city_id'],
             'profession'        => $input['profession'],
             'admission_number'  => $input['admission_number'],
             'jss_class'         => $input['jss_class'],

@@ -42,7 +42,35 @@
         </div>
 
     </section>
-
+    <section class="text-gray-600 body-font border-t border-gray-200">
+        <div class="container px-5 py-24 mx-auto">
+            <div class="flex flex-col text-center w-full mb-20">
+                <h2 id="ourmission" class="text-xs text-green-600 tracking-widest font-medium title-font mb-1">Pro
+                    Unitate
+                </h2>
+                <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900">Our Mission</h1>
+            </div>
+            <div class="xl:w-1/2 lg:w-3/4 w-full mx-auto text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                    class="inline-block w-8 h-8 text-gray-400 mb-8" viewBox="0 0 975.036 975.036">
+                    <path
+                        d="M925.036 57.197h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.399 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l36 76c11.6 24.399 40.3 35.1 65.1 24.399 66.2-28.6 122.101-64.8 167.7-108.8 55.601-53.7 93.7-114.3 114.3-181.9 20.601-67.6 30.9-159.8 30.9-276.8v-239c0-27.599-22.401-50-50-50zM106.036 913.497c65.4-28.5 121-64.699 166.9-108.6 56.1-53.7 94.4-114.1 115-181.2 20.6-67.1 30.899-159.6 30.899-277.5v-239c0-27.6-22.399-50-50-50h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.4 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l35.9 75.8c11.601 24.399 40.501 35.2 65.301 24.399z">
+                    </path>
+                </svg>
+                <p class="leading-relaxed text-sm sm:text-lg">Edison bulb retro cloud bread echo park, helvetica
+                    stumptown taiyaki
+                    taxidermy 90's cronut +1 kinfolk. Single-origin coffee ennui shaman taiyaki vape DIY tote bag
+                    drinking vinegar cronut adaptogen squid fanny pack vaporware. Man bun next level coloring book
+                    skateboard four loko knausgaard. Kitsch keffiyeh master cleanse direct trade indigo juice before
+                    they sold out gentrify plaid gastropub normcore XOXO 90's pickled cindigo jean shorts. Slow-carb
+                    next level shoindigoitch ethical authentic, yr scenester sriracha forage franzen organic drinking
+                    vinegar.</p>
+                <span class="inline-block h-1 w-10 rounded bg-green-500 mt-8 mb-6"></span>
+                <h2 class="text-gray-900 font-medium title-font tracking-wider text-sm">HOLDEN CAULFIELD</h2>
+                <p class="text-gray-500">Senior Product Designer</p>
+            </div>
+        </div>
+    </section>
     <section class="text-gray-700 body-font border-t border-gray-200">
         <div class=" container px-5 py-24 mx-auto">
             <div class="flex flex-col text-center w-full mb-20">
@@ -89,6 +117,7 @@
             </div>
         </div>
     </section>
+
     <section class="text-gray-700 body-font border-t border-gray-200">
         <div class="container px-5 py-24 mx-auto flex flex-wrap">
             <div class="flex flex-col gap-2 text-center w-full mb-20">
@@ -101,11 +130,11 @@
                     Proposals
                 </h1>
             </div>
-            <div class="slideshow-container lg:w-1/2 w-full mb-8 lg:mb-0 rounded-lg overflow-hidden">
+            <div class="slideshow-container lg:w-1/2 w-full  mb-8 lg:mb-0 rounded-lg overflow-hidden">
                 @foreach ($projectsimages as $projectImage)
                     <div class="mySlides fade">
                         <div class="numbertext">{{ $projectImage->id }}/{{ $projectsimages->count() }}</div>
-                        <img alt="feature" class="object-cover object-center h-full w-full"
+                        <img alt="feature" class=" object-center object-cover"
                             src="{{ asset('storage/projects_images/' . $projectImage->images) }}">
 
                         <div class="text">{{ $projectImage->caption }}</div>
@@ -131,7 +160,9 @@
                         <p class="leading-relaxed text-sm md:text-base">Blue bottle crucifix vinyl post-ironic four
                             dollar toast
                             vegan taxidermy. Gastropub indxgo juice poutine.</p>
-                        <a class="mt-3 text-green-600 inline-flex items-center">Learn More
+                        <a href="{{ url('projects#completed') }}"
+                            class="mt-3 text-green-600 inline-flex items-center">Learn
+                            More
                             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                 stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
                                 <path d="M5 12h14M12 5l7 7-7 7"></path>
@@ -175,6 +206,119 @@
                         </a>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+    <section class="text-gray-600 body-font">
+
+
+        <div class="container px-5 py-24 mx-auto flex flex-wrap">
+            <div class="flex flex-col gap-2 text-center w-full mb-5 sm:mb-20">
+
+                <h2 id="MembershipSteps" class="text-xs text-green-600 tracking-widest font-medium title-font mb-1">
+                    Membership Regisration
+                    Steps
+                </h2>
+                <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900">How to
+                    Become a Member
+                </h1>
+            </div>
+
+            <div class="flex flex-wrap w-full ">
+                <img class="lg:w-2.5/5 md:w-1/2 object-cover object-center rounded-lg md:mt-0 mt-6 block sm:hidden mb-5 sm:mb-0"
+                    src="https://dummyimage.com/1200x500" alt="step">
+                <div class="lg:w-2.5/5 md:w-1/2 md:pr-10 md:py-6">
+                    <div class="flex relative pb-12">
+                        <div class="h-full w-10 absolute inset-0 flex items-center justify-center">
+                            <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
+                        </div>
+                        <div
+                            class="flex-shrink-0 w-10 h-10 rounded-full text-lg font-semibold bg-green-500 inline-flex items-center justify-center text-white relative z-10">
+                            <i class="fa-light fa-forward-step"></i>
+                        </div>
+                        <div class="flex-grow pl-4">
+                            <h2 class="font-medium title-font text-xs sm:text-sm text-gray-900 mb-1 tracking-wider">
+                                STEP 1</h2>
+                            <p class="leading-relaxed">Click on the register button at the top of this page or <a
+                                    class="text-blue-500" href="{{ route('register') }}">click here</a> to go to the
+                                registration page.</p>
+                        </div>
+                    </div>
+                    <div class="flex relative pb-12">
+                        <div class="h-full w-10 absolute inset-0 flex items-center justify-center">
+                            <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
+                        </div>
+                        <div
+                            class="flex-shrink-0 w-10 h-10 text-lg font-semibold rounded-full bg-green-500 inline-flex items-center justify-center text-white relative z-10">
+                            <i class="fa-light fa-circle-info"></i>
+                        </div>
+                        <div class="flex-grow pl-4">
+                            <h2 class="font-medium title-font text-xs sm:text-sm text-gray-900 mb-1 tracking-wider">
+                                STEP 2</h2>
+                            <p class="leading-relaxed">There is four steps in the registration form, first section
+                                will require some of your persnal information, second step will require some of your FGC
+                                maiduguri information, third step is for your preofessional information, then fourth
+                                step for your logins details </p>
+                        </div>
+                    </div>
+                    <div class="flex relative pb-12">
+                        <div class="h-full w-10 absolute inset-0 flex items-center justify-center">
+                            <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
+                        </div>
+                        <div
+                            class="flex-shrink-0 w-10 h-10 rounded-full bg-green-500 inline-flex items-center justify-center text-white relative z-10">
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                        </div>
+                        <div class="flex-grow pl-4">
+                            <h2 class="font-medium title-font text-xs sm:text-sm text-gray-900 mb-1 tracking-wider">
+                                STEP 3</h2>
+                            <p class="leading-relaxed">Fill out every required field on the registration form and click
+                                on the submit button, the system will logged you in and you will be redirect to a
+                                registration success message page</p>
+                        </div>
+                    </div>
+                    <div class="flex relative pb-12">
+                        <div class="h-full w-10 absolute inset-0 flex items-center justify-center">
+                            <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
+                        </div>
+                        <div
+                            class="flex-shrink-0 w-10 h-10 rounded-full bg-green-500 inline-flex items-center justify-center text-white relative z-10">
+                            <i class="fa-regular fa-link"></i>
+                        </div>
+                        <div class="flex-grow pl-4">
+                            <h2 class="font-medium title-font text-xs sm:text-sm text-gray-900 mb-1 tracking-wider">
+                                STEP 4</h2>
+                            <p class="leading-relaxed">After succesfull registration, email verification link will be
+                                sent to the email you registered with, go to your email and click
+                                on the verification link, this will automatically open the site in your browser and that
+                                means your email is verified and now you can access your dashboard.</p>
+                        </div>
+                    </div>
+                    <div class="flex relative">
+                        <div
+                            class="flex-shrink-0 w-10 h-10 rounded-full bg-green-500 inline-flex items-center justify-center text-white relative z-10">
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                                <path d="M22 4L12 14.01l-3-3"></path>
+                            </svg>
+                        </div>
+                        <div class="flex-grow pl-4">
+                            <h2 class="font-medium title-font text-xs sm:text-sm text-gray-900 mb-1 tracking-wider">
+                                FINISH</h2>
+                            <p class="leading-relaxed">Go to your dashboard there is membership payment section, click
+                                on the pay button, choose your payment methd and make the payment, if everything is
+                                successful your membership payment will be loaded on your dashboard for the current
+                                year. And that's all you have to do to become a member! </p>
+                        </div>
+                    </div>
+                </div>
+                <img class="lg:w-2.5/5 md:w-1/2 object-cover object-center rounded-lg md:mt-0 mt-12 hidden sm:block"
+                    src="https://dummyimage.com/1200x500" alt="step">
             </div>
         </div>
     </section>
@@ -230,37 +374,36 @@
 
             <div class="flex flex-wrap -m-4">
 
-                @foreach ($positions as $position)
+                @foreach ($executives as $members)
                     <div class="p-4 lg:w-1/2">
 
                         <div
                             class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
-                            <a href="{{ route('member.profile', $position->user->id) }}">
+                            <a href="{{ route('member.profile', $members->user->username) }}">
                                 <img alt="team"
                                     class="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4"
-                                    src="{{ asset($position->user->profile_photo_url ?? '') }}">
+                                    src="{{ asset($members->user->profile_photo_url ?? '') }}">
                             </a>
                             <div class="flex-grow sm:pl-8">
-                                <a href="{{ route('member.profile', $position->user->id) }}">
-                                    <h2 class="title-font font-medium text-lg text-gray-900"> <a
-                                            href="#">{{ ($position->user->first_name ?? '') . ' ' . ($position->user->last_name ?? '') }}
-                                        </a>
-                                    </h2>
-                                </a>
-                                <h3 class="text-gray-500 mb-3">{{ $position->name }}</h3>
+
+                                <h2 class="title-font font-medium text-lg text-gray-900"> <a
+                                        href="{{ route('member.profile', $members->user->username) }}">{{ ($members->user->first_name ?? '') . ' ' . ($members->user->last_name ?? '') }}
+                                    </a>
+                                </h2>
+                                <h3 class="text-gray-500 mb-3">{{ $members->position }}</h3>
                                 <p class="mb-4">DIY tote bag drinking vinegar cronut adaptogen squid fanny
                                     pack
                                     vaporware.</p>
                                 <span class="inline-flex">
-                                    <a href="https://{{ $position->user->socialMedia->facebook ?? '#' }}"
+                                    <a href="https://{{ $members->user->socialMedia->facebook ?? '#' }}"
                                         class="text-gray-500">
                                         <i class="fab fa-facebook-f"></i>
                                     </a>
-                                    <a href="https://{{ $position->user->socialMedia->twitter ?? '#' }}"
+                                    <a href="https://{{ $members->user->socialMedia->twitter ?? '#' }}"
                                         class="ml-2 text-gray-500">
                                         <i class="fab fa-twitter"></i>
                                     </a>
-                                    <a href="https://{{ $position->user->socialMedia->whatsapp ?? '#' }}"
+                                    <a href="https://{{ $members->user->socialMedia->whatsapp ?? '#' }}"
                                         class="ml-2 text-gray-500">
                                         <i class="fab fa-whatsapp"></i>
                                     </a>
@@ -272,6 +415,7 @@
                     </div>
                 @endforeach
 
+
             </div>
             @livewire('contact-us-form')
         </div>
@@ -280,7 +424,7 @@
     </section>
 
 </div>
-@push('script')
+@push('script-slider')
     <script>
         window.addEventListener('load', () => {
             var slideIndex = 0;
@@ -296,7 +440,7 @@
                 if (slideIndex > slides.length) {
                     slideIndex = 1
                 }
-                // slides[slideIndex - 1].style.display = "block";
+                slides[slideIndex - 1].style.display = "block";
                 setTimeout(showSlides, 2000); // Change image every 2 seconds
             }
 

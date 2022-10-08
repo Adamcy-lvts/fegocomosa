@@ -48,7 +48,7 @@
     <script src="{{ asset('js/jquery-3.4.1.js') }}"></script>
     @stack('donation-script')
     @livewireScripts
-    @stack('script')
+    @stack('script-slider')
     @stack('filepond-scripts')
     @yield('contactScript')
     @yield('contactOrganizerScript')
