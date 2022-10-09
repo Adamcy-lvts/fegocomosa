@@ -125,7 +125,7 @@
                                           label="House" placeholder="House" wire:model.defer="state.house_id">
                                           @if ($houses)
                                               @foreach ($houses as $house)
-                                                  <option value="{{ $house->id }}" }>{{ $house->name }}</option>
+                                                  <option value="{{ $house->id }}">{{ $house->name }}</option>
                                               @endforeach
                                           @endif
 
