@@ -17,13 +17,13 @@ class PostCategoryTableSeeder extends Seeder
         if (CategoryPost::count() == 0) {
             CategoryPost::create([
             
-                'name' => "Celebrities",
-                'slug' => 'celebrities',
-                'description' => 'Famous or popular people mostly associated with pop culture',
+                'name' => "Health",
+                'slug' => 'health',
+                'description' => 'Articles about health issues and fitness and lifestyle tips',
                 'image' => '',
-                'meta_title' => 'A-list Celebrities',
-                'meta_description' => 'A-list Celebrities Meta Description',
-                'meta_keyword' => 'A-list Celebrities Meta Keyword',
+                'meta_title' => 'Healthy Life Style ',
+                'meta_description' => 'Health issues and healthy lifestyle Meta Description',
+                'meta_keyword' => 'Health Anatomy Lifestyle Fitness Disease Medication Meta Keyword',
             ]);
     
             CategoryPost::create([

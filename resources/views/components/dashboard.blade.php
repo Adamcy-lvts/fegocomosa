@@ -78,7 +78,7 @@
                         <span class="feather feather-columns feather feather-columns ml-3">Payments</span>
                     </a>
                 </li>
-                @can('access article')
+                @can('access articles')
                     <li class="nav-list-item {{ Request::is('admin/posts') ? 'active' : '' }}">
                         <a class="nav-list-link" href="{{ route('posts.data') }}">
                             <i class="fal fa-lg fa-newspaper"></i>

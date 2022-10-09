@@ -26,6 +26,7 @@ class RoleAndPermissionTableSeeder extends Seeder
         Permission::create(['name' => 'delete member']);
         Permission::create(['name' => 'access admin dashboard']);
         Permission::create(['name' => 'access admin menu']);
+        Permission::create(['name' => 'access articles']);
         Permission::create(['name' => 'write article']);
         Permission::create(['name' => 'edit article']);
         Permission::create(['name' => 'delete article']);
@@ -37,13 +38,14 @@ class RoleAndPermissionTableSeeder extends Seeder
         Permission::create(['name' => 'create permission']);
         Permission::create(['name' => 'edit permission']);
         Permission::create(['name' => 'delete permission']);
-        Permission::create(['name' => 'Assign role']);
-        Permission::create(['name' => 'Remove role']);
-        Permission::create(['name' => 'Give permission']);
-        Permission::create(['name' => 'Revoke permission']);
+        Permission::create(['name' => 'assign role']);
+        Permission::create(['name' => 'remove role']);
+        Permission::create(['name' => 'give permission']);
+        Permission::create(['name' => 'revoke permission']);
         Permission::create(['name' => 'create event']);
         Permission::create(['name' => 'edit event']);
         Permission::create(['name' => 'delete event']);
+        Permission::create(['name' => 'access events']);
         Permission::create(['name' => 'create project']);
         Permission::create(['name' => 'edit project']);
         Permission::create(['name' => 'delete project']);
@@ -60,6 +62,7 @@ class RoleAndPermissionTableSeeder extends Seeder
         Permission::create(['name' => 'create donation']);
         Permission::create(['name' => 'edit donation']);
         Permission::create(['name' => 'delete donation']);
+       
 
       
       
@@ -74,8 +77,14 @@ class RoleAndPermissionTableSeeder extends Seeder
         $role2->givePermissionTo('write article');
         $role2->givePermissionTo('edit article');
         $role2->givePermissionTo('delete article');
+        $role2->givePermissionTo('access articles');
 
-        $role3 = Role::create(['name' => 'Super-Admin']);
+        $role3 = Role::create(['name' => 'accountant']);
+        $role3->givePermissionTo('make payment');
+        $role3->givePermissionTo('edit payment');
+        $role3->givePermissionTo('delete payment');
+
+        $role4 = Role::create(['name' => 'Super-Admin']);
         // gets all permissions via Gate::before rule; see AuthServiceProvider
 
         // create demo users
