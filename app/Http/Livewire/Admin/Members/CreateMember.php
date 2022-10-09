@@ -10,6 +10,8 @@ use App\Models\State;
 use App\Models\Gender;
 use Livewire\Component;
 use App\Models\Category;
+use App\Models\JssClass;
+use App\Models\SssClass;
 use App\Models\EntryYear;
 use WireUi\Traits\Actions;
 use Livewire\WithPagination;
@@ -38,8 +40,8 @@ class CreateMember extends Component
     public $selectedCategory = null;
     public $profession;
     public $admissionNumber;
-    public $jssClass;
-    public $sssClass;
+    public $selectedJssClass;
+    public $selectedSSClass;
     public $selectedHouse;
     public $yearOfEntry;
     public $university;
@@ -73,10 +75,10 @@ class CreateMember extends Component
         ]);
 
         $gradYear = GraduationYears::create([
-            'year' => Carbon::create($this->yearOfGraduation)->format('Y')
+            'year' => Carbon::createFromFormat('d/m/Y',$this->yearOfGraduation)->format('Y')
         ]);
         $entryYear = EntryYear::create([
-            'year' => Carbon::create($this->yearOfEntry)->format('Y')
+            'year' => Carbon::createFromFormat('d/m/Y',$this->yearOfEntry)->format('Y')
         ]);
 
         $potrait_image = $this->potraitImage->getClientOriginalName();
@@ -96,8 +98,8 @@ class CreateMember extends Component
         $member->city_id           =  $this->selectedCity;
         $member->profession        =  $this->profession;
         $member->admission_number  =  $this->admissionNumber;
-        $member->jss_class         =  $this->jssClass;
-        $member->sss_class         =  $this->sssClass;
+        $member->jss_class_id      =  $this->selectedJssClass;
+        $member->sss_class_id      =  $this->selectedSSClass;
         $member->house_id          =  $this->selectedHouse;
         $member->entry_year_id     =  $entryYear->id;
         $member->graduation_year_id = $gradYear->id;
@@ -109,6 +111,14 @@ class CreateMember extends Component
         $member->password          = Hash::make('swifty1989');
         $member->save();
 
+        if ($input['profession_category']) {
+
+                // $categoryId = $input['profession_category'];
+            
+                $procategory = Category::find($this->selectedCategory); 
+
+                $user->categories()->attach($procategory);
+        }
 
         $this->reset();
 
@@ -134,7 +144,9 @@ class CreateMember extends Component
             'genders' => Gender::all(),
             'maritalStatuses' => MaritalStatus::all(),
             'professionCategories' => Category::all(),
-            'years' => GraduationYears::all()
+            'years' => GraduationYears::all(),
+            'jssClasses' => JssClass::all(),
+            'sssClasses' => SssClass::all()
         ])->layout('components.dashboard');
     }
 }

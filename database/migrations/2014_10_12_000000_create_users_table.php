@@ -29,8 +29,8 @@ class CreateUsersTable extends Migration
             $table->integer('city_id');
             $table->string('profession');
             $table->string('admission_number')->nullable();
-            $table->string('jss_class');
-            $table->string('sss_class');
+            $table->string('jss_class_id');
+            $table->string('sss_class_id');
             $table->integer('house_id');
             $table->integer('entry_year_id');
             $table->integer('graduation_year_id');

@@ -216,7 +216,7 @@
             <div class="flex flex-col gap-2 text-center w-full mb-5 sm:mb-20">
 
                 <h2 id="MembershipSteps" class="text-xs text-green-600 tracking-widest font-medium title-font mb-1">
-                    Membership Regisration
+                    Membership Registration
                     Steps
                 </h2>
                 <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900">How to
@@ -226,7 +226,7 @@
 
             <div class="flex flex-wrap w-full ">
                 <img class="lg:w-2.5/5 md:w-1/2 object-cover object-center rounded-lg md:mt-0 mt-6 block sm:hidden mb-5 sm:mb-0"
-                    src="https://dummyimage.com/1200x500" alt="step">
+                    src="{{ asset('images/placeholder.jpg') }}" alt="step">
                 <div class="lg:w-2.5/5 md:w-1/2 md:pr-10 md:py-6">
                     <div class="flex relative pb-12">
                         <div class="h-full w-10 absolute inset-0 flex items-center justify-center">
@@ -318,7 +318,7 @@
                     </div>
                 </div>
                 <img class="lg:w-2.5/5 md:w-1/2 object-cover object-center rounded-lg md:mt-0 mt-12 hidden sm:block"
-                    src="https://dummyimage.com/1200x500" alt="step">
+                    src="{{ asset('images/placeholder.jpg') }}" alt="step">
             </div>
         </div>
     </section>

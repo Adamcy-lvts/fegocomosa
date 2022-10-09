@@ -38,5 +38,6 @@ class DatabaseSeeder extends Seeder
         $this->call(NavigationMenuSeeder::class);
         $this->call(GuestNavBarMenuSeeder::class);
         $this->call(PostCategoryTableSeeder::class);
+        $this->call(ClassSeeder::class);
     }
 }

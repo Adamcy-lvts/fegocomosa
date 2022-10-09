@@ -9,6 +9,8 @@ use App\Models\State;
 use App\Models\Gender;
 use Livewire\Component;
 use App\Models\Category;
+use App\Models\JssClass;
+use App\Models\SssClass;
 use App\Models\EntryYear;
 use App\Models\MaritalStatus;
 use Livewire\WithFileUploads;
@@ -226,7 +228,9 @@ class UpdateProfileInformationForm extends Component
             'maritalStatuses' => MaritalStatus::all(),
             'professionCategories' => Category::all(),
             'gradYears' => GraduationYears::all(),
-            'entryYears' => EntryYear::all()
+            'entryYears' => EntryYear::all(),
+            'jssClasses' => JssClass::all(),
+            'sssClasses' => SssClass::all()
         ]);
     }
 }

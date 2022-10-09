@@ -117,6 +117,16 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsTo('App\Models\House');
     }
 
+     public function jss_class()
+    {
+        return $this->belongsTo('App\Models\JssClass');
+    }
+
+     public function sss_class()
+    {
+        return $this->belongsTo('App\Models\SssClass');
+    }
+
     public function maritalStatus()
     {
         return $this->belongsTo('App\Models\MaritalStatus');
@@ -218,10 +228,12 @@ class User extends Authenticatable implements MustVerifyEmail
              ->orWhere('username', 'like', $term)
              ->orWhere('graduation_year_id', 'like', $term)
              ->orWhere('house_id', 'like', $term)
-             ->orWhere('jss_class', 'like', $term)
-             ->orWhere('sss_class', 'like', $term)
              ->orWhereHas('state', function ($query) use ($term) {
                  $query->where('name', 'like', $term);
+             })->orWhereHas('jss_class', function ($query) use ($term) {
+                 $query->where('class_name', 'like', $term);
+             })->orWhereHas('sss_class', function ($query) use ($term) {
+                 $query->where('class_name', 'like', $term);
              });
             
      });

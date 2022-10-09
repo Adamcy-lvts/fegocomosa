@@ -67,9 +67,9 @@
                                     {{ $member->graduationYear->year }}
                                 </li>
                                 <li class="p-2 hover:bg-gray-200 rounded"><span class="font-semibold">Jss Class:</span>
-                                    {{ $member->jss_class }}</li>
+                                    {{ $member->jss_class->class_name }}</li>
                                 <li class="p-2 hover:bg-gray-200 rounded"><span class="font-semibold">Sss Class:</span>
-                                    {{ $member->sss_class }}</li>
+                                    {{ $member->sss_class->class_name }}</li>
                                 <li class="p-2 hover:bg-gray-200 rounded"><span class="font-semibold">House:</span>
                                     {{ $member->house->name }}</li>
                                 <li class="p-2 hover:bg-gray-200 rounded"><span class="font-semibold">Registeration

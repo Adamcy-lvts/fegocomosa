@@ -9,6 +9,8 @@ use App\Models\State;
 use App\Models\Gender;
 use Livewire\Component;
 use App\Models\Category;
+use App\Models\JssClass;
+use App\Models\SssClass;
 use App\Models\EntryYear;
 use WireUi\Traits\Actions;
 use Livewire\WithPagination;
@@ -38,8 +40,8 @@ class EditMember extends Component
     public $selectedCategory = null;
     public $profession;
     public $admissionNumber;
-    public $jssClass;
-    public $sssClass;
+    public $selectedJssClass;
+    public $selectedSSClass;
     public $selectedHouse;
     public $selectedEntryYear;
     public $university;
@@ -70,8 +72,8 @@ class EditMember extends Component
         $this->selectedCity     = $member->city_id; 
         $this->profession       = $member->profession; 
         $this->admissionNumber  = $member->admission_number; 
-        $this->jssClass         = $member->jss_class; 
-        $this->sssClass         = $member->sss_class;
+        $this->selectedJssClass = $member->jss_class_id; 
+        $this->selectedSSClass  = $member->sss_class_id;
         $this->selectedHouse    = $member->house_id;
         $this->selectedEntryYear= $member->entry_year_id; 
         $this->selectedGradYear = $member->graduation_year_id; 
@@ -137,8 +139,8 @@ class EditMember extends Component
             'city_id'           => $this->selectedCity,
             'profession'        => $this->profession, 
             'admission_number'  => $this->admissionNumber,
-            'jss_class'         => $this->jssClass, 
-            'sss_class'         => $this->sssClass,
+            'jss_class_id'      => $this->selectedJssClass, 
+            'sss_class_id'      => $this->selectedSSClass,
             'house_id'          => $this->selectedHouse,
             'entry_year_id'     => $this->selectedEntryYear, 
             'graduation_year_id'=> $this->selectedGradYear,
@@ -150,7 +152,6 @@ class EditMember extends Component
         ]);
         
         $user = User::find($this->memberId);
-        // dd($user);
 
        $procategory = Category::find($this->selectedCategory); 
 
@@ -184,6 +185,8 @@ class EditMember extends Component
             'professionCategories' => Category::all(),
             'gradYears' => GraduationYears::all(),
             'entryYears' => EntryYear::all(),
+            'jssClasses' => JssClass::all(),
+            'sssClasses' => SssClass::all()
             
         ])->layout('components.dashboard');
     }

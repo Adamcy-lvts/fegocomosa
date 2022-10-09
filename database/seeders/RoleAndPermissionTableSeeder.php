@@ -90,7 +90,7 @@ class RoleAndPermissionTableSeeder extends Seeder
         // create demo users
      
         $user = User::findOrfail(1);
-        $user->assignRole($role3, $role1);
+        $user->assignRole($role4, $role1);
 
 
       

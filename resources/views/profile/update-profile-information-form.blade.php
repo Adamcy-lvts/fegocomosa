@@ -93,14 +93,33 @@
                                   </div>
 
                                   <div class="col-span-1  md:col-span-3 md:grid md:grid-cols-3 md:gap-6">
-                                      <x-input
+
+                                      <x-native-select
                                           class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
-                                          label="Jss Class" placeholder="For example Jss 1Q - 3Q"
-                                          wire:model.defer="state.jss_class" />
-                                      <x-input
+                                          label="Jss Class" placeholder="Jss Class"
+                                          wire:model.defer="state.jss_class_id">
+                                          @if ($jssClasses)
+                                              @foreach ($jssClasses as $jssClass)
+                                                  <option value="{{ $jssClass->id }}">{{ $jssClass->class_name }}
+                                                  </option>
+                                              @endforeach
+                                          @endif
+                                      </x-native-select>
+
+
+                                      <x-native-select
                                           class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
-                                          label="Sss Class" placeholder="For example Sss 1Q - 3Q"
-                                          wire:model.defer="state.sss_class" />
+                                          label="Sss Class" placeholder="Sss Class"
+                                          wire:model.defer="state.sss_class_id">
+                                          @if ($jssClasses)
+                                              @foreach ($sssClasses as $sssClass)
+                                                  <option value="{{ $sssClass->id }}">{{ $sssClass->class_name }}
+                                                  </option>
+                                              @endforeach
+                                          @endif
+                                      </x-native-select>
+
+
                                       <x-native-select
                                           class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
                                           label="House" placeholder="House" wire:model.defer="state.house_id">
