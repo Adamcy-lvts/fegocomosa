@@ -43,7 +43,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'username', 'email', 'password', 'first_name', 'middle_name', 'last_name', 'about_you', 'date_of_birth',
         'gender_id', 'marital_status_id', 'phone', 'address', 'profession', 'profile_photo_path',
         'workplace', 'university', 'course_of_study', 'state_id', 'city_id', 'entry_year_id', 'graduation_year_id',
-        'jss_class', 'sss_class', 'admission_number', 'house_id', 'potrait_image', 'active'
+        'jss_class_id', 'sss_class_id', 'admission_number', 'house_id', 'potrait_image', 'active'
     ];
 
 
