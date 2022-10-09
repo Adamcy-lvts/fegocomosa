@@ -140,7 +140,7 @@
 
                         <x-native-select
                             class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
-                            label="Jss Class*" placeholder="Jss Class" name="jss_class" :value="old('jss_class')">
+                            label="Jss Class*" placeholder="Jss Class" name="jss_class_id" :value="old('jss_class')">
                             @if ($jssClasses)
                                 @foreach ($jssClasses as $jssClass)
                                     <option value="{{ $jssClass->id }}">{{ $jssClass->class_name }}
@@ -152,7 +152,7 @@
 
                         <x-native-select
                             class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
-                            label="Sss Class*" placeholder="Sss Class" name="sss_class" :value="old('sss_class')">
+                            label="Sss Class*" placeholder="Sss Class" name="sss_class_id" :value="old('sss_class')">
                             @if ($jssClasses)
                                 @foreach ($sssClasses as $sssClass)
                                     <option value="{{ $sssClass->id }}">{{ $sssClass->class_name }}
