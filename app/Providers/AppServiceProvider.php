@@ -8,6 +8,8 @@ use App\Models\House;
 use App\Models\State;
 use App\Models\Gender;
 use App\Models\Category;
+use App\Models\JssClass;
+use App\Models\SssClass;
 use Laravel\Fortify\Fortify;
 use App\Models\MaritalStatus;
 use App\Models\NavigationMenu;
@@ -45,6 +47,8 @@ class AppServiceProvider extends ServiceProvider
                 'marital_statuses' => MaritalStatus::all(),
                 'genders' => Gender::all(),
                 'proCategories' => Category::all(),
+                'jssClasses' => JssClass::all(),
+                'sssClasses' => SssClass::all()
           
              ]);
         });

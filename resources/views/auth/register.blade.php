@@ -138,11 +138,28 @@
                                 name="graduation_year_id" :value="old('graduation_year_id')" />
                         </div>
 
-                        <x-input class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
-                            label="Jss Class*" placeholder="Jss Class" name="jss_class" :value="old('jss_class')" />
+                        <x-native-select
+                            class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                            label="Jss Class*" placeholder="Jss Class" name="jss_class" :value="old('jss_class')">
+                            @if ($jssClasses)
+                                @foreach ($jssClasses as $jssClass)
+                                    <option value="{{ $jssClass->id }}">{{ $jssClass->class_name }}
+                                    </option>
+                                @endforeach
+                            @endif
+                        </x-native-select>
 
-                        <x-input class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
-                            label="Sss Class*" placeholder="Sss Class" name="sss_class" :value="old('sss_class')" />
+
+                        <x-native-select
+                            class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                            label="Sss Class*" placeholder="Sss Class" name="sss_class" :value="old('sss_class')">
+                            @if ($jssClasses)
+                                @foreach ($sssClasses as $sssClass)
+                                    <option value="{{ $sssClass->id }}">{{ $sssClass->class_name }}
+                                    </option>
+                                @endforeach
+                            @endif
+                        </x-native-select>
 
                         <x-input class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
                             label="Admission Number" placeholder="Admission Number" name="admission_number"
