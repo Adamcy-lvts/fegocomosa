@@ -121,12 +121,12 @@
             <x-input class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
                 label="Certicate" placeholder="Certicate" wire:model.defer="certificate" />
         </div>
-        <div class="col-span-1 sm:col-span-2">
-            <x-datetime-picker class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+        <div wire:ignore class="col-span-1 sm:col-span-2">
+            <x-input type="date" class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
                 without-time label="Start Date" placeholder="Start Date" wire:model.defer="startingDate" />
         </div>
-        <div class="col-span-1 sm:col-span-2">
-            <x-datetime-picker class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+        <div wire:ignore class="col-span-1 sm:col-span-2">
+            <x-input type="date" class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
                 without-time label="End Date" placeholder="End Date" wire:model.defer="endingDate" />
         </div>
 

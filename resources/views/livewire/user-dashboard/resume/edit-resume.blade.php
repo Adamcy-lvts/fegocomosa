@@ -98,4 +98,15 @@
 
         </div>
     </div>
+    @push('flatpicker')
+        <script>
+            window.addEventListener('load', () => {
+                flatpickr("input[type=date]", {
+
+                    dateFormat: "d/m/Y",
+
+                });
+            });
+        </script>
+    @endpush
 </div>

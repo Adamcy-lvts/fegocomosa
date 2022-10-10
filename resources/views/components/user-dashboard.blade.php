@@ -15,10 +15,12 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/progressbar.css') }}">
     <link rel="stylesheet" type="text/css"
         href=" https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
     <!-- Scripts -->
     @wireUiScripts
     <script src="{{ mix('js/app.js') }}" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
 </head>
 
@@ -385,7 +387,9 @@
 
 
     @livewireScripts
+    @stack('flatpicker')
     <script src="{{ asset('js/progressbar.js') }}"></script>
+
     <script>
         function accordion() {
             return {

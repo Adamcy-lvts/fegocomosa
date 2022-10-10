@@ -105,12 +105,12 @@
             <x-input class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
                 label="Employer" placeholder="Employer" wire:model.defer="employer" />
         </div>
-        <div class="col-span-1 sm:col-span-2">
-            <x-datetime-picker class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+        <div wire:ignore class="col-span-1 sm:col-span-2">
+            <x-input type="date" class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
                 without-time label="Starting Date" placeholder="Starting Date" wire:model.defer="startDate" />
         </div>
-        <div class="col-span-1 sm:col-span-2">
-            <x-datetime-picker class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+        <div wire:ignore class="col-span-1 sm:col-span-2">
+            <x-input type="date" class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
                 without-time label="Ending Date" placeholder="Ending Date" wire:model.defer="endDate" />
         </div>
 

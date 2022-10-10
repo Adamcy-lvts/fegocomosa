@@ -65,13 +65,15 @@
                                 label="Field of Study" placeholder="Field of Study" wire:model.defer="fieldStudied" />
                         </div>
                     </div>
+                    <div wire:ignore class="col-span-1 md:col-span-2 md:grid md:grid-cols-2 md:gap-5">
+                        <x-input type="date"
+                            class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                            without-time label="Start Date" placeholder="Start Date" wire:model.defer="startDate" />
+                        <x-input type="date"
+                            class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                            without-time label="End Date" placeholder="End Date" wire:model.defer="endDate" />
 
-                    <x-datetime-picker
-                        class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
-                        without-time label="Start Date" placeholder="Start Date" wire:model.defer="startDate" />
-                    <x-datetime-picker
-                        class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
-                        without-time label="End Date" placeholder="End Date" wire:model.defer="endDate" />
+                    </div>
 
 
                 </div>
@@ -95,16 +97,16 @@
                             label="Description" placeholder="Description of the job, Position, Responsibity"
                             wire:model.defer="description" />
                     </div>
+                    <div wire:ignore class="col-span-1 md:col-span-2 md:grid md:grid-cols-2 md:gap-5">
+                        <x-input type="date"
+                            class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                            without-time label="Starting Date" placeholder="Starting Date"
+                            wire:model.defer="startingDate" />
+                        <x-input type="date"
+                            class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                            without-time label="Ending Date" placeholder="Ending Date" wire:model.defer="endingDate" />
 
-                    <x-datetime-picker
-                        class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
-                        without-time label="Starting Date" placeholder="Starting Date"
-                        wire:model.defer="startingDate" />
-                    <x-datetime-picker
-                        class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
-                        without-time label="Ending Date" placeholder="Ending Date" wire:model.defer="endingDate" />
-
-
+                    </div>
                 </div>
             </div><!-- step 2 ending -->
             <div x-show.transition="step === 3">
@@ -197,4 +199,15 @@
             </x-slot>
         </x-card>
     </div>
+    @push('flatpicker')
+        <script>
+            window.addEventListener('load', () => {
+                flatpickr("input[type=date]", {
+
+                    dateFormat: "d/m/Y",
+
+                });
+            });
+        </script>
+    @endpush
 </div>
