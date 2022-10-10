@@ -116,7 +116,7 @@
                         <x-input class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
                             label="Skill" placeholder="Skill" wire:model.defer="skill" />
                         <x-input class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
-                            label="Rating" placeholder="Rating" wire:model.defer="rating" />
+                            label="Rating is in %" placeholder="70" wire:model.defer="rating" />
                     </div>
                     <div class="col-span-1 md:col-span-2">
                         <x-input class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"

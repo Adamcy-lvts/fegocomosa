@@ -65,7 +65,11 @@ class CreateResume extends Component
     {
         
         $this->validate([
-            'institutionName' => 'required'
+            'institutionName' => 'required',
+            'qualification' => 'required',
+            'fieldStudied' => 'required',
+            'startDate' => 'required',
+            'endDate' => 'required'
         ]);
 
         $education = new Education;
@@ -91,7 +95,11 @@ class CreateResume extends Component
     public function experience()
     {
         $this->validate([
-            'jobTitle' => 'required'
+            'jobTitle' => 'required',
+            'employer' => 'required',
+            'description' => 'required',
+            'startingDate' => 'required',
+            'endingDate' => 'required'
         ]);
         // dd('can u hear me?');
          $experience = new Experience;
@@ -119,7 +127,7 @@ class CreateResume extends Component
         // dd('can u hear me?');
         $this->validate([
            'skill' => 'required',
-        //    'rating' => 'required',
+           'rating' => 'required',
 
         ]);
           $skill = new Skill;
@@ -146,6 +154,13 @@ class CreateResume extends Component
 
     public function reference()
     {
+         $this->validate([
+           'fullName' => 'required',
+           'email' => 'required',
+           'workAt' => 'required'
+
+        ]);
+
         $reference = new Reference;
         $reference->user_id = auth()->user()->id;
         $reference->full_name = $this->fullName;
@@ -162,12 +177,6 @@ class CreateResume extends Component
         $this->reset();
 
     }
-
-    // public function hobby()
-    // {
-    //     $hobbie = new Hobbie;
-    //     $hobbie->hobbie_name = $this->hobbyInterest;
-    // }
 
 
     public function render()
