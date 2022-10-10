@@ -63,11 +63,11 @@ class CreateResume extends Component
 
     public function education()
     {
-        // dd('can u hear me?');
+        
         $this->validate([
             'institutionName' => 'required'
         ]);
-// dd($this->startDate);
+
         $education = new Education;
         $education->user_id = auth()->user()->id;
         $education->institution_name = $this->institutionName;

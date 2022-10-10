@@ -31,7 +31,7 @@ class PostComment extends Component
         $commentator = User::find(auth()->user()->id);
 
         $post->user->notify(new CommentNotification($commentator, $post, $comment));
-        
+       
             $this->comment = '';
         
             $this->notification()->success(

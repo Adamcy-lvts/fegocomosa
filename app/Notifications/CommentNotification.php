@@ -24,7 +24,9 @@ class CommentNotification extends Notification implements ShouldQueue
      */
     public function __construct(User $commentator, Post $post, Comment $comment)
     {
-        //
+        $this->commentator = $commentator;
+        $this->post = $post;
+        $this->comment = $comment;
     }
 
     /**
@@ -47,12 +49,11 @@ class CommentNotification extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('Comment Notification')
+                    ->subject('Comment on your post'.' '.$this->post->title)
                     ->from($this->commentator->email)
                     ->greeting($this->commentator->name.' '.'Commented on your post.')
                     ->line($this->comment->comment)
                     ->action('view post', url($this->post->slug));
-                    // ->line('Thank you for reading and liking!');
     }
 
     /**
