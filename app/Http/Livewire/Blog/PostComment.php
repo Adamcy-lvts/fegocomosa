@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Blog;
 
 use App\Models\Post;
+use App\Models\User;
 use App\Models\Comment;
 use Livewire\Component;
 use WireUi\Traits\Actions;
@@ -27,7 +28,9 @@ class PostComment extends Component
         $comment->user_id = auth()->user()->id;
         $post->comments()->save($comment);
 
-        $post->user->notify(new CommentNotification(auth()->user(), $post, $comment));
+        $commentator = User::find(auth()->user()->id);
+
+        $post->user->notify(new CommentNotification($commentator, $post, $comment));
         
             $this->comment = '';
         
