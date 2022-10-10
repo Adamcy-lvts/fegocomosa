@@ -53,7 +53,7 @@ class CommentNotification extends Notification implements ShouldQueue
                     ->from($this->commentator->email)
                     ->greeting($this->commentator->name.' '.'Commented on your post.')
                     ->line($this->comment->comment)
-                    ->action('view post', url($this->post->slug));
+                    ->action('view post', url('/posts/show/'.$this->post->slug));
     }
 
     /**
