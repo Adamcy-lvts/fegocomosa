@@ -18,9 +18,6 @@ class CreateDonorsTable extends Migration
             $table->string('full_name');
             $table->string('email');
             $table->string('phone');
-            $table->string('address');
-            $table->string('city')->nullable();
-            $table->string('state')->nullable();
             $table->timestamps();
         });
     }
