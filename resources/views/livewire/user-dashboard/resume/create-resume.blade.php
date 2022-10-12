@@ -112,8 +112,9 @@
             <div x-show.transition="step === 3">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-                    <div class="col-span-1 md:col-span-2">
-                        <x-input class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                    <div class="col-span-1 md:col-span-2 ">
+                        <x-input
+                            class="mb-4 focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
                             label="Skill" placeholder="Skill" wire:model.defer="skill" />
                         <x-input class="focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
                             label="Rating is in %" placeholder="70" wire:model.defer="rating" />
