@@ -26,23 +26,7 @@
 
                     </div>
 
-                    {{-- <div class=" hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-jet-nav-link href="{{ route('aboutus') }}" :active="request()->routeIs('aboutus')">
-                            {{ __('About Us') }}
-                        </x-jet-nav-link>
-                    </div>
 
-                    <div class="  hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-jet-nav-link href="{{ route('posts') }}" :active="request()->routeIs('posts')">
-                            {{ __('Blog') }}
-                        </x-jet-nav-link>
-                    </div>
-
-                    <div class=" hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-jet-nav-link href="{{ route('campaigns') }}" :active="request()->routeIs('campaigns*')">
-                            {{ __('Fundraiser') }}
-                        </x-jet-nav-link>
-                    </div> --}}
                 </div>
             </nav>
             <x-button xs href="{{ route('login') }}" outline green icon="arrow-circle-right" label="Sign In"
