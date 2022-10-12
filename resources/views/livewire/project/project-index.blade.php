@@ -1,21 +1,49 @@
 <div>
+    <style>
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+
+            width: 4px;
+            height: 5px;
+            /* display: none; */
+        }
+
+        .no-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .no-scrollbar::-webkit-scrollbar-thumb {
+            background-color: rgba(155, 155, 155, 0.5);
+            border-radius: 5px;
+            border: transparent;
+        }
+
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: thin;
+            /* Firefox */
+        }
+    </style>
     <div x-data="tabs()" x-bind="container" class="mx-auto md:w-8/12 py-24">
-        <nav x-ref="tabs" class="flex grow bg-white shadow relative mb-4">
+        <nav x-ref="tabs"
+            class="flex grow bg-white shadow relative mb-4 overflow-x-auto overflow-hidden w-full no-scrollbar">
 
             <a x-bind="tab"
-                class="inline-flex w-full  items-center justify-center px-8 py-4 text-sm font-medium text-gray-600 transition"
+                class="inline-flex w-full whitespace-nowrap  items-center justify-center px-8 py-4 text-sm font-medium text-gray-600 transition"
                 :class="activeTab === 0 ? 'text-green-600 border-green-500' : ''" @click="activeTab = 0"
                 href="#in-all-projects">All Projects</a>
             <a x-bind="tab"
-                class="inline-flex w-full items-center justify-center px-8 py-4 text-sm font-medium text-gray-600 transition"
+                class="inline-flex w-full whitespace-nowrap items-center justify-center px-8 py-4 text-sm font-medium text-gray-600 transition"
                 :class="activeTab === 1 ? 'text-green-600 border-green-500' : ''" @click="activeTab = 1"
                 href="#completed">Completed Projects</a>
             <a x-bind="tab"
-                class="inline-flex w-full items-center justify-center px-8 py-4 text-sm font-medium text-gray-600 transition"
+                class="inline-flex w-full whitespace-nowrap items-center justify-center px-8 py-4 text-sm font-medium text-gray-600 transition"
                 :class="activeTab === 2 ? 'text-green-600 border-green-500' : ''" @click="activeTab = 2"
                 href="#in-progress">Projects In Progress</a>
             <a x-bind="tab"
-                class="inline-flex w-full items-center justify-center px-8 py-4 text-sm font-medium text-gray-600 transition"
+                class="inline-flex w-full whitespace-nowrap items-center justify-center px-8 py-4 text-sm font-medium text-gray-600 transition"
                 :class="activeTab === 3 ? 'text-green-600 border-green-500' : ''" @click="activeTab = 3"
                 href="#proposed">Proposed Projects</a>
 
