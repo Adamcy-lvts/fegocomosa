@@ -10,12 +10,17 @@ use App\Models\Position;
 use App\Models\GuestSlider;
 use App\Models\ProjectImages;
 use App\Models\ExecutiveMember;
+use Artesaos\SEOTools\Facades\SEOMeta;
 
 
 class Welcome extends Component
 {
     public function render()
     {
+        SEOMeta::setTitle('Fegocomosa | Home');
+        SEOMeta::setDescription('Federal Government College Maiduguri Old Student Association Website');
+        SEOMeta::setCanonical('https://fegocomosa.live');
+
         $currentDate = Carbon::now();
 
         return view('livewire.welcome', [
