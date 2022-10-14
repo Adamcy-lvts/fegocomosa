@@ -16,7 +16,14 @@ class ShowProfile extends Component
         
         $this->member = $member;
 
-        OpenGraph::setTitle('Profile')
+       
+      
+
+    }
+    public function render()
+
+    {
+         OpenGraph::setTitle('Profile')
              ->setDescription('Some Person')
             ->setType('profile')
             ->setProfile([
@@ -25,12 +32,6 @@ class ShowProfile extends Component
                 $this->member->username => 'string',
              
             ]);
-      
-
-    }
-    public function render()
-
-    {
        $profileKey = 'profile_'.$this->member->id;
 
             if (!Session::has($profileKey)) {
