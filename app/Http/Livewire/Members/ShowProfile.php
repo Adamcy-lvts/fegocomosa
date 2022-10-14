@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Members;
 use App\Models\User;
 use Livewire\Component;
 use Illuminate\Support\Facades\Session;
+use Artesaos\SEOTools\Facades\OpenGraph;
 
 class ShowProfile extends Component
 {
@@ -14,6 +15,16 @@ class ShowProfile extends Component
     {
         
         $this->member = $member;
+
+        OpenGraph::setTitle('Profile')
+             ->setDescription('Some Person')
+            ->setType('profile')
+            ->setProfile([
+                $this->member->first_name => 'string',
+                $this->member->last_name => 'string',
+                $this->member->username => 'string',
+             
+            ]);
       
 
     }

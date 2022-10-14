@@ -41,7 +41,7 @@ return [
             'url'         => false, // Set null for using Url::current(), set false to total remove
             'type'        => false,
             'site_name'   => false,
-            'images'      => [],
+            'images'      => ['url' => url('images/Logo-min.svg'), 'size' => 300],
         ],
     ],
     'twitter' => [
