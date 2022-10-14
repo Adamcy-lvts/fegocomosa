@@ -25,8 +25,8 @@ class WelcomeMemberPage extends Component
     public function render()
     {
 
-        SEOMeta::setTitle('Home');
-        SEOMeta::setDescription('Federal Government College Maiduguri Old Student Association');
+        SEOMeta::setTitle('Fegocomosa');
+        SEOMeta::setDescription('Federal Government College Maiduguri Old Student Association Website');
         SEOMeta::setCanonical('https://fegocomosa.live');
 
         $currentDate = Carbon::now();
