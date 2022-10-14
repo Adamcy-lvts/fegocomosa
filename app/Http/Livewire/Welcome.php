@@ -11,6 +11,7 @@ use App\Models\GuestSlider;
 use App\Models\ProjectImages;
 use App\Models\ExecutiveMember;
 use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\SEOTools;
 
 
 class Welcome extends Component
@@ -20,6 +21,14 @@ class Welcome extends Component
         SEOMeta::setTitle('Fegocomosa | Home');
         SEOMeta::setDescription('Federal Government College Maiduguri Old Student Association Website');
         SEOMeta::setCanonical('https://fegocomosa.live');
+
+        SEOTools::setTitle('Fegocomosa');
+        SEOTools::setDescription('Federal Government College Maiduguri Old Student Association Website');
+        SEOTools::opengraph()->setUrl('https://fegocomosa.live');
+        SEOTools::setCanonical('https://fegocomosa.live');
+        SEOTools::opengraph()->addProperty('type', 'articles');
+        SEOTools::twitter()->setSite('@fegocomosa');
+        SEOTools::jsonLd()->addImage('images/Logo-min.svg');
 
         $currentDate = Carbon::now();
 
