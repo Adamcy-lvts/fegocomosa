@@ -12,6 +12,7 @@ use App\Models\FeatureImage;
 use App\Models\MemberSlider;
 use App\Models\ProjectImages;
 use App\Models\ExecutiveMember;
+use Artesaos\SEOTools\Facades\SEOMeta;
 
 
 class WelcomeMemberPage extends Component
@@ -23,6 +24,11 @@ class WelcomeMemberPage extends Component
     
     public function render()
     {
+
+        SEOMeta::setTitle('Home');
+        SEOMeta::setDescription('Federal Government College Maiduguri Old Student Association');
+        SEOMeta::setCanonical('https://fegocomosa.live');
+
         $currentDate = Carbon::now();
         return view('livewire.welcome-member-page', [
             'events' =>Event::latest()->take(3)->where('event_date', '>', $currentDate->toDateString())->get(),
