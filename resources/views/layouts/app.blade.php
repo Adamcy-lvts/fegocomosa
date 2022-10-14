@@ -9,6 +9,7 @@
 
     {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
     {!! SEOMeta::generate() !!}
+    <meta property="og:image" content="{{ url('images/Logo-min.svg') }}">
 
     <!-- Fonts -->
     {{-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap"> --}}
