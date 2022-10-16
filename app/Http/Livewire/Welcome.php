@@ -24,12 +24,12 @@ class Welcome extends Component
         SEOMeta::setDescription('Federal Government College Maiduguri Old Student Association Website');
         SEOMeta::setCanonical('https://fegocomosa.live');
 
-        OpenGraph::setDescription('This is my page description');
-        OpenGraph::setTitle('Home');
+        OpenGraph::setDescription('Federal Government College Maiduguri Old Student Association Website');
+        OpenGraph::setTitle('Fegocomosa');
         OpenGraph::setUrl('https://fegocomosa.live');
         OpenGraph::addProperty('type', 'articles');
 
-        TwitterCard::setTitle('Homepage');
+        TwitterCard::setTitle('Fegocomosa');
         TwitterCard::setSite('@Adams__Mohammed');
 
         $currentDate = Carbon::now();

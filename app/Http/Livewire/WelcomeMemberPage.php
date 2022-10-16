@@ -31,12 +31,13 @@ class WelcomeMemberPage extends Component
         SEOMeta::setDescription('Federal Government College Maiduguri Old Student Association Website');
         SEOMeta::setCanonical('https://fegocomosa.live');
 
-        OpenGraph::setDescription('This is my page description');
-        OpenGraph::setTitle('Home');
+        OpenGraph::setDescription('Federal Government College Maiduguri Old Student Association Website');
+        OpenGraph::setTitle('Fegocomosa');
         OpenGraph::setUrl('https://fegocomosa.live');
         OpenGraph::addProperty('type', 'articles');
+        OpenGraph::addImage(['url' => url('images/ariana_grande_.jpg'), 'size' => 300]);
 
-        TwitterCard::setTitle('Homepage');
+        TwitterCard::setTitle('Fegocomosa');
         TwitterCard::setSite('@Adams__Mohammed');
 
         $currentDate = Carbon::now();

@@ -8,7 +8,7 @@
     {{-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> --}}
 
     {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
-    {{-- {!! SEOMeta::generate() !!} --}}
+
     {!! SEOMeta::generate() !!}
     {!! OpenGraph::generate() !!}
     {!! Twitter::generate() !!}
