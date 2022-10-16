@@ -10,6 +10,7 @@ use App\Models\Position;
 use App\Models\GuestSlider;
 use App\Models\ProjectImages;
 use App\Models\ExecutiveMember;
+use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Artesaos\SEOTools\Facades\OpenGraph;
@@ -33,11 +34,13 @@ class Welcome extends Component
         OpenGraph::setSiteName('Fegocomosa');
         OpenGraph::addImage($url);
 
-        
-
         TwitterCard::setTitle('Fegocomosa');
         TwitterCard::setSite('@Adams__Mohammed');
         TwitterCard::setImage($url);
+
+        JsonLd::setTitle('Fegocomosa');
+        JsonLd::setDescription('Federal Government College Maiduguri Old Student Association Website');
+        JsonLd::addImage($url);
 
         $currentDate = Carbon::now();
 
