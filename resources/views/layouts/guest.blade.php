@@ -14,7 +14,7 @@
 
     <meta property="og:title" content="Fegocomosa">
     <meta property="og:description" content="Federal Governement College Maiduguri Old Student Association">
-    <meta property="og:image" content="{{ url('images/Logo-min.svg') }}">
+    <meta property="og:image" content="{{ url('images/ariana_grande_.jpg') }}">
     <meta property="og:url" content="https://fegocomosa.live">
 
     <!-- Fonts -->
