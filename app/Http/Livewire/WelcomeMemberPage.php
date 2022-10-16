@@ -35,9 +35,9 @@ class WelcomeMemberPage extends Component
         OpenGraph::setTitle('Fegocomosa');
         OpenGraph::setUrl('https://fegocomosa.live');
         OpenGraph::addProperty('type', 'articles');
-        OpenGraph::addImage(['url' => url('images/ariana_grande_.jpg'), 'size' => 300]);
+        OpenGraph::addImage(['url' => url('images/Logo-min.svg'), 'size' => 300]);
         
-        $url = url('images/ariana_grande_.jpg');
+        $url = url('images/Logo-min.svg');
 
         TwitterCard::setTitle('Fegocomosa');
         TwitterCard::setSite('@Adams__Mohammed');
