@@ -6,10 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     {{-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> --}}
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@fegocomosa">
 
+    <meta property="og:title" content="Fegocomosa">
+    <meta property="og:description" content="Federal Governement College Maiduguri Old Student Association">
+    <meta property="og:image" content="{{ url('images/Logo-min.svg') }}">
+    <meta property="og:url" content="https://fegocomosa.live">
     {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
 
-    {!! SEO::generate() !!}
+    {{-- {!! SEO::generate() !!} --}}
+
+
 
     <!-- Fonts -->
     {{-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap"> --}}

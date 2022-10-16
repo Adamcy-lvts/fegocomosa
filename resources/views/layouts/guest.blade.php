@@ -8,7 +8,14 @@
     {{-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> --}}
 
     {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
-    {!! SEOMeta::generate() !!}
+    {{-- {!! SEOMeta::generate() !!} --}}
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@fegocomosa">
+
+    <meta property="og:title" content="Fegocomosa">
+    <meta property="og:description" content="Federal Governement College Maiduguri Old Student Association">
+    <meta property="og:image" content="{{ url('images/Logo-min.svg') }}">
+    <meta property="og:url" content="https://fegocomosa.live">
 
     <!-- Fonts -->
     {{-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap"> --}}
