@@ -20,6 +20,8 @@ class Welcome extends Component
 {
     public function render()
     {
+        $url = url('images/Becky_G_1_200.jpg');
+
         SEOMeta::setTitle('Fegocomosa');
         SEOMeta::setDescription('Federal Government College Maiduguri Old Student Association Website');
         SEOMeta::setCanonical('https://fegocomosa.live');
@@ -28,9 +30,10 @@ class Welcome extends Component
         OpenGraph::setTitle('Fegocomosa');
         OpenGraph::setUrl('https://fegocomosa.live');
         OpenGraph::addProperty('type', 'website');
-        OpenGraph::addImage(['url' => url('images/Becky_G_1_200.jpg'), 'size' => 256]);
+        OpenGraph::setSiteName('Fegocomosa');
+        OpenGraph::addImage($url);
 
-        $url = url('images/Becky_G_1_200.jpg');
+        
 
         TwitterCard::setTitle('Fegocomosa');
         TwitterCard::setSite('@Adams__Mohammed');
