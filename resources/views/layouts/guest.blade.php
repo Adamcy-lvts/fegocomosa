@@ -9,16 +9,9 @@
 
     {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
     {{-- {!! SEOMeta::generate() !!} --}}
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content="@fegocomosa" />
-    <meta name="twitter:title" content="Fegocomosa" />
-    <meta name="twitter:description" content="Federal Government College Maiduguri Old Student Association " />
-    <meta name="twitter:image" content="{{ url('images/ariana_grande_.jpg') }}" />
-
-    <meta property="og:title" content="Fegocomosa">
-    <meta property="og:description" content="Federal Governement College Maiduguri Old Student Association">
-    <meta property="og:image" content="{{ url('images/ariana_grande_.jpg') }}">
-    <meta property="og:url" content="https://fegocomosa.live">
+    {!! SEOMeta::generate() !!}
+    {!! OpenGraph::generate() !!}
+    {!! Twitter::generate() !!}
 
     <!-- Fonts -->
     {{-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap"> --}}

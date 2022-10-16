@@ -29,6 +29,14 @@ class WelcomeMemberPage extends Component
         SEOMeta::setDescription('Federal Government College Maiduguri Old Student Association Website');
         SEOMeta::setCanonical('https://fegocomosa.live');
 
+        OpenGraph::setDescription('This is my page description');
+        OpenGraph::setTitle('Home');
+        OpenGraph::setUrl('https://fegocomosa.live');
+        OpenGraph::addProperty('type', 'articles');
+
+        TwitterCard::setTitle('Homepage');
+        TwitterCard::setSite('@Adams__Mohammed');
+
         $currentDate = Carbon::now();
         return view('livewire.welcome-member-page', [
             'events' =>Event::latest()->take(3)->where('event_date', '>', $currentDate->toDateString())->get(),

@@ -18,17 +18,17 @@ class Welcome extends Component
 {
     public function render()
     {
-        SEOMeta::setTitle('Fegocomosa | Home');
+        SEOMeta::setTitle('Fegocomosa');
         SEOMeta::setDescription('Federal Government College Maiduguri Old Student Association Website');
         SEOMeta::setCanonical('https://fegocomosa.live');
 
-        SEOTools::setTitle('Fegocomosa');
-        SEOTools::setDescription('Federal Government College Maiduguri Old Student Association Website');
-        SEOTools::opengraph()->setUrl('https://fegocomosa.live');
-        SEOTools::setCanonical('https://fegocomosa.live');
-        SEOTools::opengraph()->addProperty('type', 'articles');
-        SEOTools::twitter()->setSite('@fegocomosa');
-        SEOTools::jsonLd()->addImage('images/Logo-min.svg');
+        OpenGraph::setDescription('This is my page description');
+        OpenGraph::setTitle('Home');
+        OpenGraph::setUrl('https://fegocomosa.live');
+        OpenGraph::addProperty('type', 'articles');
+
+        TwitterCard::setTitle('Homepage');
+        TwitterCard::setSite('@Adams__Mohammed');
 
         $currentDate = Carbon::now();
 
