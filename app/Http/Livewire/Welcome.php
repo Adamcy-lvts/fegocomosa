@@ -12,6 +12,8 @@ use App\Models\ProjectImages;
 use App\Models\ExecutiveMember;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\SEOTools;
+use Artesaos\SEOTools\Facades\OpenGraph;
+use Artesaos\SEOTools\Facades\TwitterCard;
 
 
 class Welcome extends Component

@@ -13,6 +13,8 @@ use App\Models\MemberSlider;
 use App\Models\ProjectImages;
 use App\Models\ExecutiveMember;
 use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\OpenGraph;
+use Artesaos\SEOTools\Facades\TwitterCard;
 
 
 class WelcomeMemberPage extends Component
