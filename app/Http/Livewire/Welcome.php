@@ -30,8 +30,11 @@ class Welcome extends Component
         OpenGraph::addProperty('type', 'articles');
         OpenGraph::addImage(['url' => url('images/ariana_grande_.jpg'), 'size' => 300]);
 
+        $url = url('images/ariana_grande_.jpg');
+
         TwitterCard::setTitle('Fegocomosa');
         TwitterCard::setSite('@Adams__Mohammed');
+        TwitterCard::setImage($url);
 
         $currentDate = Carbon::now();
 
