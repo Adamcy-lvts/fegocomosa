@@ -28,9 +28,9 @@ class Welcome extends Component
         OpenGraph::setTitle('Fegocomosa');
         OpenGraph::setUrl('https://fegocomosa.live');
         OpenGraph::addProperty('type', 'website');
-        OpenGraph::addImage(['url' => url('images/ariana_grande_.jpg'), 'size' => 300]);
+        OpenGraph::addImage(['url' => url('images/Becky_G_1_200.jpg'), 'size' => 256]);
 
-        $url = url('images/ariana_grande_.jpg');
+        $url = url('images/Becky_G_1_200.jpg');
 
         TwitterCard::setTitle('Fegocomosa');
         TwitterCard::setSite('@Adams__Mohammed');
