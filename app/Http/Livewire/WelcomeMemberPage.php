@@ -32,11 +32,11 @@ class WelcomeMemberPage extends Component
 
         SEOMeta::setTitle('Fegocomosa');
         SEOMeta::setDescription('Federal Government College Maiduguri Old Student Association Website');
-        SEOMeta::setCanonical('https://fegocomosa.live');
+        SEOMeta::setCanonical('https://fegocomosa.live/home');
 
         OpenGraph::setDescription('Federal Government College Maiduguri Old Student Association Website');
         OpenGraph::setTitle('Fegocomosa');
-        OpenGraph::setUrl('https://fegocomosa.live');
+        OpenGraph::setUrl('https://fegocomosa.live/home');
         OpenGraph::addProperty('type', 'website');
         OpenGraph::setSiteName('Fegocomosa');
         OpenGraph::addImage($url);
