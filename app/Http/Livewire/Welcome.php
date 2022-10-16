@@ -27,14 +27,14 @@ class Welcome extends Component
         OpenGraph::setDescription('Federal Government College Maiduguri Old Student Association Website');
         OpenGraph::setTitle('Fegocomosa');
         OpenGraph::setUrl('https://fegocomosa.live');
-        OpenGraph::addProperty('type', 'articles');
-        OpenGraph::addImage(['url' => url('images/Logo-min.svg'), 'size' => 300]);
+        OpenGraph::addProperty('type', 'website');
+        OpenGraph::addImage(['url' => url('images/ariana_grande_.jpg'), 'size' => 300]);
 
-        $url = url('images/Logo-min.svg');
+        $url = url('images/ariana_grande_.jpg');
 
         TwitterCard::setTitle('Fegocomosa');
         TwitterCard::setSite('@Adams__Mohammed');
-        // TwitterCard::setImage($url);
+        TwitterCard::setImage($url);
 
         $currentDate = Carbon::now();
 
