@@ -6,8 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     {{-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> --}}
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="@fegocomosa">
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@fegocomosa" />
+    <meta name="twitter:title" content="Fegocomosa" />
+    <meta name="twitter:description" content="Federal Government College Maiduguri Old Student Association " />
+    <meta name="twitter:image" content="{{ url('images/ariana_grande_.jpg') }}" />
 
     <meta property="og:title" content="Fegocomosa">
     <meta property="og:description" content="Federal Governement College Maiduguri Old Student Association">

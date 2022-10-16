@@ -9,8 +9,11 @@
 
     {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
     {{-- {!! SEOMeta::generate() !!} --}}
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="@fegocomosa">
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@fegocomosa" />
+    <meta name="twitter:title" content="Fegocomosa" />
+    <meta name="twitter:description" content="Federal Government College Maiduguri Old Student Association " />
+    <meta name="twitter:image" content="{{ url('images/ariana_grande_.jpg') }}" />
 
     <meta property="og:title" content="Fegocomosa">
     <meta property="og:description" content="Federal Governement College Maiduguri Old Student Association">
