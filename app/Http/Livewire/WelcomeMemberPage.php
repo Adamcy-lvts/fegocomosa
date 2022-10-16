@@ -27,6 +27,8 @@ class WelcomeMemberPage extends Component
     public function render()
     {
 
+        $url = url('images/Becky_G_1_200.jpg');
+
         SEOMeta::setTitle('Fegocomosa');
         SEOMeta::setDescription('Federal Government College Maiduguri Old Student Association Website');
         SEOMeta::setCanonical('https://fegocomosa.live');
@@ -34,14 +36,17 @@ class WelcomeMemberPage extends Component
         OpenGraph::setDescription('Federal Government College Maiduguri Old Student Association Website');
         OpenGraph::setTitle('Fegocomosa');
         OpenGraph::setUrl('https://fegocomosa.live');
-        OpenGraph::addProperty('type', 'articles');
-        OpenGraph::addImage(['url' => url('images/ariana_grande_.jpg'), 'size' => 300]);
-        
-        $url = url('images/ariana_grande_.jpg');
+        OpenGraph::addProperty('type', 'website');
+        OpenGraph::setSiteName('Fegocomosa');
+        OpenGraph::addImage($url);
 
         TwitterCard::setTitle('Fegocomosa');
         TwitterCard::setSite('@Adams__Mohammed');
         TwitterCard::setImage($url);
+
+        JsonLd::setTitle('Fegocomosa');
+        JsonLd::setDescription('Federal Government College Maiduguri Old Student Association Website');
+        JsonLd::addImage($url);
         
 
         $currentDate = Carbon::now();
