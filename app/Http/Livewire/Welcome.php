@@ -34,7 +34,7 @@ class Welcome extends Component
 
         TwitterCard::setTitle('Fegocomosa');
         TwitterCard::setSite('@Adams__Mohammed');
-        TwitterCard::setImage($url);
+        // TwitterCard::setImage($url);
 
         $currentDate = Carbon::now();
 
