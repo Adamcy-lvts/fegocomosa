@@ -20,7 +20,7 @@ class TelegramNotification extends Notification
      */
     public function __construct($message)
     {
-        $this->message = $mesage;
+        $this->message = $message;
     }
 
     /**
