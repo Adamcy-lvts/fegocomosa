@@ -62,11 +62,11 @@ class ContactUsForm extends Component
 
         Notification::send($admins, new ContactUsMessageNotification($data, $this->email));
 
-        Notification::send($admins, new TelegramNotification($this->message));
-
         $user = User::find(1);
 
         $user->notify(new SmsNotification($this->message));
+
+        $user->notify(new TelegramNotification($this->message));
 
         $this->emit('messageSubmitted');
     }
