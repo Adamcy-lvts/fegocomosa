@@ -11,6 +11,7 @@ use Vonage\SMS\Message\SMS;
 use Illuminate\Support\Facades\Mail;
 use Vonage\Client\Credentials\Basic;
 use App\Notifications\SmsNotification;
+use App\Notifications\TelegramNotification;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\ContactUsMessageNotification;
 
@@ -60,6 +61,8 @@ class ContactUsForm extends Component
         
 
         Notification::send($admins, new ContactUsMessageNotification($data, $this->email));
+
+        Notification::send($admins, new TelegramNotification($this->message));
 
         $user = User::find(1);
 
