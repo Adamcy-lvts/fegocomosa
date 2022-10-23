@@ -36,7 +36,7 @@ class TelegramNotification extends Notification
 
     public function toTelegram($notifiable)
     {
-        // $url = url('/invoice/' . $this->invoice->id);
+        $url = url('/invoice/' . 2);
 
         return TelegramMessage::create()
             // Optional recipient user id.
@@ -48,10 +48,10 @@ class TelegramNotification extends Notification
             // ->view('notification', ['url' => $url])
 
             // (Optional) Inline Buttons
-            ->button('View Invoice', )
-            ->button('Download Invoice', )
+            ->button('View Invoice', $url)
+            ->button('Download Invoice', $url)
             // (Optional) Inline Button with callback. You can handle callback in your bot instance
-            ->buttonWithCallback('Confirm', 'confirm_invoice ');
+            ->buttonWithCallback('Confirm', 'confirm_invoice '. 2);
     }
 
     /**
