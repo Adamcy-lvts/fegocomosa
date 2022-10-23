@@ -16,7 +16,6 @@ use Artesaos\SEOTools\Facades\SEOTools;
 use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\TwitterCard;
 
-
 class Welcome extends Component
 {
     public function render()
@@ -51,7 +50,7 @@ class Welcome extends Component
             'procategory'   => Category::take(6)->get(),
             'executives'      => ExecutiveMember::orderBy('id', 'asc')->get(),
             'positions' => Position::take(4)->get(),
-          
+
         ])->layout('layouts.guest');
     }
 }

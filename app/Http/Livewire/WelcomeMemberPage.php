@@ -17,17 +17,14 @@ use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\TwitterCard;
 
-
 class WelcomeMemberPage extends Component
 {
-
     protected $listeners = [
     'refreshParent' => '$refresh',
     ];
-    
+
     public function render()
     {
-
         $url = url('images/Becky_G_1_200.jpg');
 
         SEOMeta::setTitle('Fegocomosa');
@@ -48,7 +45,7 @@ class WelcomeMemberPage extends Component
         JsonLd::setTitle('Fegocomosa');
         JsonLd::setDescription('Federal Government College Maiduguri Old Student Association Website');
         JsonLd::addImage($url);
-        
+
 
         $currentDate = Carbon::now();
         return view('livewire.welcome-member-page', [

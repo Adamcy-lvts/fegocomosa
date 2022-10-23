@@ -13,31 +13,25 @@ class ShowProfile extends Component
 
     public function mount(User $member)
     {
-        
         $this->member = $member;
-
-       
-      
-
     }
     public function render()
-
     {
-         OpenGraph::setTitle('Profile')
-             ->setDescription('Some Person')
-            ->setType('profile')
-            ->setProfile([
-                $this->member->first_name => 'string',
-                $this->member->last_name => 'string',
-                $this->member->username => 'string',
-             
-            ]);
-       $profileKey = 'profile_'.$this->member->id;
+        OpenGraph::setTitle('Profile')
+            ->setDescription('Some Person')
+           ->setType('profile')
+           ->setProfile([
+               $this->member->first_name => 'string',
+               $this->member->last_name => 'string',
+               $this->member->username => 'string',
 
-            if (!Session::has($profileKey)) {
-                $this->member->incrementViewCount();//count the view
-                Session::put($profileKey, 1);
-            }
+           ]);
+        $profileKey = 'profile_'.$this->member->id;
+
+        if (!Session::has($profileKey)) {
+            $this->member->incrementViewCount();//count the view
+            Session::put($profileKey, 1);
+        }
 
 
         return view('livewire.members.show-profile');

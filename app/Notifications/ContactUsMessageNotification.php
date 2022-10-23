@@ -3,9 +3,10 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
+use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
-use Illuminate\Notifications\Notification;
+use Illuminate\Notifications\Messages\VonageMessage;
 
 class ContactUsMessageNotification extends Notification implements ShouldQueue
 {
@@ -43,7 +44,7 @@ class ContactUsMessageNotification extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
+        return (new MailMessage())
                     ->from($this->data['email'], $this->data['name'])
                     ->subject('Contact Us Message')
                     ->greeting('Message from'.' '.$this->data['name'].' '.$this->data['email'])
@@ -51,6 +52,7 @@ class ContactUsMessageNotification extends Notification implements ShouldQueue
                     ->action('Notification Action', url('/'))
                     ->line('Thank you for using our application!');
     }
+    
 
     /**
      * Get the array representation of the notification.

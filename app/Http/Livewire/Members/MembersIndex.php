@@ -16,7 +16,7 @@ use App\Models\SocialMediaLink;
 use Illuminate\Support\Facades\Session;
 
 class MembersIndex extends Component
-{   
+{
     use WithPagination;
 
     public $search = "";
@@ -47,13 +47,18 @@ class MembersIndex extends Component
     public $address;
     public $email;
     public $phone;
-    public $facebook, $twitter, $instagram , $whatsapp, $telegram, $linkedin, $website;
-    
- 
+    public $facebook;
+    public $twitter;
+    public $instagram ;
+    public $whatsapp;
+    public $telegram;
+    public $linkedin;
+    public $website;
+
+
     public function updatingSearch()
     {
-         $this->resetPage();
-
+        $this->resetPage();
     }
 
     public function ClearFilters()
@@ -82,82 +87,69 @@ class MembersIndex extends Component
             $member->incrementViewCount();//count the view
             Session::put($profileKey, 1);
         }
-
-
     }
 
    public function profileDetails()
    {
-    
-        $member = User::find($this->memberId);
+       $member = User::find($this->memberId);
 
-        $userSocialLinks = SocialMediaLink::where('user_id', $this->memberId )->first();
+       $userSocialLinks = SocialMediaLink::where('user_id', $this->memberId)->first();
 
-      $this->firstName = $member->first_name;
-      $this->lastName = $member->last_name;
-      $this->middleName = $member->middle_name;
-      $this->profileImage = $member->profile_photo_path;
-      $this->potraitImage = $member->potrait_image;
-      $this->profession = $member->profession;
-      $this->workplace = $member->workplace;
-      $this->address = $member->address;
-      $this->email = $member->email;
-      $this->phone  = $member->phone; 
-      $this->gradYear = $member->graduationYear->year;
-      $this->facebook = $userSocialLinks->facebook ?? "#";
-      $this->twitter = $userSocialLinks->twitter ?? "#";
-      $this->instagram = $userSocialLinks->instagram  ?? "#";
-      $this->whatsapp = $member->socialMedia->whatsapp ?? "#";
-      $this->telegram = $member->socialMedia->telegram ?? "#";
-      $this->linkedin = $member->socialMedia->linkedin ?? "#";
-      $this->website = $member->socialMedia->website ?? "#";
+       $this->firstName = $member->first_name;
+       $this->lastName = $member->last_name;
+       $this->middleName = $member->middle_name;
+       $this->profileImage = $member->profile_photo_path;
+       $this->potraitImage = $member->potrait_image;
+       $this->profession = $member->profession;
+       $this->workplace = $member->workplace;
+       $this->address = $member->address;
+       $this->email = $member->email;
+       $this->phone  = $member->phone;
+       $this->gradYear = $member->graduationYear->year;
+       $this->facebook = $userSocialLinks->facebook ?? "#";
+       $this->twitter = $userSocialLinks->twitter ?? "#";
+       $this->instagram = $userSocialLinks->instagram  ?? "#";
+       $this->whatsapp = $member->socialMedia->whatsapp ?? "#";
+       $this->telegram = $member->socialMedia->telegram ?? "#";
+       $this->linkedin = $member->socialMedia->linkedin ?? "#";
+       $this->website = $member->socialMedia->website ?? "#";
    }
 
 
     public function updatedSelectedState($state_id)
     {
-   
         $this->cities = Lga::where('state_id', $state_id)->get();
-        
     }
 
     public function updatedFilterByState($state_id)
     {
-   
         $this->cities = Lga::where('state_id', $state_id)->get();
-
-        
     }
 
      public function getUsersProperty()
-    {
-        return $this->usersQuery->paginate($this->pagination);
-
-        
-
-    }
+     {
+         return $this->usersQuery->paginate($this->pagination);
+     }
 
      public function getUsersQueryProperty()
-    {
-        
-        return User::select('id','username','first_name','middle_name','last_name','potrait_image','profession','graduation_year_id')->where('active', 1)->with(['graduationYear'])->when($this->selectedHouseFilter, function($query) {
-            
-            $query->where('house_id', $this->selectedHouseFilter);
-            })->when($this->FilterByState, function($query) {$query->where('state_id',$this->FilterByState);
-            })->when($this->FilterByCity, function($query) {$query->where('city_id', $this->FilterByCity);
-            })->when($this->selectedYear, function($query) {$query->where('graduation_year_id', $this->selectedYear);
-            })->when($this->FilterByProfession, function($query) {
-            $query->WhereHas('Categories', function ($query) {
-            $query->where('category_id', $this->FilterByProfession);
-            });
-            })->search(trim($this->search));
-
-    }
+     {
+         return User::select('id', 'username', 'first_name', 'middle_name', 'last_name', 'potrait_image', 'profession', 'graduation_year_id')->where('active', 1)->with(['graduationYear'])->when($this->selectedHouseFilter, function ($query) {
+             $query->where('house_id', $this->selectedHouseFilter);
+         })->when($this->FilterByState, function ($query) {
+             $query->where('state_id', $this->FilterByState);
+         })->when($this->FilterByCity, function ($query) {
+             $query->where('city_id', $this->FilterByCity);
+         })->when($this->selectedYear, function ($query) {
+             $query->where('graduation_year_id', $this->selectedYear);
+         })->when($this->FilterByProfession, function ($query) {
+             $query->WhereHas('Categories', function ($query) {
+                 $query->where('category_id', $this->FilterByProfession);
+             });
+         })->search(trim($this->search));
+     }
 
     public function render()
     {
-       
-
         return view('livewire.members.members-index', [
             'members' => $this->users,
             'states' => State::all(),
@@ -166,9 +158,7 @@ class MembersIndex extends Component
             'maritalStatuses' => MaritalStatus::all(),
             'professionCategories' => Category::all(),
              'years' => GraduationYears::all()
-          
-        ]);
-        
 
+        ]);
     }
 }
