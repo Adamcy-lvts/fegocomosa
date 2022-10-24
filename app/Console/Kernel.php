@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use Illuminate\Support\Facades\Log;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -16,6 +17,12 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
+
+        $schedule->command('clear:tmp')->weekly()->emailOutputTo('lv4mj1@gmail.com');
+
+        // $schedule->call(function() {
+        //     Log::info('I Love Midnights by Taylor Swift');
+        // })->everyMinute();
     }
 
     /**
