@@ -66,8 +66,6 @@ class ContactUsForm extends Component
 
         $user->notify(new SmsNotification($this->message));
 
-        $user->notify(new TelegramNotification($this->message));
-
         $this->emit('messageSubmitted');
     }
     public function render()

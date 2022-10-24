@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Queue\InteractsWithQueue;
 use App\Notifications\NewRegisteredMember;
+use App\Notifications\TelegramNotification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Notification;
 
@@ -35,5 +36,9 @@ class NewMemberNotification
 
 
         Notification::send($users, new NewRegisteredMember($event->user));
+
+        $user = User::find(1);
+
+        $user->notify(new TelegramNotification($event->user));
     }
 }

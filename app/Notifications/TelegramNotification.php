@@ -12,15 +12,15 @@ class TelegramNotification extends Notification
 {
     use Queueable;
 
-    public $message;
+    public $member;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($message)
+    public function __construct($member)
     {
-        $this->message = $message;
+        $this->member = $member;
     }
 
     /**
@@ -36,20 +36,20 @@ class TelegramNotification extends Notification
 
     public function toTelegram($notifiable)
     {
-        // $url = url('/invoice/' . 2);
+       
 
         return TelegramMessage::create()
             // Optional recipient user id.
             ->to('-851942535')
             // Markdown supported.
-            ->content($this->message);
+            ->content($this->member->first_name.' '.$this->member->middle_name.' '.$this->member->last_name.'of'.$this->member->gradYear->year.'set just registered')
 
             // (Optional) Blade template for the content.
             // ->view('notification', ['url' => $url])
 
             // (Optional) Inline Buttons
-            // ->button('View Invoice', $url)
-            // ->button('Download Invoice', $url)
+            ->button('View His Profile', url('member/profile/' . $this->member->username))
+            ->button('View All Members', url('/members'));
             // (Optional) Inline Button with callback. You can handle callback in your bot instance
             // ->buttonWithCallback('Confirm', 'confirm_invoice '. 2);
     }
