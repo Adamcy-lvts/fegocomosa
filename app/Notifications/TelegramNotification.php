@@ -42,7 +42,7 @@ class TelegramNotification extends Notification
             // Optional recipient user id.
             ->to('-851942535')
             // Markdown supported.
-            ->content($this->member->first_name.' '.$this->member->middle_name.' '.$this->member->last_name.'of'.$this->member->graduationYear->year.'set just registered')
+            ->content($this->member->first_name.' '.$this->member->middle_name.' '.$this->member->last_name.' '.'of'.' '.$this->member->graduationYear->year.' '.'set just registered')
 
             // (Optional) Blade template for the content.
             // ->view('notification', ['url' => $url])
