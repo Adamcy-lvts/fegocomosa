@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     {{-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> --}}
 
-    {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
+    <title>{{ config('app.name', 'Fegocomosa') }}</title>
 
     {!! SEOMeta::generate() !!}
     {!! OpenGraph::generate() !!}
