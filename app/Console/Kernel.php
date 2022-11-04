@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -20,9 +21,15 @@ class Kernel extends ConsoleKernel
 
         $schedule->command('clear:tmp')->weekly()->emailOutputTo('lv4mj1@gmail.com');
 
-        // $schedule->call(function() {
-        //     Log::info('I Love Midnights by Taylor Swift');
-        // })->everyMinute();
+        $schedule->command('backup:clean')->weekly();
+
+        $schedule->command('backup:run --only-db')->daily();
+
+        $schedule->command('backup:run')->monthly();
+
+        $schedule->call(function () {
+            DB::table('notifications')->delete();
+        })->weekly();
     }
 
     /**
