@@ -23,7 +23,7 @@ class Kernel extends ConsoleKernel
 
         $schedule->command('backup:clean')->weekly();
 
-        $schedule->command('backup:run --only-db')->daily();
+        $schedule->command('backup:run --only-db')->everyMinute();
 
         $schedule->command('backup:run')->monthly();
 
