@@ -29,7 +29,7 @@ class Kernel extends ConsoleKernel
 
         $schedule->call(function () {
             DB::table('notifications')->delete();
-        })->weekly();
+        })->weekly()->emailOutputTo('lv4mj1@gmail.com');
     }
 
     /**
