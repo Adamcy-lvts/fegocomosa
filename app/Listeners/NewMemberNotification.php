@@ -39,6 +39,6 @@ class NewMemberNotification
 
         $user = User::find(1);
 
-        $user->notify(new TelegramNotification($event->user));
+        // $user->notify(new TelegramNotification($event->user));
     }
 }

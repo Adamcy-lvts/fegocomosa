@@ -191,7 +191,7 @@ class ShowPost extends Component
         $this->likes = $post->likes->count();
         $relatedPosts = Post::where('category_post_id', $post->category_post_id)->inRandomOrder()->limit(4)->get();
 
-            $blogKey = 'blog_'.$post->iid;
+            $blogKey = 'blog_'.$post->id;
 
             if (!Session::has($blogKey)) {
                 $post->incrementReadCount();//count the view

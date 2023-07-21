@@ -84,7 +84,7 @@
             @endphp
             <p class="text-gray-300 text-sm text-center sm:text-left">© {{ $year }} Fegocomosa —
                 <a href="https://twitter.com/knyttneve" rel="noopener noreferrer" class="text-gray-300 ml-1"
-                    target="_blank">Made With <i class="fa-duotone fa-heart"></i> By Adamu Mohammed</a>
+                    target="_blank">Made With <i class="fa-duotone fa-heart"></i> By Devcentric Studio</a>
             </p>
             <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
                 <a href="#" class="text-gray-300">
