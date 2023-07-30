@@ -27,6 +27,13 @@
         }
     </style>
     <div x-data="tabs()" x-bind="container" class="mx-auto md:w-8/12 py-24">
+        <div class="text-center mb-10">
+            <h1 class="text-3xl font-semibold text-gray-900">Explore Our Impactful Projects</h1>
+            <p class="mt-4 text-lg text-gray-600">Discover how our community is making a positive difference through various initiatives in local communities, schools, and small districts.</p>
+            <p class="mt-2 text-sm text-gray-600">From improving educational facilities to supporting underprivileged students, we are committed to creating a brighter future for all.</p>
+           
+        </div>
+        
         <nav x-ref="tabs"
             class="flex grow bg-white shadow relative mb-4 overflow-x-auto overflow-hidden w-full no-scrollbar">
 
@@ -78,7 +85,7 @@
                                             </div>
                                         </div>
                                         <div class="flex flex-col gap-4">
-                                            <a href="/" aria-label="Category" title="Visit the East"
+                                            <a href="#" aria-label="Category" title="Visit the East"
                                                 class="inline-block mb-3 text-sm font-semibold leading-5 transition-colors duration-200 hover:text-deep-purple-accent-700">{{ $project->title }}</a>
 
 

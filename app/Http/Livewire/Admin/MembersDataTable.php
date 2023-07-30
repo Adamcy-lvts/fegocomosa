@@ -71,6 +71,9 @@ class MembersDataTable extends Component
     public $year;
     
 
+    public function mount()  {
+        
+    }
    
   
 
@@ -121,6 +124,7 @@ class MembersDataTable extends Component
 
     }
 
+
     public function givePosition()
     {
 
@@ -142,8 +146,6 @@ class MembersDataTable extends Component
           
        ]);
 
-
-
         $this->reset();
 
         $this->notification()->success(
@@ -152,6 +154,7 @@ class MembersDataTable extends Component
         );
 
     }
+
 
     public function makeAmbassador($id)
     {
@@ -175,10 +178,10 @@ class MembersDataTable extends Component
         $members = User::all();
 
         Notification::send($members, new NewSetAmbassadorNotification($newSetAmbassador));
-
+ 
         $this->notification()->success(
             $title = 'Success',
-            $description = $member->name.' '.' is now Ambassador to 2010 set'
+            $description = $member->first_name.' '.' is now Ambassador to 2010 set'
         );
         $this->reset();
     }

@@ -12,9 +12,10 @@
                         Fundraiser, </h1>
                     <div class="h-1 w-32 bg-green-500 rounded"></div>
                 </div>
-                <p class="lg:w-1/2 w-full leading-relaxed text-gray-500">Whatever cardigan tote bag tumblr hexagon
-                    brooklyn asymmetrical gentrify, subway tile poke farm-to-table. Franzen you probably haven't heard
-                    of them man bun deep jianbing selfies heirloom prism food truck ugh squid celiac humblebrag.</p>
+                <p class="lg:w-1/2 w-full leading-relaxed text-gray-500"> Your support can make a significant impact in the lives of those in need. Together, let's create
+                    positive change and make a difference in our community. Browse through the campaigns below and find
+                    causes that resonate with you. Every donation, no matter how big or small, can bring hope and
+                    transformation to someone's life. Be part of something meaningful today!</p>
             </div>
             <div class="text-xs xs:text-sm mb-4 text-gray-300">
                 {{ $campaigns->links() }}

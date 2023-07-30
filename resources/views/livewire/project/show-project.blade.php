@@ -55,14 +55,36 @@
                                     </div>
 
                                     <div class="flex justify-between">
-                                        <div>Budget:</div>
-                                        <div><span> &#x20A6;</span>{{ number_format($project->budget) }}</div>
+                                        <div class="font-semibold">Budget:</div>
+                                        <div class="text-green-600 flex items-center">
+                                            <span>&#x20A6;</span>
+                                            <span class="ml-1">{{ number_format($project->budget, 2) }}</span>
+                                        </div>
                                     </div>
+                                    
 
                                     <div class="flex justify-between">
-                                        <div>Status:</div>
-                                        <div>{{ $project->status }}</div>
+                                        <div class="font-semibold">Status:</div>
+                                        <div class="font-semibold py-1 px-3 rounded-lg 
+                                            @switch($project->status)
+                                                @case('Completed')
+                                                    bg-green-200 text-green-800
+                                                    @break
+                                                @case('In Progress')
+                                                    bg-yellow-200 text-yellow-800
+                                                    @break
+                                                @case('Proposed')
+                                                    bg-gray-200 text-gray-800
+                                                    @break
+                                                @default
+                                                    bg-gray-200 text-gray-800
+                                            @endswitch">
+                                            {{ $project->status }}
+                                        </div>
                                     </div>
+                                    
+                                    
+                                    
 
 
                                 </div>

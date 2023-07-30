@@ -5,9 +5,8 @@
                 <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">Find Fegomite by
                     Professional
                     Category</h1>
-                <p class="lg:w-1/2 w-full leading-relaxed text-base">Fegocomosa has wide a range professionals and
-                    Businnes Moguls working from all over the world, patronize a fegomite business, need help? contact
-                    fegomite prfofessionals </p>
+                <p class="lg:w-1/2 w-full leading-relaxed text-base">FEGOCOMOSA has a wide range of professionals and Business Moguls working from all over the world. Whether you're looking to patronize a Fegomite business or in need of assistance, our network of professionals is here to help. Connect with experts in various fields, seek guidance, and explore opportunities for collaboration.
+                     Together, we foster excellence and empower growth through a global community of accomplished individuals. </p>
             </div>
 
             <div class="flex flex-wrap -m-4">
@@ -25,10 +24,7 @@
                                     <h2 class="text-lg   font-medium title-font mb-2">
                                         {{ $category->name }}
                                     </h2>
-                                    <p class="leading-relaxed text-base">Fingerstache flexitarian street art 8-bit waist
-                                        co,
-                                        subway
-                                        tile poke farm.</p>
+                                    <p class="leading-relaxed text-base">{{$category->description}}</p>
                                 </div>
                             </div>
                         </a>

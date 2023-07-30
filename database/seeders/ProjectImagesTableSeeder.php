@@ -15,50 +15,50 @@ class ProjectImagesTableSeeder extends Seeder
     public function run()
     {
         ProjectImages::create([
-            'images' => 'ts-1.jpg',
-            'caption' => 'The Cutest and Mesmerizing',
+            'images' => 'pro_7.jpg',
+            'caption' => 'Before Renovation: Outdated and Inadequate Lab Equipment',
             'project_id' => 1
         ]);
 
         ProjectImages::create([
-            'images' => 'ts-2.jpg',
-            'caption' => 'The Magically Enchanting',
+            'images' => 'pro_3.jpeg',
+            'caption' => 'Upgrading the Workspace: New Lab Benches and Safety Measures',
             'project_id' => 1
         ]);
 
         ProjectImages::create([
-            'images' => 'ts-3.jpg',
-            'caption' => 'Beautifully Hypnotizing',
+            'images' => 'pro_2.jpg',
+            'caption' => 'Upgrading the Workspace: New Lab Benches and Safety Measures',
             'project_id' => 2
         ]);
 
         ProjectImages::create([
-            'images' => 'ts-4.jpg',
-            'caption' => 'Magnificently Pretty',
+            'images' => 'pro_4.jpg',
+            'caption' => 'Modernizing Lab Equipment: Advanced Microscopes and Instruments',
             'project_id' => 2
         ]);
 
         ProjectImages::create([
-            'images' => 'ts-5.jpg',
-            'caption' => 'Effortlessly Sexy',
+            'images' => 'pro_1.jpg',
+            'caption' => 'Improved Safety Standards: Fire Safety Equipment Installed',
             'project_id' => 3
         ]);
 
         ProjectImages::create([
-            'images' => 'ts-6.jpg',
-            'caption' => 'Cuteness Overloaded',
+            'images' => 'pro_5.jpg',
+            'caption' => 'Completed Renovation: Spacious and Conducive Learning Environment',
             'project_id' => 3
         ]);
 
         ProjectImages::create([
-            'images' => 'ts-7.jpg',
-            'caption' => 'Classically Beautiful',
+            'images' => 'pro_6.jpg',
+            'caption' => 'Enhancing Learning Spaces: New Interactive Whiteboards Installed',
             'project_id' => 4
         ]);
 
         ProjectImages::create([
-            'images' => 'ts-8.jpg',
-            'caption' => 'Cutely Innocent',
+            'images' => 'pro_8.jpg',
+            'caption' => 'Promoting Collaboration: State-of-the-art Lab Tables and Group Workstations',
             'project_id' => 4
         ]);
     }

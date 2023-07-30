@@ -37,6 +37,7 @@
     <!-- Scripts -->
     @wireUiScripts
     <script src="{{ mix('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/alpinetoolkit.js') }}"></script>
 
 </head>
 
@@ -58,7 +59,7 @@
     @yield('contactScript')
     @yield('contactOrganizerScript')
     @yield('donationFormScript')
-
+    <script src="{{ asset('js/alpinetoolkit.js') }}"></script>
 
 </body>
 

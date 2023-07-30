@@ -46,24 +46,23 @@ class PostTableSeeder extends Seeder
             ]);
 
             Post::create([
-            
-                'title' => "Ariana Grande",
-                'slug' => 'ariana-grande',
-                'body' => '<p>
-                <h1>Ariana Grande-Butera</h1>
-                            Ariana Grande-Butera; born June 26, 1993) is an American singer, songwriter, and actress. 
-                            Her four-octave vocal range has received critical acclaim, and her personal life has been the subject of widespread media attention. 
-                            She has received numerous accolades throughout her career, including two Grammy Awards, one Brit Award, one Bambi Award, 
-                            two Billboard Music Awards, three American Music Awards, nine MTV Video Music Awards, and 27 Guinness World Records.
-                            Grande began her music career at age 15 in the 2008 Broadway musical 13. She rose to fame for playing Cat Valentine in the Nickelodeon
-                             television series Victorious (2010–2013) and Sam & Cat (2013–2014). Grande signed with Republic Records in 2011 after label
-                              executives viewed YouTube videos of her covering songs. Her 1950s doo-wop-influenced pop and R&B debut album,[2] Yours Truly (2013),
-                               topped the US Billboard 200, while its lead single, "The Way", reached the top ten of the US Billboard Hot 100. 
-                               Grandes voice and whistle register on the album drew immediate comparisons to Mariah Carey. 
-                          </p>',
+                'title' => 'How to Connect Your Phone to Your Smart TV',
+                'slug' => 'how-to-connect-your-phone-to-your-smart-tv',
+                'body' => '<p>Connecting your phone to your smart TV opens up a world of possibilities, allowing you to stream videos, share photos, and even play mobile games on the big screen. In this step-by-step guide, we will walk you through the process of connecting your phone to your smart TV, whether you have an Android or iOS device.</p>
+                <p>Requirements:</p>
+                <ul>
+                    <li>A smart TV with screen mirroring or casting capabilities</li>
+                    <li>A smartphone (Android or iPhone) with Wi-Fi and Bluetooth functionality</li>
+                    <li>A stable Wi-Fi network</li>
+                </ul>
+                <p>Method 1: Using Screen Mirroring (Android)</p>
+                <p>Step 1: Enable Screen Mirroring on Your Smart TV...</p>',
                 'image' => 'ariana_grande_black_and_white.jpg',
-                'user_id' => 2,
-                'category_post_id' => 1
+                'user_id' => 1,
+                'category_post_id' => 6,
+             
+                
+        
             ]);
 
             Post::create([

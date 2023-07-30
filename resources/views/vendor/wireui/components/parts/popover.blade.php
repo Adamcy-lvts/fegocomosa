@@ -1,19 +1,13 @@
 @props(['margin' => false, 'rootClass' => null])
 
 <div class="fixed inset-0 z-20 flex items-end sm:z-10 sm:absolute sm:inset-auto transition-all ease-linear duration-150 {{ $rootClass }}"
-    :class="{
-        'sm:left-0': position.x === 'left',
-        'sm:right-0': position.x === 'right',
-        'sm:top-0 {{ $margin ? 'sm:mt-16' : 'sm:mt-11' }}': position.y === 'bottom',
-        'sm:bottom-0 {{ $margin ? 'sm:mb-16' : 'sm:mb-11' }}': position.y === 'top',
-    }"
     style="display: none"
     x-cloak
     x-show="popover"
     x-ref="popover"
     x-on:click.outside="close"
     x-on:keydown.escape.window="handleEscape">
-    <div class="fixed inset-0 bg-secondary-400 bg-opacity-60 transition-opacity sm:hidden dark:bg-secondary-700 dark:bg-opacity-60"
+    <div class="fixed inset-0 transition-opacity bg-secondary-400 bg-opacity-60 sm:hidden dark:bg-secondary-700 dark:bg-opacity-60"
         x-show="popover"
         x-transition:enter="ease-out duration-300"
         x-transition:enter-start="opacity-0"

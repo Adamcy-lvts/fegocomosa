@@ -179,7 +179,15 @@
                                 <td class="px-3 py-2   text-sm">
                                     <a href="{{ route('member.profile', $member->id) }}">
                                         <p class="text-gray-300 whitespace-no-wrap">
-                                            {{ $member->first_name . ' ' . $member->last_name }}</p>
+                                            {{ $member->first_name . ' ' . $member->last_name }}
+                                            @if ($member->hasPosition($member->id))
+                                                <sup
+                                                    class="text-xs bg-green-500 text-white px-1 py-0.5 rounded">{{ $member->executive_member->position }}</sup>
+                                            @endif
+                                            @if ($member->isAmbassador())
+                                                <span class="text-xs bg-green-500 text-white px-1 py-0.5 rounded"> {{$member->ambassador->year}} Amb</span>
+                                            @endif
+                                        </p>
                                     </a>
                                 </td>
 

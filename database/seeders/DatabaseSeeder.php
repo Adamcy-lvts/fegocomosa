@@ -30,14 +30,17 @@ class DatabaseSeeder extends Seeder
         $this->call(CategoryTableSeeder::class);
         $this->call(OrganizersTableSeeder::class);
         $this->call(CampaignTableSeeder::class);
-        // $this->call(ProjectTableSeeder::class);
-        // $this->call(ProjectImagesTableSeeder::class);
+        $this->call(ProjectTableSeeder::class);
+        $this->call(ProjectImagesTableSeeder::class);
         $this->call(MemberSliderTableSeeder::class);
         $this->call(GraduationYearTableSeeder::class);
         $this->call(EntryYearTableSeeder::class);
         $this->call(NavigationMenuSeeder::class);
         $this->call(GuestNavBarMenuSeeder::class);
+        $this->call(PostTableSeeder::class);
         $this->call(PostCategoryTableSeeder::class);
         $this->call(ClassSeeder::class);
+        $this->call(ExecutiveMembersSeeder::class);
+        $this->call(SetAmbassadorTableSeeder::class);
     }
 }

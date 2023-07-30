@@ -2,12 +2,63 @@
 
 
     <div class=" container mx-auto px-10">
-        <div class="py-8">
-            <h1 class="text-lg">Search or Filter Members</h1>
-            <p>you can search member by first name, last name, graduation year, class in school or you can filter
-                members based on their state, lga, profession, or by thier house when in FGCM.</p>
+        <div class="flex flex-wrap w-full mb-5">
+            <div class="flex flex-col md:flex-row-full mb-3 lg:mb-0">
+                <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 mt-5 text-gray-900">Search or Filter Members
+                </h1>
+                <div class="h-1 w-32 bg-green-500 rounded"></div>
+
+
+                <div class="flex flex-col md:flex-row gap-3 mb-2">
+                    <div>
+                        <p class="mb-2  leading-relaxed text-gray-500">
+                            Looking to connect with fellow Fegocomosa members? You're in the right place! Use the search
+                            or
+                            filter
+                            options below to find specific members based on your preferences. Whether you're looking for
+                            old
+                            friends,
+                            networking opportunities, or seeking professionals from various fields, our member database
+                            has it
+                            all.
+                        </p>
+
+                        <p class="leading-relaxed text-gray-500">
+                            Whether you're a high government official, politician, civil servant, doctor, engineer,
+                            artist,
+                            businessperson,
+                            military personnel, police officer, lecturer, or belong to any other profession, you'll find
+                            like-minded individuals
+                            among our diverse member community. Let's build connections and foster camaraderie among
+                            Fegocomosa
+                            members!
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg text-gray-900">Search Members:</h3>
+                        <p class="leading-relaxed text-gray-500">
+                            You can search for members by their first name, last name, graduation year,
+                            or class in school. Our comprehensive search functionality will help you find the exact
+                            person you're looking
+                            for.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg text-gray-900">Filter Members:</h3>
+                        <p class="leading-relaxed text-gray-500">
+                            To refine your search further, use our filtering options. You can filter
+                            members based on their state, local government area (LGA), profession, or even their house
+                            when in FGCM.
+                            This way, you can connect with members who share similar backgrounds or interests.
+                        </p>
+
+                    </div>
+
+                </div>
+            </div>
+         
         </div>
-        <div class="col-span-1 sm:col-span-2 sm:grid sm:grid-cols-4 sm:gap-6 mb-3">
+        {{-- <div class="col-span-1 sm:col-span-2 sm:grid sm:grid-cols-4 sm:gap-6 mb-3">
             <x-native-select label="Record Per Page" wire:model="pagination">
                 <option>4</option>
                 <option>8</option>
@@ -51,7 +102,73 @@
             <div>
                 <x-button class="mt-7" sm wire:click="ClearFilters" outline green label="Clear All Filters" />
             </div>
+        </div> --}}
+
+
+        <div class="flex flex-col lg:flex-row gap-4 mb-4">
+            <div class="flex-1">
+                <x-native-select class="w-full" label="Record Per Page" wire:model="pagination">
+                    <option>4</option>
+                    <option>8</option>
+                    <option>12</option>
+                    <option>16</option>
+                </x-native-select>
+            </div>
+        
+            <div class="flex-1">
+                <x-native-select class="w-full" label="Filter by State" wire:model="FilterByState" placeholder="Filter By State">
+                    @foreach ($states as $state)
+                        <option value="{{ $state->id }}">{{ $state->name }}</option>
+                    @endforeach
+                </x-native-select>
+            </div>
+        
+            @if (!is_null($cities))
+                <div class="flex-1">
+                    <x-native-select class="w-full" label="Filter by City" placeholder="Filter by City" wire:model="FilterByCity">
+                        @foreach ($cities as $city)
+                            <option value="{{ $city->id }}">{{ $city->name }}</option>
+                        @endforeach
+                    </x-native-select>
+                </div>
+            @endif
+        
+            <div class="flex-1">
+                <x-native-select class="w-full" label="Filter By Profession" placeholder="Filter By Profession" wire:model="FilterByProfession">
+                    @foreach ($professionCategories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </x-native-select>
+            </div>
+        
+            <div class="flex-1">
+                <x-native-select class="w-full" label="Filter By House" placeholder="Filter By House" wire:model="selectedHouseFilter">
+                    @foreach ($houses as $house)
+                        <option value="{{ $house->id }}">{{ $house->name }}</option>
+                    @endforeach
+                </x-native-select>
+            </div>
+        
+            <div class="flex-1">
+                <x-native-select class="w-full" label="Filter By Graduation Year" placeholder="Filter By Graduation Year" wire:model="selectedYear">
+                    @foreach ($years as $year)
+                        <option value="{{ $year->id }}">{{ $year->year }}</option>
+                    @endforeach
+                </x-native-select>
+            </div>
+        
+            <div class="flex-1">
+                <x-button class="w-full mt-7" sm wire:click="ClearFilters" outline green label="Clear All Filters" />
+            </div>
         </div>
+        
+        
+        
+          
+        
+
+
+
 
         {{-- <div class="flex gap-2 mb-3 flex-wrap">
             @foreach ($professionCategories as $category)

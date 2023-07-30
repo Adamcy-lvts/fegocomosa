@@ -1,5 +1,5 @@
 <x-guest-layout>
-
+    
     <div x-data="app()" x-cloak class="w-full md:w-7/12 mx-auto px-4 sm:px-0 py-24">
         <h1 class="text-xl ml-2 uppercase pb-12" x-text="`Registeration Step: ${step} of 4`"></h1>
 
@@ -47,12 +47,11 @@
 
                 </div>
                 <div x-data="{ show: true }" x-show="show" x-transition.duration.800ms x-init="setTimeout(() => show = false, 10000)"
-                    class="bg-blue-50 rounded max-w-md text-blue-700 px-2 py-1" role="alert">
-                    <p class="text-sm font-bold"><span class="mr-3"><i
-                                class="fa-light fa-circle-exclamation"></i></i></span>
+                    class="flex bg-red-100 rounded max-w-md text-red-700 px-2 py-1" role="alert">
+                    <p class="text-sm font-bold"><span class="mr-1"><i class="fa-solid fa-circle-exclamation"></i></span>
                         Note:
                     </p>
-                    <p class="text-xs ml-7">Any input field label with * on it is a required field
+                    <p class="text-sm ml-3">Any input field label with <strong>*</strong> on it is a required field
                     </p>
                 </div>
             </div>
@@ -69,7 +68,7 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
 
                         <x-input class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
-                            name="first_name" :value="old('first_name')" label="First Name*" placeholder="First Name" />
+                            name="first_name" :value="old('first_name')" label="First Name*" placeholder="First Name"  />
 
                         <x-input class=" focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
                             name="last_name" :value="old('last_name')" label="Last Name*" placeholder="Last Name" />

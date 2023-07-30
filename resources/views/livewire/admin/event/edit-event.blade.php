@@ -10,7 +10,7 @@
             <x-input label="Event Title" wire:model.defer="title" placeholder="Event Title" />
 
             <x-time-picker label="Event Time" placeholder="12:00 AM" wire:model.defer="eventTime" />
-            <x-datetime-picker without-time label="Event Date" placeholder="Event Date" wire:model.defer="eventDate" />
+            <x-datetime-picker label="Event Date" placeholder="Event Date" wire:model.defer="eventDate" />
 
 
             <x-input label="Event Venue" wire:model.defer="eventVenue" placeholder="Event Venue" />

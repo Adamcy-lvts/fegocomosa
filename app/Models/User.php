@@ -221,13 +221,22 @@ class User extends Authenticatable implements MustVerifyEmail
 
    public function paid($user)
    {
-    $membershipPayment = $this->payments()->where('user_id', $user->id)
+      $membershipPayment = $this->payments()->where('user_id', $user->id)
                 ->where('year', now()->year)
                 ->first();
       return $membershipPayment;       
     
    }
 
+    public function hasPosition()
+    {
+        return $this->executive_member()->exists();
+    }
+
+    public function isAmbassador() 
+    {
+        return $this->ambassador()->exists();
+    }
 
 
     public function scopeSearch($query, $term)
