@@ -42,5 +42,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ClassSeeder::class);
         $this->call(ExecutiveMembersSeeder::class);
         $this->call(SetAmbassadorTableSeeder::class);
+        $this->call(ResumeTableSeeder::class);
     }
 }

@@ -8,7 +8,7 @@
                 mobileMenu = false;
                 this.triggerNavItem(id)
             }
-    }" id="section-1">
+    }" id="section-1" style="background-image: url('{{ asset('images/bg_footer_criss-cross.webp') }}')">
 
         <div x-data="{ open: false }" class="content-slider">
             <input type="radio" id="banner1" class="sec-1-input" name="banner" checked>

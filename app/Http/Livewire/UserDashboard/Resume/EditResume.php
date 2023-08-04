@@ -257,7 +257,7 @@ class EditResume extends Component
         $reference = Reference::find($this->referenceId);
         
         $reference->update([
-             'full_name'    => $this->fullName,
+            'full_name'    => $this->fullName,
             'job_title'    => $this->jobPosition,
             'email'    => $this->email,
             'phone'    => $this->phone,
@@ -307,7 +307,7 @@ class EditResume extends Component
        
         $this->skillForm = true;
         $this->skillId = $id;
-        $skill = Skill::find($this->skillId);
+        // $skill = Skill::find($this->skillId);
 
 
         $this->loadSkillInfo();
@@ -324,14 +324,14 @@ class EditResume extends Component
 
      public function updateSkill()
     {
-        $this->validate([
-            'SkillName' => 'required', 
-        ]);
+        // $this->validate([
+        //     'SkillName' => 'required', 
+        // ]);
 
         $skill = Skill::find($this->skillId);
         
         $skill->update([
-             'skill_name'    => $this->skillName,
+            'skill_name'=> $this->skillName,
             'rating'    => $this->rating,
           
             

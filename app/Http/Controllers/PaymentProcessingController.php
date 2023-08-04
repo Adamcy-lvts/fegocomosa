@@ -91,9 +91,6 @@ class PaymentProcessingController extends Controller
                 'full_name'=> $payDetails['customer']['first_name'].' '.$payDetails['customer']['last_name'],
                 'email'    => $payDetails['customer']['email'],
                 'phone'    => $payDetails['customer']['phone'],
-                'address'  => $payDetails['customer']['metadata']['address'],
-                'city'     => $payDetails['customer']['metadata']['city'],
-                'state'    => $payDetails['customer']['metadata']['state'],
                 ]);
 
                 $donation = Donation::create([
