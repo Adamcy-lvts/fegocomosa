@@ -23,13 +23,13 @@
         </div>
         <div class="flex-grow flex flex-wrap md:pr-20 -mb-10 md:text-left text-center order-first">
             <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-                <h2 class="title-font font-medium text-gray-900 uppercase tracking-widest text-sm mb-3">Quick Links</h2>
+                <h2 class="title-font font-medium text-gray-900 uppercase tracking-widest text-sm mb-3">About Us</h2>
                 <nav class="list-none mb-10 text-sm">
                     <li>
-                        <a href="{{ route('aboutus') }}" class="text-gray-600 hover:text-gray-800">About Us</a>
+                        <a href="{{ route('aboutus') }}" class="text-gray-600 hover:text-gray-800">Our Story</a>
                     </li>
                     <li>
-                        <a href="{{ route('members') }}" class="text-gray-600 hover:text-gray-800">Memebers</a>
+                        <a href="{{ route('members') }}" class="text-gray-600 hover:text-gray-800">Our Members</a>
                     </li>
                     <li>
                         <a class="text-gray-600 hover:text-gray-800">Professional Categories</a>
@@ -39,8 +39,9 @@
                     </li>
                 </nav>
             </div>
+            
             <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-                <h2 class="title-font font-medium text-gray-900 tracking-widest uppercase text-sm mb-3">Quick Links</h2>
+                <h2 class="title-font font-medium text-gray-900 tracking-widest uppercase text-sm mb-3">Discover</h2>
                 <nav class="list-none mb-10 text-sm">
                     <li>
                         <a class="text-gray-600 hover:text-gray-800">Campaigns</a>
@@ -57,7 +58,7 @@
                 </nav>
             </div>
             <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-                <h2 class="title-font font-medium text-gray-900 tracking-widest uppercase text-sm mb-3">Quick Links
+                <h2 class="title-font font-medium text-gray-900 tracking-widest uppercase text-sm mb-3">Resources
                 </h2>
                 <nav class="list-none mb-10 text-sm">
                     <li>
@@ -83,8 +84,8 @@
                 $year = Carbon\Carbon::now()->year;
             @endphp
             <p class="text-gray-300 text-sm text-center sm:text-left">© {{ $year }} Fegocomosa —
-                <a href="https://twitter.com/knyttneve" rel="noopener noreferrer" class="text-gray-300 ml-1"
-                    target="_blank">Made With <i class="fa-duotone fa-heart"></i> By Devcentric Studio</a>
+                <a href="https://devcentricstudio.com" rel="noopener noreferrer" class="text-gray-300 ml-1"
+                    target="_blank">Made With <i class="fa-duotone fa-heart"></i> @ Devcentric Studio</a>
             </p>
             <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
                 <a href="#" class="text-gray-300">
@@ -122,3 +123,5 @@
         </div>
     </div>
 </footer>
+
+
