@@ -29,7 +29,7 @@ class EventTableSeeder extends Seeder
                 'event_time'   =>  $myDateTime->toTimeString(),
                 'event_date'   =>  Carbon::parse('2022-10-12'),
                 'event_venue'  => 'Federal Government College Maiduguri, Dining Hall',
-                'image'        => 'rihanna_9-wallpaper-1920x1080.jpg',
+                'image'        => 'man_of_steel_2013_movie-wallpaper.jpg',
                 'body'         =>  '<p>We are delighted to announce the much-awaited \"Annual Get Together\" event! Join us on October 12, 2022, at the iconic Dining Hall of Federal Government College Maiduguri for a day of laughter, memories, and cherished moments.\n\nThis year\'s Annual Get Together promises to be a memorable occasion, bringing together alumni, students, and friends from all walks of life. It\'s an opportunity to reconnect with old friends, make new acquaintances, and relive the camaraderie that makes our community so special.\n\nThe event will kick off with a warm welcome from the organizing committee, followed by exciting activities and games for all ages. From traditional games to modern challenges, there will be something for everyone to enjoy. As the day progresses, indulge in a delectable spread of delicious food and refreshing beverages, carefully curated to satisfy your taste buds.\n\nTo add to the festivities, we have lined up live music performances and entertaining acts to keep the energy high throughout the day. Dance to your heart\'s content and let the rhythm of the music bring back memories of our school days.\n\nAs the sun sets, gather around the campfire for heartwarming conversations and storytelling. Share your fondest memories of FGC Maiduguri and learn about the experiences of fellow alumni. The bond we share is timeless, and this event provides the perfect opportunity to strengthen it further.\n\nWe look forward to welcoming each one of you to the Annual Get Together 2022. Let\'s come together as one big Fegomite family and create beautiful memories that will last a lifetime. Mark your calendars and spread the word - it\'s going to be an event to remember! See you there! The Organizing Committee</p>',
               
             ]);
@@ -41,7 +41,7 @@ class EventTableSeeder extends Seeder
                 'event_time'   =>  $myDateTime->toTimeString(),
                 'event_date'   =>  Carbon::parse('2022-10-22'),
                 'event_venue'  => 'Yankari Game Reserve, Bauchi State.',
-                'image'        => 'megan_fox_16-wallpaper-1920x1080.jpg',
+                'image'        => 'brewer_pub_london-wallpaper-1920x1080.jpg',
                 'body'         =>  '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, tenetur?</p>',
               
             ]);
