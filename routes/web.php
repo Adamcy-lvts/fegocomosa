@@ -173,3 +173,5 @@ Route::get('/successful', RegistrationSucessful::class)->name('success');
 
 Route::post('/pay', [PaymentProcessingController::class, 'redirectToGateway'])->name('pay');
 Route::get('/payment/callback', [PaymentProcessingController::class, 'handleGatewayCallback']);
+
+Route::webhooks('/paystack/webhook');
