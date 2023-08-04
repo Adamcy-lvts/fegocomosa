@@ -78,7 +78,7 @@ class EventTableSeeder extends Seeder
                 'event_time'   =>  $myDateTime->toTimeString(),
                 'event_date'   =>  Carbon::parse('2023-10-12'),
                 'event_venue'  => 'Federal Government College Maiduguri, Assembly Hall.',
-                'image'        => 'megan_fox_16-wallpaper-1920x1080.jpg',
+                'image'        => 'robocop_1.jpg',
                 'body'         =>  '<p>We are excited to announce the Class of 2013 Reunion, celebrating 10 years since we graduated from Federal Government College Maiduguri. It\'s time to reconnect with old friends, reminisce about our school days, and create new memories together. Join us for a fun-filled evening of laughter, music, and camaraderie. Let\'s catch up on each other\'s journeys and celebrate the accomplishments of our fellow classmates. Don\'t miss this opportunity to relive the good old days and make new connections. See you there!</p>',
             ]);
 
@@ -100,7 +100,7 @@ class EventTableSeeder extends Seeder
                 'event_time'   =>  $myDateTime->toTimeString(),
                 'event_date'   =>  Carbon::parse('2023-12-12'),
                 'event_venue'  => 'Yankari Game Reserve, Bauchi State.',
-                'image'        => 'stranger_things_1.jpg',
+                'image'        => 'kate_beckinsale_as_vampire.jpg',
                 'body'         =>  '<p>The Annual General Conference (AGC) is back, and this year promises to be bigger and better! Join us for three days of insightful discussions, networking opportunities, and knowledge-sharing sessions. The AGC brings together professionals, experts, and visionaries from various industries to explore innovative ideas and solutions for a brighter future. Engage in thought-provoking discussions, attend interactive workshops, and be inspired by keynote speakers. Don\'t miss this chance to be a part of the AGC experience and contribute to the collective progress.</p>',
             ]);
 
@@ -111,7 +111,7 @@ class EventTableSeeder extends Seeder
                 'event_time'   =>  $myDateTime->toTimeString(),
                 'event_date'   =>  Carbon::parse('2024-01-12'),
                 'event_venue'  => 'Federal Government College Maiduguri, Assembly Hall.',
-                'image'        => 'taylor_swift_smiling___2012-wallpaper-1920x1080.jpg',
+                'image'        => 'natasha_romanoff_black_widow.jpg',
                 'body'         =>  '<p>50th Anniversary of Federal Government College Maiduguri
                 We are thrilled to celebrate the golden jubilee of Federal Government College Maiduguri! For five decades, our esteemed institution has been nurturing young minds, fostering excellence, and shaping leaders of tomorrow. Join us for a grand celebration as we honor the rich history and legacy of our alma mater. The event will feature cultural performances, exhibitions, alumni reunions, and much more. Let\'s come together to pay tribute to our beloved college and its impact on countless lives.</p>',
             ]);
@@ -123,7 +123,7 @@ class EventTableSeeder extends Seeder
                 'event_time'   =>  $myDateTime->toTimeString(),
                 'event_date'   =>  Carbon::parse('2024-02-12'),
                 'event_venue'  => 'Federal Government College Maiduguri, Dining Hall',
-                'image'        => 'the_amazing_spider_man_2_emma_stone-wallpaper-1920x1080.jpg',
+                'image'        => 'taylor-swift-22276.jpg',
                 'body'         =>  '<p>It\'s that time of the year again - our Annual Get Together is back! Join us for a day filled with laughter, games, and heartwarming conversations. This event is a perfect opportunity to reconnect with old friends and make new ones. Enjoy delicious food, live music, and exciting activities for all ages. Whether you are an alumnus, current student, or part of the extended FGC community, you are welcome to be a part of this joyous occasion. Let\'s celebrate the spirit of unity and camaraderie that makes our community so special. See you at the Annual Get Together 2024!</p>',
             ]);
             
