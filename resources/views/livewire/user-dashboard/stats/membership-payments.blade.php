@@ -16,7 +16,7 @@
                 <span class="text-sm text-green-600 align-top">Paid</span>
             </div>
             <div class="text-sm uppercase text-grey tracking-wide">
-                You have paid your dues for the year 2022
+                You have paid your dues for the year {{ now()->year }}
             </div>
         @endif
 
