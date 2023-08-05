@@ -16,6 +16,7 @@ use App\Models\NavigationMenu;
 use App\Models\GuestNavbarMenu;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
+use App\WebhookSignatureValidator\WebhookSignatureValidator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(SignatureValidator::class, WebhookSignatureValidator::class);
     }
 
     /**
