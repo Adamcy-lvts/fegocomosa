@@ -25,7 +25,7 @@
 
 </head>
 
-<body x-clock class="flex font-raleway antialiased" >
+<body x-clock class="flex font-montserrat antialiased" >
     <x-notifications />
 
     <aside class="relative  border border-r bg-sidebar h-screen w-64 hidden sm:block shadow-xl">
