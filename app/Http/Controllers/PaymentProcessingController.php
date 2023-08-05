@@ -101,7 +101,7 @@ class PaymentProcessingController extends Controller
                     'comment'      => $payDetails['customer']['metadata']['comment'],
                 ]);
 
-                return redirect()->route('campaigns.show', $donation->campaign->id)->with('success', 'Donation payment successful!');
+                return redirect()->route('campaigns.show', $donation->campaign->slug)->with('success', 'Donation payment successful!');
         }
 
         // return redirect()->route('payment.failed')->with('error', 'Payment failed!');
