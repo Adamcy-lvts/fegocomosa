@@ -46,7 +46,7 @@
 
 </head>
 
-<body class="font-raleway antialiased">
+<body class="font-montserrat antialiased">
 
     <x-notifications />
     <x-jet-banner />

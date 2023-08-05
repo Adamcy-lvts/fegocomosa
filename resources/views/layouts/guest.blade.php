@@ -41,7 +41,7 @@
 
 </head>
 
-<body class="font-raleway antialiased">
+<body class="font-montserrat antialiased">
     <x-guest-menu />
     <x-notifications />
     @stack('ck-style')
