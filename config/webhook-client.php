@@ -13,7 +13,7 @@ return [
              * We expect that every webhook call will be signed using a secret. This secret
              * is used to verify that the payload has not been tampered with.
              */
-            'signing_secret' => env('PAYSTACK_SECRET_KEY'),
+            'signing_secret' => env('WEBHOOK_CLIENT_SECRET'),
 
             /*
              * The name of the header containing the signature.
@@ -58,6 +58,7 @@ return [
              *
              * This should be set to a class that extends \Spatie\WebhookClient\Jobs\ProcessWebhookJob.
              */
+           
             'process_webhook_job' => \App\Handler\WebhookHandler::class,
         ],
     ],
