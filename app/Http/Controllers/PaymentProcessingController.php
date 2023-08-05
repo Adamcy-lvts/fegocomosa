@@ -101,6 +101,9 @@ class PaymentProcessingController extends Controller
                     'comment'      => $payDetails['customer']['metadata']['comment'],
                 ]);
 
+                $users = User::all();
+                Notification::send($users, new DonationNotification($donation));
+
                 return redirect()->route('campaigns.show', $donation->campaign->slug)->with('success', 'Donation payment successful!');
         }
 
