@@ -16,6 +16,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Redirect;
+use App\Notifications\DonationNotification;
+use Illuminate\Support\Facades\Notification;
 
 class PaymentProcessingController extends Controller
 {
