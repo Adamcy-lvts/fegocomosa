@@ -49,6 +49,7 @@ use App\Http\Livewire\UserCategory\CategoryIndex;
 use App\Http\Livewire\UserCategory\UsersCategory;
 use App\Http\Controllers\DownloadResumeController;
 use App\Http\Livewire\Admin\Campaign\EditCampaign;
+use App\Http\Controllers\PaystackWebhookController;
 use App\Http\Livewire\Admin\Settings\CreateMemInfo;
 use App\Http\Livewire\Admin\Campaign\CreateCampaign;
 use App\Http\Controllers\PaymentProcessingController;
@@ -174,4 +175,4 @@ Route::get('/successful', RegistrationSucessful::class)->name('success');
 Route::post('/pay', [PaymentProcessingController::class, 'redirectToGateway'])->name('pay');
 Route::get('/payment/callback', [PaymentProcessingController::class, 'handleGatewayCallback']);
 
-Route::post('/paystack/webhook', 'PaystackWebhookController@handleWebhook');
+Route::post('/paystack/webhook', [PaystackWebhookController::class, 'handleWebhook']);
