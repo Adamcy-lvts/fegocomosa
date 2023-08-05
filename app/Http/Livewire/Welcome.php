@@ -20,15 +20,15 @@ class Welcome extends Component
 {
     public function render()
     {
-        $url = url('images/Becky_G_1_200.jpg');
+        $url = url('images/Logo-min.svg');
 
         SEOMeta::setTitle('Fegocomosa');
         SEOMeta::setDescription('Federal Government College Maiduguri Old Student Association Website');
-        SEOMeta::setCanonical('https://fegocomosa.live');
+        SEOMeta::setCanonical('https://fegocomosa.site');
 
         OpenGraph::setDescription('Federal Government College Maiduguri Old Student Association Website');
         OpenGraph::setTitle('Fegocomosa');
-        OpenGraph::setUrl('https://fegocomosa.live');
+        OpenGraph::setUrl('https://fegocomosa.site');
         OpenGraph::addProperty('type', 'website');
         OpenGraph::setSiteName('Fegocomosa');
         OpenGraph::addImage($url);
