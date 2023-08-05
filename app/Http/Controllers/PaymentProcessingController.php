@@ -76,7 +76,7 @@ class PaymentProcessingController extends Controller
                 
             ]); 
 
-             return back()->withInput();
+            return redirect()->route('member.dashboard')->with('success', 'Membership payment successful!');
         }
 
         if ($payDetails['status'] == 'success' && $payDetails['metadata']['payment_for'] == 'donation') {
@@ -101,9 +101,9 @@ class PaymentProcessingController extends Controller
                     'comment'      => $payDetails['customer']['metadata']['comment'],
                 ]);
 
-         
-
-             return back()->withInput();
+                return redirect()->route('campaigns.show', $donation->campaign->id)->with('success', 'Donation payment successful!');
         }
+
+        // return redirect()->route('payment.failed')->with('error', 'Payment failed!');
     }
 }
