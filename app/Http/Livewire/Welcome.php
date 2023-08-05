@@ -20,7 +20,7 @@ class Welcome extends Component
 {
     public function render()
     {
-        $url = url('images/Logo-min.png');
+        $url = url('images/Logo-min_jpg.jpg');
 
         SEOMeta::setTitle('Fegocomosa');
         SEOMeta::setDescription('Federal Government College Maiduguri Old Student Association Website');
