@@ -11,21 +11,55 @@
     <!-- Tailwind -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <!-- Font Awesome -->
-    
+
     <link rel="stylesheet" href="{{ asset('fontawesome-6/css/all.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/progressbar.css') }}">
     <link rel="stylesheet" type="text/css"
         href=" https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Raleway:300,400">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Montserrat:wght@400;700&display=swap|Raleway:300,400">
     <!-- Scripts -->
     @wireUiScripts
     <script src="{{ mix('js/app.js') }}" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
+    <style>
+        /* Heading 1 */
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        /* Heading 2 */
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        /* Heading 3 */
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        /* Body text */
+        p {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+        }
+
+        /* Other elements with different font weights */
+        /* Example: */
+        .my-custom-class {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+        }
+    </style>
+
 </head>
 
-<body x-clock class="flex font-montserrat antialiased" >
+<body x-clock class="flex font-montserrat font-sans antialiased">
     <x-notifications />
 
     <aside class="relative  border border-r bg-sidebar h-screen w-64 hidden sm:block shadow-xl">
