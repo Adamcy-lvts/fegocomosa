@@ -7,6 +7,7 @@
     <title>{{ config('app.name', 'Fegocomosa') }}</title>
     <meta name="author" content="David Grzyb">
     <meta name="description" content="">
+    <link rel="icon" type="image/x-icon" href="{{asset('images/favicon.png')}}">
 
     <!-- Tailwind -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
