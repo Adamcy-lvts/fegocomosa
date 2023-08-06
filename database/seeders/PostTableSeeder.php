@@ -42,7 +42,7 @@ class PostTableSeeder extends Seeder
                             </p>',
                 'image' => 'ts-3.jpg',
                 'user_id' => 1,
-                'category_post_id' => 1,
+                'category_post_id' => 2,
             ]);
 
             Post::create([
