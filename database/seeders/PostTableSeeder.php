@@ -159,7 +159,7 @@ class PostTableSeeder extends Seeder
                 <p>Embracing a smart home lifestyle requires careful consideration, but the rewards in terms of comfort, efficiency, and convenience make it a worthwhile journey into the future.</p>',
                 'image' => 'smart_home.jpg',
                 'user_id' => 1,
-                'category_post_id' => 3,
+                'category_post_id' => 5,
             ]);
 
              Post::create([
