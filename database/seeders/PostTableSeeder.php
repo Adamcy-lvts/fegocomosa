@@ -46,85 +46,120 @@ class PostTableSeeder extends Seeder
             ]);
 
             Post::create([
-                'title' => 'How to Connect Your Phone to Your Smart TV',
-                'slug' => 'how-to-connect-your-phone-to-your-smart-tv',
-                'body' => '<p>Connecting your phone to your smart TV opens up a world of possibilities, allowing you to stream videos, share photos, and even play mobile games on the big screen. In this step-by-step guide, we will walk you through the process of connecting your phone to your smart TV, whether you have an Android or iOS device.</p>
+                'title' => 'Eating Healthy: The Key to a Balanced Life',
+                'slug' => 'eating-healthy-the-key-to-a-balanced-life',
+                'body' => '<p>Welcome to our journey towards a healthier lifestyle through nutritious eating! We often hear the phrase, &quot;You are what you eat,&quot; and it holds true. Embracing a healthy diet is not just a trend but a fundamental aspect of well-being and longevity.</p>
+                <p>Healthy eating goes beyond just shedding a few pounds. It impacts every aspect of our lives, from boosting energy levels and enhancing mental clarity to strengthening the immune system. Nutritious foods fuel our bodies with essential vitamins, minerals, and antioxidants that support our overall health.</p>
+                <p>A well-rounded diet incorporates various food groups, ensuring we get a broad spectrum of nutrients. Here are the key components of a healthy eating plan:</p>
+                <ul>
+                    <li><strong>Fruits and Vegetables:</strong> Rich in vitamins, minerals, and fiber, they are essential for a strong immune system and healthy digestion.</li>
+                    <li><strong>Whole Grains:</strong> Provide lasting energy and are packed with fiber, aiding in better digestion and heart health.</li>
+                    <li><strong>Lean Proteins:</strong> Important for muscle repair and growth, they can be found in sources like lean meats, fish, beans, and tofu.</li>
+                    <li><strong>Healthy Fats:</strong> Omega-3 fatty acids found in fish and nuts promote brain health and reduce inflammation.</li>
+                    <li><strong>Dairy or Dairy Alternatives:</strong> Good sources of calcium and vitamin D for bone health.</li>
+                </ul>
+                <p>Remember, balance is key! Moderation is essential, even with healthier food choices.</p>
+                <p>Transitioning to a healthier diet doesn&apos;t have to be overwhelming. Here are some practical tips to help you get started:</p>
+                <ol>
+                    <li><strong>Plan Your Meals:</strong> Prepare a weekly meal plan and grocery list to avoid impulsive, unhealthy choices.</li>
+                    <li><strong>Cook at Home:</strong> Cooking your meals allows you to control ingredients and portion sizes.</li>
+                    <li><strong>Stay Hydrated:</strong> Drink plenty of water throughout the day to maintain optimal bodily functions.</li>
+                    <li><strong>Snack Smart:</strong> Opt for nutritious snacks like fruits, nuts, or yogurt to curb hunger between meals.</li>
+                    <li><strong>Read Labels:</strong> Be mindful of hidden sugars, sodium, and unhealthy fats in packaged foods.</li>
+                </ol>
+                <p>Small changes lead to big results. Patience and consistency are vital on this journey.</p>
+                <p>Eating healthy is not about following restrictive diets but embracing a sustainable lifestyle that nurtures our bodies and minds. By making conscious food choices and prioritizing nutrition, we pave the way for improved well-being and longevity.</p>
+                <p>Let&apos;s embark on this journey together, supporting and inspiring each other along the way. Here&apos;s to a healthier, happier you!</p>',
+                'image' => 'healthy_tips.jpg',
+                'user_id' => 1,
+                'category_post_id' => 1,
+            ]);
+
+            Post::create([
+                'title' => 'How to Install Windows 11 on an Old System',
+                'slug' => 'how-to-install-windows-11-on-old-system',
+                'body' => '<p>Exciting news for Windows enthusiasts! Windows 11, the latest version of Microsoft\'s operating system, has been released. However, one common concern among users is whether their old systems can run this new OS. While Windows 11 comes with certain hardware requirements, there are still ways to install it on older PCs.</p>
+                <p><strong>Disclaimer:</strong> Before attempting to install Windows 11 on an older system, be aware that it may not be officially supported. There could be compatibility issues, and we recommend backing up your data before proceeding.</p>
                 <p>Requirements:</p>
                 <ul>
-                    <li>A smart TV with screen mirroring or casting capabilities</li>
-                    <li>A smartphone (Android or iPhone) with Wi-Fi and Bluetooth functionality</li>
-                    <li>A stable Wi-Fi network</li>
+                    <li>A 64-bit processor with at least 1 GHz clock speed</li>
+                    <li>4 GB of RAM or more</li>
+                    <li>64 GB of storage or more</li>
+                    <li>UEFI firmware with Secure Boot capability</li>
+                    <li>DirectX 12 compatible graphics / WDDM 2.x</li>
+                    <li>A display with HD resolution (720p) or higher</li>
                 </ul>
-                <p>Method 1: Using Screen Mirroring (Android)</p>
-                <p>Step 1: Enable Screen Mirroring on Your Smart TV...</p>',
-                'image' => 'ariana_grande_black_and_white.jpg',
+                <p>If your system meets these requirements, you can follow these steps to install Windows 11:</p>
+                <ol>
+                    <li><strong>Download Windows 11 ISO:</strong> Obtain the Windows 11 ISO file from the official Microsoft website or trusted sources.</li>
+                    <li><strong>Create a Bootable USB Drive:</strong> Use a tool like Rufus to create a bootable USB drive with the Windows 11 ISO.</li>
+                    <li><strong>Backup Your Data:</strong> Before proceeding, back up all your important data to an external storage device.</li>
+                    <li><strong>Access BIOS/UEFI Settings:</strong> Restart your PC and access the BIOS/UEFI settings by pressing the appropriate key during boot (usually Del, F2, F10, or Esc).</li>
+                    <li><strong>Change Boot Order:</strong> Set the USB drive as the first boot option in the BIOS/UEFI settings.</li>
+                    <li><strong>Save Changes and Exit:</strong> Save your changes and exit the BIOS/UEFI settings. Your PC will now boot from the USB drive.</li>
+                    <li><strong>Install Windows 11:</strong> Follow the on-screen instructions to install Windows 11 on your old system.</li>
+                    <li><strong>Activate Windows:</strong> After installation, you may need to activate Windows 11 using a valid product key.</li>
+                </ol>
+                <p>Note that installing Windows 11 on an unsupported system may lead to performance and compatibility issues. If you encounter problems, consider reverting to your previous OS or seeking assistance from Microsoft or a qualified technician.</p>
+                <p>Remember, always exercise caution when modifying your system, and proceed at your own risk.</p>',
+                'image' => 'install_windows11.jpg',
                 'user_id' => 1,
                 'category_post_id' => 6,
-             
-                
+            ]);
         
-            ]);
 
             Post::create([
-            
-                'title' => "Becky G",
-                'slug' => 'becky-g',
-                'body' => '<p>
-                <h1>Rebbeca Marie Gomez</h1>
-                            Rebbeca Marie Gomez (born March 2, 1997), known professionally as Becky G, is an American singer and actress.
-                             She first gained recognition in 2011 when she began posting videos of herself covering popular songs online. 
-                             One of her videos caught the attention of producer Dr. Luke, who subsequently offered her a joint record deal with Kemosabe Records
-                              and RCA Records. While working on her debut effort, Gomez collaborated with artists will.i.am, Cody Simpson and Cher Lloyd. 
-                              Her official debut single, "Becky from the Block" (2013), received a positive reception upon its release.
-                               She released her debut extended play, Play It Again (2013), later that same year. Her second single, Cant Get Enough (2014), 
-                               featured guest vocals from Pitbull and went on to top the Latin Rhythm Airplay chart in the United States. 
-                          </p>',
-                'image' => 'Becky_G_1.jpg',
+                'title' => 'The Fascinating World of Quantum Physics',
+                'slug' => 'the-fascinating-world-of-quantum-physics',
+                'body' => '<p>Quantum physics, also known as quantum mechanics, is one of the most mind-bending and intriguing branches of science. It deals with the behavior of matter and energy on an atomic and subatomic scale, where the traditional laws of classical physics break down. Let\'s explore the fascinating world of quantum physics and some of its mind-blowing concepts.</p>
+                <h2>Wave-Particle Duality</h2>
+                <p>One of the most baffling aspects of quantum physics is the wave-particle duality of matter. This principle states that elementary particles, such as electrons and photons, can exhibit both wave-like and particle-like behaviors depending on the experiment. When observed as particles, they behave like discrete, localized objects, while in other situations, they behave like waves, spreading out and interfering with each other.</p>
+                <h2>Quantum Entanglement</h2>
+                <p>Quantum entanglement is a phenomenon where two or more particles become connected in such a way that the state of one particle is dependent on the state of another, regardless of the distance between them. This eerie connection, described by Albert Einstein as "spooky action at a distance," challenges our intuitive understanding of how the world works.</p>
+                <h2>Schrodinger\'s Cat</h2>
+                <p>Schrodinger\'s cat is a famous thought experiment illustrating the peculiar nature of quantum superposition. In this hypothetical experiment, a cat inside a closed box is considered both alive and dead simultaneously until the box is opened and the cat\'s state collapses into one of the possibilities. This highlights the bizarre notion that quantum particles can exist in multiple states until observed.</p>
+                <h2>Quantum Computing</h2>
+                <p>Quantum computing is an exciting field that leverages the principles of quantum mechanics to perform complex calculations at unparalleled speeds. Unlike classical computers that use bits to represent information as 0s or 1s, quantum computers use quantum bits or qubits, which can exist in multiple states simultaneously, allowing for exponential processing power.</p>
+                <h2>The Uncertainty Principle</h2>
+                <p>Werner Heisenberg\'s uncertainty principle is a fundamental concept in quantum physics. It states that it is impossible to simultaneously know both the precise position and momentum of a particle. The more accurately we measure one quantity, the less accurately we can measure the other, introducing a fundamental limit to our ability to observe the quantum world.</p>
+                <p>Quantum physics continues to astonish scientists and challenge our understanding of reality. As researchers delve deeper into the mysteries of the quantum realm, we can expect even more groundbreaking discoveries that will shape the future of science and technology.</p>',
+                'image' => 'quantum_physics.jpg',
                 'user_id' => 1,
-                'category_post_id' => 1
+                'category_post_id' => 4,
+
             ]);
 
             Post::create([
-            
-                'title' => "Kristen Stewart",
-                'slug' => 'kristen-stewart',
-                'body' => '<p>
-                <h1>Kristen Jaymes Stewart</h1>
-                              Kristen Jaymes Stewart (born April 9, 1990) is an American actress and filmmaker.
-                               The worlds highest-paid actress in 2012, she has received various accolades, 
-                               including a British Academy Film Award and a César Award, in addition to nominations for an Academy Award and a Golden Globe Award.
-                              Born and raised in Los Angeles to parents who both worked in the entertainment industry,
-                               Stewart first gained notice at age 12 for her role as the daughter of Jodie Fosters character in David Finchers thriller
-                                Panic Room (2002), which earned her a Young Artist Award nomination. She subsequently starred in Speak (2004), 
-                                Catch That Kid (2004), Zathura: A Space Adventure (2005), and Into the Wild (2007). She went on to achieve global 
-                                stardom for her role as Bella Swan in The Twilight Saga film series (2008–2012), which ranks among the highest-grossing 
-                                film franchises; for the role, she was awarded the BAFTA Rising Star Award in 2010. 
-                          </p>',
-                'image' => 'Kristen-Stewart-HQ.jpg',
+                'title' => 'Embracing the Future: The Wonders of a Smart Home',
+                'slug' => 'embracing-the-future-the-wonders-of-a-smart-home',
+                'body' => '<p>Welcome to the future, where science fiction becomes reality through the wonders of smart home technology! The concept of a smart home has evolved from a mere fantasy into a thriving reality, transforming the way we live and interact with our living spaces.</p>
+                <h2>What is a Smart Home?</h2>
+                <p>A smart home is equipped with various interconnected devices and appliances that can be remotely controlled and automated through a central system. These devices communicate with each other and with you, the homeowner, creating a seamless and intelligent living environment.</p>
+                <h2>The Benefits of a Smart Home</h2>
+                <p>The integration of smart technology offers numerous advantages:</p>
+                <ul>
+                    <li><strong>Convenience:</strong> Control your lighting, thermostat, security cameras, and more with just a few taps on your smartphone or through voice commands.</li>
+                    <li><strong>Energy Efficiency:</strong> Smart thermostats can learn your preferences and adjust the temperature accordingly, leading to energy savings.</li>
+                    <li><strong>Home Security:</strong> Monitor your home remotely and receive real-time alerts in case of any security breaches.</li>
+                    <li><strong>Time Savings:</strong> Automate routine tasks such as turning off lights or watering plants, freeing up time for more important activities.</li>
+                    <li><strong>Peace of Mind:</strong> Check in on your home and loved ones, even when you\'re away, providing a sense of security.</li>
+                </ul>
+                <h2>Popular Smart Home Devices</h2>
+                <p>The market is flooded with an array of smart devices that cater to different aspects of your home:</p>
+                <ul>
+                    <li><strong>Smart Speakers:</strong> Voice-activated devices like Amazon Echo and Google Home that serve as a central hub for controlling other smart devices.</li>
+                    <li><strong>Smart Lighting:</strong> LED bulbs and light strips that can be dimmed, color-changed, or scheduled to suit your preferences.</li>
+                    <li><strong>Smart Thermostats:</strong> Regulate your home\'s temperature and create energy-efficient heating and cooling schedules.</li>
+                    <li><strong>Smart Security Cameras:</strong> Keep an eye on your property and receive instant alerts in case of suspicious activity.</li>
+                    <li><strong>Smart Locks:</strong> Grant access to your home remotely and track who enters and exits.</li>
+                    <li><strong>Smart Appliances:</strong> From refrigerators to washing machines, these appliances offer advanced features and remote controls.</li>
+                </ul>
+                <h2>Privacy and Security Concerns</h2>
+                <p>While smart home technology offers tremendous benefits, it also raises concerns about privacy and security. It\'s essential to choose reputable brands, secure your network, and regularly update your devices\' firmware to protect against potential vulnerabilities.</p>
+                <p>Embracing a smart home lifestyle requires careful consideration, but the rewards in terms of comfort, efficiency, and convenience make it a worthwhile journey into the future.</p>',
+                'image' => 'smart_home.jpg',
                 'user_id' => 1,
-                'category_post_id' => 1
-            ]);
-
-            Post::create([
-            
-                'title' => "Olivia Rodrigo",
-                'slug' => 'olivia-rodrigo',
-                'body' => '<p>
-                 <h1>Olivia Isabel Rodrigo</h1>
-                              Olivia Isabel Rodrigo was born on February 20, 2003, at Rancho Springs Medical Center in Murrieta, California.
-                               She lived and grew up in neighboring Temecula.[6] Rodrigo is biracial; her father is of Filipino descent
-                                and her mother has German and Irish ancestry.[7][8][9] Her father works as a family therapist and her mother works 
-                                as a school teacher.[7] She has stated that her paternal great-grandfather moved from the Philippines to the United States
-                                 as a teenager and her family follows Filipino traditions and cuisine.[10] Rodrigo started taking vocal lessons 
-                                 in kindergarten and learned to play piano soon after.[11] She began taking acting and singing classes at age six 
-                                 and started acting in theater productions in elementary school.[5][12] Rodrigo was playing guitar by age 12.
-                                  She grew up listening to her parents favorite alternative rock music, such as the bands No Doubt, Pearl Jam, the White Stripes, 
-                                  and Green Day. Rodrigo became interested in songwriting after listening to country music, especially American singer-songwriter
-                                   Taylor Swift.[13] She moved to Los Angeles after landing her role on Bizaardvark.[12]
-                          </p>',
-                'image' => 'olivia_1.jpg',
-                'user_id' => 2,
-                'category_post_id' => 1
+                'category_post_id' => 3,
             ]);
 
              Post::create([
@@ -152,28 +187,24 @@ class PostTableSeeder extends Seeder
                 'category_post_id' => 2
             ]);
 
-             Post::create([
-            
-                'title' => "Game of Thrones",
-                'slug' => 'game-of-thrones',
-                'body' => '
-                <h1>The Song of Ice and Fire</h1>
-                <p>
-                                Game of Thrones is an American fantasy drama television series created by David Benioff and D. B. Weiss for HBO.
-                                It is an adaptation of A Song of Ice and Fire, a series of fantasy novels by George R. R. Martin,
-                                the first of which is A Game of Thrones. The show was shot in the United Kingdom, Canada, Croatia, Iceland, Malta, 
-                                Morocco, and Spain. It premiered on HBO in the United States on April 17, 2011, and concluded on May 19, 2019, 
-                                with 73 episodes broadcast over eight seasons.
-
-                                Set on the fictional continents of Westeros and Essos, Game of Thrones has a large ensemble cast and follows several story arcs throughout the course of the show.
-                                The first major arc concerns the Iron Throne of the Seven Kingdoms of Westeros through a web of political conflicts
-                                among the noble families either vying to claim the throne or fighting for independence from whoever sits on it. A second focuses
-                                on the last descendant of the realms deposed ruling dynasty, who has been exiled to Essos and is plotting to return and reclaim the throne.
-                                The third follows the Nights Watch, a military order defending the realm against threats from beyond Westeross northern border. 
-                          </p>',
-                'image' => 'game_of_thrones_winter_is_coming_stark-wallpaper.jpg',
+            Post::create([
+                'title' => 'The 2022 FIFA World Cup: A History-Making Event',
+                'slug' => 'the-2022-fifa-world-cup-a-history-making-event',
+                'body' => '<p>The 2022 FIFA World Cup was a history-making event in many ways. It was the first World Cup to be held in the Arab world, and it was also the first to be held in the winter months. The tournament was a huge success, with record-breaking viewership and attendance.</p>
+                <p>One of the most notable aspects of the 2022 World Cup was the use of state-of-the-art technology. For example, all of the stadiums were equipped with cooling systems to help players and fans stay cool in the hot desert heat. The tournament also made use of artificial intelligence to help with refereeing decisions.</p>
+                <p>Another notable aspect of the 2022 World Cup was its focus on sustainability. The stadiums were built using sustainable materials, and the tournament was powered by renewable energy. The organizers also implemented a number of other measures to reduce the environmental impact of the event.</p>
+                <p>The 2022 FIFA World Cup was a truly global event, with fans from all over the world coming together to celebrate the beautiful game. It was also a landmark event for Qatar, which showed the world that it is a modern and progressive country.</p>
+                <h2>Argentina\'s Story</h2>
+                <p>Argentina had a memorable run to the final of the 2022 World Cup. The team was led by Lionel Messi, who was at the top of his game throughout the tournament. Messi scored seven goals in seven games, including two in the final against France.</p>
+                <p>Argentina\'s road to the final was not easy. The team had to overcome some tough challenges, including a 2-2 draw with Saudi Arabia in the group stage. However, Argentina always found a way to win, and they eventually made it to the final.</p>
+                <p>The final against France was a thrilling match that went all the way to penalties. Argentina won the shootout 4-2, and they were crowned champions of the world for the third time. It was a fitting end to a memorable tournament for Argentina, and it was a moment that Messi will never forget.</p>
+                <h2>What does the future hold for Argentina?</h2>
+                <p>Argentina\'s future looks bright after their victory in the 2022 World Cup. The team is still led by Messi, who is showing no signs of slowing down. Argentina also has a number of talented young players, such as Lautaro Martinez and Rodrigo De Paul.</p>
+                <p>It is possible that Argentina could win the World Cup again in the near future. The team has the talent and the experience to do it, and they will be a force to be reckoned with in future tournaments.</p>
+                <p>The 2022 FIFA World Cup was a truly memorable event, and it is sure to be a benchmark for future tournaments. It was a tournament that was defined by innovation, sustainability, and globalism, and it is sure to leave a lasting legacy.</p>',
+                'image' => 'world_cup_2022.jpg',
                 'user_id' => 1,
-                'category_post_id' => 2
+                'category_post_id' => 2,
             ]);
 
             Post::create([
