@@ -21,7 +21,7 @@ class DownloadResumeController extends Controller
 
         $file = $member->first_name.'_'.'resume.pdf';
 
-        Browsershot::html($html)->setChromePath('/usr/bin/chromium-browser')->showBackground()->format('A4')->save(storage_path("app/pdf/{$member->first_name}_{$member->id}_resume.pdf"));
+        Browsershot::html($html)->setChromePath('/usr/bin/google-chrome')->showBackground()->format('A4')->save(storage_path("app/pdf/{$member->first_name}_{$member->id}_resume.pdf"));
       
         $path = storage_path("app/pdf/{$member->first_name}_{$member->id}_resume.pdf");
 
