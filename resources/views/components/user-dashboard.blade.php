@@ -12,6 +12,7 @@
     <!-- Tailwind -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Raleway:300,400">
     
     <link rel="stylesheet" href="{{ asset('fontawesome-6/css/all.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/progressbar.css') }}">
@@ -26,7 +27,7 @@
 
 </head>
 
-<body x-clock class="flex font-montserrat antialiased" >
+<body x-clock class="flex font-roboto antialiased" >
     <x-notifications />
 
     <aside class="relative  border border-r bg-sidebar h-screen w-64 hidden sm:block shadow-xl">
