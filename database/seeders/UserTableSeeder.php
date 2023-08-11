@@ -36,7 +36,7 @@ class UserTableSeeder extends Seeder
                 'phone'             => '07060741999',
                 'state_id'          => 8,
                 'city_id'           => 162,
-                'profession'        => 'Engineer',
+                'profession'        => 'Web Developer | Graphic Designer | Electrical and Electronics Engineer',
                 'workplace'        => 'Nation Open University of Nigeria(NOUN)',
                 'jss_class_id'         => 17,
                 'sss_class_id'         => 5,
